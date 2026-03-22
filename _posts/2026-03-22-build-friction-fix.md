@@ -113,7 +113,7 @@ the same pattern repeats at varying degrees of granularity. fractals.
 
 yeats wrote about the widening gyre as dark, destructive, things falling apart. the system you built no longer fits? that's not failure, that's growth. that's freeing. you've got the tools to come back to center and rebuild. wider this time.
 
-here's what i found. i want to see what you think.
+here's what i found. i want to see what you find. let's chat :)
 
 a friend guessed that bff meant "build fucking fast" based on what i've been encouraging over the last few months. yes, that applies here too. compress the learning. establish your system. let's go.
 
