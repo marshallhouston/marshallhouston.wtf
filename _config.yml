@@ -9,6 +9,7 @@ search: true
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
 permalink: /:categories/:title/
+future: true
 paginate: 5
 paginate_path: /page:num/
 
