@@ -7,13 +7,15 @@ classes: wide
 
 just start.
 
-there's so much changing at a rapid pace right now with ai. timelines are compressed. new tools, new ways of working, all the things.
+the rapid pace of change right now in tech world feels overwhelming. timelines are compressed. new tools & new ways of working popping up left and right. all the things so fast.
 
-i wanted to get started, but i wasn't taking the first step to actually build. what was i doing instead? reading articles, chasing best practices, tweaking configs, getting my setup dialed.
+for months, i said i wanted to get started, to get building. but i wasn't taking the first step to actually build. instead, it was reading articles, chasing best practices, tweaking configs, getting my setup dialed.
 
-i realized there's no singular perfect prompt, and realizing that freed me up. i had to start somewhere. building, writing, engaging, finding the connections. just taking a first step.
+at some point in late 2025 or early 2026 (maybe the hope of a new year?), i realized there's no singular perfect prompt. i had to start somewhere. building, writing, engaging, finding the connections. just taking a first step. this realization freed me up.
 
-bff (build, friction, fix) is the pattern i use to give myself the permission, the freedom, to get started and take the first step. it applies at every level of granularity: a single session, a larger feature, entire projects or dreams. a self-reinforcing fractal pattern. small to wide to wider.
+bff (build, friction, fix) is the pattern that emerged after a few months of building.
+
+i use to give myself the permission, the freedom, to get started and take the first step. it applies on varying levels of granularity: a single session, larger features, entire projects or far-flung dreams. a self-reinforcing fractal pattern. small to wide to wider.
 
 let emergent patterns emerge. bff is one that emerged for me.
 
@@ -33,11 +35,11 @@ take one step now to build. build something. literally anything. start now.
 
 friction will happen. not if, but when.
 
-as you build, notice. be aware of what wasn't quite as simple as you wanted or what didn't go like you expected. but don't stop to fix it yet. keep building.
+as you build, notice. be aware of what wasn't quite as simple as you wanted or what didn't go like you expected. but don't stop to fix it yet; that's the land of rabbit holes. keep building.
 
-(yes, i'm deep in rabbit holes. always have been. it's easy to side quest. i'm making rabbit friends, we're chatting, hanging out. i'm a big waver in my neighborhood and elsewhere. lots of waves, lots of head nods. i'm head nodding and waving to rabbits.)
+(admittedly, yes, i'm spending more and more time in these rabbit holes. always have. i'm making rabbit friends, we're chatting, hanging out. i'm a big waver in my neighborhood and elsewhere. lots of waves, lots of head nods. i'm head nodding and waving to rabbits as they welcome me to their lairs. thankfully though, i keeping finding my way back to the main path.)
 
-so what am i noticing as i work? what wasn't smooth? what was harder than expected? what surprised me?
+so as i build, what am i noticing that's not quite as smooth as i'd like? what was harder than i anticipated? i jot these down simply, a quick word or three. we'll come back to these.
 
 once you've built the thing and you've got your noticings on friction, now's the time to get explicit. name them. compile a quick list. brain dump it out.
 
