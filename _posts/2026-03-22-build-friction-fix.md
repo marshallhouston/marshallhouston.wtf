@@ -13,11 +13,11 @@ for months, i said i wanted to get started, to get building. but i wasn't taking
 
 at some point in late 2025 or early 2026 (maybe the hope of a new year?), i realized there's no singular perfect prompt. i had to start somewhere. building, writing, engaging, finding the connections. just taking a first step. this realization freed me up.
 
-bff (build, friction, fix) is the pattern that emerged after a few months of building.
+bff (build, friction, fix) is a pattern that emerged after a few months of building.
 
-i use to give myself the permission, the freedom, to get started and take the first step. it applies on varying levels of granularity: a single session, larger features, entire projects or far-flung dreams. a self-reinforcing fractal pattern. small to wide to wider.
+i use it to give myself the permission, the freedom, to get started and take the first step. it applies on varying levels of granularity: a single session, larger features, entire projects or far-flung dreams. a self-reinforcing fractal pattern. small to wide to wider.
 
-let emergent patterns emerge. bff is one that emerged for me.
+let emergent patterns emerge.
 
 ## build
 
