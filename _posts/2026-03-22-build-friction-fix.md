@@ -93,7 +93,7 @@ when you've got a hammer, everything's a nail. cool, treat it like a nail. apply
 
 "but you said there's no perfect prompt." it's not about finding that perfect prompt. it's about thinking, how can i say something different? how can i do something different? how can i build the system so that the system is more important than any one single prompt?
 
-and here's the thing, you can always change it later. that freedom is magical. i'm fixing this one piece of friction right here. then i'll do another bff cycle. and another. and another. just bff looping for days.
+and here's the thing that stacks on it: you can always change it later. that freedom is magical. i'm fixing this one piece of friction right here. then i'll do another bff cycle. and another. and another. just bff looping for days.
 
 ## bff: the widening gyre
 
