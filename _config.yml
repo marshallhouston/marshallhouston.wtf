@@ -1,7 +1,50 @@
 title: Marshall Houston
-description: Thoughts on engineering leadership, AI, and building teams that ship.
-remote_theme: pages-themes/minimal@v0.2.0
-plugins:
-  - jekyll-remote-theme
+description: >-
+  thoughts on engineering leadership, AI-augmented software engineering, and building teams.
+github_username: marshallhouston
+minimal_mistakes_skin: default
+search: true
 
-permalink: /:year/:month/:day/:title/
+# Build settings
+markdown: kramdown
+remote_theme: mmistakes/minimal-mistakes
+permalink: /:categories/:title/
+paginate: 5
+paginate_path: /page:num/
+
+include:
+  - _pages
+
+plugins:
+  - jekyll-paginate
+  - jekyll-sitemap
+  - jekyll-feed
+  - jekyll-include-cache
+
+author:
+  name   : "Marshall Houston"
+  bio    : "Senior Engineering Manager. Writing about engineering leadership, AI-augmented development, and building teams."
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/marshallhouston"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/marshallhouston"
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      share: true
+      related: true
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: true
