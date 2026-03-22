@@ -1,6 +1,7 @@
 ---
 title: "build friction fix"
 tags: [ai-augmented-engineering, workflow, getting-started]
+classes: wide
 ---
 
 just start.
@@ -52,3 +53,5 @@ if this sounds familiar — it's basically a retro. "how did it go? what can we 
 it's just how i'm using these tools and patterns.
 
 happy building.
+
+![bff notebook — the handwritten notes that became this post](/assets/images/bff-build-friction-fix-032126-notebooks.jpg)
