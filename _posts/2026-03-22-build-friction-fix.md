@@ -37,7 +37,7 @@ friction will happen. not if, but when.
 
 as you build, notice. be aware of what wasn't quite as simple as you wanted or what didn't go like you expected. but don't stop to fix it yet; that's the land of rabbit holes. keep building.
 
-(admittedly, yes, i'm spending more and more time in these rabbit holes. always have. i'm making rabbit friends, we're chatting, hanging out. i'm a big waver in my neighborhood and elsewhere. lots of waves, lots of head nods. i'm head nodding and waving to rabbits as they welcome me to their lairs. thankfully though, i keeping finding my way back to the main path.)
+(admittedly, yes, i'm spending more and more time in these rabbit holes. always have. i'm making rabbit friends, we're chatting, hanging out. i'm a big waver in my neighborhood and elsewhere. lots of waves, lots of head nods. i'm head nodding and waving to rabbits as they welcome me to their lairs. thankfully though, i keep finding my way back to the main path.)
 
 so as i build, what am i noticing that's not quite as smooth as i'd like? what was harder than i anticipated? i jot these down simply, a quick word or three. we'll come back to these.
 
