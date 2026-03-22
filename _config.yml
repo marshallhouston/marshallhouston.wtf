@@ -23,8 +23,12 @@ plugins:
 
 author:
   name   : "Marshall Houston"
-  bio    : "Senior Engineering Manager. Writing about engineering leadership, AI-augmented development, and building teams."
+  avatar : "/assets/images/marshall.png"
+  bio    : "writing about the cosmic farmland"
   links:
+    - label: "Website"
+      icon: "fas fa-fw fa-link"
+      url: "https://marshallhouston.github.io"
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/marshallhouston"
