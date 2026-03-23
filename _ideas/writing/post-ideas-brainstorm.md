@@ -44,6 +44,8 @@ what is fitfo? why do i love it?
 ## mindsets and principles
 what are the mindsets and principles i care about generally? and then specifically in this age of ai-augmented software engineering?
 
+inspiration: https://sahajgarg.github.io/blog/principles/
+
 ## physical places and their meaning
 what does it mean to have these? how do i think about them? how do i learn? what's the historical context for me personally? great beach, the met, how on the river, traveling.
 
