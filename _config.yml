@@ -40,6 +40,15 @@ author:
       icon: "fas fa-fw fa-rss-square"
       url: "/feed.xml"
 
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/marshallhouston"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/marshallhouston"
+
 defaults:
   - scope:
       path: ""
