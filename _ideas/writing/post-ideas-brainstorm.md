@@ -43,8 +43,7 @@ what is fitfo? why do i love it?
 
 ## mindsets and principles
 what are the mindsets and principles i care about generally? and then specifically in this age of ai-augmented software engineering?
-
-inspiration: https://sahajgarg.github.io/blog/principles/
+-> promoted to idea: `principles-and-mindsets.md`
 
 ## physical places and their meaning
 what does it mean to have these? how do i think about them? how do i learn? what's the historical context for me personally? great beach, the met, how on the river, traveling.
@@ -81,6 +80,7 @@ seasons of intensity, things that you can't change. how do you capture when you'
 
 ## experimentation budget
 as a culture con talk, but think about experimentation budgets. how do we increase it? how do we change it?
+-> promoted to idea: `experimentation-budget.md`
 
 ## planting seeds
 more cosmic farmland. planting seeds and seeing what grows, nurturing them. what are the conditions? how do we make connections across the board? your fractals can be a cambrian explosion.
