@@ -77,3 +77,66 @@ exploratory throughout. laying out a mental model, not delivering a finished fra
 
 ### audience
 anyone. clarifying voice and thinking out loud. putting ideas out, tracing thinking over time.
+
+---
+
+## revised design: discovery arc (2026-03-25)
+
+previous design was structured as a presentation (here's the model, here are the components). this revision reframes as discovery. the reader walks through the thinking as it happened. stephen king archaeology: the idea is already there, we're uncovering it.
+
+### what changed and why
+- hook is now grounded in the real felt moment ("are you kidding me?"), not a generic anecdote
+- model components arrive as discoveries during the thinking, not as a pre-built taxonomy
+- posture: marshall reflecting on his own reaction and what it reveals about how brains work differently
+- the economics framing emerges naturally from the "what's different about my brain?" question
+
+### post arc
+
+#### 1. "are you kidding me?"
+the felt moment. i showed someone my flows, told them to experiment, followed up. they had success after success, then one bad outcome and the takeaway was "i can't trust any of this." my gut reaction: are you kidding me? you just had all this positive reinforcement. how does one failure erase all of that?
+
+(anonymized, no names. also saw this pattern across a 3-day experiment with a larger group. not one person, a pattern.)
+
+#### 2. "wait, what's going on?"
+the pivot from frustration to curiosity. something is different between my brain and theirs. why do i absorb a bad outcome and keep going? why does someone else hit the same outcome and shut down? i feel fucking unleashed by these tools. that person felt threatened. same evidence, opposite reaction.
+
+drawing on time as an educator and coach before tech. this felt like a regression pattern i'd seen before.
+
+#### 3. "what's different about my brain?"
+reaching for the tools i have. econ and english in college, never fit in either room, the power was in the combination. applying economic systems thinking to something deeply human.
+
+the model emerges here as discovery, not presentation:
+- oh, there's a budget. a mental resource for experimentation. like a video game health bar (stardew valley, zelda). it regenerates, but it's finite at any given moment.
+- and there's a cost per experiment. high when everything is new, low when you've built fluency.
+- there's a startup cost just to begin. the decision to try, the context switch.
+- and when something unexpected happens, that's a shock. expected outcomes are manageable. unexpected ones spike.
+- but experiments aren't just costs. some deposit back. confidence, momentum, knowledge.
+- and the whole thing recharges. sleep, movement, wins, flow. it's a system, not a battery.
+
+systems thinking lens (Meadows): stock, flows, feedback loops, leverage points.
+
+#### 4. "oh, that's why"
+the science that explains why the model maps to reality. Kahneman (system 1/system 2), Pryor (old brain/new brain). the one-failure collapse is the old brain hijacking. threat response wiping out rational assessment. the person wasn't irrational, they were running on a different system.
+
+#### 5. "now i've got better questions"
+exploratory close. the levers exist in the model. not prescribing answers, asking questions:
+- can i notice where i am on my budget right now?
+- can i decrease the cost of starting?
+- can i build resilience to outcome shocks?
+- what are my recharge patterns?
+
+tone: i think this model is useful. i'm applying it. i don't have all the answers but i have better questions now.
+
+### tone
+discovery throughout. the reader watches the thinking happen. "are you kidding me" to "oh wait" to "here's what i'm seeing." deeply personal. this is marshall's brain doing its thing, not a framework being delivered.
+
+### additional influences
+- Daniel Kahneman, Thinking Fast and Slow
+- Raymond Pryor, Golf Beneath the Surface
+- Donella Meadows, Thinking in Systems
+- Stephen King, On Writing (archaeology metaphor)
+- economics and english background
+- experience as educator and coach before tech
+
+### audience
+anyone navigating rapid change. but written for marshall first. clarifying his own thinking, sharing because he's compelled to, not because he has answers.

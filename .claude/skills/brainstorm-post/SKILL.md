@@ -90,3 +90,13 @@ content...
 - If it could have been written by any AI, it's wrong
 - Exploratory > conclusive. Ship the thinking.
 - Let Marshall's brain dumps stay raw. Reflect and shape, don't sanitize.
+
+## Anti-Pattern Check: Hooks
+
+Before proposing any hook or opening anecdote, run it through these filters:
+
+1. **The LinkedIn test:** Could this open a LinkedIn thought leadership post? "I told my team X and watched Y happen." "Last week I noticed Z about my reports." If yes, kill it. Find the real moment.
+2. **The specificity test:** Is the hook a generic scenario ("someone experimenting with AI tools") or a specific, felt moment? Generic means you haven't found the entry point yet.
+3. **The voice test:** Read the proposed hook against the BFF post opening. Does it sound like Marshall or like a content template?
+
+When a hook fails these checks, don't just tweak the wording. Ask Marshall: "What was the actual moment this idea hit you?" The real hook is in his answer, not in narrative structure.
