@@ -3,6 +3,8 @@
 ## 2026-03-25
 
 ### what happened
+- captured tattoos idea doc (`_ideas/writing/tattoos-geometry-meaning.md`) from conversation about the two triangles and circle/tangency tattoos
+- reviewed full ideas landscape (8 idea docs + raw kernels in brainstorm file)
 - brainstormed experimentation budget post from idea kernel to full post arc
   - hook: anecdote of someone whose budget collapsed from one AI tool failure
   - health bar metaphor for mental experimentation budget
