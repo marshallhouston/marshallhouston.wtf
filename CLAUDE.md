@@ -44,6 +44,16 @@ The BFF post (`_posts/2026-03-22-build-friction-fix.md`) is the reference point.
 
 `worklog.md` tracks what happened each session and what's next. Read it at the start of every session for context. It's updated automatically via a Stop hook, but if you notice it's stale, update it.
 
+## Content Pipeline
+
+Ideas move through three stages. Never skip ahead.
+
+1. **`_ideas/writing/`** - kernels and brainstorming. Raw, unformed, evolving.
+2. **`_drafts/`** - working drafts. Not published by Jekyll. Marinate here. Preview locally with `bundle exec jekyll serve --drafts`.
+3. **`_posts/`** - published. Only move a draft here when Marshall explicitly says it's ready to publish.
+
+**Never create files directly in `_posts/` for new writing.** Start in `_ideas/`, develop into `_drafts/`, publish to `_posts/` only on Marshall's say-so.
+
 ## Git Workflow
 
 Solo personal site. Commit directly to main.
