@@ -40,6 +40,10 @@ The BFF post (`_posts/2026-03-22-build-friction-fix.md`) is the reference point.
 - Don't smooth out the rhythm into standard prose. If a sentence is three words, leave it at three words.
 - No em dashes. Ever. They're an AI tell. Use commas, periods, parentheses, or spaced dashes instead.
 
+## Worklog
+
+`worklog.md` tracks what happened each session and what's next. Read it at the start of every session for context. It's updated automatically via a Stop hook, but if you notice it's stale, update it.
+
 ## Git Workflow
 
 Solo personal site. Commit directly to main.
