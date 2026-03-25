@@ -28,6 +28,7 @@ what can i learn from golf? how does that show up? what do i think about? how do
 
 ## cosmic farmland
 what is the cosmic farmland?
+-> promoted to idea: `cosmic-farmland.md`
 
 ## creativity
 this weird topic on creativity. just feeling creative. compositions of creative through the years.
@@ -82,8 +83,8 @@ seasons of intensity, things that you can't change. how do you capture when you'
 as a culture con talk, but think about experimentation budgets. how do we increase it? how do we change it?
 -> promoted to idea: `experimentation-budget.md`
 
-## planting seeds
-more cosmic farmland. planting seeds and seeing what grows, nurturing them. what are the conditions? how do we make connections across the board? your fractals can be a cambrian explosion.
+## planting seeds / field guide to the cosmic farmland
+more cosmic farmland. planting seeds and seeing what grows, nurturing them. what are the conditions? how do we make connections across the board? your fractals can be a cambrian explosion. structured around the farming metaphor: the soil, the seeds, the wild growth, the people who show up. almost literal, almost absurd, both at once. follow-up to the cosmic farmland origin story.
 
 ## engineering manager in the ai age
 how being an engineering manager sets me up to solve problems in an ai-augmented software engineering world.
