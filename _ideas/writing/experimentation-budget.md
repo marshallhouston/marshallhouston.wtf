@@ -140,3 +140,21 @@ discovery throughout. the reader watches the thinking happen. "are you kidding m
 
 ### audience
 anyone navigating rapid change. but written for marshall first. clarifying his own thinking, sharing because he's compelled to, not because he has answers.
+
+---
+
+## opening feedback (2026-03-26)
+
+no need for a strong manufactured hook. the user journey arc IS the hook.
+
+the opening should feel like joining someone mid-journey. people start on friday, get into agentic workflows, try some stuff, think "oh yeah, this is amazing" then hit a point where it surprisingly doesn't work and they're like "what the fuck, i can't trust anything." and the response is "wait, what do you mean you can't trust anything? where does this go?"
+
+that moment of friction and confusion is the entry point. don't manufacture a provocative opener. just start there, on the journey, at the turn.
+
+this doesn't need to be a big grand story. the structure is: delight > unexpected failure > distrust > question worth exploring.
+
+### what changed from previous design
+- killed the "are you kidding me?" standalone opener (still too manufactured, even though it was the real reaction)
+- opens in second person mid-journey ("you get into agentic workflows on a friday") then shifts to first person
+- the arc of the opening IS the hook, no need for a separate hook device
+- two drafts now exist for comparison: v1 (original structure) and v2 (journey-arc opening)
