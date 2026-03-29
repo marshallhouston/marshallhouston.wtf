@@ -1,5 +1,5 @@
 ---
-title: "mental experimentation budget"
+title: "mental experimentation budgets"
 date: 2026-03-29 06:00:00 -0600
 tags: [ai-augmented-engineering, mental-models, experimentation]
 classes: wide
