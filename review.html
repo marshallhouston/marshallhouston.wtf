@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>draft review: mental experimentation budget</title>
+<style>
+  :root {
+    --bg: #111116;
+    --bg-surface: #1a1a22;
+    --bg-elevated: #22222e;
+    --text: #e0e0e8;
+    --text-muted: #9090a0;
+    --accent: #7b8cff;
+    --accent-dim: #5a67c8;
+    --border: #2a2a38;
+    --green: #6bcf8e;
+    --amber: #e8b84a;
+    --cyan: #5ec4d4;
+    --feedback-bg: #16161f;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .container {
+    max-width: 1060px;
+    margin: 0 auto;
+    padding: 48px 32px 120px;
+  }
+
+  .hero {
+    padding: 48px 0 36px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 48px;
+  }
+
+  .hero h1 {
+    font-size: 1.9rem;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 12px;
+  }
+
+  .tag {
+    display: inline-block;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 0.72rem;
+    color: var(--text-muted);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    margin-right: 6px;
+  }
+
+  .post-section {
+    margin-bottom: 48px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .section-label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+    background: var(--bg-elevated);
+    padding: 7px 24px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section-body {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .section-content {
+    flex: 1;
+    min-width: 0;
+    padding: 26px 30px;
+    background: var(--bg-surface);
+    border-right: 1px dashed var(--border);
+  }
+
+  .section-content p { margin-bottom: 18px; color: var(--text); }
+  .section-content p:last-child { margin-bottom: 0; }
+
+  .section-content h2 {
+    font-size: 1.15rem;
+    font-weight: 400;
+    color: #fff;
+    margin-bottom: 18px;
+    font-family: 'Georgia', serif;
+  }
+
+  .section-content strong { color: #fff; font-weight: 700; }
+
+  .section-content blockquote {
+    border-left: 3px solid var(--accent);
+    padding: 12px 18px;
+    margin: 18px 0;
+    background: var(--bg-elevated);
+    border-radius: 0 6px 6px 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.86rem;
+    color: var(--cyan);
+    line-height: 1.6;
+  }
+
+  .section-content ul { padding-left: 22px; margin-bottom: 18px; }
+  .section-content li { margin-bottom: 8px; color: var(--text); }
+
+  .section-content a { color: var(--accent); text-decoration: none; }
+  .section-content a:hover { text-decoration: underline; }
+
+  .section-content code {
+    font-family: 'SF Mono', 'Fira Code', 'Menlo', monospace;
+    font-size: 0.85em;
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 6px;
+    color: var(--cyan);
+  }
+
+  .feedback-block {
+    flex: 0 0 270px;
+    padding: 18px 20px;
+    background: var(--feedback-bg);
+    display: flex;
+    flex-direction: column;
+  }
+
+  .feedback-label {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+  }
+
+  .feedback-block textarea {
+    flex: 1;
+    width: 100%;
+    min-height: 100px;
+    background: var(--bg-elevated);
+    color: var(--text);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    resize: vertical;
+    transition: border-color 0.2s;
+  }
+
+  .feedback-block textarea:focus { outline: none; border-color: var(--accent); }
+  .feedback-block textarea::placeholder { color: var(--text-muted); opacity: 0.45; }
+
+  .overall-section {
+    margin-bottom: 48px;
+    border: 1px solid var(--amber);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .overall-section .section-label {
+    color: var(--amber);
+    background: rgba(232, 184, 74, 0.07);
+    border-bottom-color: rgba(232, 184, 74, 0.2);
+  }
+
+  .overall-section .feedback-block {
+    flex: 1;
+    background: rgba(232, 184, 74, 0.03);
+    padding: 20px 24px;
+  }
+
+  .overall-section textarea { min-height: 110px; }
+
+  .copy-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    background: var(--bg-surface);
+    border-top: 1px solid var(--border);
+    padding: 11px 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+    z-index: 100;
+  }
+
+  .copy-bar .hint {
+    color: var(--text-muted);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.78rem;
+  }
+
+  .copy-bar button {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 7px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .copy-bar button:hover { background: var(--accent-dim); }
+  .copy-bar button.success { background: var(--green); }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="hero">
+    <h1>mental experimentation budget</h1>
+    <div style="margin-top:10px;">
+      <span class="tag">draft review</span>
+      <span class="tag">v4</span>
+      <span class="tag">march 29, 2026</span>
+    </div>
+  </div>
+
+  <!-- INTRO / HOOK -->
+  <div class="post-section">
+    <div class="section-label">intro / hook</div>
+    <div class="section-body">
+      <div class="section-content">
+        <p>i love debugging. it's a sense-making puzzle.</p>
+        <p>the combo of <code>claude code + skills + observability CLIs</code> has made debugging even more fun. i can move through data -&gt; information -&gt; knowledge -&gt; wisdom levels quickly and switch between breadth and depth on a whim.</p>
+        <p>as i've built some small tools to explore what's possible in this area, i've also been directly pairing with a wide-range of people on issues (the weirder &amp; more perplexing, the better). we record the live debugging session and automatically generate artifacts afterwards (highlight reels, docs with takeaways and patterns and strategies, etc).</p>
+        <p>people start applying this general idea in ways i'd never consider (love planting seeds and seeing what grows / thrives).</p>
+        <p>during a 1:1 with someone on my team who was using this flow, i asked how it was going as an early adopter. "super helpful, much easier to make sense of systems, drive outcomes, really enjoying it, etc". however, there was one instance where this combo didn't find something they knew existed in the observability data. their conclusion: "i don't trust it anymore at all."</p>
+        <p>wait, what? why throw away and ignore all the positive feedback. that surprised me.</p>
+        <p>since that convo, i've been noodling on the concept of <code>mental experimentation budgets</code> and how we might use this idea in the rapidly changing 'wtf is happening' period we're in.</p>
+      </div>
+      <div class="feedback-block">
+        <div class="feedback-label">feedback</div>
+        <textarea data-section="intro / hook" placeholder="does the hook land? pacing? anything off?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE MENTAL EXPERIMENTATION BUDGET -->
+  <div class="post-section">
+    <div class="section-label">mental experimentation budgets</div>
+    <div class="section-body">
+      <div class="section-content">
+        <h2>mental experimentation budgets</h2>
+        <p>mental experimentation budgets are the capacity to keep trying new things (workflows, patterns, tools, etc) in the moment and over longer periods of time.</p>
+        <p>what's your capacity right now? how fast is it draining? what's the cost of each new attempt?</p>
+      </div>
+      <div class="feedback-block">
+        <div class="feedback-label">feedback</div>
+        <textarea data-section="mental experimentation budgets" placeholder="definition land? tight enough?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE VARIABLES -->
+  <div class="post-section">
+    <div class="section-label">the variables</div>
+    <div class="section-body">
+      <div class="section-content">
+        <h2>the variables</h2>
+        <p><strong>capacity.</strong> your total budget at any given point. this shifts with sleep, energy, emotional state, time of day, what happened in your last meeting. changes often.</p>
+        <p><strong>marginal cost.</strong> what it costs to run one more experiment. when everything is brand new, the cost is high. every interaction takes effort, attention, active decision-making. but as you build fluency &amp; patterns become automatic, the cost per experiment drops. you stop thinking about how to do the thing and you just do it.</p>
+        <p><strong>fixed cost.</strong> the startup cost of beginning at all. the decision to try or to switch into this context. getting oriented in a new tool or a new way of thinking. this cost is real and it hits before the experiment even starts.</p>
+        <p><strong>outcome shock.</strong> the cost that comes from the result. when an experiment goes the way you expected, the cost is manageable. expected outcomes are cheap to process mentally. but when something unexpected happens, when you know something is there and the tool isn't finding it, that's a spike. the cost shoots up. and if your budget is already low when the shock hits, it can be a total drain.</p>
+        <p><strong>return.</strong> not every experiment is a cost. some deposit back into the budget. a win gives you confidence, knowledge, momentum. success compounds when you've got the budget to keep going. returns are what make experimentation sustainable, not just tolerable. (suppose this could be folded into outcome shock in a capacity increasing way but shrug)</p>
+        <p><strong>recharge.</strong> the budget replenishes. sleep, movement, flow states, small wins, time away. these are inputs back into the system. the budget isn't a battery that only drains. it's a living resource that fluctuates.</p>
+      </div>
+      <div class="feedback-block">
+        <div class="feedback-label">feedback</div>
+        <textarea data-section="the variables" placeholder="strongest section per v3 feedback - anything new?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- THE MODEL -->
+  <div class="post-section">
+    <div class="section-label">the model</div>
+    <div class="section-body">
+      <div class="section-content">
+        <h2>the model</h2>
+        <p>in cosmic farmland math:</p>
+        <blockquote>remaining budget = capacity - fixed cost - (marginal cost &times; experiments) - outcome shocks + returns + recharge</blockquote>
+        <p>as i was thinking about the 1:1 afterward, i could see the model at work. the outcome shock hit at exactly the wrong moment. when the shock cost more than what was left in the budget, boom, we get "don't trust it anymore at all"</p>
+        <p>feedback loops are built into the system both positively and negatively.</p>
+        <p>success lowers future marginal costs (you've built fluency). returns increase capacity (confidence expands what you're willing to try).</p>
+        <p>however, shocks can create negative loops that seem to have more gravitational pull or acceleration than positive ones.</p>
+        <p>one bad outcome raises the perceived cost of the next experiment, which means you need more budget to try again, which means you're less likely to get the return that would restore it.</p>
+        <p>boom, a single failure becomes a full stop. and now it's harder to get started again. probably slower recharge rate as well.</p>
+      </div>
+      <div class="feedback-block">
+        <div class="feedback-label">feedback</div>
+        <textarea data-section="the model" placeholder="1:1 reflection land? feedback loops paragraph?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTIONS -->
+  <div class="post-section">
+    <div class="section-label">connections</div>
+    <div class="section-body">
+      <div class="section-content">
+        <h2>connections</h2>
+        <p>a brief detour into some connections drawn from my past and from current golf obsession that, if i squint, the model is derived (at least partially) from. ymmv</p>
+        <p>i taught middle school math and coached sports before getting into software. i spent years digging into how people learn, how understanding builds and then sometimes just collapses. humans are sense-making machines, and i got obsessed with the mechanics of it. what conditions let someone integrate new knowledge, and what conditions cause them to reject it?</p>
+        <p>that obsession led me into cognitive science and psychology, and what i found there maps onto this model.</p>
+        <p>kahneman's <a href="https://www.goodreads.com/book/show/11468377-thinking-fast-and-slow">thinking, fast and slow</a> describes system 1 and system 2, the fast automatic brain and the slow deliberate one. when you're experimenting and it's going well, system 2 is engaged, learning, processing, building. when an outcome shock hits, system 1 takes over. something faster than rational assessment, operating on pattern and instinct.</p>
+        <p>raymond prior's <a href="https://www.goodreads.com/book/show/61657538-golf-beneath-the-surface">golf beneath the surface</a> calls it the old brain and the young brain. the young brain is where deliberate thinking happens. the old brain is where perceived threat lives. under stress, the old brain wins. every time. we aren't choosing to ignore our wins. the old brain is making that choice for us.</p>
+        <p>donella meadows, in <a href="https://www.goodreads.com/book/show/3828902-thinking-in-systems">thinking in systems</a>, frames the budget as a stock. experiments are outflows. recharge is inflow. the feedback loops (reinforcing and balancing) are where the behavior of the system gets determined. you don't change the system by pushing harder. you find the leverage points.</p>
+      </div>
+      <div class="feedback-block">
+        <div class="feedback-label">feedback</div>
+        <textarea data-section="connections" placeholder="backstory earning its place? references land?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- PUTTING IT INTO PRACTICE -->
+  <div class="post-section">
+    <div class="section-label">putting it into practice</div>
+    <div class="section-body">
+      <div class="section-content">
+        <h2>putting it into practice</h2>
+        <p>as i've been thinking about this model and sharing with others, it seems like there's something here.</p>
+        <p>some questions i keep coming back to:</p>
+        <ul>
+          <li>what's my budget right now?</li>
+          <li>how do i reduce the fixed cost of starting?</li>
+          <li>how do i build automaticity and reduce the marginal cost per experiment?</li>
+          <li>am i aware of my recharge patterns? am i honest with myself about them?</li>
+          <li>how do i increase my overall capacity?</li>
+          <li>how do i build resiliency to outcome shocks?</li>
+          <li>how do i make recharging more intentional?</li>
+          <li>am i pairing the type of experimentation with where i'm at?</li>
+        </ul>
+        <p>this model gives me language for reasoning and sense-making.</p>
+        <p>does this resonate? what's missing? what would you add?</p>
+        <p>here's to understanding our mental experimentation budgets.</p>
+      </div>
+      <div class="feedback-block">
+        <div class="feedback-label">feedback</div>
+        <textarea data-section="putting it into practice" placeholder="opening land? questions feel right? close?"></textarea>
+      </div>
+    </div>
+  </div>
+
+  <!-- OVERALL THOUGHTS -->
+  <div class="overall-section">
+    <div class="section-label">overall thoughts</div>
+    <div class="section-body">
+      <div class="feedback-block">
+        <div class="feedback-label">big picture feedback</div>
+        <textarea data-section="overall thoughts" placeholder="voice, arc, what's missing, ready to ship?"></textarea>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="copy-bar">
+  <span class="hint">fill in feedback above, then</span>
+  <button onclick="copyFeedback()" id="copyBtn">copy all feedback as markdown</button>
+</div>
+
+<script>
+  function copyFeedback() {
+    const textareas = document.querySelectorAll('textarea[data-section]');
+    let sections = [];
+    textareas.forEach(ta => {
+      if (ta.value.trim()) {
+        sections.push('## ' + ta.dataset.section + '\n\n' + ta.value.trim());
+      }
+    });
+    const output = sections.length
+      ? '# draft feedback: mental experimentation budget\n\n' + sections.join('\n\n---\n\n')
+      : '(no feedback entered)';
+    const btn = document.getElementById('copyBtn');
+    navigator.clipboard.writeText(output).then(() => {
+      btn.textContent = 'copied!';
+      btn.classList.add('success');
+      setTimeout(() => { btn.textContent = 'copy all feedback as markdown'; btn.classList.remove('success'); }, 2000);
+    }).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = output;
+      ta.style.cssText = 'position:fixed;opacity:0;';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      btn.textContent = 'copied!';
+      btn.classList.add('success');
+      setTimeout(() => { btn.textContent = 'copy all feedback as markdown'; btn.classList.remove('success'); }, 2000);
+    });
+  }
+</script>
+</body>
+</html>

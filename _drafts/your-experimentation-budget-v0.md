@@ -5,15 +5,17 @@ tags: [ai-augmented-engineering, mental-models, experimentation]
 classes: wide
 ---
 
-you get into agentic workflows on a friday. you try some stuff. it's working, it's fast, you're building things you couldn't build last week. oh yeah, this is amazing.
+are you kidding me?
 
-then it doesn't work. the tool hallucinates, gives you something wrong, costs you an hour of debugging. and suddenly: "what the fuck, i can't trust anything."
+i'd been working with someone on my team, getting them into these AI tools. showed them my flows, walked through how i use them, said go try it. and they did. they were building things, getting wins, moving faster than before. real momentum.
 
-wait. what do you mean you can't trust anything? you just had days of wins. real output, real velocity. one bad interaction and that's the takeaway?
+then one bad interaction. one time the tool hallucinated, gave them something wrong, cost them an hour of debugging.
 
-i watched this happen with someone on my team. showed them my flows, told them to go experiment, followed up later. they'd been crushing it. then one bad outcome and the whole thing collapsed.
+their takeaway? "i can't trust any of this."
 
-and i caught myself, because my gut reaction was "are you kidding me?" but that wasn't the right question.
+are you kidding me? you just had weeks of positive reinforcement. real output, real velocity. and one bad experience erases all of that? how?
+
+my gut reaction was frustration. and then i caught myself.
 
 ## wait, what's going on?
 

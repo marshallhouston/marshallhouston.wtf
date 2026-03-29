@@ -157,4 +157,75 @@ this doesn't need to be a big grand story. the structure is: delight > unexpecte
 - killed the "are you kidding me?" standalone opener (still too manufactured, even though it was the real reaction)
 - opens in second person mid-journey ("you get into agentic workflows on a friday") then shifts to first person
 - the arc of the opening IS the hook, no need for a separate hook device
-- two drafts now exist for comparison: v1 (original structure) and v2 (journey-arc opening)
+- two drafts now exist for comparison: v0 (original structure) and v1 (journey-arc opening)
+
+---
+
+## v2 feedback and direction (2026-03-27)
+
+### what's wrong with v1
+
+**opening feels forced/edgy.** the second-person "you get into agentic workflows on a friday" reads like trying to be provocative. marshall doesn't want to try to be edgy. sometimes that comes out naturally, but this post should be more metered. still him, just not performing.
+
+**the real story is marshall's own journey.** debugging hooked him on agentic flows. he could move up the data-information-knowledge-wisdom pyramid fast. started running with it: building tools to interact with observability providers via CLI, asking questions, connecting to multiple repos, live debugging, sharing with his team ("y'all check this out"), spreading it to other teams. started hearing other people use it, getting user feedback. that excitement and momentum is the real opening, not a manufactured scenario.
+
+**then the turn.** someone who was loving it hits a moment where they didn't find something they expected, and the conclusion is "i just can't trust it anymore." marshall's reaction: wait, hold up, how? you were having all this success. that gap is the entry point into the framework.
+
+**"wait, what's going on?" as a section title doesn't work.** needs a better transition that doesn't force too much into the brain/science framing too early.
+
+**structure should get to the framework faster.** opening → experimentation budget framework/components. the educator/coach/learning background is relevant but comes later (maybe as "understanding self" or "what's different about my brain" after the framework is laid out).
+
+**"oh, that's why" section doesn't land.** applying the model to science feels like a forced frame. the Kahneman/Pryor stuff may need to be woven in differently or reduced.
+
+**econ/english framing needs rework.** the "never fit in either room" line is close but needs to feel more like a direct statement, not a setup. marshall found a way he enjoyed it. the combination is the power.
+
+**this post has a different voice than BFF.** less unhinged, more metered. thinking through a framework. still marshall, but the register is different. exploratory-analytical, not raw-stream-of-consciousness.
+
+### v2 direction
+
+- open with marshall's real experience: debugging → agentic flows → excitement → sharing → momentum
+- the turn: someone else's reaction collapses despite all the success
+- get into the experimentation budget framework and its components relatively quickly
+- deeper self-understanding (educator background, econ/english lens, brain science) comes after the framework, not before
+- tone: genuine, metered, thinking-it-through. not trying to be edgy. the voice of someone who got excited, noticed something, and is working through what it means
+
+### v2 structure
+
+1. **opening:** marshall's real journey. debugging → agentic flows → excitement → sharing → momentum → someone else's collapse despite success. the turn that opens the question.
+2. **the framework:** lay out the mental experimentation budget almost academic-paper style. define the components, the pieces, how they relate. structured, principled. this is the core of the post and should feel like building a model from the ground up.
+3. **how the pieces fit together:** once the components are on the table, show how they interact as a system. this is where it clicks.
+4. **the science / personal lens:** after the framework is established, bring in the supporting threads. educator experience, sports coaching, Kahneman, Pryor, Meadows. these validate and deepen the model, they don't introduce it.
+5. **implications:** what does this mean? exploratory, not prescriptive. better questions, not answers.
+
+---
+
+## v2 feedback (2026-03-27)
+
+### structure verdict
+structure is emerging and feeling much more confident in it. v2 is a significant improvement. remaining work is fine-tooth cleanup, not structural overhaul.
+
+### specific feedback
+
+**opening:**
+- better but still slightly off. "spin up a CLI against our observability provider" isn't what happened. marshall uses the observability provider's existing CLI. nitpick but accuracy matters.
+- "i sat with that for a while" / frustration framing is off. it's more "i want to understand this."
+- "i think the answer is something i'm calling your mental experimentation budget" is a clunky transition. needs something smoother.
+
+**framework section:**
+- mental experimentation budget intro is still a bit wordy, could tighten
+- components section feels really good. the individual pieces land well.
+- consider: subheadings (h3) for each component instead of just bold? TBD, not urgent.
+- want a simple equation or model to show how the components relate as a system. not official, just a way of reasoning. could also be a Meadows-style systems thinking diagram. start with equation.
+
+**science/personal lens:**
+- "i taught middle school math and coached sports before getting into tech" should say "before getting into software" not tech
+- "watching regressions happen" doesn't land. reframe around years spent digging into how people learn, sense-making. humans as sense-making machines. something in that space.
+- needs a better transition from educator experience into interest in science/psychology. the thread is there but not clear yet.
+- the econ/english paragraph at the end of this section doesn't fit anymore. cut it.
+
+**implications:**
+- "what i do have is better questions" feels boastful. reframe. more like "i think there's something here" energy. humble but convicted.
+
+### cleanup notes
+- four drafts with same title showing on the site. future concern, will clean up before publish.
+- next pass will be fine-tooth: wording, voice, transitions
