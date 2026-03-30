@@ -27,3 +27,18 @@
 - review and revise experimentation budget draft (voice check, does it land?)
 - could use the brainstorm-post skill on another idea kernel to test it
 - cosmic farmland idea captured separately, worth exploring
+
+## 2026-03-30
+
+### what happened
+- fixed frontmatter formatting in Jekyll posts (`_posts/` and `_drafts/`)
+  - removed time and timezone from `build-friction-fix` and `mental-experimentation-budgets` posts
+  - kept date-only format per Jekyll best practices
+- created hookify rule at `.claude/hookify.date-only-frontmatter.local.md`
+  - prevents accidental time/timezone inclusion in post dates
+  - applies to `_posts/` and `_drafts/` files
+  - now active and preventing violations
+
+### what's next
+- continue post writing / revision work
+- revisit other ideas if ready to brainstorm
