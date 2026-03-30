@@ -5,14 +5,20 @@ title: "about"
 
 i like to learn. i like to talk with others about what they're learning. learn together.
 
-## Independence
+## independence / disclaimer
 
-writings here are entirely my own. They do not represent the views, positions, or policies of my employer or any organization I am affiliated with.
+writings here are entirely my own. cosmic farmland only exists in my brain (well, also in the spaces of community and connection with others but you get the gist).
 
-I don't post sponsored content on this site or elsewhere. Maybe that will change, and if so, I'll update clearly. Transparency is a personal core value.
+these writings do not represent the views, positions, or policies of my employer or any organization i am associated with. <legalese yada yada>
 
-## AI & Co-Intelligence
+the cosmic farmland is not pushing sponsored content. maybe that will change, and if so, i'll be real fucking clear about it. probably some sparkles or deep house club vibes saying "somebody paid me for this... and i believe in it so it's here... but sponsoredddddddd disclaimer."
 
-I use AI tools in my work and in my writing and work. believe in transparency about that collaboration rather than obscuring it.
+transparency is a tenet of the cosmic farmland.
 
-When I write, the ideas and perspective are mine. AI is a thinking partner, clarifier, braindumper partner, verbal processing companion. I'm influenced by Ethan Mollick's framing of [co-intelligence](https://www.oneusefulthing.org/) — humans and AI working together, openly.
+## ai & co-intelligence
+
+i use AI tools in my work, in my writing, brainstorming, shitposting, research, and other tbd ways. i believe strongly in transparency about this collaboration rather than obscuring it. still must feel authentically me... but that's changeable and amorphous and will evolve so idk how exactly it'll look.
+
+when i write, ideas and perspective are mine. ai is a thinking partner, clarifier, braindumping partner, virtual rubber duck.
+
+ethan mollick's framing of co-intelligence as humans and ai working together, openly heavily shapes this perspective.
