@@ -51,3 +51,24 @@
   - script: takes any content file, parses into sections, generates post-specific review HTML
   - command: invokes script, opens browser, guides applying structured feedback
 - explore advanced: inline text selection -> auto-capture in feedback textarea (v2 of review.html)
+
+## 2026-03-31
+
+### what happened
+- captured 13 idea kernels from voice brain dump session
+  - travel/special places, daughter/family values, influences catalog, about-me evolution, knowing-yourself/origins, hobbies evolution, intensity/social feedback, creativity/expression, autonomy/belief/perfectionism, freedom rides/alabama, sports/analytics, writing process, authenticity
+  - appended sleep/ADHD cycles material to existing adult-adhd-diagnosis kernel
+- updated about page (`_pages/about.md`) to match cosmic farmland voice
+  - independence section: dropped legalese register, added cosmic farmland framing, sponsored content joke
+  - AI section: expanded uses list, added "virtual rubber duck", dropped co-intelligence hyperlink
+  - used split-pane HTML review tool (current page left, feedback textarea right) for edit cycle
+- added `sports-analytics-systems` kernel (pattern recognition, predicting announcers, systems thinking)
+- added `writing-process` kernel with new context: 2 weeks in, 3 posts published, overflowing with ideas
+- shipped inline text selection -> annotation feature in `_scripts/generate-feedback-html`
+  - highlight post text -> auto-populates feedback textarea with `instead: "..." / do: "..."` pattern
+  - cursor lands on the "do" replacement text ready to type
+
+### what's next
+- brainstorm a post from the new kernels (freedom-rides-alabama and knowing-yourself-origins have the most gravity)
+- writing-process post is ripe: meta, timely, video angle is interesting
+- experimentation budget draft still needs a voice review pass
