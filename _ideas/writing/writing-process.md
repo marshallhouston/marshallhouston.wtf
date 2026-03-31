@@ -19,3 +19,7 @@ A video showing it in action.
 - refining toward the end vs. leaving it raw earlier - the discipline of knowing which stage you're in
 - the video angle: showing the process live. why does that matter? what does watching someone think teach you?
 - meta: this post is itself proof of the process
+
+## new context (2026-03-31)
+
+want to explore this soon. 2 weeks in, 3 posts published, overflowing with ideas and a deep creative urge. the process is working and worth showing.
