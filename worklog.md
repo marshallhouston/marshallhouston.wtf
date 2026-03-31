@@ -36,9 +36,18 @@
   - kept date-only format per Jekyll best practices
 - created hookify rule at `.claude/hookify.date-only-frontmatter.local.md`
   - prevents accidental time/timezone inclusion in post dates
-  - applies to `_posts/` and `_drafts/` files
-  - now active and preventing violations
+- published `mental-experimentation-budgets` post after many rounds of revision (2 weekends in a row)
+- used new review workflow: `review.html` - post sections on left, feedback panels on right, "copy all feedback as markdown" button
+  - section-by-section feedback with placeholders tailored to each section
+  - structured markdown output formatted for pasting directly into Claude Code
+  - this was the editing loop: review.html -> enter feedback -> copy markdown -> paste to Claude Code -> repeat
+- fixed broken Stop hook for worklog auto-update
+  - was using `type: "agent"` which only works for PreToolUse/PostToolUse - silently did nothing
+  - replaced with `type: "command"` using `additionalContext` to wake Claude before session ends
+- planning `/feedback` command + HTML generation script to make review workflow repeatable
 
 ### what's next
-- continue post writing / revision work
-- revisit other ideas if ready to brainstorm
+- implement `/feedback` command + `generate-feedback-html` script
+  - script: takes any content file, parses into sections, generates post-specific review HTML
+  - command: invokes script, opens browser, guides applying structured feedback
+- explore advanced: inline text selection -> auto-capture in feedback textarea (v2 of review.html)

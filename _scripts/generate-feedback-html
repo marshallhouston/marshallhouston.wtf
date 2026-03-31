@@ -1,0 +1,363 @@
+#!/usr/bin/env ruby
+# Generate a section-by-section feedback page for any markdown file.
+# Usage: bundle exec ruby _scripts/generate-feedback-html <file-path>
+# Output: feedback.html in the project root
+
+require 'yaml'
+require 'kramdown'
+require 'date'
+
+file_path = ARGV[0]
+abort "Usage: bundle exec ruby _scripts/generate-feedback-html <file-path>" unless file_path
+abort "File not found: #{file_path}" unless File.exist?(file_path)
+
+raw = File.read(file_path)
+
+# Parse frontmatter
+title = File.basename(file_path, '.*').gsub(/[-_]/, ' ')
+body  = raw
+
+if raw.start_with?('---')
+  parts = raw.split(/^---\s*$/, 3)
+  if parts.length >= 3
+    fm    = YAML.safe_load(parts[1]) rescue {}
+    title = fm['title'] || title
+    body  = parts[2].strip
+  end
+end
+
+# Split on H2s — first chunk is intro content (may be empty)
+chunks    = body.split(/^## /)
+intro_md  = chunks.shift.strip
+sections  = chunks.map do |chunk|
+  lines        = chunk.lines
+  section_title = lines.shift.strip
+  section_body  = lines.join.strip
+  { title: section_title, body: section_body }
+end
+
+all_sections = []
+all_sections << { title: 'intro / hook', body: intro_md } unless intro_md.empty?
+all_sections.concat(sections)
+
+def md_to_html(text)
+  Kramdown::Document.new(text, input: 'GFM').to_html
+end
+
+date_str    = Date.today.strftime('%B %-d, %Y').downcase
+output_path = File.join(File.dirname(__FILE__), '..', 'feedback.html')
+
+sections_html = all_sections.map do |s|
+  content_html = md_to_html(s[:body])
+  placeholder  = "notes on: #{s[:title]}"
+  <<~HTML
+    <div class="post-section">
+      <div class="section-label">#{s[:title]}</div>
+      <div class="section-body">
+        <div class="section-content">#{content_html}</div>
+        <div class="feedback-block">
+          <div class="feedback-label">feedback</div>
+          <textarea data-section="#{s[:title]}" placeholder="#{placeholder}"></textarea>
+        </div>
+      </div>
+    </div>
+  HTML
+end.join("\n")
+
+html = <<~HTML
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>feedback: #{title}</title>
+  <style>
+    :root {
+      --bg: #111116;
+      --bg-surface: #1a1a22;
+      --bg-elevated: #22222e;
+      --text: #e0e0e8;
+      --text-muted: #9090a0;
+      --accent: #7b8cff;
+      --accent-dim: #5a67c8;
+      --border: #2a2a38;
+      --green: #6bcf8e;
+      --amber: #e8b84a;
+      --cyan: #5ec4d4;
+      --feedback-bg: #16161f;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Georgia', 'Times New Roman', serif;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 48px 32px 120px;
+    }
+
+    .hero {
+      padding: 48px 0 36px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 48px;
+    }
+
+    .hero h1 {
+      font-size: 1.9rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .tag {
+      display: inline-block;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 8px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      margin-right: 6px;
+    }
+
+    .post-section {
+      margin-bottom: 48px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .section-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      background: var(--bg-elevated);
+      padding: 7px 24px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section-body {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .section-content {
+      flex: 1;
+      min-width: 0;
+      padding: 26px 30px;
+      background: var(--bg-surface);
+      border-right: 1px dashed var(--border);
+    }
+
+    .section-content p { margin-bottom: 18px; color: var(--text); }
+    .section-content p:last-child { margin-bottom: 0; }
+    .section-content h2 {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: #fff;
+      margin-bottom: 18px;
+      font-family: 'Georgia', serif;
+    }
+    .section-content strong { color: #fff; font-weight: 700; }
+    .section-content blockquote {
+      border-left: 3px solid var(--accent);
+      padding: 12px 18px;
+      margin: 18px 0;
+      background: var(--bg-elevated);
+      border-radius: 0 6px 6px 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.86rem;
+      color: var(--cyan);
+      line-height: 1.6;
+    }
+    .section-content ul { padding-left: 22px; margin-bottom: 18px; }
+    .section-content li { margin-bottom: 8px; color: var(--text); }
+    .section-content a { color: var(--accent); text-decoration: none; }
+    .section-content a:hover { text-decoration: underline; }
+    .section-content code {
+      font-family: 'SF Mono', 'Fira Code', 'Menlo', monospace;
+      font-size: 0.85em;
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1px 6px;
+      color: var(--cyan);
+    }
+
+    .feedback-block {
+      flex: 0 0 270px;
+      padding: 18px 20px;
+      background: var(--feedback-bg);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .feedback-label {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+    }
+
+    .feedback-block textarea {
+      flex: 1;
+      width: 100%;
+      min-height: 100px;
+      background: var(--bg-elevated);
+      color: var(--text);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 10px 12px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.85rem;
+      line-height: 1.5;
+      resize: vertical;
+      transition: border-color 0.2s;
+    }
+
+    .feedback-block textarea:focus { outline: none; border-color: var(--accent); }
+    .feedback-block textarea::placeholder { color: var(--text-muted); opacity: 0.45; }
+
+    .overall-section {
+      margin-bottom: 48px;
+      border: 1px solid var(--amber);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .overall-section .section-label {
+      color: var(--amber);
+      background: rgba(232, 184, 74, 0.07);
+      border-bottom-color: rgba(232, 184, 74, 0.2);
+    }
+
+    .overall-section .feedback-block {
+      flex: 1;
+      background: rgba(232, 184, 74, 0.03);
+      padding: 20px 24px;
+    }
+
+    .overall-section textarea { min-height: 110px; }
+
+    .copy-bar {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      background: var(--bg-surface);
+      border-top: 1px solid var(--border);
+      padding: 11px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      z-index: 100;
+    }
+
+    .copy-bar .hint {
+      color: var(--text-muted);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.78rem;
+    }
+
+    .copy-bar button {
+      background: var(--accent);
+      color: #fff;
+      border: none;
+      padding: 8px 20px;
+      border-radius: 7px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .copy-bar button:hover { background: var(--accent-dim); }
+    .copy-bar button.success { background: var(--green); }
+
+    /* selected text highlight for future inline annotation */
+    ::selection { background: rgba(123, 140, 255, 0.3); }
+  </style>
+  </head>
+  <body>
+  <div class="container">
+
+    <div class="hero">
+      <h1>#{title}</h1>
+      <div style="margin-top:10px;">
+        <span class="tag">feedback</span>
+        <span class="tag">#{date_str}</span>
+        <span class="tag">#{File.basename(file_path)}</span>
+      </div>
+    </div>
+
+  #{sections_html}
+
+    <div class="overall-section">
+      <div class="section-label">overall thoughts</div>
+      <div class="section-body">
+        <div class="feedback-block">
+          <div class="feedback-label">big picture feedback</div>
+          <textarea data-section="overall thoughts" placeholder="voice, arc, what's missing, ready to ship?"></textarea>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="copy-bar">
+    <span class="hint">fill in feedback above, then</span>
+    <button onclick="copyFeedback()" id="copyBtn">copy all feedback as markdown</button>
+  </div>
+
+  <script>
+    function copyFeedback() {
+      const textareas = document.querySelectorAll('textarea[data-section]');
+      let sections = [];
+      textareas.forEach(ta => {
+        if (ta.value.trim()) {
+          sections.push('## ' + ta.dataset.section + '\\n\\n' + ta.value.trim());
+        }
+      });
+      const title = #{title.inspect};
+      const output = sections.length
+        ? '# feedback: ' + title + '\\n\\n' + sections.join('\\n\\n---\\n\\n')
+        : '(no feedback entered)';
+      const btn = document.getElementById('copyBtn');
+      navigator.clipboard.writeText(output).then(() => {
+        btn.textContent = 'copied!';
+        btn.classList.add('success');
+        setTimeout(() => { btn.textContent = 'copy all feedback as markdown'; btn.classList.remove('success'); }, 2000);
+      }).catch(() => {
+        const ta = document.createElement('textarea');
+        ta.value = output;
+        ta.style.cssText = 'position:fixed;opacity:0;';
+        document.body.appendChild(ta);
+        ta.select();
+        document.execCommand('copy');
+        document.body.removeChild(ta);
+        btn.textContent = 'copied!';
+        btn.classList.add('success');
+        setTimeout(() => { btn.textContent = 'copy all feedback as markdown'; btn.classList.remove('success'); }, 2000);
+      });
+    }
+  </script>
+  </body>
+  </html>
+HTML
+
+File.write(output_path, html)
+puts "generated: #{File.expand_path(output_path)}"

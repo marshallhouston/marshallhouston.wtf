@@ -1,16 +1,1 @@
-{
-  "hooks": {
-    "Stop": [
-      {
-        "hooks": [
-          {
-            "type": "agent",
-            "prompt": "Read worklog.md in the project root. Add a new dated entry (or update today's entry if one exists) summarizing what was accomplished this session and what's next. Keep entries concise. Use the existing format. Write the updated file. Then stage worklog.md, commit with a short message, and push.",
-            "timeout": 60,
-            "statusMessage": "Updating worklog..."
-          }
-        ]
-      }
-    ]
-  }
-}
+{}
