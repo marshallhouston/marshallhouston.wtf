@@ -1,6 +1,6 @@
 ---
 title: your experimentation budget — capacity, cost, and cycles
-captured: 2026-03-23
+captured: 2026-03-23\nstatus: published\npublished: 2026-03-29
 ---
 
 a framework for thinking about experimentation as a finite resource to manage.
