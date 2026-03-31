@@ -1,13 +1,13 @@
 ---
 title: "mental experimentation budgets"
-date: 2026-03-29 06:00:00 -0600
+date: 2026-03-29
 tags: [ai-augmented-engineering, mental-models, experimentation]
 classes: wide
 ---
 
 i love debugging. it's a sense-making puzzle.
 
-the combo of `claude code + skills + observability CLIs` has made debugging even more fun. i can move through data -> information -> knowledge -> wisdom levels quickly and switch between breadth and depth on a whim.
+`claude code + skills + observability CLIs` make debugging even more enjoyable. i can move through data -> information -> knowledge -> wisdom levels quickly and switch between breadth and depth on a whim.
 
 as i've built some small tools to explore what's possible in this area, i've also been directly pairing with a wide-range of people on issues (the weirder & more perplexing, the better). we record the live debugging session and automatically generate artifacts afterwards (highlight reels, docs with takeaways and patterns and strategies, etc).
 
