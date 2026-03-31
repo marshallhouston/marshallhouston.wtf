@@ -288,8 +288,27 @@ html = <<~HTML
     .copy-bar button:hover { background: var(--accent-dim); }
     .copy-bar button.success { background: var(--green); }
 
-    /* selected text highlight for future inline annotation */
     ::selection { background: rgba(123, 140, 255, 0.3); }
+
+    .section-content { cursor: text; }
+
+    .inline-hint {
+      position: fixed;
+      background: var(--accent);
+      color: #fff;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 5px;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.15s;
+      z-index: 200;
+      white-space: nowrap;
+    }
+
+    .inline-hint.visible { opacity: 1; }
   </style>
   </head>
   <body>
@@ -323,7 +342,55 @@ html = <<~HTML
     <button onclick="copyFeedback()" id="copyBtn">copy all feedback as markdown</button>
   </div>
 
+  <div class="inline-hint" id="inlineHint">select to annotate</div>
+
   <script>
+    // Inline text selection -> auto-populate feedback textarea
+    const hint = document.getElementById('inlineHint');
+
+    document.addEventListener('mouseup', function(e) {
+      const sel = window.getSelection();
+      const text = sel.toString().trim();
+      if (!text) { hint.classList.remove('visible'); return; }
+
+      // Find the .section-content ancestor
+      let node = sel.anchorNode;
+      while (node && !node.classList?.contains('section-content')) node = node.parentNode;
+      if (!node) { hint.classList.remove('visible'); return; }
+
+      // Show hint near selection
+      const range = sel.getRangeAt(0);
+      const rect = range.getBoundingClientRect();
+      hint.style.left = rect.left + (rect.width / 2) - 60 + 'px';
+      hint.style.top = (rect.top - 32) + 'px';
+      hint.textContent = 'annotating...';
+      hint.classList.add('visible');
+
+      // Find sibling textarea
+      const sectionBody = node.closest('.section-body');
+      if (!sectionBody) return;
+      const ta = sectionBody.querySelector('textarea');
+      if (!ta) return;
+
+      // Append the annotation pattern
+      const prefix = ta.value.trim() ? ta.value.trimEnd() + '\\n\\n' : '';
+      const annotation = 'instead: "' + text + '"\\ndo: "' + text + '"';
+      ta.value = prefix + annotation;
+
+      // Position cursor on the "do" line replacement text for quick editing
+      ta.focus();
+      const doStart = ta.value.lastIndexOf('do: "') + 5;
+      const doEnd = ta.value.length - 1;
+      ta.setSelectionRange(doStart, doEnd);
+
+      // Flash hint then hide
+      hint.textContent = 'added!';
+      setTimeout(() => hint.classList.remove('visible'), 800);
+
+      // Clear text selection
+      sel.removeAllRanges();
+    });
+
     function copyFeedback() {
       const textareas = document.querySelectorAll('textarea[data-section]');
       let sections = [];
