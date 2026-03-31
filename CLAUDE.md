@@ -33,7 +33,7 @@ The published posts are reference points for the range:
 - **Wide-ranging connections.** English and economics double major. Far-flung literary, philosophical, and cross-domain references are a feature, not a reach. The resonance is enough.
 - **Personal.** Topics span coffee, golf, parenting, music, tattoos, neurodivergence, the full person.
 - **Self-referential.** Posts can apply their own framework to the writing itself. Meta-application is a feature.
-- **Tool-agnostic.** Mindset and patterns, not specific products. Frame tools as "whatever you're using."
+- **Tool-agnostic for the reader.** Don't prescribe specific tools to the reader. Naming what Marshall personally uses is fine (specificity is good), but recommendations should be pattern-level, not product-level.
 
 ### What varies by post
 - **Pacing.** BFF is rapid-fire, short bursts. MEB is longer paragraphs, more measured cadence. Match the content.
