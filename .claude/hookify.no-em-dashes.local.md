@@ -6,13 +6,15 @@ pattern: \u2014|\u2013
 action: block
 ---
 
-**Em dashes detected in file content.**
+**Em dash detected in file content. Fix it before retrying — do not use Bash or other tools to work around this.**
 
-Do not use em dashes (— or –) in this project. They feel too polished and AI-generated for Marshall's voice.
+Find the em dash (— or –) in the content you're writing and replace it before attempting the edit again.
 
 **Use instead:**
 - A comma
 - A period and a new sentence
 - Parentheses
 - "and" or "but"
-- A dash with spaces: " - "
+- A spaced dash: " - "
+
+Em dashes feel too polished and AI-generated for Marshall's voice. Fix the content, then retry the Edit tool.
