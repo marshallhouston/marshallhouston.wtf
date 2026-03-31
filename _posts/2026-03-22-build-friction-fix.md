@@ -1,6 +1,6 @@
 ---
 title: "bff: build friction fix"
-date: 2026-03-22 06:00:00 -0600
+date: 2026-03-22
 tags: [ai-augmented-engineering, workflow, getting-started]
 classes: wide
 ---
