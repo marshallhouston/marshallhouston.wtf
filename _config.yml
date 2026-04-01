@@ -5,9 +5,20 @@ github_username: marshallhouston
 minimal_mistakes_skin: dark
 search: true
 
+comments:
+  provider: "giscus"
+  giscus:
+    repo_id: "R_kgDORtVxhw"
+    category_name: "Announcements"
+    category_id: "DIC_kwDORtVxh84C5wnf"
+    discussion_term: "pathname"
+    reactions_enabled: "1"
+    theme: "dark"
+
 # Build settings
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
+repository: marshallhouston/marshallhouston.github.io
 permalink: /:categories/:title/
 future: true
 paginate: 5
@@ -57,6 +68,7 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
+      comments: true
       share: false
       related: true
   - scope:
