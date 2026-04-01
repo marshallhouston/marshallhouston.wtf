@@ -1,8 +1,8 @@
 ---
 title: my writing process
 captured: 2026-03-30
-status: idea
-updated_at: 2026-04-01 02:00 MDT
+status: refine
+updated_at: 2026-04-01 02:40 MDT
 ---
 
 ## the kernel
@@ -113,3 +113,16 @@ tone: open, warm. "come find me if this resonates."
 - ethan mollick, co-intelligence
 - jeff casimir (linkedin post, ruby to python flow)
 - related kernel: authenticity (standalone, connected)
+
+---
+
+## refine (2026-04-01)
+
+### why this post, why now?
+because showing people how i'm using AI-augmented writing gets the "oh shit i didn't know that was possible" reaction. that moment is the thing driving this. not documenting for future me, not persuading anyone. i'm fascinated by what i've built and want to share that fascination.
+
+### what am i trying to accomplish?
+show my process and its evolution honestly enough that it sparks the reader's own ideas. not a template to copy, but proof that a deeply personal version exists, which gives permission to build their own. the evolution matters because it shows this grew from friction, making it accessible rather than intimidating. walkthrough energy is fine, just with the right register: a tour, not a lecture. layer depth so people can skim or dive.
+
+### what do i want readers to feel?
+wonder. "what might be possible for me?" not impressed by the system, not convinced of anything. opened up, curious about their own version of this.
