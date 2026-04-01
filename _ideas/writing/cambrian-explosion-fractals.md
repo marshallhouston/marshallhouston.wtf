@@ -1,6 +1,7 @@
 ---
 title: the cambrian explosion and fractals
 captured: 2026-03-23
+updated_at: 2026-03-25 00:06 MDT
 ---
 
 mental models for orienting in a rapidly shifting ai-augmented software engineering landscape.

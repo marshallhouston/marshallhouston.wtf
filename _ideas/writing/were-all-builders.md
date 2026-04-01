@@ -1,6 +1,7 @@
 ---
 title: we're all builders — uhhhh, what have i done?
 captured: 2026-03-23
+updated_at: 2026-03-25 00:06 MDT
 ---
 
 the arc from feeling behind to just building, and why everyone must be building now.

@@ -2,6 +2,7 @@
 title: principles and mindsets
 captured: 2026-03-23
 inspiration: https://sahajgarg.github.io/blog/principles/
+updated_at: 2026-03-25 00:06 MDT
 ---
 
 raw material for a post on principles and mindsets. gathered from personal notes and thinking over the last few months. not organized for a reader yet — just gathered.

@@ -1,6 +1,7 @@
 ---
 title: post ideas brainstorm
 captured: 2026-03-22
+updated_at: 2026-03-25 06:17 MDT
 ---
 
 raw kernels. not refined. just captured.

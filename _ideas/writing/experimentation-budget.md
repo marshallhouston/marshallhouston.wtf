@@ -3,6 +3,7 @@ title: your experimentation budget - capacity, cost, and cycles
 captured: 2026-03-23
 status: published
 published: 2026-03-29
+updated_at: 2026-03-31 01:29 MDT
 ---
 
 a framework for thinking about experimentation as a finite resource to manage.

@@ -2,6 +2,7 @@
 title: getting started ai guide
 captured: 2026-03-26
 status: kernel
+updated_at: 2026-03-29 13:22 MDT
 ---
 
 raw kernel from marshall:
