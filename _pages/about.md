@@ -17,7 +17,7 @@ transparency is a tenet of the cosmic farmland.
 
 ## ai & co-intelligence
 
-i use AI tools in my work, in my writing, brainstorming, shitposting, research, and other tbd ways. i believe strongly in transparency about this collaboration rather than obscuring it. still must feel authentically me... but that's changeable and amorphous and will evolve so idk how exactly it'll look.
+i use ai tools in my work, in my writing, brainstorming, shitposting, research, and other tbd ways. i believe strongly in transparency about this collaboration rather than obscuring it. still must feel authentically me... but that's changeable and amorphous and will evolve so idk how exactly it'll look.
 
 when i write, ideas and perspective are mine. ai is a thinking partner, clarifier, braindumping partner, virtual rubber duck.
 

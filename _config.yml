@@ -1,4 +1,4 @@
-title: Marshall Houston
+title: marshall houston
 description: >-
   thoughts on engineering leadership, AI-augmented software engineering, and building teams.
 github_username: marshallhouston
@@ -34,7 +34,7 @@ plugins:
   - jekyll-include-cache
 
 author:
-  name   : "Marshall Houston"
+  name   : "marshall houston"
   avatar : "/assets/images/marshall.png"
   bio    : "writing about the cosmic farmland"
   links:
