@@ -1,7 +1,7 @@
 ---
 title: post ideas brainstorm
 captured: 2026-03-22
-updated_at: 2026-03-25 06:17 MDT
+updated_at: 2026-04-01 06:11 MDT
 ---
 
 raw kernels. not refined. just captured.
@@ -22,7 +22,7 @@ journey from educator to tech. what did i learn? what do i carry forward? how do
 my influences as a whole across the tech industry. specific influences on being a manager, engineering manager, engineering leader, building teams. influences on building and how i think about software.
 
 ## neurodivergence
-ADHD as an adult. no chosen my path and why. how that helps me.
+adhd as an adult. no chosen my path and why. how that helps me.
 
 ## golf
 what can i learn from golf? how does that show up? what do i think about? how do i love it?
@@ -93,8 +93,8 @@ structured around the farming metaphor: the soil, the seeds, the wild growth, th
 ## engineering manager in the ai age
 how being an engineering manager sets me up to solve problems in an ai-augmented software engineering world.
 
-## age of ADHD
-why is this software engineering world an age of ADHD?
+## age of adhd
+why is this software engineering world an age of adhd?
 
 ## learning from others
 being able to benefit and learn from boris's lenny's newsletter podcast.
@@ -105,7 +105,7 @@ ideas for the site. what's my theme that i want? what's the vibe visually?
 ## more influences
 - kemp beck and his writings recently
 - youtube videos or conference talks that have stuck with me through the years
-- resources from education that i've learned and from NAATE, a program there
+- resources from education that i've learned and from naate, a program there
 
 ## conducive learning environments
 what do i think? what are my principles?

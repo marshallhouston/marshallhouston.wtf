@@ -1,6 +1,6 @@
 # feedback review app
 
-a proper interactive web app for reviewing and editing content - not a generated one-off HTML file, but a reusable tool.
+a proper interactive web app for reviewing and editing content - not a generated one-off html file, but a reusable tool.
 
 ## what it is
 
@@ -32,7 +32,7 @@ when reading the post section, highlight any text - it auto-populates the feedba
 instead: "<selected text>" -> do: "<selected text>"
 ```
 
-so you can just type the replacement inline without manually copying and reformatting. the "instead X -> do Y" pattern becomes one gesture instead of three.
+so you can just type the replacement inline without manually copying and reformatting. the "instead x -> do y" pattern becomes one gesture instead of three.
 
 ## stack thoughts (undecided)
 

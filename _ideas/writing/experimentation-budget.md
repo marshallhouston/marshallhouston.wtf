@@ -3,7 +3,7 @@ title: your experimentation budget - capacity, cost, and cycles
 captured: 2026-03-23
 status: published
 published: 2026-03-29
-updated_at: 2026-03-31 01:29 MDT
+updated_at: 2026-04-01 06:10 MDT
 ---
 
 a framework for thinking about experimentation as a finite resource to manage.
@@ -35,7 +35,7 @@ a practical lens for sustainable experimentation in a world that demands constan
 ### post arc
 
 #### 1. the hook
-anecdote: someone experimenting with AI tools, success after success, flying. then one bad outcome and total collapse. "i can't trust any of this." the reaction: wtf? you just had all this success. how does one failure erase all of that? that gap between their reaction and yours is the entry point. something is different. what?
+anecdote: someone experimenting with ai tools, success after success, flying. then one bad outcome and total collapse. "i can't trust any of this." the reaction: wtf? you just had all this success. how does one failure erase all of that? that gap between their reaction and yours is the entry point. something is different. what?
 
 #### 2. the health bar
 introduce the mental experimentation budget. think of it like a video game health bar. finite mental resource. every experiment draws from it. some draws are small, some are big. sometimes a hit looks minor but lands when you're already low and it's game over. that person wasn't weak. they just didn't have the budget left to absorb the shock.
@@ -51,10 +51,10 @@ the components:
 - **return on experiment:** not every experiment is a cost. some deposit back. confidence, knowledge, momentum. success compounds when you've got the budget to keep going.
 - **recharge:** the budget isn't just depleting, it's fluctuating. sleep, movement, wins, flow states are inputs back in. this is a system, not a battery.
 
-systems thinking lens (Donella Meadows): the mental budget is a stock. experiments are outflows. recharge is inflow. feedback loops and leverage points are where you intervene to change the system behavior.
+systems thinking lens (donella meadows): the mental budget is a stock. experiments are outflows. recharge is inflow. feedback loops and leverage points are where you intervene to change the system behavior.
 
 #### 4. the science
-why the model maps to reality. Kahneman's Thinking Fast and Slow (system 1 / system 2). Raymond Pryor's Golf Beneath the Surface (old brain / new brain). cognitive load, threat response, dopamine and reward loops. the one-failure collapse is the old brain hijacking, threat response wiping out rational assessment.
+why the model maps to reality. kahneman's thinking fast and slow (system 1 / system 2). raymond pryor's golf beneath the surface (old brain / new brain). cognitive load, threat response, dopamine and reward loops. the one-failure collapse is the old brain hijacking, threat response wiping out rational assessment.
 
 #### 5. now what (exploratory)
 the levers exist. you can see them in the model. but exploring, not prescribing:
@@ -70,12 +70,12 @@ tone: i think this model is useful. i'm applying it. i don't have all the answer
 short. natural. don't force it. maybe ties back to the anecdote, maybe a one-liner, maybe just an invitation.
 
 ### tone
-exploratory throughout. laying out a mental model, not delivering a finished framework. "here's how i'm thinking about this" energy. stands alone, natural connection to BFF (link after publishing).
+exploratory throughout. laying out a mental model, not delivering a finished framework. "here's how i'm thinking about this" energy. stands alone, natural connection to bff (link after publishing).
 
 ### additional influences
-- Daniel Kahneman, Thinking Fast and Slow
-- Raymond Pryor, Golf Beneath the Surface
-- Donella Meadows, Thinking in Systems
+- daniel kahneman, thinking fast and slow
+- raymond pryor, golf beneath the surface
+- donella meadows, thinking in systems
 - economics and english background, applying systems thinking to non-traditional domains
 
 ### audience
@@ -116,10 +116,10 @@ the model emerges here as discovery, not presentation:
 - but experiments aren't just costs. some deposit back. confidence, momentum, knowledge.
 - and the whole thing recharges. sleep, movement, wins, flow. it's a system, not a battery.
 
-systems thinking lens (Meadows): stock, flows, feedback loops, leverage points.
+systems thinking lens (meadows): stock, flows, feedback loops, leverage points.
 
 #### 4. "oh, that's why"
-the science that explains why the model maps to reality. Kahneman (system 1/system 2), Pryor (old brain/new brain). the one-failure collapse is the old brain hijacking. threat response wiping out rational assessment. the person wasn't irrational, they were running on a different system.
+the science that explains why the model maps to reality. kahneman (system 1/system 2), pryor (old brain/new brain). the one-failure collapse is the old brain hijacking. threat response wiping out rational assessment. the person wasn't irrational, they were running on a different system.
 
 #### 5. "now i've got better questions"
 exploratory close. the levers exist in the model. not prescribing answers, asking questions:
@@ -134,10 +134,10 @@ tone: i think this model is useful. i'm applying it. i don't have all the answer
 discovery throughout. the reader watches the thinking happen. "are you kidding me" to "oh wait" to "here's what i'm seeing." deeply personal. this is marshall's brain doing its thing, not a framework being delivered.
 
 ### additional influences
-- Daniel Kahneman, Thinking Fast and Slow
-- Raymond Pryor, Golf Beneath the Surface
-- Donella Meadows, Thinking in Systems
-- Stephen King, On Writing (archaeology metaphor)
+- daniel kahneman, thinking fast and slow
+- raymond pryor, golf beneath the surface
+- donella meadows, thinking in systems
+- stephen king, on writing (archaeology metaphor)
 - economics and english background
 - experience as educator and coach before tech
 
@@ -148,7 +148,7 @@ anyone navigating rapid change. but written for marshall first. clarifying his o
 
 ## opening feedback (2026-03-26)
 
-no need for a strong manufactured hook. the user journey arc IS the hook.
+no need for a strong manufactured hook. the user journey arc is the hook.
 
 the opening should feel like joining someone mid-journey. people start on friday, get into agentic workflows, try some stuff, think "oh yeah, this is amazing" then hit a point where it surprisingly doesn't work and they're like "what the fuck, i can't trust anything." and the response is "wait, what do you mean you can't trust anything? where does this go?"
 
@@ -159,7 +159,7 @@ this doesn't need to be a big grand story. the structure is: delight > unexpecte
 ### what changed from previous design
 - killed the "are you kidding me?" standalone opener (still too manufactured, even though it was the real reaction)
 - opens in second person mid-journey ("you get into agentic workflows on a friday") then shifts to first person
-- the arc of the opening IS the hook, no need for a separate hook device
+- the arc of the opening is the hook, no need for a separate hook device
 - two drafts now exist for comparison: v0 (original structure) and v1 (journey-arc opening)
 
 ---
@@ -170,7 +170,7 @@ this doesn't need to be a big grand story. the structure is: delight > unexpecte
 
 **opening feels forced/edgy.** the second-person "you get into agentic workflows on a friday" reads like trying to be provocative. marshall doesn't want to try to be edgy. sometimes that comes out naturally, but this post should be more metered. still him, just not performing.
 
-**the real story is marshall's own journey.** debugging hooked him on agentic flows. he could move up the data-information-knowledge-wisdom pyramid fast. started running with it: building tools to interact with observability providers via CLI, asking questions, connecting to multiple repos, live debugging, sharing with his team ("y'all check this out"), spreading it to other teams. started hearing other people use it, getting user feedback. that excitement and momentum is the real opening, not a manufactured scenario.
+**the real story is marshall's own journey.** debugging hooked him on agentic flows. he could move up the data-information-knowledge-wisdom pyramid fast. started running with it: building tools to interact with observability providers via cli, asking questions, connecting to multiple repos, live debugging, sharing with his team ("y'all check this out"), spreading it to other teams. started hearing other people use it, getting user feedback. that excitement and momentum is the real opening, not a manufactured scenario.
 
 **then the turn.** someone who was loving it hits a moment where they didn't find something they expected, and the conclusion is "i just can't trust it anymore." marshall's reaction: wait, hold up, how? you were having all this success. that gap is the entry point into the framework.
 
@@ -178,11 +178,11 @@ this doesn't need to be a big grand story. the structure is: delight > unexpecte
 
 **structure should get to the framework faster.** opening → experimentation budget framework/components. the educator/coach/learning background is relevant but comes later (maybe as "understanding self" or "what's different about my brain" after the framework is laid out).
 
-**"oh, that's why" section doesn't land.** applying the model to science feels like a forced frame. the Kahneman/Pryor stuff may need to be woven in differently or reduced.
+**"oh, that's why" section doesn't land.** applying the model to science feels like a forced frame. the kahneman/pryor stuff may need to be woven in differently or reduced.
 
 **econ/english framing needs rework.** the "never fit in either room" line is close but needs to feel more like a direct statement, not a setup. marshall found a way he enjoyed it. the combination is the power.
 
-**this post has a different voice than BFF.** less unhinged, more metered. thinking through a framework. still marshall, but the register is different. exploratory-analytical, not raw-stream-of-consciousness.
+**this post has a different voice than bff.** less unhinged, more metered. thinking through a framework. still marshall, but the register is different. exploratory-analytical, not raw-stream-of-consciousness.
 
 ### v2 direction
 
@@ -197,7 +197,7 @@ this doesn't need to be a big grand story. the structure is: delight > unexpecte
 1. **opening:** marshall's real journey. debugging → agentic flows → excitement → sharing → momentum → someone else's collapse despite success. the turn that opens the question.
 2. **the framework:** lay out the mental experimentation budget almost academic-paper style. define the components, the pieces, how they relate. structured, principled. this is the core of the post and should feel like building a model from the ground up.
 3. **how the pieces fit together:** once the components are on the table, show how they interact as a system. this is where it clicks.
-4. **the science / personal lens:** after the framework is established, bring in the supporting threads. educator experience, sports coaching, Kahneman, Pryor, Meadows. these validate and deepen the model, they don't introduce it.
+4. **the science / personal lens:** after the framework is established, bring in the supporting threads. educator experience, sports coaching, kahneman, pryor, meadows. these validate and deepen the model, they don't introduce it.
 5. **implications:** what does this mean? exploratory, not prescriptive. better questions, not answers.
 
 ---
@@ -210,15 +210,15 @@ structure is emerging and feeling much more confident in it. v2 is a significant
 ### specific feedback
 
 **opening:**
-- better but still slightly off. "spin up a CLI against our observability provider" isn't what happened. marshall uses the observability provider's existing CLI. nitpick but accuracy matters.
+- better but still slightly off. "spin up a cli against our observability provider" isn't what happened. marshall uses the observability provider's existing cli. nitpick but accuracy matters.
 - "i sat with that for a while" / frustration framing is off. it's more "i want to understand this."
 - "i think the answer is something i'm calling your mental experimentation budget" is a clunky transition. needs something smoother.
 
 **framework section:**
 - mental experimentation budget intro is still a bit wordy, could tighten
 - components section feels really good. the individual pieces land well.
-- consider: subheadings (h3) for each component instead of just bold? TBD, not urgent.
-- want a simple equation or model to show how the components relate as a system. not official, just a way of reasoning. could also be a Meadows-style systems thinking diagram. start with equation.
+- consider: subheadings (h3) for each component instead of just bold? tbd, not urgent.
+- want a simple equation or model to show how the components relate as a system. not official, just a way of reasoning. could also be a meadows-style systems thinking diagram. start with equation.
 
 **science/personal lens:**
 - "i taught middle school math and coached sports before getting into tech" should say "before getting into software" not tech

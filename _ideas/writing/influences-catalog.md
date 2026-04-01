@@ -2,14 +2,14 @@
 title: influences catalog
 captured: 2026-03-30
 status: kernel
-updated_at: 2026-03-31 00:35 MDT
+updated_at: 2026-04-01 06:11 MDT
 ---
 
 ## the kernel
 
-What and who is influencing me. Categorized, not just listed.
+what and who is influencing me. categorized, not just listed.
 
-Categories: AI, tech, parenting, golf, education, fishing, creativity, authors/writers, music.
+categories: ai, tech, parenting, golf, education, fishing, creativity, authors/writers, music.
 
 ## threads to pull
 

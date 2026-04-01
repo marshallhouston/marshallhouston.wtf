@@ -2,6 +2,7 @@
 name: no-em-dashes
 enabled: true
 event: file
+tool_matcher: Edit|Write|MultiEdit
 pattern: \u2014|\u2013
 action: block
 ---
@@ -17,4 +18,4 @@ Find the em dash (— or –) in the content you're writing and replace it befor
 - "and" or "but"
 - A spaced dash: " - "
 
-Em dashes feel too polished and AI-generated for Marshall's voice. Fix the content, then retry the Edit tool.
+Em dashes feel too polished and AI-generated for marshall's voice. Fix the content, then retry the Edit tool.

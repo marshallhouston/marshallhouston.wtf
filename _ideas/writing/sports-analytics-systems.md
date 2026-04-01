@@ -2,14 +2,14 @@
 title: sports and why i love them
 captured: 2026-03-30
 status: kernel
-updated_at: 2026-03-31 00:35 MDT
+updated_at: 2026-04-01 06:11 MDT
 ---
 
 ## the kernel
 
-Sports and why I love them. Analytics. Breaking down the system - what's happening, why?
+sports and why i love them. analytics. breaking down the system - what's happening, why?
 
-Saying the things announcers say all the time before they say it.
+saying the things announcers say all the time before they say it.
 
 ## threads to pull
 
@@ -18,5 +18,5 @@ Saying the things announcers say all the time before they say it.
 - the anticipation: reading the game ahead of the commentary
 - analytics as a love language for sports
 - what does breaking down a system give you that just watching doesn't?
-- connections to how I think about software, teams, organizations
+- connections to how i think about software, teams, organizations
 - which sports, which moments, which patterns?

@@ -25,7 +25,7 @@ Generate a feedback review page for `$ARGUMENTS` and apply feedback once provide
 5. Apply feedback to `$ARGUMENTS`:
    - Work through each `## section-name` block in the feedback
    - Find the corresponding section in the file
-   - Apply the requested changes, preserving Marshall's voice (see CLAUDE.md)
+   - Apply the requested changes, preserving marshall's voice (see CLAUDE.md)
    - Do not smooth out rawness, remove literary references, or add polish
 
 6. After applying all section feedback, summarize what changed.

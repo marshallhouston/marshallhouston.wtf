@@ -2,7 +2,7 @@
 title: principles and mindsets
 captured: 2026-03-23
 inspiration: https://sahajgarg.github.io/blog/principles/
-updated_at: 2026-03-25 00:06 MDT
+updated_at: 2026-04-01 06:11 MDT
 ---
 
 raw material for a post on principles and mindsets. gathered from personal notes and thinking over the last few months. not organized for a reader yet — just gathered.
@@ -101,7 +101,7 @@ from bryce young. focus and finish. don't let the shiny thing pull you off cours
 your first team is your peer group, not your direct reports. represent the business.
 
 ### celebrate effectiveness, not activity
-"if we celebrate activity (PRs, lines of code), then we'll get more activity. how do we celebrate effectiveness?"
+"if we celebrate activity (prs, lines of code), then we'll get more activity. how do we celebrate effectiveness?"
 
 ---
 

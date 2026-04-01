@@ -2,10 +2,10 @@
 title: "my writing process"
 tags: [ai-augmented-engineering, writing, process, creative-expression]
 classes: wide
-updated_at: 2026-04-01 02:49 MDT
+updated_at: 2026-04-01 02:49 mdt
 ---
 
-a few weeks ago i picked up ethan mollick's [co-intelligence](https://www.goodreads.com/book/show/198678162-co-intelligence). the core idea that stuck: AI isn't a replacement for thinking. it's a thinking partner. not the thing that does the work for you, but the thing that makes your thinking sharper, faster, more honest.
+a few weeks ago i picked up ethan mollick's [co-intelligence](https://www.goodreads.com/book/show/198678162-co-intelligence). the core idea that stuck: ai isn't a replacement for thinking. it's a thinking partner. not the thing that does the work for you, but the thing that makes your thinking sharper, faster, more honest.
 
 i'd been experimenting with claude code for a while at that point, but something clicked. i started applying that frame to writing. not "generate me a blog post" but "help me figure out what i'm actually trying to say."
 
@@ -35,7 +35,7 @@ let me walk through each one.
 
 <!-- TODO: screenshot of idea doc -->
 
-**refine.** this step didn't exist at first. i added it because i kept jumping from idea to draft and losing the thread. refine is a Q&A: why this post, why now? what am i trying to accomplish? what do i want readers to feel? no wordsmithing. just clarity on intent before i start writing actual sentences.
+**refine.** this step didn't exist at first. i added it because i kept jumping from idea to draft and losing the thread. refine is a q&a: why this post, why now? what am i trying to accomplish? what do i want readers to feel? no wordsmithing. just clarity on intent before i start writing actual sentences.
 
 **draft.** now i'm writing. first drafts are loose, fast, getting-it-down. the quality of the draft is directly proportional to how well i did the refine step.
 
@@ -43,9 +43,9 @@ let me walk through each one.
 
 **published post.** when it's ready, it moves from `_drafts/` to `_posts/` and goes live. "ready" is a feeling more than a checklist.
 
-## the BFF era
+## the bff era
 
-<!-- TODO: screen recording of BFF-era side-by-side workflow -->
+<!-- TODO: screen recording of bff-era side-by-side workflow -->
 
 the first post i wrote with this flow was [build friction fix]({{ site.baseurl }}{% post_url 2026-03-22-build-friction-fix %}). the setup was simple: claude code on the left, locally served blog post on the right, [wispr flow](https://www.wispr.ai/) for voice input.
 
@@ -57,13 +57,13 @@ but the friction was real. everything lived in conversation. i couldn't distingu
 
 it was a start. and it got the post out.
 
-## the MEB evolution
+## the meb evolution
 
 <!-- TODO: screenshots of review.html with structured feedback sections -->
 
 the second post, [mental experimentation budgets]({{ site.baseurl }}{% post_url 2026-03-29-mental-experimentation-budgets %}), took two weekends. not because the writing was harder, but because i was also building the next version of the process while using it.
 
-the big friction from BFF: overall feedback and specific wording feedback getting tangled in conversation. the fix was `review.html`, a split-pane tool. the rendered post on the left, structured feedback sections on the right. each section of the post got its own feedback panel with placeholders tailored to what kind of feedback that section needed.
+the big friction from bff: overall feedback and specific wording feedback getting tangled in conversation. the fix was `review.html`, a split-pane tool. the rendered post on the left, structured feedback sections on the right. each section of the post got its own feedback panel with placeholders tailored to what kind of feedback that section needed.
 
 the feedback loop became: read a section, type feedback in its panel, hit "copy all feedback as markdown," paste into claude code. structured, repeatable, no more guessing what altitude i was at.
 
@@ -79,9 +79,9 @@ wispr flow isn't a convenience tool. it's cognitive routing. it keeps the main t
 
 ## the current system
 
-<!-- TODO: screen recording of highlighting and "instead X -> do Y" on this post -->
+<!-- TODO: screen recording of highlighting and "instead x -> do y" on this post -->
 
-the system i'm using right now (on this actual post) added another layer. the structured feedback sections from MEB were good for big-picture notes. but for specific wording, i was still writing things like "the phrase in paragraph 3 that says X should say Y" which is clunky.
+the system i'm using right now (on this actual post) added another layer. the structured feedback sections from meb were good for big-picture notes. but for specific wording, i was still writing things like "the phrase in paragraph 3 that says x should say y" which is clunky.
 
 the fix: inline text selection. highlight any text in the rendered post and the feedback textarea auto-populates with:
 
@@ -111,26 +111,26 @@ i want to zoom out for a second.
 
 none of this was planned. i didn't sit down and design a writing system. i wrote a post, noticed what was hard, and fixed it. wrote another post, noticed new friction, fixed that too. [build friction fix]({{ site.baseurl }}{% post_url 2026-03-22-build-friction-fix %}) isn't just the name of a post. it's the loop that built the process you're reading about.
 
-the AI piece is essential but it's not the point. claude code doesn't write my posts. it makes the revision loop fast enough that i can actually iterate on voice, on structure, on whether something lands. the bottleneck was never "can i write?" it was "can i close the feedback loop fast enough to actually improve?"
+the ai piece is essential but it's not the point. claude code doesn't write my posts. it makes the revision loop fast enough that i can actually iterate on voice, on structure, on whether something lands. the bottleneck was never "can i write?" it was "can i close the feedback loop fast enough to actually improve?"
 
 turns out, yes. with the right setup, you can.
 
 ## not just me
 
-i keep seeing versions of this pattern in the wild. people finding their own way to use AI as a thinking partner rather than a replacement.
+i keep seeing versions of this pattern in the wild. people finding their own way to use ai as a thinking partner rather than a replacement.
 
-jeff casimir, founder of turing school, shared his experience using AI to prepare for a technical assessment in python (a language he was learning, coming from deep ruby expertise):
+jeff casimir, founder of turing school, shared his experience using ai to prepare for a technical assessment in python (a language he was learning, coming from deep ruby expertise):
 
-> We researched likely interview problems, wrote test suites, I built implementation, Claude gave feedback, and we distilled it into a PDF "Python for Rubyists" that I could print and have on my desk for the assessment.
+> we researched likely interview problems, wrote test suites, i built implementation, claude gave feedback, and we distilled it into a pdf "python for rubyists" that i could print and have on my desk for the assessment.
 
-> I think the real value is in using AI as a coach and collaborator. It can be the hub of a conversation that mixes the learner, the work, research, outside expertise (like a teacher), experience/context (like your past work/success/struggle), requirements/constraints, etc. The answer is the least interesting part of the process.
+> i think the real value is in using ai as a coach and collaborator. it can be the hub of a conversation that mixes the learner, the work, research, outside expertise (like a teacher), experience/context (like your past work/success/struggle), requirements/constraints, etc. the answer is the least interesting part of the process.
 
-same principle. not "AI do this for me" but "AI help me think through this." the specific tools and workflows are different, but the relationship is the same.
+same principle. not "ai do this for me" but "ai help me think through this." the specific tools and workflows are different, but the relationship is the same.
 
 ## come along
 
 this process will keep evolving. i'll hit new friction, build new fixes, and the system will look different in a month. that's the point.
 
-if this resonates, i'd love to hear what you're building. how are you using AI in your creative work, your learning, your daily practice? not the tool itself, but the relationship you've developed with it.
+if this resonates, i'd love to hear what you're building. how are you using ai in your creative work, your learning, your daily practice? not the tool itself, but the relationship you've developed with it.
 
 come find me. let's compare notes.

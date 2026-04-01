@@ -7,7 +7,7 @@ classes: wide
 
 are you kidding me?
 
-i'd been working with someone on my team, getting them into these AI tools. showed them my flows, walked through how i use them, said go try it. and they did. they were building things, getting wins, moving faster than before. real momentum.
+i'd been working with someone on my team, getting them into these ai tools. showed them my flows, walked through how i use them, said go try it. and they did. they were building things, getting wins, moving faster than before. real momentum.
 
 then one bad interaction. one time the tool hallucinated, gave them something wrong, cost them an hour of debugging.
 

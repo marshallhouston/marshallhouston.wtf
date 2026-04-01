@@ -7,7 +7,7 @@ classes: wide
 
 debugging hooked me.
 
-i started using agentic workflows to dig into production issues and something clicked. i could take raw data, ask questions about it, connect to multiple repos, use the observability provider's CLI, and just start moving. data to information to knowledge to insight, fast. faster than i'd ever experienced. i wasn't just debugging, i was making sense of systems in real time.
+i started using agentic workflows to dig into production issues and something clicked. i could take raw data, ask questions about it, connect to multiple repos, use the observability provider's cli, and just start moving. data to information to knowledge to insight, fast. faster than i'd ever experienced. i wasn't just debugging, i was making sense of systems in real time.
 
 i built tools, tried new patterns, ran live debugging sessions with my team, recorded them, extracted insights, made highlight videos, iterated on the skills, and started sharing. the momentum was real.
 

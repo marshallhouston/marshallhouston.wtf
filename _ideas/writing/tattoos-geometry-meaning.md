@@ -37,5 +37,5 @@ threads to pull:
 - sacred geometry as framework, not decoration
 - the act of making ideas permanent on your body
 - how do you carry your principles? literally.
-- connection to BFF? triangles as build/friction/fix? the tangent point as the present moment where you act?
+- connection to bff? triangles as build/friction/fix? the tangent point as the present moment where you act?
 - the line of power between the forearms. what does it feel like to look down and see your philosophy.

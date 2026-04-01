@@ -1,7 +1,7 @@
 ---
 title: we're all builders — uhhhh, what have i done?
 captured: 2026-03-23
-updated_at: 2026-03-25 00:06 MDT
+updated_at: 2026-04-01 06:12 MDT
 ---
 
 the arc from feeling behind to just building, and why everyone must be building now.
@@ -16,7 +16,7 @@ feeling behind -> finding a spark -> just building without over-optimizing -> ge
 
 ## why this matters
 
-all of our roles are changing. EM roles, director roles, IC roles. the tools now exist for everyone to build in ways that weren't possible before. but what does it actually look like to put this into practice? what have we learned so far and how do we move forward? if we want a culture of builders, we need to show the real story, not the polished version.
+all of our roles are changing. em roles, director roles, ic roles. the tools now exist for everyone to build in ways that weren't possible before. but what does it actually look like to put this into practice? what have we learned so far and how do we move forward? if we want a culture of builders, we need to show the real story, not the polished version.
 
 ## audience takeaway
 

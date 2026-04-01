@@ -1,14 +1,14 @@
 ---
 title: it is our job to get stuck and then get unstuck
 captured: 2026-03-23
-updated_at: 2026-03-25 00:06 MDT
+updated_at: 2026-04-01 06:10 MDT
 ---
 
 the idea that getting stuck isn't failure — it's the actual job. and getting unstuck is the skill.
 
 ## origin
 
-from a RailsConf talk, way back: https://www.youtube.com/watch?v=3XscuivvUzI
+from a railsconf talk, way back: https://www.youtube.com/watch?v=3XscuivvUzI
 
 zach lamb credited me with this idea — said he learned it from me. that it was a key piece of how i showed up. which is wild and affirming to hear reflected back.
 

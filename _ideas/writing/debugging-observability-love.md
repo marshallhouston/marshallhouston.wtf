@@ -1,14 +1,14 @@
 ---
 title: debugging as a way of understanding systems
 captured: 2026-03-27
-updated_at: 2026-03-27 04:26 MDT
+updated_at: 2026-04-01 06:17 MDT
 ---
 
 debugging is how i understand systems. not a chore, not a failure mode. a lens.
 
 ## core idea
 
-charity majors and the observability movement reframed how i think about interacting with systems. when a log query gives you garbage, you don't say "observability is broken." you refine the query. you keep interacting. that same mindset applies to AI tools, to code, to everything.
+charity majors and the observability movement reframed how i think about interacting with systems. when a log query gives you garbage, you don't say "observability is broken." you refine the query. you keep interacting. that same mindset applies to ai tools, to code, to everything.
 
 a bad output isn't "this tool sucks." it's "okay, what happened there? how do i fix my interaction?"
 
@@ -20,7 +20,7 @@ this framing might explain why some people have a higher experimentation budget 
 
 - links to experimentation budget post (debugging lens as a reason for high budget)
 - charity majors, observability, interacting with systems
-- built CLI tools and skills for observability data, shared with team
+- built cli tools and skills for observability data, shared with team
 - the excitement of dialing in your way of interacting with a system
 
 ## personal thread

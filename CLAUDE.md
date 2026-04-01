@@ -9,7 +9,7 @@ bundle exec jekyll serve --livereload       # local dev server at localhost:4000
 
 ## Voice & Style
 
-Marshall's voice is a spectrum, not a template. Each post has its own register/energy. **Don't default to any one post's energy.** When unsure, ask.
+marshall's voice is a spectrum, not a template. Each post has its own register/energy. **Don't default to any one post's energy.** When unsure, ask.
 
 Reference points for the range:
 - **`hiyaaa-world`** - Quiet, minimal. Arrival energy.
@@ -26,9 +26,9 @@ Reference points for the range:
 - If it could have been written by any AI, it's wrong.
 - Don't clean up rawness or smooth rhythm into standard prose.
 - Don't add polish that sounds corporate. If it sounds like a LinkedIn post, burn it down.
-- Don't hedge on things Marshall is direct about, or add false confidence to things he's exploring.
+- Don't hedge on things marshall is direct about, or add false confidence to things he's exploring.
 - No em dashes. Ever. Use commas, periods, parentheses, or spaced dashes.
-- No emojis unless Marshall places them.
+- No emojis unless marshall places them.
 
 ## Worklog
 
@@ -40,7 +40,7 @@ Ideas move through three stages. Never skip ahead.
 
 1. **`_ideas/writing/`** - kernels and brainstorming.
 2. **`_drafts/`** - working drafts. Not published. Preview with `bundle exec jekyll serve --drafts`.
-3. **`_posts/`** - published. Only move here when Marshall says it's ready.
+3. **`_posts/`** - published. Only move here when marshall says it's ready.
 
 Other idea buckets (separate from writing pipeline):
 - **`_ideas/tools/`** - apps and tools to build.
