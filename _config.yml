@@ -1,6 +1,6 @@
 title: marshall houston
 description: >-
-  thoughts on engineering leadership, AI-augmented software engineering, and building teams.
+  thoughts on engineering leadership, ai-augmented software engineering, and building teams.
 github_username: marshallhouston
 minimal_mistakes_skin: dark
 search: true
@@ -38,25 +38,25 @@ author:
   avatar : "/assets/images/marshall.png"
   bio    : "writing about the cosmic farmland"
   links:
-    - label: "Website"
+    - label: "website"
       icon: "fas fa-fw fa-link"
       url: "https://marshallhouston.github.io"
-    - label: "GitHub"
+    - label: "github"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/marshallhouston"
-    - label: "LinkedIn"
+    - label: "linkedin"
       icon: "fab fa-fw fa-linkedin"
       url: "https://linkedin.com/in/marshallhouston"
-    - label: "RSS Feed"
+    - label: "rss feed"
       icon: "fas fa-fw fa-rss-square"
       url: "/feed.xml"
 
 footer:
   links:
-    - label: "GitHub"
+    - label: "github"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/marshallhouston"
-    - label: "LinkedIn"
+    - label: "linkedin"
       icon: "fab fa-fw fa-linkedin"
       url: "https://linkedin.com/in/marshallhouston"
 
