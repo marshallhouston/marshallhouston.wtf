@@ -2,7 +2,7 @@
 layout: post
 title: "probabilistically perfect piggies"
 date: 2026-04-03
-updated_at: 2026-04-03 01:18 MDT
+updated_at: 2026-04-03 01:22 MDT
 ---
 
 slop. racing to the probabilistically perfect. sterile, milquetoast, borinnnnnggg slop. gather round the trough to fatten up on slop like some ai-powered herd of pigs.
@@ -31,4 +31,4 @@ i have to create. i have to write. i have to connect. i have to reject.
 
 harness the power of the human possible.
 
-let's get weird.
+oink, oink piggies. let's get weird.
