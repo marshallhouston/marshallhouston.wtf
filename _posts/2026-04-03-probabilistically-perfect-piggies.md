@@ -1,8 +1,7 @@
 ---
-layout: post
 title: "probabilistically perfect piggies"
 date: 2026-04-03
-updated_at: 2026-04-03 01:26 MDT
+updated_at: 2026-04-03 01:31 MDT
 ---
 
 slop. racing to the probabilistically perfect. sterile, milquetoast, borinnnnnggg slop. gather round the trough to fatten up on slop like some ai-powered herd of pigs.
