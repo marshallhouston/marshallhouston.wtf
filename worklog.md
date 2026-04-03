@@ -72,3 +72,27 @@
 - brainstorm a post from the new kernels (freedom-rides-alabama and knowing-yourself-origins have the most gravity)
 - writing-process post is ripe: meta, timely, video angle is interesting
 - experimentation budget draft still needs a voice review pass
+
+## 2026-04-01 through 2026-04-03
+
+### what happened
+- brainstormed and drafted authenticity post across multiple sessions
+  - v1: long-form four-section arc (drowning, diagnosis, historical beat, declaration) with gonzo energy
+  - feedback loop: revised drowning section with manic energy, ALL CAPS, engagement farm language
+  - collapsed four sections to three (drowning, gonzo, homemade mullet energy)
+  - wove in Sturgill Simpson / Johnny Blue Skies lyrics (Mutiny After Midnight)
+  - v2 pivot: scrapped long-form entirely, went short/dark/visceral with slop/trough/slaughterhouse metaphor
+  - published as "probabilistically perfect piggies" (`_posts/2026-04-03-probabilistically-perfect-piggies.md`)
+  - v1 draft preserved in `_drafts/` for future material (thompson, mullet, biographical arc)
+- fixed hookify bugs
+  - `lowercase-content` rule had no content condition (blocked all writes to post/draft files)
+  - added `tool_matcher: Edit|Write|MultiEdit` to prevent blocking Read operations
+  - fixed `re.IGNORECASE` defeating case-checking regex with `(?-i:...)` inline groups
+  - added same `tool_matcher` fix to `no-em-dashes` rule
+- updated lowercase-content hook to distinguish ALL CAPS (voice/energy, allowed) from Title Case (polish, blocked)
+
+### what's next
+- v1 draft material: thompson personal discovery, homemade mullet energy, formula vs. intentionality thread could each become their own posts
+- experimentation budget draft still needs a voice review pass
+- freedom-rides-alabama and knowing-yourself-origins kernels still have gravity
+- hookify date-only-frontmatter rule has same trailing newline bug (blocks valid edits)

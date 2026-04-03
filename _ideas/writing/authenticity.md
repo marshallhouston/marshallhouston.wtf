@@ -1,8 +1,8 @@
 ---
 title: authenticity
 captured: 2026-03-31
-status: idea
-updated_at: 2026-04-01 06:14 MDT
+status: published
+updated_at: 2026-04-03 01:19 MDT
 ---
 
 ## the kernel
@@ -129,3 +129,55 @@ tone: conviction. the mania channels into something clear and forward-leaning. "
 ### connected ideas
 - writing-process kernel (the "how i actually do it" companion piece, framed as defiance not how-to)
 - biographical creative arc (future post: alabama, photography, 15-20 years of creative thread)
+
+---
+
+## revision notes (2026-04-02)
+
+### structural shift: four sections -> three
+original four-section arc (drowning, diagnosis, historical beat, declaration) felt too formulaic. collapsing to three:
+
+1. **the drowning** - scroll scroll scroll, the rant. manic energy, ALL CAPS, engagement farm language. the "is anyone there? is this my robot crew talking to your robot crew?" thread lands here as the gut punch after the rant builds.
+2. **mr gonzo** - thompson section. personal discovery arc (espn -> fear and loathing -> letters -> derby). "this isn't new. i've seen this before."
+3. **homemade mullet energy** - the proof, not the manifesto. formula vs. intentionality, the mullet, 109 in a 35, alabama. a haircut, not a declaration.
+
+### the formula vs. intentionality thread
+the post itself uses structure (named sections, clear arc). that's not the problem. the problem is formula as substitute for thinking. "what's the 5 step plan to implement someone else's thing" vs. "what the hell do i actually think and stand on." the post should acknowledge this self-awareness. using craft to organize your actual thoughts vs. using a template to avoid having thoughts.
+
+### the homemade mullet ending
+"i think a homemade mullet is in my near term future. i'm putting out big mullet energy into the world right now." me to my partner at 6:38am on april 1. trimmed by midday. "look at that cycle time baby... management's gonna love these metrics!" the cycle time joke uses optimization language to describe something completely un-optimizable. self-aware without being self-conscious.
+
+"this isn't the first time i've done this. 4.5 years ago. same situation. history really does repeat itself." the mullet is a pattern, not a whim. when conformity pressure hits a threshold, the response is physical, weird, yours.
+
+friends giving shit: "that's the look of someone pulling them over going 109 in a 35." "yep, that's authenticity." "this 2026 heater, yeah, i'm going 109 in a 35. let it rip."
+
+"ya know, it looks pretty good too ;P"
+
+### sturgill / johnny blue skies lyrics to weave in (mostly ending section)
+- "things have been worse but i can't remember when / wanna start a revolution, watch it begin" (Make America Fuk Again)
+- "been learning lessons and getting bubbles busted / learning how to turn ADHD into hyper-focus" (Make America Fuk Again)
+- "some days i feel like i'm on fire. my emotions get so amplified / some days i want to disappear and retire, then want to hop in the saddle and ride" (Viridescent)
+
+### closing energy
+close with homemade mullet energy, then: "but... why? don't take myself too seriously. have a little fun. or a lot of it. let's go"
+
+"you can take the boy outta alabammy, but you can't take the bammer out the boy."
+
+### section titles
+1. the drowning
+2. TBD: "mr gonzo" / "gonzo" / "dr gonzo" / something else
+3. homemade mullet energy
+
+### resolved questions (2026-04-02)
+- diagnosis material: some survives, placement TBD. strong bits: "is anyone there / robot crew" (drowning), "accessible to whom? to everyone, which means to no one," "the personality gets optimized right out of it"
+- formula acknowledgment: yes, needs an explicit moment in the text
+- "i'm a creative person" biographical thread: cut. belongs in future biographical arc post, not here
+- invitation / bid for connection at the end: no. the mullet ending speaks for itself. letting it rip.
+
+### v2 pivot (2026-04-03)
+came back the next day. the long-form v1 felt cathartic to write but too formulaic as a post. pivoted to a completely different approach: short, dark, visceral. the slop/trough/slaughterhouse metaphor carries the whole thing. three movements separated by rules, no named sections. title: "probabilistically perfect piggies."
+
+v1 draft preserved at `_drafts/authenticity-vs-convergence-to-bland-boring-sterile-omg-wtf.md` (thompson, mullet, longer rant). material there may feed future posts (gonzo/thompson personal discovery, homemade mullet energy, biographical creative arc).
+
+### published location
+`_posts/2026-04-03-probabilistically-perfect-piggies.md`
