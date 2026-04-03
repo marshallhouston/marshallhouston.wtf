@@ -1,6 +1,10 @@
 main:
   - title: "posts"
     url: /
+  - title: "tags"
+    url: /tags/
+  - title: "kernels"
+    url: /kernels/
   - title: "about"
     url: /about/
   - title: "influences"

@@ -25,6 +25,10 @@ future: true
 paginate: 5
 paginate_path: /page:num/
 
+collections:
+  kernels:
+    output: false
+
 include:
   - _pages
 
