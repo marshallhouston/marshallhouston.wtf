@@ -2,7 +2,7 @@
 layout: post
 title: "probabilistically perfect piggies"
 date: 2026-04-03
-updated_at: 2026-04-03 01:22 MDT
+updated_at: 2026-04-03 01:26 MDT
 ---
 
 slop. racing to the probabilistically perfect. sterile, milquetoast, borinnnnnggg slop. gather round the trough to fatten up on slop like some ai-powered herd of pigs.
@@ -11,7 +11,7 @@ vibe thinking. look how _easy_ it is! turn off our brains. submit.
 
 the duality of it all is so striking. we have such incredible power at our fingertips, and yet slop slop slop fills up the trough. this slop never ends, yipppppeeeeeee!
 
-the meeting summaries with a bajillion emojis. `:rocket-ship:` `:sparkles:` `:megaphone:` `:racecar:` `:checkmark:` `:glitter-pig:` the formulaic linkedin posts "what making zoodles for a dinner party taught me about <insert_generic_job_role>..." and "you'll never guess what happens next".
+the meeting summaries with a bajillion emojis. `:rocket-ship:` `:sparkles:` `:megaphone:` `:racecar:` `:checkmark:` `:glitter-pig:` the formulaic linkedin posts "what making zoodles for a dinner party taught me about `<insert_job_title>`..." and "you'll never guess what happens next".
 
 convergence to sameness, don't rock the boat, stay in your lane, optimize for engagement above all to the most average of averages. see you at the slop trough my fellow piggies.
 
