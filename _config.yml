@@ -21,6 +21,10 @@ markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
 repository: marshallhouston/marshallhouston.github.io
 permalink: /:categories/:title/
+
+tag_archive:
+  type: liquid
+  path: /tags/
 future: true
 paginate: 5
 paginate_path: /page:num/

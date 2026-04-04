@@ -1,8 +1,9 @@
 ---
 title: "mental experimentation budgets"
 date: 2026-03-29
-tags: [ai-augmented-engineering, mental-models, experimentation]
+tags: [sensemaking, mental-models, experimentation]
 classes: wide
+updated_at: 2026-04-04 03:19 MDT
 ---
 
 i love debugging. it's a sense-making puzzle.
