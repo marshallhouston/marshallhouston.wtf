@@ -2,10 +2,10 @@
 title: "co-intelligence & ai-augmented writing system"
 tags: [ai-augmented-engineering, writing, process, creative-expression]
 classes: wide
-updated_at: 2026-04-04 10:53 MDT
+updated_at: 2026-04-04 11:16 MDT
 ---
 
-i read ethan mollick's [co-intelligence](https://www.goodreads.com/book/show/198678162-co-intelligence) twice in 2025. his ideas on co-intelligence with human + ai together have heavily influenced my ai-augmented writing process.
+i read ethan mollick's [co-intelligence](https://www.goodreads.com/book/show/198678736-co-intelligence) twice in 2025. his ideas on co-intelligence with human + ai together have heavily influenced my ai-augmented writing process.
 
 writing again publicly feels the same and vastly different. 15 years is a long time.
 
