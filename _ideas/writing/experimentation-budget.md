@@ -4,6 +4,7 @@ captured: 2026-03-23
 status: published
 published: 2026-03-29
 updated_at: 2026-04-01 06:10 MDT
+kernel: experimentation-budgets
 ---
 
 a framework for thinking about experimentation as a finite resource to manage.

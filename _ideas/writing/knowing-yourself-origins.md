@@ -3,6 +3,7 @@ title: knowing yourself - origins and reflections
 captured: 2026-03-30
 status: kernel
 updated_at: 2026-04-01 06:11 MDT
+kernel: knowing-yourself
 ---
 
 ## the kernel

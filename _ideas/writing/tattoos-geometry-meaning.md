@@ -1,4 +1,10 @@
-# tattoos as operating system
+---
+title: tattoos as operating system
+captured: 2026-03-25
+status: kernel
+kernel: tattoos
+updated_at: 2026-04-04
+---
 
 ## the kernel (2026-03-25)
 

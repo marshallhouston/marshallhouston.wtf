@@ -1,6 +1,7 @@
 ---
 title: bff friction fixes from the first post
-updated_at: 2026-03-22 06:14 MDT
+kernel: bff
+updated_at: 2026-04-04 04:04 MDT
 ---
 
 three frictions named during the bff post. apply bff to each of these.

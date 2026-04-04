@@ -3,6 +3,7 @@ title: authenticity
 captured: 2026-03-31
 status: published
 updated_at: 2026-04-03 01:19 MDT
+kernel: authenticity
 ---
 
 ## the kernel

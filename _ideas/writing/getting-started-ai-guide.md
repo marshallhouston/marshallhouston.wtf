@@ -3,6 +3,7 @@ title: getting started ai guide
 captured: 2026-03-26
 status: kernel
 updated_at: 2026-04-01 06:18 MDT
+kernel: ai-guide
 ---
 
 raw kernel from marshall:

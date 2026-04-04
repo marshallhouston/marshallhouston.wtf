@@ -2,6 +2,7 @@
 title: it is our job to get stuck and then get unstuck
 captured: 2026-03-23
 updated_at: 2026-04-01 06:10 MDT
+kernel: stuck-unstuck
 ---
 
 the idea that getting stuck isn't failure — it's the actual job. and getting unstuck is the skill.

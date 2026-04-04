@@ -3,6 +3,7 @@ title: creativity and creative expression
 captured: 2026-03-30
 status: kernel
 updated_at: 2026-04-01 06:12 MDT
+kernel: creativity
 ---
 
 ## the kernel

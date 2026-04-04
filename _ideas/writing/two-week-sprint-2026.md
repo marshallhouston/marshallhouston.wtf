@@ -2,6 +2,7 @@
 title: the two week sprint was built for 2001. what's the 2026 version?
 captured: 2026-03-23
 updated_at: 2026-03-25 00:06 MDT
+kernel: two-week-sprint
 ---
 
 examining what agile was actually solving and what the equivalent looks like when ai changes the cost of building.

@@ -2,6 +2,7 @@
 title: what is the cosmic farmland?
 captured: 2026-03-22
 updated_at: 2026-04-01 06:18 MDT
+kernel: cosmic-farmland
 ---
 
 what is the cosmic farmland?

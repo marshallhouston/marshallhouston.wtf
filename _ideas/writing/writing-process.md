@@ -2,7 +2,8 @@
 title: my writing process
 captured: 2026-03-30
 status: refine
-updated_at: 2026-04-01 06:13 MDT
+kernel: writing-process
+updated_at: 2026-04-04 04:19 MDT
 ---
 
 ## the kernel

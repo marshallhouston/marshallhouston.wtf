@@ -3,6 +3,7 @@ title: freedom rides, alabama, the through-line
 captured: 2026-03-30
 status: kernel
 updated_at: 2026-04-01 06:17 MDT
+kernel: freedom-rides
 ---
 
 ## the kernel

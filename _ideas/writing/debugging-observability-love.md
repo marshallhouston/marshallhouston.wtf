@@ -2,6 +2,7 @@
 title: debugging as a way of understanding systems
 captured: 2026-03-27
 updated_at: 2026-04-01 06:17 MDT
+kernel: debugging-love
 ---
 
 debugging is how i understand systems. not a chore, not a failure mode. a lens.

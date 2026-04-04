@@ -3,6 +3,7 @@ title: influences catalog
 captured: 2026-03-30
 status: kernel
 updated_at: 2026-04-01 06:11 MDT
+kernel: influences
 ---
 
 ## the kernel
