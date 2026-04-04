@@ -1,87 +1,91 @@
 ---
-title: "my writing process"
+title: "on ai-augmented writing. just for me."
 tags: [ai-augmented-engineering, writing, process, creative-expression]
 classes: wide
-updated_at: 2026-04-01 02:49 mdt
+updated_at: 2026-04-03 02:59 MDT
 ---
 
-a few weeks ago i picked up ethan mollick's [co-intelligence](https://www.goodreads.com/book/show/198678162-co-intelligence). the core idea that stuck: ai isn't a replacement for thinking. it's a thinking partner. not the thing that does the work for you, but the thing that makes your thinking sharper, faster, more honest.
+i read ethan mollick's [co-intelligence](https://www.goodreads.com/book/show/198678162-co-intelligence) twice in 2025 and led a small bookclub on it.
 
-i'd been experimenting with claude code for a while at that point, but something clicked. i started applying that frame to writing. not "generate me a blog post" but "help me figure out what i'm actually trying to say."
+his ideas on human + ai together in concert as co-intelligence shape my ai-augmented writing process.
 
-a few weeks later, i've published three posts and have more ideas than i know what to do with. the process i've landed on is genuinely fascinating to me. when i show people how it works, the reaction is usually some version of "oh shit, i didn't know you could do that."
+i've had periods of immense creativity (documentary film, photography, blogging), but i haven't always identified as a creative.
 
-so here's how it works. come along if you want.
+this site feels like both a return to explicit creativity and yet something new and different.
+
+here's the current flow.
 
 ## the pipeline
 
-before zooming in, here's the full shape of the thing:
-
-**notebook** -> **kernel** -> **idea** -> **refine** -> **draft** -> **revision cycles** -> **published post**
+> notebook -> kernel -> idea -> refine -> draft -> revision cycles -> publish
 
 <!-- TODO: photo of notebook page -->
 
-it happens over days or weeks. ideas emerge, sit, breathe, get pressure-tested. the stages aren't bureaucracy. each one exists because i kept running into friction without it.
+it happens over days or weeks. ideas emerge, sit, breathe, shift shapes.
 
-let me walk through each one.
+<!-- TODO: add repo structure here as markdown block showing the one example (meb?) we'll use throughout the entire post -->
 
-**notebook.** everything starts here. pen, paper, noodling. no structure, no audience, no pressure. just whatever's bouncing around. i call these "noodle doodle" sessions because that's the energy. doodling with ideas.
+**notebook.** pen to paper, noodling and doodling. no structure. fragments. quick thoughts. furious scribbles. unlined paper means no lines to confine, and i can turn it 90 degrees, 180 degrees, off kilter. write tiny, write huge.
 
-**kernel.** a notebook riff that has some gravity gets captured as a kernel. a few sentences, maybe some threads to pull. enough to remember the spark, not enough to constrain it.
+**kernel.** first shift out of the notebook. claude code in repo and wispr flow to talk directly about the kernel. goes into the `_kernels` directory. a few sentences, maybe some threads to pull. lightweight. often add many kernels at once and then keep moving onto other things, and let these ferment.
 
-<!-- TODO: screenshot of a kernel doc -->
+<!-- TODO: kernel examples - directory structure and one example (same post used throughout) -->
 
-**idea.** kernels that keep pulling at me get fleshed out. what's the framing? what's the arc? who's this for? what's the energy? this is where the shape of the post starts to form, but i'm still not writing the post itself.
+**idea.** kernels that keep pulling at me get some more focus. claude code & wispr flow again to go into `_ideas` directory. why do i find this interesting? what's the framing? what's the arc? what's the energy? what's the crux? this is where the shape of the post starts to sprout. more formed than kernel but not a full draft at all. more fermentation.
 
-<!-- TODO: screenshot of idea doc -->
+<!-- TODO: directory structure of _ideas and an example (same post) -->
 
-**refine.** this step didn't exist at first. i added it because i kept jumping from idea to draft and losing the thread. refine is a q&a: why this post, why now? what am i trying to accomplish? what do i want readers to feel? no wordsmithing. just clarity on intent before i start writing actual sentences.
+**refine.** refine is a structured q&a: why this post, why now? what am i trying to accomplish? what emotional resonance am i going for? main purpose is to clarify my thinking and intent. claude code & wispr flow. sometimes let ferment further but others straight into next step if i'm feeling the creative urge.
 
-**draft.** now i'm writing. first drafts are loose, fast, getting-it-down. the quality of the draft is directly proportional to how well i did the refine step.
+<!-- TODO: examples - what directory? common prompts or skills? separate directory or append on ideas? -->
 
-**revision cycles.** this is where it gets interesting, and where the process has evolved the most. more on this below.
+**draft.** claude code in `_drafts` directory. see what emerges from the thinking i've put in from notebook -> kernel -> idea -> refine. i will hate this first draft. it's terrible. inaccurate. definitely _not_ what i want, and it's a starting point to launch from. purposeful friction, visceral reactions... no no no, this is trash; ok cool, let's curate. i've now got something to see and feel and interact with.
 
-**published post.** when it's ready, it moves from `_drafts/` to `_posts/` and goes live. "ready" is a feeling more than a checklist.
+**revision cycles.** `/feedback` skill that creates local html file with draft on the left and feedback input section on the right. wispr flow brain dump first few cycles that are focused on high level feelings, structure. not focused on words. eventually transitions into granular changes with specific words and phrasing on subsequent revisions. all feedback is fed back directly into claude code with a simple "copy all feedback as markdown" approach. could it be automatic? yeah, i bet. but good enough for now.
 
-## the bff era
+<!-- TODO: screenshots and videos here. show _drafts dir with multiple iterations after each revision cycle -->
+
+**published post.** when it's ready, claude code moves it from `_drafts/` to `_posts/`. commit and push and github site automatically updates. "ready" is a feeling more than a checklist. ship it earlier than i want to get it out there.
+
+<!-- TODO: another step in the flow? worklog updates? apply bff (link to post) and see if there are hooks or skills to add and improve the overall system? -->
+
+## evolution
 
 <!-- TODO: screen recording of bff-era side-by-side workflow -->
 
 the first post i wrote with this flow was [build friction fix]({{ site.baseurl }}{% post_url 2026-03-22-build-friction-fix %}). the setup was simple: claude code on the left, locally served blog post on the right, [wispr flow](https://www.wispr.ai/) for voice input.
 
-the loop looked like this: read the rendered post in the browser, talk through what wasn't working via wispr flow, bring that feedback into claude code, get a new draft, look again.
+the loop was read the rendered post in the browser, talk through what wasn't working via wispr flow, bring that feedback into claude code, get a new draft, look again.
 
 it worked. the feedback was mostly structural. "is the arc right? does this section flow into the next one? am i losing energy here?" big-picture stuff.
 
-but the friction was real. everything lived in conversation. i couldn't distinguish between "rewrite this whole section, the framing is off" and "change this specific phrase, it doesn't sound like me." structural feedback and line-level feedback were tangled together, and claude code had to guess which altitude i was operating at.
+i was frustrated with the friction because i couldn't distinguish between "rewrite this whole section, the framing is off" and "change this specific phrase exactly." structural feedback and line-level feedback were tangled together, and claude code happily guessed at entire rewrites... oof.
 
-it was a start. and it got the post out.
-
-## the meb evolution
+it was good enough though, and i finally wrote a thing! yayayayayay
 
 <!-- TODO: screenshots of review.html with structured feedback sections -->
 
-the second post, [mental experimentation budgets]({{ site.baseurl }}{% post_url 2026-03-29-mental-experimentation-budgets %}), took two weekends. not because the writing was harder, but because i was also building the next version of the process while using it.
+the second post, [mental experimentation budgets]({{ site.baseurl }}{% post_url 2026-03-29-mental-experimentation-budgets %}), took two weekends.
 
 the big friction from bff: overall feedback and specific wording feedback getting tangled in conversation. the fix was `review.html`, a split-pane tool. the rendered post on the left, structured feedback sections on the right. each section of the post got its own feedback panel with placeholders tailored to what kind of feedback that section needed.
 
-the feedback loop became: read a section, type feedback in its panel, hit "copy all feedback as markdown," paste into claude code. structured, repeatable, no more guessing what altitude i was at.
+the feedback loop became: read a section, add feedback in its panel, hit "copy all feedback as markdown," paste into claude code. structured, repeatable, no more guessing what altitude i was at.
 
 ### wispr flow as cognitive routing
 
-here's something i didn't expect: voice input changed how i thought, not just how fast i typed.
+wispr flow has been awesome to harness co-intelligence. i braindump and riff with the quickness. ~170 wpm of pure chaos.
 
-when i'm typing feedback, i drift into wordsmithing. i start editing sentences, fiddling with phrasing, chasing rabbit holes. typing pulls you down to the word level whether you want to be there or not.
+when i'm typing feedback, i go too quickly to wordsmithing. i start editing sentences, fiddling with phrasing, chasing rabbit holes. typing pulls me down to the word level whether i want to be there or not.
 
-talking keeps you at the right altitude. when i'm voice-dictating feedback on overall structure, i stay structural. i'm not tempted to rewrite a sentence because i'm not looking at a cursor in a text field. the medium shapes the message.
+talking keeps me at the right altitude. when wispr flowing feedback on overall structure, i stay in the structural realm. i'm not tempted to rewrite a sentence. i can go to the granular level if i want. the medium shapes the message.
 
-wispr flow isn't a convenience tool. it's cognitive routing. it keeps the main thing the main thing.
+wispr flow isn't a convenience tool. it's cognitive routing to stay at the right level of granularity. it keeps the main thing the main thing.
 
 ## the current system
 
 <!-- TODO: screen recording of highlighting and "instead x -> do y" on this post -->
 
-the system i'm using right now (on this actual post) added another layer. the structured feedback sections from meb were good for big-picture notes. but for specific wording, i was still writing things like "the phrase in paragraph 3 that says x should say y" which is clunky.
+the system i'm using now on this actual post adds another layer. the structured feedback sections from meb were good for big-picture notes. but for specific wording, i was using `instead: "copied text" do: "revision"` repeatedly. type instead:, highlight to copy & paste, type do:, copy & paste.
 
 the fix: inline text selection. highlight any text in the rendered post and the feedback textarea auto-populates with:
 
@@ -92,45 +96,36 @@ do: ""
 
 cursor lands right on the empty `do:` line, ready for the replacement. precise, fast, no ambiguity about what you're referring to.
 
-combined with skills and commands i've built in claude code, the full revision cycle is now:
-
-1. render the post locally
-2. open `review.html` with the post loaded
-3. read through section by section
-4. structural feedback goes in section panels
-5. specific wording: highlight text, type the replacement
-6. copy all feedback as markdown
-7. paste into claude code
-8. new draft renders, repeat
+<!-- TODO: update this revision cycle list based on current flow -->
 
 each layer came from friction in the previous one. loose conversation feedback became structured feedback sections became highlighting with direct substitution. the system is building itself.
 
 ## the thread
 
-i want to zoom out for a second.
+at the core, this is just a bff fractal.
 
-none of this was planned. i didn't sit down and design a writing system. i wrote a post, noticed what was hard, and fixed it. wrote another post, noticed new friction, fixed that too. [build friction fix]({{ site.baseurl }}{% post_url 2026-03-22-build-friction-fix %}) isn't just the name of a post. it's the loop that built the process you're reading about.
+none of this was planned. i didn't sit down and design a writing system. i wrote a post, named the friction, and fixed it. wrote another post, noticed new friction, fixed that too. [build friction fix]({{ site.baseurl }}{% post_url 2026-03-22-build-friction-fix %}) isn't just the name of a post. it's the system.
 
-the ai piece is essential but it's not the point. claude code doesn't write my posts. it makes the revision loop fast enough that i can actually iterate on voice, on structure, on whether something lands. the bottleneck was never "can i write?" it was "can i close the feedback loop fast enough to actually improve?"
+the ai-augmented co-intelligence is essential but it's not the entire point. with claude code + wispr flow, it makes the revision loop fast enough that i can actually iterate on voice, on structure, on whether something lands. the bottleneck was never "can i write?"
 
-turns out, yes. with the right setup, you can.
+turns out, yes i can.
 
 ## not just me
 
-i keep seeing versions of this pattern in the wild. people finding their own way to use ai as a thinking partner rather than a replacement.
+i keep seeing versions of this pattern out in the wild. people finding their own way to use ai as co-intelligence for exactly what they want and need.
 
-jeff casimir, founder of turing school, shared his experience using ai to prepare for a technical assessment in python (a language he was learning, coming from deep ruby expertise):
+jeff casimir, founder of turing school, shared his experience using ai to prepare for a technical assessment in python:
 
-> we researched likely interview problems, wrote test suites, i built implementation, claude gave feedback, and we distilled it into a pdf "python for rubyists" that i could print and have on my desk for the assessment.
+> We researched likely interview problems, wrote test suites, I built implementation, Claude gave feedback, and we distilled it into a PDF "Python for Rubyists" that I could print and have on my desk for the assessment.
 
-> i think the real value is in using ai as a coach and collaborator. it can be the hub of a conversation that mixes the learner, the work, research, outside expertise (like a teacher), experience/context (like your past work/success/struggle), requirements/constraints, etc. the answer is the least interesting part of the process.
+> I think the real value is in using AI as a coach and collaborator. It can be the hub of a conversation that mixes the learner, the work, research, outside expertise (like a teacher), experience/context (like your past work/success/struggle), requirements/constraints, etc. The answer is the least interesting part of the process.
 
-same principle. not "ai do this for me" but "ai help me think through this." the specific tools and workflows are different, but the relationship is the same.
+not "ai do this for me" vibe thinking but "ai as co-intelligence to own my own learning." the specific tools and workflows are different, but the relationship is the same.
 
 ## come along
 
-this process will keep evolving. i'll hit new friction, build new fixes, and the system will look different in a month. that's the point.
+this process will keep evolving. i'll hit new friction, build new fixes, and the system will look different in a month.
 
-if this resonates, i'd love to hear what you're building. how are you using ai in your creative work, your learning, your daily practice? not the tool itself, but the relationship you've developed with it.
+i'd love to hear what co-intelligence looks like for you. how are you using ai in your creative work, your learning, your daily practice? the tools are neat, but i'm more interested in the co-intelligence you've developed with it.
 
-come find me. let's compare notes.
+let's chat :)

@@ -3,6 +3,7 @@ title: "probabilistically perfect piggies"
 date: 2026-04-03
 updated_at: 2026-04-03 05:48 MDT
 ---
+tags: [authenticity, ai-culture]
 
 slop. racing to the probabilistically perfect. sterile, milquetoast, borinnnnnggg slop. gather round the trough to fatten up on slop like some ai-powered herd of pigs.
 

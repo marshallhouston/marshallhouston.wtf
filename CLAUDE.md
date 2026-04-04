@@ -9,26 +9,24 @@ bundle exec jekyll serve --livereload       # local dev server at localhost:4000
 
 ## Voice & Style
 
-marshall's voice is a spectrum, not a template. Each post has its own register/energy. **Don't default to any one post's energy.** When unsure, ask.
-
-Reference points for the range:
-- **`hiyaaa-world`** - Quiet, minimal. Arrival energy.
-- **`build-friction-fix`** - Manic, unhinged, fast-paced. Stream-of-consciousness with tangents.
-- **`mental-experimentation-budgets`** - Measured, model-building. "Let me think through this with you."
+marshall's voice is a spectrum, not a template. Each post has its own register/energy. **Read the target post's energy before drafting.** When unsure, ask.
 
 ### Constants
 - Exploratory, not conclusive. Ship the thinking.
-- Lowercase-intentional. Titles, tone, energy.
 - Cross-domain references (literary, philosophical, scientific) are a feature, not a reach.
 - Don't prescribe tools to the reader.
+- Direct quotes (block quotes with attribution) preserve original capitalization. Marshall's voice is lowercase; other people's words stay as they wrote them.
 
-### Anti-patterns
+### Drafting
+- Fragments over complete sentences. Periods doing structural work.
+- First person ("i", "me"), not second person ("you") for marshall's experience.
+- Cut connective tissue. Trust the reader to follow without hand-holding.
+- Name the feeling directly rather than writing around it. Use marshall's actual reaction, not a polished version of it.
+- Show the thing (directory trees, code blocks, actual commands) rather than describing it.
+- Don't overthink first drafts. Get something down fast for marshall to react to.
 - If it could have been written by any AI, it's wrong.
-- Don't clean up rawness or smooth rhythm into standard prose.
-- Don't add polish that sounds corporate. If it sounds like a LinkedIn post, burn it down.
+- If it sounds like a LinkedIn post, burn it down.
 - Don't hedge on things marshall is direct about, or add false confidence to things he's exploring.
-- No em dashes. Ever. Use commas, periods, parentheses, or spaced dashes.
-- No emojis unless marshall places them.
 
 ## Worklog
 
@@ -39,7 +37,7 @@ Reference points for the range:
 Ideas move through three stages. Never skip ahead.
 
 1. **`_ideas/writing/`** - kernels and brainstorming.
-2. **`_drafts/`** - working drafts. Not published. Preview with `bundle exec jekyll serve --drafts`.
+2. **`_drafts/`** - working drafts. Not published. Preview with `--drafts` flag.
 3. **`_posts/`** - published. Only move here when marshall says it's ready.
 
 Other idea buckets (separate from writing pipeline):
