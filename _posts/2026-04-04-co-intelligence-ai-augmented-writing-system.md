@@ -1,13 +1,13 @@
 ---
-title: "on ai-augmented writing. just for me."
+title: "co-intelligence & ai-augmented writing system"
 tags: [ai-augmented-engineering, writing, process, creative-expression]
 classes: wide
-updated_at: 2026-04-04 06:57 MDT
+updated_at: 2026-04-04 10:53 MDT
 ---
 
-i read ethan mollick's [co-intelligence](https://www.goodreads.com/book/show/198678162-co-intelligence) twice in 2025 and led a small bookclub on it. his ideas on human + ai together in concert as co-intelligence shape my ai-augmented writing process.
+i read ethan mollick's [co-intelligence](https://www.goodreads.com/book/show/198678162-co-intelligence) twice in 2025. his ideas on co-intelligence with human + ai together have heavily influenced my ai-augmented writing process.
 
-this site feels like both a return to explicit creativity and yet something new and different. i've had periods of immense creativity (documentary film, photography, blogging), but i haven't always identified as a creative.
+writing again publicly feels the same and vastly different. 15 years is a long time.
 
 ## the pipeline
 
@@ -73,53 +73,53 @@ when i'm typing feedback, i go too quickly to wordsmithing. i edit and re-edit s
 
 talking lets me stay at the right level of granularity. when feedbacking on overall structure, i stay in the structural realm. i'm not tempted to rewrite a sentence. yes, i can go to the granular level if i absolutely must, but it is easier to stay in the feedback lane i want.
 
-wispr flow isn't a convenience tool. it's cognitive routing to stay at the right level of granularity. it keeps the main thing the main thing.
+wispr flow helps me stay at the right level of granularity, & it keeps the main thing the main thing.
 
 ## the current system
 
 <!-- TODO: screen recording of highlighting and "instead x -> do y" on this post -->
 
-the system i'm using now on this actual post adds another layer. the structured feedback sections from meb were good for big-picture notes. but for specific wording, i was using `instead: "copied text" do: "revision"` repeatedly. type instead:, highlight to copy & paste, type do:, copy & paste.
+the system i've got in place for this post adds another layer. the structured feedback sections from meb were good for big-picture notes. for specific wording, i was using `instead: "copied text" do: "revision"` over and over again. type `instead:`, highlight text to copy & then paste it in feedback box, type `do:`, copy & paste, edit specific wording.
 
-the fix: inline text selection. highlight any text in the rendered post and the feedback textarea auto-populates with:
+that was annoying. i fixed. now, i highlight any text in the draft and the feedback text area auto-populates with:
 
-```
-instead: "the text you highlighted"
-do: ""
-```
+> ```
+> instead: "<selected_text>"
+> do: "<selected_text>"
+> ```
 
-cursor lands right on the empty `do:` line, ready for the replacement. precise, fast, no ambiguity about what you're referring to.
+cursor lands right on the empty do: line, ready for the replacement. quick & easy.
 
 <!-- TODO: update this revision cycle list based on current flow -->
 
-each layer came from friction in the previous one. loose conversation feedback became structured feedback sections became highlighting with direct substitution. the system is building itself.
+bffing the system. at the core, this entire flow is a bff fractal.
 
 ## the thread
 
-at the core, this is just a bff fractal.
+i like that the patterns emerged naturally through action. write, name the friction, and fix it. again and again.
 
-none of this was planned. i didn't sit down and design a writing system. i wrote a post, named the friction, and fixed it. wrote another post, noticed new friction, fixed that too. [build friction fix]({{ site.baseurl }}{% post_url 2026-03-22-build-friction-fix %}) isn't just the name of a post. it's the system.
+this ai-augmented writing flow co-intelligence is bonkers for me. moving from notebook through ideas happens much quicker and in parallel; friction to start costs less neuron-watts. the revision loop is fast enough that i actually iterate on voice and structure.
 
-the ai-augmented co-intelligence is essential but it's not the entire point. with claude code + wispr flow, it makes the revision loop fast enough that i can actually iterate on voice, on structure, on whether something lands. the bottleneck was never "can i write?"
+`tangent` i throw away a ton of shit. the experimental weird `wtf is this, oh yes catharsis` [probabilistically perfect piggies]({{ site.baseurl }}{% post_url 2026-04-03-probabilistically-perfect-piggies %}) emerged after jamming on a lengthy diatribe about authenticity, hunter s thompson, creatives responses to authoritarianism and fascism, and homemade mullet energy + jbs&tdc's mutiny after midnight. late, late stages on it. about to ship. but i didn't love it. felt off, forced a bit. so i went old-school, straight writing, no co-intelligence. oink oink motherfuckers. `end tangent`
 
-turns out, yes i can.
+the bottleneck has never been "can i write?" i've done that before (tracked down a blog from 15 years ago when i was moving out to colorado. hilarious trip into nostalgia land).
+
+the last 15 years it's been everything else.
 
 ## not just me
 
-i keep seeing versions of this pattern out in the wild. people finding their own way to use ai as co-intelligence for exactly what they want and need.
+widening out, i love seeing versions of this pattern out in the wild from all sorts of folks. people finding their own way to use ai as co-intelligence for exactly what they want and need and then sharing it.
 
-jeff casimir, founder of turing school, shared his experience using ai to prepare for a technical assessment in python:
+one example i love is from [jeff casimir](https://www.linkedin.com/posts/jcasimir_last-week-i-did-an-online-technical-challenge-activity-7444432840060133376-6MjV/) who shared his experience using ai to prepare for a technical assessment in python:
 
 > We researched likely interview problems, wrote test suites, I built implementation, Claude gave feedback, and we distilled it into a PDF "Python for Rubyists" that I could print and have on my desk for the assessment.
 
 > I think the real value is in using AI as a coach and collaborator. It can be the hub of a conversation that mixes the learner, the work, research, outside expertise (like a teacher), experience/context (like your past work/success/struggle), requirements/constraints, etc. The answer is the least interesting part of the process.
 
-not "ai do this for me" vibe thinking but "ai as co-intelligence to own my own learning." the specific tools and workflows are different, but the relationship is the same.
+not "ai do this for me" vibe thinking but "ai as co-intelligence to own my own learning." the specific tools and workflows are different, but the relationship is the same. own your learning. own it!
 
 ## come along
 
-this process will keep evolving. i'll hit new friction, build new fixes, and the system will look different in a month.
+this process will keep evolving. i'll bff and bff again. maybe there's a bff'd writing gastown out there.
 
-i'd love to hear what co-intelligence looks like for you. how are you using ai in your creative work, your learning, your daily practice? the tools are neat, but i'm more interested in the co-intelligence you've developed with it.
-
-let's chat :)
+weird times we live in y'all. keep learning and building :)
