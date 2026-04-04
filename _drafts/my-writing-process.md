@@ -2,50 +2,44 @@
 title: "on ai-augmented writing. just for me."
 tags: [ai-augmented-engineering, writing, process, creative-expression]
 classes: wide
-updated_at: 2026-04-03 02:59 MDT
+updated_at: 2026-04-04 06:57 MDT
 ---
 
-i read ethan mollick's [co-intelligence](https://www.goodreads.com/book/show/198678162-co-intelligence) twice in 2025 and led a small bookclub on it.
+i read ethan mollick's [co-intelligence](https://www.goodreads.com/book/show/198678162-co-intelligence) twice in 2025 and led a small bookclub on it. his ideas on human + ai together in concert as co-intelligence shape my ai-augmented writing process.
 
-his ideas on human + ai together in concert as co-intelligence shape my ai-augmented writing process.
-
-i've had periods of immense creativity (documentary film, photography, blogging), but i haven't always identified as a creative.
-
-this site feels like both a return to explicit creativity and yet something new and different.
-
-here's the current flow.
+this site feels like both a return to explicit creativity and yet something new and different. i've had periods of immense creativity (documentary film, photography, blogging), but i haven't always identified as a creative.
 
 ## the pipeline
 
-> notebook -> kernel -> idea -> refine -> draft -> revision cycles -> publish
+> notebook <-> kernel <-> idea <-> refine <-> draft <-> revision cycles <-> publish
 
 <!-- TODO: photo of notebook page -->
 
-it happens over days or weeks. ideas emerge, sit, breathe, shift shapes.
+this flow often takes days or weeks. ideas emerge, sit, breathe, shift shapes. though it's represented here as linear, it's decidedly nonlinear. porous, amoebic, adhd chaos with multiple parallel sessions all in various stages at the same time.
 
 <!-- TODO: add repo structure here as markdown block showing the one example (meb?) we'll use throughout the entire post -->
 
-**notebook.** pen to paper, noodling and doodling. no structure. fragments. quick thoughts. furious scribbles. unlined paper means no lines to confine, and i can turn it 90 degrees, 180 degrees, off kilter. write tiny, write huge.
+**notebook.** pen to paper. noodling and doodling without any structure. fragments, quick thoughts, lists and bullets that then expand wide. furious scribbles. the feeling of pen on paper unlocks flow. this is _not_ editing time. i really like my moleskine cahier xl notebook with unlined pages; unlined is magical because there are no lines to confine. infrequently, i'll grab a legal pad lying around or one of those black and white composition notebooks (downside here is that i lose the plot and try to write as small as possible within a single line... partner says it looks serial-killerish, so yeah lol). love rotating the notebook randomly to write at 90 / 135 / 180 degrees. off kilter. write tiny, write huge.
 
-**kernel.** first shift out of the notebook. claude code in repo and wispr flow to talk directly about the kernel. goes into the `_kernels` directory. a few sentences, maybe some threads to pull. lightweight. often add many kernels at once and then keep moving onto other things, and let these ferment.
+**kernel.** first shift out of the notebook and into digital realm. claude code session in local repo using wispr flow to talk directly about the kernel. goes into the `_kernels` directory and ends up in [kernels](https://marshallhouston.github.io/kernels/). extract it down to one sentence, the thread to pull and pull. lightweight. often add many kernels at once and then keep moving onto other things, and let these ferment. i don't want to lose the context around the kernel, so that automatically gets thrown into the ideas section.
 
 <!-- TODO: kernel examples - directory structure and one example (same post used throughout) -->
 
-**idea.** kernels that keep pulling at me get some more focus. claude code & wispr flow again to go into `_ideas` directory. why do i find this interesting? what's the framing? what's the arc? what's the energy? what's the crux? this is where the shape of the post starts to sprout. more formed than kernel but not a full draft at all. more fermentation.
+**idea.** all the random connections and thoughts related to a kernel from the initial planting. when inspiration strikes, i'll add more thoughts about the kernel. claude code & wispr flow again. broad framing: why do i find this interesting? what's the framing? what's the arc? what's the energy? what's the crux? this is where the shape starts to take form. more details and looser than the tightly scoped one-sentence kernel but not a full draft. append only. not editing. i don't look at what's collected in the ideas file. that would trigger the urge to edit, and we *do not* edit ideas :P then, i step away. the fermentation magic happens. let it simmer. blue smoke's rolling and temp has settled, nom bbq.
 
 <!-- TODO: directory structure of _ideas and an example (same post) -->
 
-**refine.** refine is a structured q&a: why this post, why now? what am i trying to accomplish? what emotional resonance am i going for? main purpose is to clarify my thinking and intent. claude code & wispr flow. sometimes let ferment further but others straight into next step if i'm feeling the creative urge.
+**refine.** refine is a more structured. usually q&a: why this post, why now? what am i trying to accomplish? what emotional resonance am i going for? main purpose is to further clarify thinking and intent. claude code & wispr flow again. can oscillate back to more free-flowing ideas stage. sometimes let ferment further but others straight into next step if i'm feeling the creative urge.
 
 <!-- TODO: examples - what directory? common prompts or skills? separate directory or append on ideas? -->
 
-**draft.** claude code in `_drafts` directory. see what emerges from the thinking i've put in from notebook -> kernel -> idea -> refine. i will hate this first draft. it's terrible. inaccurate. definitely _not_ what i want, and it's a starting point to launch from. purposeful friction, visceral reactions... no no no, this is trash; ok cool, let's curate. i've now got something to see and feel and interact with.
+**draft.** we're finally ready to throw it into a draft state. claude code _without_ wispr flow. take what we've got from ideas and see what happens. i will hate this first draft. it is guaranteed. it's terrible. inaccurate. definitely not what i want, not what i said, not the voice or point... THE KERNEL IS CLEAR. visceral reaction expected... "no no no, this is trash. how in the hell is _that_ what was produced". but it's a launching point, and i feel the immediate shift. "ok cool, let's curate. i'm going to tear this shit to pieces and make it mine!". i've now got something to see and feel and interact with, and this shift matters.
 
-**revision cycles.** `/feedback` skill that creates local html file with draft on the left and feedback input section on the right. wispr flow brain dump first few cycles that are focused on high level feelings, structure. not focused on words. eventually transitions into granular changes with specific words and phrasing on subsequent revisions. all feedback is fed back directly into claude code with a simple "copy all feedback as markdown" approach. could it be automatic? yeah, i bet. but good enough for now.
+**revision cycles.** the english major comes out. the tinkerer, the tweaker. there will be many, many revision cycles. claude code paired back up with wispr flow. `/feedback` skill creates a local html file with the draft on the left side and open feedback sections on the right. the first few cycles are focused on high level thinking, structure, feelings as i read it. we are not focused at the granular word and sentence level. once this is dialed, i get more detailed and make changes with specific words and sentences. all feedback is fed back directly into claude code with "copy all feedback as markdown" button. could this be automatic? yeah. but system's good enough for now. can always build it in the future. tbd on how many times this `/feedback` skill gets run. precision, intent. an extra grain of finishing salt. another squeeze of lemon or splash of vinegar.
 
 <!-- TODO: screenshots and videos here. show _drafts dir with multiple iterations after each revision cycle -->
 
-**published post.** when it's ready, claude code moves it from `_drafts/` to `_posts/`. commit and push and github site automatically updates. "ready" is a feeling more than a checklist. ship it earlier than i want to get it out there.
+**published post.** holy shit, we're finally here! it's ready. claude code moves it from `_drafts/` to `_posts/`. commit and push, and the simple github site automatically updates. "ready" is a feeling; it is not a checklist. ship it earlier than i want to get it out there. by this time, dinner companions are starving, but that's what apps are for ;)
 
 <!-- TODO: another step in the flow? worklog updates? apply bff (link to post) and see if there are hooks or skills to add and improve the overall system? -->
 
@@ -53,31 +47,31 @@ it happens over days or weeks. ideas emerge, sit, breathe, shift shapes.
 
 <!-- TODO: screen recording of bff-era side-by-side workflow -->
 
-the first post i wrote with this flow was [build friction fix]({{ site.baseurl }}{% post_url 2026-03-22-build-friction-fix %}). the setup was simple: claude code on the left, locally served blog post on the right, [wispr flow](https://www.wispr.ai/) for voice input.
+the first post i wrote with this flow was [build friction fix]({{ site.baseurl }}{% post_url 2026-03-22-build-friction-fix %}). the setup was very simple. claude code on the left, locally served blog post on the right, wispr flow for voice input.
 
-the loop was read the rendered post in the browser, talk through what wasn't working via wispr flow, bring that feedback into claude code, get a new draft, look again.
+the loop: read the rendered post in the browser, talk through what wasn't working via wispr flow to bring that feedback into claude code, get a new draft, look again. over and over again.
 
-it worked. the feedback was mostly structural. "is the arc right? does this section flow into the next one? am i losing energy here?" big-picture stuff.
+the feedback was mostly structural at the outset. "is the arc right? does this section flow into the next one? am i losing energy here?" big-picture stuff.
 
-i was frustrated with the friction because i couldn't distinguish between "rewrite this whole section, the framing is off" and "change this specific phrase exactly." structural feedback and line-level feedback were tangled together, and claude code happily guessed at entire rewrites... oof.
+since i wasn't distinguishing between "rewrite this whole section, the framing is off" and "change this specific phrase exactly," i got frustrated with the changes in the next draft when i told claude to incorporate the feedback. it felt like three steps back. structural feedback and line-level feedback were tangled together, and claude code happily gave me entire rewrites... oof.
 
-it was good enough though, and i finally wrote a thing! yayayayayay
+however, the system was good enough. i finally wrote a thing! the cosmic farmland was BACK UP! yayayayayay
 
 <!-- TODO: screenshots of review.html with structured feedback sections -->
 
-the second post, [mental experimentation budgets]({{ site.baseurl }}{% post_url 2026-03-29-mental-experimentation-budgets %}), took two weekends.
+the second post, [mental experimentation budgets]({{ site.baseurl }}{% post_url 2026-03-29-mental-experimentation-budgets %}), took shape over a few weeks.
 
-the big friction from bff: overall feedback and specific wording feedback getting tangled in conversation. the fix was `review.html`, a split-pane tool. the rendered post on the left, structured feedback sections on the right. each section of the post got its own feedback panel with placeholders tailored to what kind of feedback that section needed.
+i addressed the friction from writing bff where high-level general feedback tangled with specific wording feedback. the fix was `review.html`, an early version of the `/feedback` skill.
 
-the feedback loop became: read a section, add feedback in its panel, hit "copy all feedback as markdown," paste into claude code. structured, repeatable, no more guessing what altitude i was at.
+now, the feedback loop became read a section, add feedback, hit "copy all feedback as markdown," paste into claude code. structured, repeatable, and no more confusion level of granularity.
 
-### wispr flow as cognitive routing
+### wispr flow as granularity guardrail
 
 wispr flow has been awesome to harness co-intelligence. i braindump and riff with the quickness. ~170 wpm of pure chaos.
 
-when i'm typing feedback, i go too quickly to wordsmithing. i start editing sentences, fiddling with phrasing, chasing rabbit holes. typing pulls me down to the word level whether i want to be there or not.
+when i'm typing feedback, i go too quickly to wordsmithing. i edit and re-edit sentences, fiddle with phrasing, chase rabbits. typing pulls me down to the word level whether i want to be there or not.
 
-talking keeps me at the right altitude. when wispr flowing feedback on overall structure, i stay in the structural realm. i'm not tempted to rewrite a sentence. i can go to the granular level if i want. the medium shapes the message.
+talking lets me stay at the right level of granularity. when feedbacking on overall structure, i stay in the structural realm. i'm not tempted to rewrite a sentence. yes, i can go to the granular level if i absolutely must, but it is easier to stay in the feedback lane i want.
 
 wispr flow isn't a convenience tool. it's cognitive routing to stay at the right level of granularity. it keeps the main thing the main thing.
 

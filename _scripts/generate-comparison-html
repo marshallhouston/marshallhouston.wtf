@@ -104,7 +104,8 @@ html = <<~HTML
       --feedback-bg: #16161f;
       --left-accent: #7b8cff;
       --right-accent: #c084fc;
-      --drawer-width: 420px;
+      --left-drawer-width: 420px;
+      --right-drawer-width: 420px;
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -115,6 +116,7 @@ html = <<~HTML
       font-family: 'Georgia', 'Times New Roman', serif;
       font-size: 16px;
       line-height: 1.75;
+      overflow-x: hidden;
     }
 
     /* toggle bar */
@@ -172,17 +174,18 @@ html = <<~HTML
 
     /* main layout */
     .container {
+      min-width: 500px;
       max-width: 780px;
       margin: 0 auto;
       padding: 80px 32px 120px;
-      transition: margin 0.3s, max-width 0.3s;
+      transition: margin-left 0.3s, margin-right 0.3s;
     }
 
-    body.left-open .container { margin-left: calc(var(--drawer-width) + 24px); }
-    body.right-open .container { margin-right: calc(var(--drawer-width) + 24px); }
+    body.left-open .container { margin-left: calc(var(--left-drawer-width) + 24px); }
+    body.right-open .container { margin-right: calc(var(--right-drawer-width) + 24px); }
     body.left-open.right-open .container {
-      margin-left: calc(var(--drawer-width) + 24px);
-      margin-right: calc(var(--drawer-width) + 24px);
+      margin-left: calc(var(--left-drawer-width) + 24px);
+      margin-right: calc(var(--right-drawer-width) + 24px);
     }
 
     .hero {
@@ -215,11 +218,9 @@ html = <<~HTML
       position: fixed;
       top: 49px;
       bottom: 48px;
-      width: var(--drawer-width);
       background: var(--bg-surface);
       border: 1px solid var(--border);
       overflow-y: auto;
-      transform: translateX(0);
       transition: transform 0.3s ease;
       z-index: 50;
       padding: 0;
@@ -227,6 +228,7 @@ html = <<~HTML
 
     .drawer.left-drawer {
       left: 0;
+      width: var(--left-drawer-width);
       border-left: none;
       border-radius: 0 10px 10px 0;
       transform: translateX(-100%);
@@ -234,6 +236,7 @@ html = <<~HTML
 
     .drawer.right-drawer {
       right: 0;
+      width: var(--right-drawer-width);
       border-right: none;
       border-radius: 10px 0 0 10px;
       transform: translateX(100%);
@@ -241,6 +244,35 @@ html = <<~HTML
 
     body.left-open .drawer.left-drawer { transform: translateX(0); }
     body.right-open .drawer.right-drawer { transform: translateX(0); }
+
+    /* resize handles */
+    .resize-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      width: 6px;
+      cursor: col-resize;
+      z-index: 60;
+      transition: background 0.15s;
+    }
+
+    .resize-handle:hover,
+    .resize-handle.dragging {
+      background: var(--accent);
+      opacity: 0.4;
+    }
+
+    .left-drawer .resize-handle {
+      right: -3px;
+    }
+
+    .right-drawer .resize-handle {
+      left: -3px;
+    }
+
+    body.resizing { cursor: col-resize; user-select: none; }
+    body.resizing .drawer { transition: none; }
+    body.resizing .container { transition: none; }
 
     .drawer-header {
       position: sticky;
@@ -463,6 +495,7 @@ html = <<~HTML
 
   <!-- left drawer: draft 1 -->
   <div class="drawer left-drawer" data-draft="draft 1">
+    <div class="resize-handle" data-side="left"></div>
     <div class="drawer-header">draft 1: #{draft1[:label]}</div>
     #{all_titles.map { |t|
       content = d1_map[t] ? md_to_html(d1_map[t]) : '<p style="color:var(--text-muted);font-style:italic;">(not in this draft)</p>'
@@ -472,6 +505,7 @@ html = <<~HTML
 
   <!-- right drawer: draft 2 -->
   <div class="drawer right-drawer" data-draft="draft 2">
+    <div class="resize-handle" data-side="right"></div>
     <div class="drawer-header">draft 2: #{draft2[:label]}</div>
     #{all_titles.map { |t|
       content = d2_map[t] ? md_to_html(d2_map[t]) : '<p style="color:var(--text-muted);font-style:italic;">(not in this draft)</p>'
@@ -566,6 +600,45 @@ html = <<~HTML
       setTimeout(() => hint.classList.remove('visible'), 800);
       sel.removeAllRanges();
     });
+
+    // Resizable drawers
+    (function() {
+      let activeHandle = null;
+      let activeSide = null;
+
+      document.querySelectorAll('.resize-handle').forEach(handle => {
+        handle.addEventListener('mousedown', function(e) {
+          e.preventDefault();
+          activeHandle = handle;
+          activeSide = handle.dataset.side;
+          handle.classList.add('dragging');
+          document.body.classList.add('resizing');
+        });
+      });
+
+      document.addEventListener('mousemove', function(e) {
+        if (!activeHandle) return;
+        const minWidth = 280;
+        const maxWidth = Math.floor(window.innerWidth * 0.45);
+
+        if (activeSide === 'left') {
+          const newWidth = Math.min(maxWidth, Math.max(minWidth, e.clientX));
+          document.documentElement.style.setProperty('--left-drawer-width', newWidth + 'px');
+        } else {
+          const newWidth = Math.min(maxWidth, Math.max(minWidth, window.innerWidth - e.clientX));
+          document.documentElement.style.setProperty('--right-drawer-width', newWidth + 'px');
+        }
+      });
+
+      document.addEventListener('mouseup', function() {
+        if (activeHandle) {
+          activeHandle.classList.remove('dragging');
+          document.body.classList.remove('resizing');
+          activeHandle = null;
+          activeSide = null;
+        }
+      });
+    })();
 
     function copyFeedback() {
       const textareas = document.querySelectorAll('.container textarea[data-section]');
