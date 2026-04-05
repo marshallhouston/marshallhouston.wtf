@@ -3,6 +3,7 @@ const { test, expect } = require('@playwright/test');
 
 const BASE = 'http://localhost:4000';
 const POST_URL = `${BASE}/co-intelligence-ai-augmented-writing-system/`;
+const LOWERCHAOS_URL = `${BASE}/lowerchaos/`;
 const INFLUENCES_URL = `${BASE}/influences/`;
 const HOME_URL = `${BASE}/`;
 
@@ -177,6 +178,24 @@ test.describe('capitalize toggle - session persistence', () => {
     // nav should still be capitalized
     const siteTitle = await page.locator('.site-title').textContent();
     expect(siteTitle.trim()).toMatch(/^M/);
+  });
+
+  test('capitalization persists to lowerchaos post', async ({ page }) => {
+    // toggle capitalization on from home page
+    await page.goto(HOME_URL);
+    await page.locator('.masthead .capitalize-toggle').click();
+
+    // navigate to lowerchaos post
+    await page.goto(LOWERCHAOS_URL);
+    await page.waitForLoadState('domcontentloaded');
+
+    // title should be capitalized
+    const title = await page.locator('#page-title').textContent();
+    expect(title.trim()).toMatch(/^[A-Z]/);
+
+    // toggle button should be visible
+    const btn = page.locator('.masthead .capitalize-toggle');
+    await expect(btn).toBeVisible();
   });
 
   test('toggling off clears session preference', async ({ page }) => {

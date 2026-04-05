@@ -1,8 +1,7 @@
 ---
-layout: post
 title: lowerchaos
 date: 2026-04-05
-updated_at: 2026-04-05 05:18 MDT
+updated_at: 2026-04-05 05:51 MDT
 ---
 
 i like the lowerchaos feeling. one degree (or three) off normal. cosmic farmland's a disorienting space.
