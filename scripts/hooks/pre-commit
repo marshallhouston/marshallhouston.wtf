@@ -1,0 +1,31 @@
+#!/bin/sh
+
+# Run capitalize toggle Playwright tests when relevant files are changed
+RELEVANT_FILES="assets/js/capitalize-toggle.js|_includes/masthead.html|_includes/head/custom.html|assets/css/main.scss|_config.yml|tests/capitalize-toggle.spec.js"
+
+CHANGED=$(git diff --cached --name-only | grep -E "$RELEVANT_FILES")
+
+if [ -z "$CHANGED" ]; then
+  exit 0
+fi
+
+echo "capitalize toggle files changed — running Playwright tests..."
+
+# check if Jekyll is running
+if ! curl -s -o /dev/null -w "" http://localhost:4000/ 2>/dev/null; then
+  echo "⚠ Jekyll server not running at localhost:4000 — skipping tests"
+  echo "  Start with: bundle exec jekyll serve"
+  exit 0
+fi
+
+npx playwright test tests/capitalize-toggle.spec.js
+EXIT_CODE=$?
+
+if [ $EXIT_CODE -ne 0 ]; then
+  echo ""
+  echo "✗ Capitalize toggle tests failed — commit blocked"
+  echo "  Fix the issues and try again"
+  exit 1
+fi
+
+echo "✓ All capitalize toggle tests passed"
