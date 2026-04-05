@@ -1,0 +1,11 @@
+<!-- capitalize toggle -->
+<script src="/assets/js/capitalize-toggle.js" defer></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    CapitalizeToggle.init([
+      {% for noun in site.capitalize.proper_nouns %}
+      { name: {{ noun.name | jsonify }}, capitalized: {{ noun.capitalized | jsonify }} }{% unless forloop.last %},{% endunless %}
+      {% endfor %}
+    ]);
+  });
+</script>
