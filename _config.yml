@@ -26,8 +26,6 @@ tag_archive:
   type: liquid
   path: /tags/
 future: true
-paginate: 5
-paginate_path: /page:num/
 
 collections:
   kernels:
@@ -37,7 +35,6 @@ include:
   - _pages
 
 plugins:
-  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-include-cache

@@ -23,15 +23,16 @@
   }
 
   function injectInlineToggle() {
-    var readtime = document.querySelector('.page__meta .page__meta-readtime');
-    if (!readtime) return;
-    var btn = document.createElement('button');
-    btn.className = 'capitalize-toggle capitalize-toggle--inline';
-    btn.type = 'button';
-    btn.textContent = 'Aa';
-    btn.setAttribute('data-tooltip', 'switch to standard capitalization');
-    btn.setAttribute('aria-label', 'switch to standard capitalization');
-    readtime.parentElement.appendChild(btn);
+    var readtimes = document.querySelectorAll('.page__meta .page__meta-readtime');
+    readtimes.forEach(function (readtime) {
+      var btn = document.createElement('button');
+      btn.className = 'capitalize-toggle capitalize-toggle--inline';
+      btn.type = 'button';
+      btn.textContent = 'Aa';
+      btn.setAttribute('data-tooltip', 'switch to standard capitalization');
+      btn.setAttribute('aria-label', 'switch to standard capitalization');
+      readtime.parentElement.appendChild(btn);
+    });
   }
 
   function setupToggles() {
@@ -50,7 +51,7 @@
   }
 
   function updateButtonLabel(btn) {
-    var label = isCapitalized ? 'switch to original chaos' : 'switch to standard capitalization';
+    var label = isCapitalized ? 'switch to lowerchaos' : 'switch to standard capitalization';
     btn.setAttribute('aria-label', label);
     btn.setAttribute('data-tooltip', label);
   }
@@ -60,6 +61,7 @@
     TITLE_SELECTOR,
     RELATED_TITLE_SELECTOR,
     ARCHIVE_TITLE_SELECTOR,
+    '.archive__subtitle',
     '.site-title',
     '.author__name',
     '.masthead__menu-item a',

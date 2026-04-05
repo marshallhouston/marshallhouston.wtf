@@ -23,7 +23,7 @@ test.describe('capitalize toggle - basic functionality', () => {
 
   test('inline Aa button exists next to reading time on post pages', async ({ page }) => {
     await page.goto(POST_URL);
-    const btn = page.locator('.capitalize-toggle--inline');
+    const btn = page.locator('.capitalize-toggle--inline').first();
     await expect(btn).toBeVisible();
   });
 
@@ -216,7 +216,7 @@ test.describe('capitalize toggle - session persistence', () => {
 test.describe('capitalize toggle - both buttons sync', () => {
   test('clicking inline button capitalizes same as header button', async ({ page }) => {
     await page.goto(POST_URL);
-    const inlineBtn = page.locator('.capitalize-toggle--inline');
+    const inlineBtn = page.locator('.capitalize-toggle--inline').first();
     await inlineBtn.click();
 
     const title = await page.locator('#page-title').textContent();
@@ -226,11 +226,11 @@ test.describe('capitalize toggle - both buttons sync', () => {
   test('header and inline buttons both update tooltip on toggle', async ({ page }) => {
     await page.goto(POST_URL);
     const headerBtn = page.locator('.masthead .capitalize-toggle');
-    const inlineBtn = page.locator('.capitalize-toggle--inline');
+    const inlineBtn = page.locator('.capitalize-toggle--inline').first();
 
     await headerBtn.click();
-    await expect(headerBtn).toHaveAttribute('data-tooltip', 'switch to original chaos');
-    await expect(inlineBtn).toHaveAttribute('data-tooltip', 'switch to original chaos');
+    await expect(headerBtn).toHaveAttribute('data-tooltip', 'switch to lowerchaos');
+    await expect(inlineBtn).toHaveAttribute('data-tooltip', 'switch to lowerchaos');
   });
 });
 
@@ -241,6 +241,110 @@ test.describe('capitalize toggle - no mid-sentence capitalization bug', () => {
     const content = await page.locator('.page__content').textContent();
     // "twice" should NOT be capitalized (it follows a link mid-sentence)
     expect(content).not.toMatch(/\bTwice\b/);
+  });
+});
+
+test.describe('home page - inline toggle on all posts', () => {
+  test('every post listing has an inline Aa button', async ({ page }) => {
+    await page.goto(HOME_URL);
+    const readtimes = page.locator('.page__meta-readtime');
+    const readtimeCount = await readtimes.count();
+    // there should be multiple posts with reading times
+    expect(readtimeCount).toBeGreaterThan(1);
+    // each post's parent .page__meta should have an inline toggle
+    const inlineButtons = page.locator('.capitalize-toggle--inline');
+    expect(await inlineButtons.count()).toBe(readtimeCount);
+  });
+});
+
+test.describe('home page - "recent posts" heading respects capitalize toggle', () => {
+  test('"recent posts" heading is lowercase by default', async ({ page }) => {
+    await page.goto(HOME_URL);
+    const subtitle = page.locator('.archive__subtitle');
+    const text = await subtitle.textContent();
+    expect(text.trim()).toBe('recent posts');
+  });
+
+  test('"recent posts" becomes "Recent Posts" when capitalized', async ({ page }) => {
+    await page.goto(HOME_URL);
+    await page.locator('.masthead .capitalize-toggle').click();
+    const subtitle = page.locator('.archive__subtitle');
+    const text = await subtitle.textContent();
+    expect(text.trim()).toBe('Recent Posts');
+  });
+});
+
+test.describe('home page - no post limit', () => {
+  test('all posts are displayed without pagination', async ({ page }) => {
+    await page.goto(HOME_URL);
+    const posts = page.locator('.archive__item');
+    const count = await posts.count();
+    // should show all 6 posts, not limited to 5
+    expect(count).toBeGreaterThan(5);
+    // no pagination nav
+    const pagination = page.locator('nav.pagination');
+    expect(await pagination.count()).toBe(0);
+  });
+});
+
+test.describe('home page - top 5 tags', () => {
+  test('tag cloud appears between heading and posts', async ({ page }) => {
+    await page.goto(HOME_URL);
+    const tagCloud = page.locator('.tag-cloud');
+    await expect(tagCloud).toBeVisible();
+    // tag cloud should come after archive__subtitle and before entries-list
+    const subtitle = page.locator('.archive__subtitle');
+    const entries = page.locator('.entries-list');
+    await expect(subtitle).toBeVisible();
+    await expect(entries).toBeVisible();
+  });
+
+  test('shows exactly 5 tag links', async ({ page }) => {
+    await page.goto(HOME_URL);
+    const tagLinks = page.locator('.tag-cloud .tag-link');
+    expect(await tagLinks.count()).toBe(5);
+  });
+
+  test('tags show post counts', async ({ page }) => {
+    await page.goto(HOME_URL);
+    const firstTag = await page.locator('.tag-cloud .tag-link').first().textContent();
+    // should contain a number in parentheses like "experimentation (2)"
+    expect(firstTag).toMatch(/\(\d+\)/);
+  });
+
+  test('most frequent tag appears first', async ({ page }) => {
+    await page.goto(HOME_URL);
+    const firstTag = await page.locator('.tag-cloud .tag-link').first().textContent();
+    expect(firstTag.trim()).toContain('experimentation (2)');
+  });
+
+  test('"all tags" link points to /tags/', async ({ page }) => {
+    await page.goto(HOME_URL);
+    const allTagsLink = page.locator('.tag-cloud a:not(.tag-link)');
+    await expect(allTagsLink).toBeVisible();
+    const href = await allTagsLink.getAttribute('href');
+    expect(href).toBe('/tags/');
+  });
+
+  test('tag links point to /tags/#tag-name', async ({ page }) => {
+    await page.goto(HOME_URL);
+    const firstTagHref = await page.locator('.tag-cloud .tag-link').first().getAttribute('href');
+    expect(firstTagHref).toMatch(/\/tags\/#[\w-]+/);
+  });
+});
+
+test.describe('capitalize toggle - "switch to lowerchaos" label', () => {
+  test('tooltip says "switch to standard capitalization" in lowercase mode', async ({ page }) => {
+    await page.goto(HOME_URL);
+    const btn = page.locator('.masthead .capitalize-toggle');
+    await expect(btn).toHaveAttribute('data-tooltip', 'switch to standard capitalization');
+  });
+
+  test('tooltip says "switch to lowerchaos" in capitalized mode', async ({ page }) => {
+    await page.goto(HOME_URL);
+    const btn = page.locator('.masthead .capitalize-toggle');
+    await btn.click();
+    await expect(btn).toHaveAttribute('data-tooltip', 'switch to lowerchaos');
   });
 });
 
