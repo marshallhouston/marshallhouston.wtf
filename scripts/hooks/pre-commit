@@ -1,7 +1,15 @@
 #!/bin/sh
 
-# Run capitalize toggle Playwright tests when relevant files are changed
-RELEVANT_FILES="assets/js/capitalize-toggle.js|_includes/masthead.html|_includes/head/custom.html|assets/css/main.scss|_config.yml|tests/capitalize-toggle.spec.js"
+HOOKS_DIR="$(dirname "$0")"
+
+# 1. Check new posts for proper nouns missing from capitalize config (warn only)
+bash "$HOOKS_DIR/check-capitalize-config.sh"
+
+# 2. Build site and validate: layouts, links, theme rendering, structural consistency (blocks commit)
+bash "$HOOKS_DIR/check-site-health.sh" || exit 1
+
+# 3. Run Playwright tests when relevant files are changed
+RELEVANT_FILES="assets/js/capitalize-toggle.js|_includes/masthead.html|_includes/head/custom.html|_layouts/.*|_includes/.*|assets/css/main.scss|_config.yml|tests/.*\.spec\.js|_posts/.*\.md"
 
 CHANGED=$(git diff --cached --name-only | grep -E "$RELEVANT_FILES")
 
@@ -9,23 +17,23 @@ if [ -z "$CHANGED" ]; then
   exit 0
 fi
 
-echo "capitalize toggle files changed — running Playwright tests..."
+echo "layout/component files changed — running Playwright tests..."
 
 # check if Jekyll is running
 if ! curl -s -o /dev/null -w "" http://localhost:4000/ 2>/dev/null; then
-  echo "⚠ Jekyll server not running at localhost:4000 — skipping tests"
+  echo "⚠ Jekyll server not running at localhost:4000 — skipping Playwright tests"
   echo "  Start with: bundle exec jekyll serve"
   exit 0
 fi
 
-npx playwright test tests/capitalize-toggle.spec.js
+npx playwright test tests/
 EXIT_CODE=$?
 
 if [ $EXIT_CODE -ne 0 ]; then
   echo ""
-  echo "✗ Capitalize toggle tests failed — commit blocked"
+  echo "✗ Playwright tests failed — commit blocked"
   echo "  Fix the issues and try again"
   exit 1
 fi
 
-echo "✓ All capitalize toggle tests passed"
+echo "✓ All Playwright tests passed"
