@@ -1,0 +1,36 @@
+eras:
+  - id: childhood
+    label: Childhood
+    years: "~5–11"
+    color: "#e8a87c"
+  - id: middle_school
+    label: Middle School
+    years: "~11–14"
+    color: "#d4a574"
+  - id: high_school
+    label: High School
+    years: "~14–18"
+    color: "#85cdca"
+  - id: college
+    label: College
+    years: "~18–22"
+    color: "#e27d60"
+  - id: twenties
+    label: 20s
+    years: "~22–30"
+    color: "#c38d9e"
+  - id: thirties
+    label: 30s
+    years: "30+"
+    color: "#41b3a3"
+
+books:
+  - title: "Where the Wild Things Are"
+    era: childhood
+  - title: "Hatchet"
+    era: middle_school
+  - title: "The Catcher in the Rye"
+    era: high_school
+  - title: "Co-Intelligence"
+    era: thirties
+    note: "Read twice in 2025"

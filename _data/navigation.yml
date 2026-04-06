@@ -9,5 +9,7 @@ main:
     url: /influences/
   - title: "books"
     url: /books/
+  - title: "library"
+    url: /library/
   - title: "moments"
     url: /moments/
