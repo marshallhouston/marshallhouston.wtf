@@ -65,12 +65,15 @@
     '.site-title',
     '.author__name',
     '.masthead__menu-item a',
-    '.author__urls a .label'
+    '.author__urls a .label',
+    '.tag-cloud .tag-link',
+    '.pagination--pager'
   ];
 
   // selectors for elements that get sentence-cased (longer prose)
   var SENTENCECASE_SELECTORS = [
-    '.author__bio'
+    '.author__bio',
+    '.archive__item-excerpt'
   ];
 
   function applyCapitalization() {
