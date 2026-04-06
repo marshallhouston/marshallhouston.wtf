@@ -1,6 +1,6 @@
 ---
 title: "co-intelligence & ai-augmented writing system"
-tags: [ai-augmented-engineering, workflow]
+tags: [ai-augmented-engineering, writing, process, creative-expression, workflow]
 classes: wide
 updated_at: 2026-04-04 11:16 MDT
 ---

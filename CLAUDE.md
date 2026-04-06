@@ -28,14 +28,6 @@ marshall's voice is a spectrum, not a template. Each post has its own register/e
 - If it sounds like a LinkedIn post, burn it down.
 - Don't hedge on things marshall is direct about, or add false confidence to things he's exploring.
 
-## Tags
-
-Only use existing tags. Never invent new ones. Check `_posts/` for the current set before tagging.
-
-Existing tags: `ruminating`, `pushback`, `ai-culture`, `unhinged`, `workflow`, `experimentation`, `ai-augmented-engineering`, `sensemaking`, `mental-models`
-
-If a post doesn't fit any existing tag, ask marshall before creating a new one.
-
 ## Worklog
 
 `worklog.md` tracks what happened each session and what's next. Read it at the start of every session.
