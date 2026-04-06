@@ -5,8 +5,8 @@
 @import "minimal-mistakes";
 
 .author__urls-wrapper {
-  .author__urls {
-    display: block !important;
+  button {
+    display: none;
   }
 }
 
