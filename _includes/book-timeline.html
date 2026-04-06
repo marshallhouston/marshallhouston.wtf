@@ -110,7 +110,7 @@
     {% for era in site.data.books.eras %}
     <div class="book-era">
       <div class="book-era__header" style="background: {{ era.color }};">
-        {{ era.label | downcase }}<span class="book-era__years">{{ era.years }}</span>
+        {{ era.label | downcase }}{% if era.years != "" %}<span class="book-era__years">{{ era.years }}</span>{% endif %}
       </div>
       <div class="book-era__cards">
         {% assign era_books = site.data.books.books | where: "era", era.id %}
