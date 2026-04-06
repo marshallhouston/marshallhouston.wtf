@@ -4,6 +4,12 @@
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}";
 @import "minimal-mistakes";
 
+.author__urls-wrapper {
+  .author__urls {
+    display: block !important;
+  }
+}
+
 .page {
   padding-right: 0;
 }
