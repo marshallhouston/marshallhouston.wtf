@@ -8,7 +8,7 @@ conditions:
     pattern: _posts/.*\.md$|_drafts/.*\.md$
   - field: new_text
     operator: regex_match
-    pattern: "date: (?!\\d{4}-\\d{2}-\\d{2}\\n)"
+    pattern: "date: \\d{4}-\\d{2}-\\d{2}[^\\s]|date: \\d{4}-\\d{2}-\\d{2} ."
 action: block
 ---
 
