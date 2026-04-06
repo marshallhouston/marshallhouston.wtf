@@ -3,6 +3,10 @@ main:
     url: /
   - title: "kernels"
     url: /kernels/
+  - title: "books"
+    url: /books/
+  - title: "moments"
+    url: /moments/
   - title: "influences"
     url: /influences/
   - title: "about"
