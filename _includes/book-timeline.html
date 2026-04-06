@@ -1,0 +1,134 @@
+<style>
+.book-timeline {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 1.5rem 0;
+}
+
+.book-timeline__track {
+  display: flex;
+  gap: 1.25rem;
+  min-width: min-content;
+}
+
+.book-era {
+  min-width: 200px;
+  max-width: 240px;
+  flex-shrink: 0;
+}
+
+.book-era__header {
+  padding: 0.6rem 1rem;
+  border-radius: 8px 8px 0 0;
+  color: #2a2a2a;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.book-era__years {
+  font-weight: 400;
+  font-size: 0.8rem;
+  opacity: 0.7;
+  margin-left: 0.4rem;
+}
+
+.book-era__cards {
+  background: #f5f0e8;
+  border-radius: 0 0 8px 8px;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-height: 80px;
+}
+
+.book-card {
+  background: #faf7f2;
+  border: 1px solid #e8e2d6;
+  border-radius: 6px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.88rem;
+  color: #3a3a3a;
+  cursor: default;
+  transition: box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.book-card:hover {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+.book-card--has-note {
+  cursor: pointer;
+}
+
+.book-card__title {
+  line-height: 1.4;
+}
+
+.book-card__note {
+  display: none;
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid #e8e2d6;
+  font-size: 0.8rem;
+  color: #6a6a6a;
+  font-style: italic;
+}
+
+.book-card__note--visible {
+  display: block;
+}
+
+.book-era__empty {
+  font-size: 0.8rem;
+  color: #aaa;
+  font-style: italic;
+  padding: 0.4rem 0;
+}
+
+/* mobile: stack vertically */
+@media (max-width: 768px) {
+  .book-timeline {
+    overflow-x: visible;
+  }
+
+  .book-timeline__track {
+    flex-direction: column;
+    min-width: unset;
+  }
+
+  .book-era {
+    min-width: unset;
+    max-width: unset;
+  }
+}
+</style>
+
+<div class="book-timeline">
+  <div class="book-timeline__track">
+    {% for era in site.data.books.eras %}
+    <div class="book-era">
+      <div class="book-era__header" style="background: {{ era.color }};">
+        {{ era.label | downcase }}<span class="book-era__years">{{ era.years }}</span>
+      </div>
+      <div class="book-era__cards">
+        {% assign era_books = site.data.books.books | where: "era", era.id %}
+        {% if era_books.size > 0 %}
+          {% for book in era_books %}
+          <div class="book-card{% if book.note %} book-card--has-note{% endif %}"
+               {% if book.note %}onclick="this.querySelector('.book-card__note').classList.toggle('book-card__note--visible')"{% endif %}>
+            <div class="book-card__title">{{ book.title }}</div>
+            {% if book.note %}
+            <div class="book-card__note">{{ book.note }}</div>
+            {% endif %}
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="book-era__empty">nothing yet</div>
+        {% endif %}
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
