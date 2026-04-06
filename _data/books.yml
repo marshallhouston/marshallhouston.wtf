@@ -1,6 +1,6 @@
 eras:
   - id: childhood
-    label: Childhood
+    label: Early Childhood
     years: "~5–11"
     color: "#e8a87c"
   - id: middle_school
@@ -15,14 +15,22 @@ eras:
     label: College
     years: "~18–22"
     color: "#e27d60"
-  - id: twenties
-    label: 20s
-    years: "~22–30"
+  - id: educator
+    label: Educator
+    years: "~22–28"
     color: "#c38d9e"
-  - id: thirties
-    label: 30s
-    years: "30+"
+  - id: tech
+    label: Tech
+    years: "~28–36"
     color: "#41b3a3"
+  - id: tech_kid
+    label: Tech + Kid
+    years: "36+"
+    color: "#7a9e7e"
+  - id: general
+    label: General
+    years: ""
+    color: "#b8b0a0"
 
 books:
   - title: "Where the Wild Things Are"
@@ -32,5 +40,5 @@ books:
   - title: "The Catcher in the Rye"
     era: high_school
   - title: "Co-Intelligence"
-    era: thirties
+    era: tech_kid
     note: "Read twice in 2025"
