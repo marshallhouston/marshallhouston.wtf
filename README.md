@@ -2,4 +2,4 @@
 
 personal site. writing about the cosmic farmland.
 
-**https://marshallhouston.github.io**
+**https://marshallhouston.wtf**
