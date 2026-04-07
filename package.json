@@ -1,5 +1,5 @@
 {
-  "name": "marshallhouston.github.io",
+  "name": "marshallhouston.wtf",
   "version": "1.0.0",
   "description": "personal site. writing about the cosmic farmland.",
   "main": "playwright.config.js",
@@ -12,16 +12,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/marshallhouston/marshallhouston.github.io.git"
+    "url": "git+https://github.com/marshallhouston/marshallhouston.wtf.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "bugs": {
-    "url": "https://github.com/marshallhouston/marshallhouston.github.io/issues"
+    "url": "https://github.com/marshallhouston/marshallhouston.wtf/issues"
   },
-  "homepage": "https://github.com/marshallhouston/marshallhouston.github.io#readme",
+  "homepage": "https://github.com/marshallhouston/marshallhouston.wtf#readme",
   "devDependencies": {
     "@playwright/test": "^1.59.1"
   }
