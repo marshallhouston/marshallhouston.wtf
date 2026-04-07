@@ -21,4 +21,4 @@ i use ai tools in my work, in my writing, brainstorming, shitposting, research, 
 
 when i write, ideas and perspective are mine. ai is a thinking partner, clarifier, braindumping partner, virtual rubber duck.
 
-ethan mollick's framing of co-intelligence as humans and ai working together, openly heavily shapes this perspective.
+ethan mollick's framing of co-intelligence as humans and ai working together openly heavily shapes this perspective.
