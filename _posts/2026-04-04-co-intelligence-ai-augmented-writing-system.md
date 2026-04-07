@@ -2,7 +2,7 @@
 title: "co-intelligence & ai-augmented writing system"
 tags: [ai-augmented-engineering, writing, process, creative-expression, workflow]
 classes: wide
-updated_at: 2026-04-04 11:16 MDT
+updated_at: 2026-04-07 04:42 MDT
 ---
 
 i read ethan mollick's [co-intelligence](https://www.penguinrandomhouse.com/books/741805/co-intelligence-by-ethan-mollick/) twice in 2025. his ideas on co-intelligence with human + ai together have heavily influenced my ai-augmented writing process.
@@ -21,7 +21,7 @@ this flow often takes days or weeks. ideas emerge, sit, breathe, shift shapes. t
 
 **notebook.** pen to paper. noodling and doodling without any structure. fragments, quick thoughts, lists and bullets that then expand wide. furious scribbles. the feeling of pen on paper unlocks flow. this is _not_ editing time. i really like my moleskine cahier xl notebook with unlined pages; unlined is magical because there are no lines to confine. infrequently, i'll grab a legal pad lying around or one of those black and white composition notebooks (downside here is that i lose the plot and try to write as small as possible within a single line... partner says it looks serial-killerish, so yeah lol). love rotating the notebook randomly to write at 90 / 135 / 180 degrees. off kilter. write tiny, write huge.
 
-**kernel.** first shift out of the notebook and into digital realm. claude code session in local repo using wispr flow to talk directly about the kernel. goes into the `_kernels` directory and ends up in [kernels](https://marshallhouston.github.io/kernels/). extract it down to one sentence, the thread to pull and pull. lightweight. often add many kernels at once and then keep moving onto other things, and let these ferment. i don't want to lose the context around the kernel, so that automatically gets thrown into the ideas section.
+**kernel.** first shift out of the notebook and into digital realm. claude code session in local repo using wispr flow to talk directly about the kernel. goes into the `_kernels` directory and ends up in [kernels](https://marshallhouston.wtf/kernels/). extract it down to one sentence, the thread to pull and pull. lightweight. often add many kernels at once and then keep moving onto other things, and let these ferment. i don't want to lose the context around the kernel, so that automatically gets thrown into the ideas section.
 
 <!-- TODO: kernel examples - directory structure and one example (same post used throughout) -->
 

@@ -2,6 +2,7 @@ locale: "en"
 title: marshall houston
 description: >-
   thoughts on engineering leadership, ai-augmented software engineering, and building teams.
+url: "https://marshallhouston.wtf"
 github_username: marshallhouston
 minimal_mistakes_skin: dark
 search: true
@@ -46,7 +47,7 @@ author:
   links:
     - label: "website"
       icon: "fas fa-fw fa-link"
-      url: "https://marshallhouston.github.io"
+      url: "https://marshallhouston.wtf"
     - label: "github"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/marshallhouston"
