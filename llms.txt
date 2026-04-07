@@ -1,0 +1,16 @@
+# marshall houston
+
+> personal site of marshall houston — thoughts on engineering leadership, ai-augmented software engineering, and building teams. exploratory writing, ideas in flight, and tools.
+
+voice is lowercase, fragmented, first-person. exploratory not conclusive. cross-domain references are a feature.
+
+## writing
+- [latest posts](https://marshallhouston.wtf/): essays and notes
+- [archive](https://marshallhouston.wtf/year-archive/): everything chronological
+- [tags](https://marshallhouston.wtf/tags/): browse by topic
+
+## about
+- [about](https://marshallhouston.wtf/about/): who marshall is
+
+## machine-readable
+- [sitemap](https://marshallhouston.wtf/sitemap.xml)
