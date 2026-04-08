@@ -43,3 +43,55 @@ Ideas move through three stages. Never skip ahead.
 Other idea buckets (separate from writing pipeline):
 - **`_ideas/tools/`** - apps and tools to build.
 - **`_ideas/site/`** - improvements to the site itself.
+
+## Kernel Capture
+
+Marshall usually plants kernels by typing or speaking `kernel: "one-liner"` inline, not by invoking the `add-kernels` skill. Whenever you see that pattern (or any mention of "new kernel", "plant this", "seed this"), follow the capture flow below. This also applies when the `add-kernels` skill runs.
+
+### Flow
+
+1. **Read existing kernels.** Glob `_kernels/*.md` and scan the `idea` field (plus `variants` if present) in each.
+2. **Match on vibe, not phrasing.** Judge loosely: is this new idea the same underlying thought as an existing kernel? "quit conditions" and "knowing when to stop a project" are the same vibe. "vibe thinking" and "outsourcing cognition to the model" are the same vibe. When uncertain, ask marshall: "this feels like it could be the same as X, bump or new?"
+3. **If match found, BUMP (don't create).** Update the existing kernel file in place:
+   - Do NOT change the canonical `idea` field. That's the original phrasing.
+   - Do NOT change `date`. That's the original capture date.
+   - Add or increment `count` (starts at 1, so first revisit = 2).
+   - Add or append to `revisits:` list. On first revisit, seed it with the original `date` AND today's date. On subsequent revisits, append today's date.
+   - Add or append the new phrasing to `variants:` list.
+4. **If no match, CREATE.** New `_kernels/<slug>.md` with base format. No count/revisits/variants on a fresh kernel.
+5. **Report what happened.** Tell marshall which were new and which got bumped ("bumped vibe-thinking to 3, planted 2 new").
+
+### Kernel File Format
+
+**Fresh kernel:**
+```yaml
+---
+idea: "the one-sentence idea, in marshall's voice."
+date: YYYY-MM-DD
+sprouted: false
+---
+```
+
+**After one or more revisits:**
+```yaml
+---
+idea: "the original canonical phrasing, never overwrite this."
+date: 2026-03-15
+sprouted: false
+count: 3
+revisits:
+  - 2026-03-15
+  - 2026-04-08
+  - 2026-05-02
+variants:
+  - "phrasing from the first revisit"
+  - "phrasing from the second revisit"
+---
+```
+
+### Rules
+
+- `count`, `revisits`, `variants` are **private tracking fields**. They are not rendered on the site (the `/kernels/` page only uses `idea`, `date`, `sprouted`). Do not build site UI for them.
+- Loose matching, not strict. Prefer bumping over proliferation. Duplicates are a signal marshall is coming back to something, and we want that signal captured.
+- The canonical `idea` field is sacred. Never overwrite it on a bump.
+- Do not editorialize, expand, or "improve" kernel phrasing. Capture marshall's voice exactly.
