@@ -35,6 +35,27 @@ collections:
 include:
   - _pages
 
+exclude:
+  - Dockerfile
+  - Caddyfile
+  - .dockerignore
+  - CLAUDE.md
+  - README.md
+  - worklog.md
+  - Gemfile
+  - Gemfile.lock
+  - mise.toml
+  - node_modules
+  - package.json
+  - package-lock.json
+  - playwright.config.js
+  - tests
+  - test-results
+  - scripts
+  - _scripts
+  - _ideas
+  - vendor
+
 plugins:
   - jekyll-sitemap
   - jekyll-feed

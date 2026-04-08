@@ -1,0 +1,28 @@
+# VCS
+.git
+.gitignore
+
+# Jekyll build artifacts
+_site
+.jekyll-cache
+
+# Node / test tooling (not used by Jekyll build)
+node_modules
+test-results
+tests
+playwright.config.js
+package.json
+package-lock.json
+
+# Editor / OS junk
+.DS_Store
+*.log
+.claude
+
+# Content that shouldn't ship to prod
+_drafts
+_ideas
+
+# Local scripts, not site content
+scripts
+_scripts
