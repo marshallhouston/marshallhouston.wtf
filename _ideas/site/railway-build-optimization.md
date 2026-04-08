@@ -1,7 +1,11 @@
 ---
 title: railway build optimization
-updated_at: 2026-04-08 03:46 MDT
+status: partially-done
+updated_at: 2026-04-08 05:50 MDT
+completed_at: 2026-04-08
 ---
+
+> **partially done 2026-04-08** - lever 1 (drop github-pages gem) shipped in `9c92644`. cold build went from ~4min to 46.49s, ~81% reduction. lever 2 (bundler cache mount) attempted but reverted: railway requires a hardcoded `s/<service-id>-<target>` in the mount id with no env var interpolation, which couples the repo to one specific railway service. not worth it for the marginal gain. levers 3 and 4 (vendor theme, incremental build) untouched and deferred as follow-ups. watch paths (problem 2) added via railway UI, not yet functionally verified.
 
 captured 2026-04-08 right after the railway cutover. the cold build takes ~4 min and every push to main triggers one, even when the push changes zero bytes of the rendered site. two separate problems worth addressing, probably in one pass.
 
