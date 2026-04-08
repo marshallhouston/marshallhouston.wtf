@@ -1,7 +1,11 @@
 ---
 title: github pages cleanup
-updated_at: 2026-04-08 03:47 MDT
+status: done
+updated_at: 2026-04-08 03:57 MDT
+completed_at: 2026-04-08
 ---
+
+> **done 2026-04-08** - GH Pages disabled via API, `CNAME` removed in `a1726c6`. only railway builds from here.
 
 loose ends from the 2026-04-08 github pages → railway migration. both quick, both safe, both deferred to keep the migration session focused.
 
