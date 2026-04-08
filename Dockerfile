@@ -13,8 +13,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Install gems first so this layer caches when only content changes.
+# Cache mount covers bundler's download cache (the .gem tarballs), not
+# the installed gem tree at /usr/local/bundle/gems, so installed gems
+# still land in the image layer for the next RUN.
 COPY Gemfile Gemfile.lock ./
-RUN bundle config set --local without 'development test' \
+RUN --mount=type=cache,target=/usr/local/bundle/cache \
+    bundle config set --local without 'development test' \
  && bundle install --jobs 4 --retry 3
 
 # Copy the rest of the source and build.
