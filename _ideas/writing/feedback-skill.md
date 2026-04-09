@@ -2,7 +2,7 @@
 title: the feedback skill
 captured: 2026-04-09
 status: kernel
-updated_at: 2026-04-09 00:30 MDT
+updated_at: 2026-04-09 01:00 MDT
 kernel: feedback-skill
 ---
 
@@ -27,34 +27,44 @@ not a tool post. a workflow post. the shape of thinking it unlocks.
 
 ## new context (2026-04-09)
 
-this isn't a skill post. it's a **lens post**. the feedback skill is how i make sense of things. apply it everywhere.
+keep this one **specific**. not a manifesto. not a lens-post sermon. the energy is:
 
-**OWN YOUR LEARNING. OWN YOUR UNDERSTANDING.**
+> check this out. here's what it looks like. cool, use it.
 
-that's the real thesis. the skill is the mechanism; the lens is the point. structured reaction, at the right altitude, on whatever you're trying to metabolize. a draft. a doc somebody sent you. a 20-idea brainstorm dump in `_ideas/`. a research synth. a book chapter. the pr you're reviewing. the thing you wrote yesterday that you now feel weird about.
+show the thing. show the screen. show three or four real examples from my actual files. no abstract framing at the top. no big thesis opener. the reader sees it, gets it, closes the tab, and tries it.
 
-connects directly to the `own-your-understanding` kernel. "how do you know you know and at what level of depth?" — the feedback skill is a load-bearing answer. sections force you to land on each piece at its own depth instead of hand-waving globally.
+the own-your-learning / own-your-understanding thread stays — but as a quiet undercurrent, not the headline. maybe one line at the end, not a drumbeat. the examples carry the weight.
 
-### variety of use cases to show
+### register / energy
 
-- **writing**: drafts in `_drafts/`. the canonical case.
-- **synthesizing docs**: a pile of notes, meeting transcripts, research dumps. turn into structured doc, feedback-skill your way through it.
-- **app ideas / tool ideas**: the stuff sitting in `_ideas/tools/` and `_ideas/site/`. react section-by-section instead of "hmm interesting."
-- **other people's writing**: a doc someone sent me. structured reaction beats polite compliments.
-- **my own past thinking**: the idea doc from last week that needs a pressure test. feedback yourself.
-- **anything with sections**: meeting synth, design docs, research briefs, book notes.
+casual, concrete, low-ceremony. "here's a thing i use, you might like it too." more show-and-tell than essay. screenshots and recordings > prose. the post should read like someone leaning over your shoulder saying "wait wait look at this."
 
-the thread through all of it: *you* react. *you* decide the depth. *you* own the understanding. the model carries your reactions back into the doc. you're not outsourcing sense-making, you're structuring it.
+no LinkedIn hook. no "let me tell you about a skill that changed everything." just: the file, the command, the review page, the applied result. repeat with a different kind of doc. repeat again. done.
 
-(this is the anti-vibe-thinking move. vibe thinking outsources the thinking itself; this skill keeps the thinking yours and outsources only the typing.)
+### the shape
+
+1. here's the thing (one paragraph, one screenshot).
+2. here's what it looks like on a draft. (show it)
+3. here's what it looks like on a synthesized doc / notes pile. (show it)
+4. here's what it looks like on an app idea in `_ideas/`. (show it)
+5. one-liner close: this is how i make sense of stuff now. go try it.
+
+### variety of use cases to show (pick the concrete ones)
+
+- **a draft in `_drafts/`**: the canonical case, use a real one.
+- **a synthesized doc**: pile of notes or a meeting transcript turned structured, then reviewed.
+- **an app / tool idea**: something real from `_ideas/tools/` — react section-by-section instead of "hmm interesting."
+- **maybe: my own past idea doc**: feedback yourself a week later. shows the recursion.
+
+pick the ones that produce the best before/after screenshots. don't list them abstractly — show them.
 
 ## open questions
 
-- is this post a tour (walkthrough with screenshots) or an argument (why structured feedback beats conversation)?
-- do i show the same skill applied to three different kinds of docs to prove the "basically anywhere" claim?
-- does the feedback review app idea (`_ideas/tools/feedback-review-app.md`) live inside this post or stay separate?
-- how tightly does this pair with the `own-your-understanding` kernel? same post? sibling posts? this one is the "how," that one is the "why"?
-- what's the right opening? the caps thesis ("OWN YOUR LEARNING. OWN YOUR UNDERSTANDING") or a concrete use case that earns it?
+- which three (or four) real files do i use as the concrete examples? pick before drafting.
+- how much prose between examples? probably very little — a sentence of setup, then the screen.
+- does the feedback review app idea (`_ideas/tools/feedback-review-app.md`) live inside this post or stay separate? (leaning: separate. keep this one specific.)
+- is the own-your-understanding line at the end one sentence, or does it not appear at all and live as a sibling post? (leaning: one sentence, quiet.)
+- screen recording vs. screenshots — which carries more per example without bloating the post?
 
 ## audience reactions (captured 2026-04-09)
 
