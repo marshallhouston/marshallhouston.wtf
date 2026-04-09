@@ -2,7 +2,7 @@
 title: the feedback skill
 captured: 2026-04-09
 status: kernel
-updated_at: 2026-04-09 00:00 MDT
+updated_at: 2026-04-09 00:30 MDT
 kernel: feedback-skill
 ---
 
@@ -25,11 +25,36 @@ not a tool post. a workflow post. the shape of thinking it unlocks.
 - connection to wispr flow: voice into the feedback boxes. talk your reactions, don't type them.
 - what it replaces: freeform "hey claude what do you think" loops that produced loose, globally-scoped edits.
 
+## new context (2026-04-09)
+
+this isn't a skill post. it's a **lens post**. the feedback skill is how i make sense of things. apply it everywhere.
+
+**OWN YOUR LEARNING. OWN YOUR UNDERSTANDING.**
+
+that's the real thesis. the skill is the mechanism; the lens is the point. structured reaction, at the right altitude, on whatever you're trying to metabolize. a draft. a doc somebody sent you. a 20-idea brainstorm dump in `_ideas/`. a research synth. a book chapter. the pr you're reviewing. the thing you wrote yesterday that you now feel weird about.
+
+connects directly to the `own-your-understanding` kernel. "how do you know you know and at what level of depth?" — the feedback skill is a load-bearing answer. sections force you to land on each piece at its own depth instead of hand-waving globally.
+
+### variety of use cases to show
+
+- **writing**: drafts in `_drafts/`. the canonical case.
+- **synthesizing docs**: a pile of notes, meeting transcripts, research dumps. turn into structured doc, feedback-skill your way through it.
+- **app ideas / tool ideas**: the stuff sitting in `_ideas/tools/` and `_ideas/site/`. react section-by-section instead of "hmm interesting."
+- **other people's writing**: a doc someone sent me. structured reaction beats polite compliments.
+- **my own past thinking**: the idea doc from last week that needs a pressure test. feedback yourself.
+- **anything with sections**: meeting synth, design docs, research briefs, book notes.
+
+the thread through all of it: *you* react. *you* decide the depth. *you* own the understanding. the model carries your reactions back into the doc. you're not outsourcing sense-making, you're structuring it.
+
+(this is the anti-vibe-thinking move. vibe thinking outsources the thinking itself; this skill keeps the thinking yours and outsources only the typing.)
+
 ## open questions
 
 - is this post a tour (walkthrough with screenshots) or an argument (why structured feedback beats conversation)?
 - do i show the same skill applied to three different kinds of docs to prove the "basically anywhere" claim?
 - does the feedback review app idea (`_ideas/tools/feedback-review-app.md`) live inside this post or stay separate?
+- how tightly does this pair with the `own-your-understanding` kernel? same post? sibling posts? this one is the "how," that one is the "why"?
+- what's the right opening? the caps thesis ("OWN YOUR LEARNING. OWN YOUR UNDERSTANDING") or a concrete use case that earns it?
 
 ## audience reactions (captured 2026-04-09)
 
