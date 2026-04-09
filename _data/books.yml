@@ -1,0 +1,40 @@
+eras:
+  - id: childhood
+    label: Early Childhood
+    years: ""
+    color: "#e8a87c"
+  - id: middle_school
+    label: Middle School
+    years: ""
+    color: "#d4a574"
+  - id: high_school
+    label: High School
+    years: ""
+    color: "#85cdca"
+  - id: college
+    label: College
+    years: ""
+    color: "#e27d60"
+  - id: educator
+    label: Educator
+    years: ""
+    color: "#c38d9e"
+  - id: parent_tech
+    label: Parent + Tech
+    years: ""
+    color: "#41b3a3"
+  - id: general
+    label: General
+    years: ""
+    color: "#b8b0a0"
+
+books:
+  - title: "Where the Wild Things Are"
+    era: childhood
+  - title: "Hatchet"
+    era: middle_school
+  - title: "The Catcher in the Rye"
+    era: high_school
+  - title: "Co-Intelligence"
+    era: parent_tech
+    note: "Read twice in 2025"
