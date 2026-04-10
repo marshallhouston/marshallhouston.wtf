@@ -14,7 +14,7 @@ echo "content files changed — running site health check..."
 BUILD_OUTPUT=$(bundle exec jekyll build 2>&1)
 BUILD_EXIT=$?
 
-WARNINGS=$(echo "$BUILD_OUTPUT" | grep -i "warning\|error" | grep -v "Faraday\|deprecated")
+WARNINGS=$(echo "$BUILD_OUTPUT" | grep -i "warning\|error" | grep -v "Faraday\|deprecat\|verbose mode\|repetitive deprecation")
 
 if [ $BUILD_EXIT -ne 0 ]; then
   echo ""
