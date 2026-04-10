@@ -7,5 +7,5 @@ revisits:
   - 2026-03-23
   - 2026-04-10
 variants:
-  - "mindset shifts. what's the exponential curve for the mindsets needed to succeed out there?"
+  - "mindset shifts. what's the exponential curve for the mindsets needed to succeed :points-off-in-distance: out there?!?"
 ---
