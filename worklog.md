@@ -96,3 +96,49 @@
 - experimentation budget draft still needs a voice review pass
 - freedom-rides-alabama and knowing-yourself-origins kernels still have gravity
 - hookify date-only-frontmatter rule has same trailing newline bug (blocks valid edits)
+
+## 2026-04-05
+
+### what happened
+- brainstormed and published lowerchaos post (`_posts/2026-04-05-lowerchaos.md`)
+  - quiet/minimal register, feedback responsiveness energy
+  - includes quotes from jeff casimir (linkedin), jesse (slack), and an engineer on the team
+  - creative tension angle: lowerchaos is intentionally jarring, but meeting people where they're at matters more than winning an aesthetic argument
+  - linked to jeff's linkedin comment, linkedin reply draft ready at `_ideas/writing/lowerchaos-linkedin-draft.md`
+- fixed broken site rendering on lowerchaos post
+  - root cause: `layout: post` doesn't exist in minimal mistakes theme (uses `single`)
+  - posts don't need explicit layout, `_config.yml` defaults handle it
+- fixed broken BFF kernel link (`/bff-build-friction-fix/` → `/build-friction-fix/`)
+- built pre-commit hook system for site trust:
+  - **site health check** (`check-site-health.sh`): jekyll build + validates all pages have theme rendering + checks all internal links. blocks commit on failure.
+  - **capitalize config check** (`check-capitalize-config.sh`): flags proper nouns in posts missing from `_config.yml` capitalize config. warn only.
+  - **playwright tests now trigger on any `_posts/*.md` change**, not just toggle-related files. added test for cross-page session persistence to lowerchaos.
+- built feedback auto-regeneration hook (`regenerate-feedback.sh`)
+  - PostToolUse hook regenerates `feedback.html` when `_drafts/*.md` files are edited
+  - only fires when `feedback.html` exists (active feedback session)
+- sprouted lowerchaos kernel on kernels page
+
+### what's next
+- update linkedin reply draft with post URL and send
+- experimentation budget draft still needs a voice review pass
+- freedom-rides-alabama and knowing-yourself-origins kernels still have gravity
+- v1 authenticity draft material still available for future posts
+
+## 2026-04-07
+
+### what happened
+- renamed GitHub repo from `marshallhouston/marshallhouston.github.io` to `marshallhouston/marshallhouston.wtf` to match the custom domain
+  - `gh repo rename` auto-updated local git remote
+  - updated repo identifiers in `_config.yml` (`repository:`), `package.json` (name/repo/bugs/homepage), `package-lock.json` (name)
+  - committed as 67c4cc1, pushed clean; site health check passed (80 pages)
+- created redirect stub repo at `marshallhouston/marshallhouston.github.io` (lives at `~/marshallhouston.github.io-stub/`)
+  - `404.html` + `index.html` JS-redirect any path to `marshallhouston.wtf/*` preserving path+query+hash, meta refresh fallback
+  - restores inbound-link coverage lost when renaming away from the `username.github.io` Pages pattern
+  - Pages auto-enabled, building on creation
+- updated `project_domains.md` memory to reflect rename + stub architecture
+
+### what's next
+- rename local directory `~/marshallhouston.github.io/` → `~/marshallhouston.wtf/` (deferred, will break open tmux panes)
+- verify stub redirect works end-to-end once Pages build finishes
+- experimentation budget draft still needs a voice review pass
+- freedom-rides-alabama and knowing-yourself-origins kernels still have gravity
