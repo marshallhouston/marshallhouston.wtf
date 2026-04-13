@@ -6,6 +6,7 @@ url: "https://marshallhouston.wtf"
 og_image: /assets/images/og-default.png
 github_username: marshallhouston
 minimal_mistakes_skin: dark
+date_format: "%m %d %Y"
 search: true
 
 comments:
@@ -56,6 +57,9 @@ exclude:
   - _scripts
   - _ideas
   - vendor
+  - feedback.html
+  - review.html
+  - comparison.html
 
 plugins:
   - jekyll-sitemap
@@ -93,6 +97,7 @@ defaults:
       layout: single
       author_profile: true
       read_time: true
+      show_date: true
       comments: true
       share: false
       related: true

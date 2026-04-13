@@ -10,7 +10,7 @@ const SKIP = ['/comparison.html', '/feedback.html', '/review.html'];
 function getUrls() {
   const sitemap = fs.readFileSync('_site/sitemap.xml', 'utf-8');
   return [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)]
-    .map(m => m[1].replace(BASE, ''))
+    .map(m => new URL(m[1]).pathname)
     .filter(path => !SKIP.includes(path));
 }
 
