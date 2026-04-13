@@ -1,7 +1,7 @@
 ---
 title: what is the cosmic farmland?
 captured: 2026-03-22
-updated_at: 2026-04-08 05:46 MDT
+updated_at: 2026-04-12 04:37 MDT
 kernel: cosmic-farmland
 ---
 
@@ -107,7 +107,18 @@ writing for myself first. sharing because there's shit worth sharing. friends, p
 **tone/energy:** warm opening chord. three to five short moves. fragments. lowercase. music hinted, not detailed. the feeling is "oh, you came. good. sit down." under a hundred words. the reader should finish this section already in the room.
 
 #### 2. the back-home chuckle
-TBD. bible study scene, rocker quip, colorado acid/shrooms myth. positions the post by closing the gap between perception and reality. self-aware, warm, a little defiant.
+
+**job:** position the post by naming the gap between perception and reality. earn the right to go deeper by being disarming first. create the want: "ok so what IS this?"
+
+**content:**
+- open with the back-home scene. composite, not a specific person. energy of small-town southern folk coming out of wednesday night bible study, shaking their heads. "that marshall sure is off his rocker." not mean-spirited, just genuine bafflement. people who knew you before any of this.
+- the quip: "ain't no way to fall off a rocker if you never had one." first thesis statement disguised as a joke. says: i'm not deviating from normal, i never was on normal. the weirdness isn't a departure, it's the starting position.
+- the colorado fantasy: people imagining you out here shoveling fistfuls of acid, growing massive amounts of shrooms. paint it briefly, let it be funny. (not true). the parenthetical denial is part of the comedy. don't belabor it.
+- the turn: ok so if it's not drugs and it's not a breakdown, what IS this? that question is the hinge into the rest of the post. you've closed the easy explanations and now the reader wants the real one.
+
+**tone/energy:** warm, self-deprecating, mischievous. laughing WITH back home, not at them. the defiance is gentle. the chuckle is real. porch-story knee-slap energy: "can you believe?" before getting into what really happened.
+
+**length:** medium. longer than section 1 but doesn't overstay. four moves: bible study image, the quip, colorado bit, the turn. done.
 
 #### 3. where the phrase came from
 TBD. berlin creative season, naate on yale's campus, the collision of far-out energy and rigorous intellectual depth. origin story, felt.
