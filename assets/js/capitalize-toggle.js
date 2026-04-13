@@ -175,9 +175,16 @@
     });
   }
 
+  function looksLikeUrl(text) {
+    return /^https?:\/\/|^[a-z0-9-]+\.(com|org|net|io|dev|app|co)\b/i.test(text.trim());
+  }
+
   function capitalizeTextNode(node, isHeading) {
     var original = node.textContent;
     if (!original || !original.trim()) return;
+
+    // skip text that looks like a URL (e.g. github.com/user/repo)
+    if (looksLikeUrl(original)) return;
 
     originalTexts.set(node, original);
 
