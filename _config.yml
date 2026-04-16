@@ -55,6 +55,7 @@ exclude:
   - test-results
   - scripts
   - _scripts
+  - graphify-out
   - _ideas
   - vendor
   - feedback.html

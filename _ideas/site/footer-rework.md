@@ -1,6 +1,7 @@
 ---
 title: footer rework
-updated_at: 2026-04-08 03:31 MDT
+updated_at: 2026-04-13 05:15 MDT
+status: done
 ---
 
 the default minimal-mistakes footer ("© 2026 marshall houston. Powered by Jekyll & Minimal Mistakes.") isn't doing it for me.

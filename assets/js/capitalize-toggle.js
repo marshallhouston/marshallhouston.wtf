@@ -67,6 +67,7 @@
     '.masthead__menu-item a',
     '.author__urls a .label',
     '.tag-cloud .tag-link',
+    '.taxonomy__index a',
     '.pagination--pager'
   ];
 

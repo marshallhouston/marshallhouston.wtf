@@ -1,0 +1,16 @@
+# Jekyll build output (duplicates all source files + vendored JS)
+_site/
+
+# Dependencies and caches
+node_modules/
+.jekyll-cache/
+
+# Vendored JS libraries (jQuery, Lunr, plugins) — noise in the graph
+assets/js/vendor/
+assets/js/plugins/
+assets/js/lunr/
+
+# Build artifacts
+graphify-out/
+test-results/
+.DS_Store

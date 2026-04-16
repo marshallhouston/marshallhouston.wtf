@@ -95,3 +95,12 @@ variants:
 - Loose matching, not strict. Prefer bumping over proliferation. Duplicates are a signal marshall is coming back to something, and we want that signal captured.
 - The canonical `idea` field is sacred. Never overwrite it on a bump.
 - Do not editorialize, expand, or "improve" kernel phrasing. Capture marshall's voice exactly.
+
+## graphify
+
+This project has a graphify knowledge graph at graphify-out/.
+
+Rules:
+- Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
+- If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
+- After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)

@@ -2,6 +2,9 @@
 # Pre-commit check: validates Jekyll build and checks all links
 # Only runs when content files are staged. Blocks commit on failures.
 
+# Activate mise so we get the right Ruby/bundler
+eval "$(mise env 2>/dev/null)" || true
+
 STAGED_CONTENT=$(git diff --cached --name-only --diff-filter=ACM | grep -E "^(_posts|_drafts|_pages|_includes|_layouts|_config.yml|assets/)" )
 
 if [ -z "$STAGED_CONTENT" ]; then
@@ -10,7 +13,26 @@ fi
 
 echo "content files changed — running site health check..."
 
-# 1. Jekyll build check (catches invalid layouts, liquid errors, etc.)
+# 1. Check that all posts have tags
+STAGED_POSTS=$(echo "$STAGED_CONTENT" | grep "^_posts/.*\.md$")
+if [ -n "$STAGED_POSTS" ]; then
+  MISSING_TAGS=""
+  for post in $STAGED_POSTS; do
+    if ! grep -q "^tags:" "$post" 2>/dev/null; then
+      MISSING_TAGS="$MISSING_TAGS\n  ✗ $post: missing tags in frontmatter"
+    fi
+  done
+  if [ -n "$MISSING_TAGS" ]; then
+    echo ""
+    echo "━━━ missing tags ━━━"
+    echo -e "$MISSING_TAGS"
+    echo ""
+    echo "  Add tags: [tag1, tag2] to frontmatter"
+    exit 1
+  fi
+fi
+
+# 2. Jekyll build check (catches invalid layouts, liquid errors, etc.)
 BUILD_OUTPUT=$(bundle exec jekyll build 2>&1)
 BUILD_EXIT=$?
 
@@ -31,7 +53,7 @@ if [ -n "$WARNINGS" ]; then
   exit 1
 fi
 
-# 2. Check all internal links, theme rendering, and structural consistency
+# 3. Check all internal links, theme rendering, and structural consistency
 python3 << 'PYEOF'
 import os, re, sys, glob
 
