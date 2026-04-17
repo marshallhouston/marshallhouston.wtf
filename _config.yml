@@ -43,7 +43,6 @@ exclude:
   - .dockerignore
   - CLAUDE.md
   - README.md
-  - worklog.md
   - Gemfile
   - Gemfile.lock
   - mise.toml

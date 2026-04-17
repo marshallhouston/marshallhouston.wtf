@@ -28,10 +28,6 @@ marshall's voice is a spectrum, not a template. Each post has its own register/e
 - If it sounds like a LinkedIn post, burn it down.
 - Don't hedge on things marshall is direct about, or add false confidence to things he's exploring.
 
-## Worklog
-
-`worklog.md` tracks what happened each session and what's next. Read it at the start of every session.
-
 ## Content Pipeline
 
 Ideas move through three stages. Never skip ahead.
