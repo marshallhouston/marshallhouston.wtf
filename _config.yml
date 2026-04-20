@@ -9,16 +9,6 @@ minimal_mistakes_skin: dark
 date_format: "%m %d %Y"
 search: true
 
-comments:
-  provider: "giscus"
-  giscus:
-    repo_id: "R_kgDORtVxhw"
-    category_name: "Announcements"
-    category_id: "DIC_kwDORtVxh84C5wnf"
-    discussion_term: "pathname"
-    reactions_enabled: "1"
-    theme: "dark"
-
 # Build settings
 markdown: kramdown
 remote_theme: mmistakes/minimal-mistakes
@@ -98,7 +88,7 @@ defaults:
       author_profile: true
       read_time: true
       show_date: true
-      comments: true
+      comments: false
       share: false
       related: true
   - scope:
