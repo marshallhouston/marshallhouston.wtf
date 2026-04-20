@@ -116,6 +116,8 @@ capitalize:
       capitalized: "Claude"
     - name: "bff"
       capitalized: "BFF"
+    - name: "fitfo"
+      capitalized: "FITFO"
     - name: "build friction fix"
       capitalized: "Build Friction Fix"
     - name: "jekyll"
