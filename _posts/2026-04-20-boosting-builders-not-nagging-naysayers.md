@@ -1,7 +1,7 @@
 ---
-title: "boosting builders, not nagging naysayers"
+title: "boosting builders: current philosophy"
 date: 2026-04-20
-updated_at: 2026-04-20 16:58 MDT
+updated_at: 2026-04-20 17:03 MDT
 permalink: /boosting-builders/
 tags: [ai-augmented-engineering, mental-models, ai-culture, experimentation]
 ---
