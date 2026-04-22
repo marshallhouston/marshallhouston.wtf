@@ -4,7 +4,7 @@ date: 2026-04-22
 permalink: /unpromptable/
 updated_at: 2026-04-22 06:07 MDT
 custom_cap_toggle: linkedin
-tags: [unhinged, creative-expression, ai-culture, pushback]
+tags: [unhinged, creative-expression, ai-culture, pushback, satire]
 ---
 
 I had been listening to music all day when it hit me.
