@@ -1,11 +1,11 @@
 ---
 title: new skill to snuff out fluff and focus on what matters
 date: 2026-04-17
-updated_at: 2026-04-17 06:13 MDT
+updated_at: 2026-04-20 15:46 MDT
 tags: [workflow, ai-augmented-engineering, ptvm]
 ---
 
-new skill in the cosmic farmland: `/fart-smell-detection`. check it out here: [https://github.com/marshallhouston/cosmic-farmland/tree/main/plugins/cosmic-farmland/skills/fart-sniffing-detection](https://github.com/marshallhouston/cosmic-farmland/tree/main/plugins/cosmic-farmland/skills/fart-sniffing-detection).
+new skill in the cosmic farmland: `/fart-sniffing-detection`. check it out here: [https://github.com/marshallhouston/cosmic-farmland/tree/main/plugins/cosmic-farmland/skills/fart-sniffing-detection](https://github.com/marshallhouston/cosmic-farmland/tree/main/plugins/cosmic-farmland/skills/fart-sniffing-detection).
 
 aliased as `/ptvm` and `/prove-the-value-motherfucker`.
 
