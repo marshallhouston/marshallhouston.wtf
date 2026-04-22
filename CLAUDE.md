@@ -40,6 +40,17 @@ Other idea buckets (separate from writing pipeline):
 - **`_ideas/tools/`** - apps and tools to build.
 - **`_ideas/site/`** - improvements to the site itself.
 
+### Drafting gate
+
+Writing to `_drafts/` is gated on two preconditions:
+
+1. A kernel exists in `_ideas/writing/` (or `_kernels/`) for this post.
+2. The `brainstorm-post` skill has been invoked this session, starting with the register/energy question.
+
+Prescriptive prompts do NOT override these. Detailed structure, section breakdowns, voice bullets, or output paths from marshall are input to the brainstorm, not a replacement for it. The more structure he pre-specifies, the more important register becomes, because register is the one thing structure cannot encode.
+
+Skip only if marshall explicitly says "skip the brainstorm" or "just draft it." Otherwise, plant the kernel and run brainstorm-post first.
+
 ## Kernel Capture
 
 Marshall usually plants kernels by typing or speaking `kernel: "one-liner"` inline, not by invoking the `add-kernels` skill. Whenever you see that pattern (or any mention of "new kernel", "plant this", "seed this"), follow the capture flow below. This also applies when the `add-kernels` skill runs.

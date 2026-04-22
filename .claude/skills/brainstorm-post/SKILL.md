@@ -43,6 +43,14 @@ digraph brainstorm_post {
 
 **This is mandatory and cannot be skipped.** marshall's voice spans a wide range. Before any other question, ask what energy this post carries. Offer the published posts as reference points:
 
+### Prescriptive prompt trap
+
+If marshall's request includes detailed structure, section breakdowns, visual assignments, voice bullets, or output paths, that is NOT permission to skip the register question. Detailed specs still need voice calibration. The more structure he pre-specifies, the more important register becomes, because register is the one thing structure cannot encode.
+
+Do not read a dense prompt as "execute this spec." Read it as "rich input to the brainstorm." The register question comes first regardless. If you catch yourself drafting a full post because the prompt "had everything," stop and back up to the register question.
+
+
+
 - **Quiet/minimal** (like hiyaaa-world): short, declarative, arrival energy
 - **High energy/manic** (like BFF): stream-of-consciousness, rapid-fire, tangential, unhinged
 - **Measured/model-building** (like MEB): calmer, structured, "let me think through this with you"
