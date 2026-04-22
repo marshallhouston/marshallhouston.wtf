@@ -2,14 +2,14 @@
 title: obsidian-weaver
 captured: 2026-04-17
 status: kernel
-updated_at: 2026-04-17 03:40 MDT
+updated_at: 2026-04-17 05:17 MDT
 ---
 
 ## the kernel
 
 another workflow i use. claude code as the interface to my obsidian vault, skills as the verbs, and a background script that weaves connections between notes as i write them. the knowledge graph wasn't the plan. it emerged.
 
-repo: https://github.com/marshallhouston/tools (plugins/obsidian-weaver)
+repo: https://github.com/marshallhouston/cosmic-farmland (plugins/obsidian-weaver). lives alongside the other cosmic-farmland plugins, not a standalone thing.
 
 ---
 
@@ -70,3 +70,4 @@ seeds, not products. starting point. BFF it for yourself. the repo is there. ren
 - do NOT reproduce setup instructions. link to the repo. this post is for readers, not installers.
 - the friend-quote spine from `tools-repo-tour` ("all about the reps") isn't here — the spine of this one is "i didn't design this shape. it emerged."
 - keep the title simple. "obsidian-weaver" or "another workflow i use: obsidian-weaver." resist anything that starts with "how i."
+- mention cosmic-farmland as the home repo. obsidian-weaver is one plugin among several. part of the farmland, not its own thing.
