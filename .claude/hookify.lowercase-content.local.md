@@ -7,6 +7,9 @@ conditions:
   - field: file_path
     operator: regex_match
     pattern: _posts/.*\.md$|_drafts/.*\.md$|_pages/.*\.md$|_includes/.*\.html$
+  - field: file_path
+    operator: not_contains
+    pattern: unpromptable-linkedin-flip
   - field: content
     operator: regex_match
     pattern: ^#{1,6}\s+.*(?-i:[A-Z][a-z])|^title:\s+"?.*(?-i:[A-Z][a-z])

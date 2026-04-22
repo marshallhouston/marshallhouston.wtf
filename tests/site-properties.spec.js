@@ -7,6 +7,10 @@ const BASE = 'http://localhost:4000';
 // standalone utility pages that don't use the site theme
 const SKIP = ['/comparison.html', '/feedback.html', '/review.html'];
 
+// pages with a custom cap-toggle that doesn't rewrite text content
+// (e.g. /unpromptable/ applies CSS text-transform instead)
+const SKIP_TITLE_TEXT_TEST = ['/unpromptable/'];
+
 function getUrls() {
   const sitemap = fs.readFileSync('_site/sitemap.xml', 'utf-8');
   return [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)]
@@ -24,6 +28,7 @@ for (const path of urls) {
     });
 
     test('capitalize toggle changes site title text', async ({ page }) => {
+      test.skip(SKIP_TITLE_TEXT_TEST.includes(path), 'custom cap-toggle uses CSS text-transform, not textContent');
       await page.goto(path);
       const btn = page.locator('.masthead .capitalize-toggle');
       const titleEl = page.locator('.site-title');
