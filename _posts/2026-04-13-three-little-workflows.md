@@ -7,7 +7,7 @@ tags: [workflow, experimentation, ai-augmented-engineering]
 
 a friend asked what i've been building recently, and it's mostly a collection of random things to get swings and reps and build the habit of building. an app for a friend to build community, digital reading library, digital cosmic farmland, one stop golf starting point. writing repo. little tools.
 
-as workflows emerge, i'm throwing them into [github.com/marshallhouston/tools](https://github.com/marshallhouston/tools).
+as workflows emerge, i'm throwing them into [github.com/marshallhouston/cosmic-farmland](https://github.com/marshallhouston/cosmic-farmland).
 
 let's take a look at three pieces.
 
@@ -15,7 +15,7 @@ if any of this plants a seed for others, great; please take the ideas and run wi
 
 ## `/handoff`
 
-[`/handoff`](https://github.com/marshallhouston/tools/tree/main/plugins/marshall-tools/skills/handoff) generates a self-contained resumption prompt. five parts: goal, frozen decisions, key constraints, current state, next step. it gets copied to clipboard. `/clear`, paste, keep going.
+[`/handoff`](https://github.com/marshallhouston/cosmic-farmland/tree/main/plugins/cosmic-farmland/skills/handoff) generates a self-contained resumption prompt. five parts: goal, frozen decisions, key constraints, current state, next step. it gets copied to clipboard. `/clear`, paste, keep going.
 
 the fresh session picks up where things left off. here's where we are, here's what's next, go.
 
@@ -23,7 +23,7 @@ why? i kept finding myself in a "ok, context window is filling up, give me a pro
 
 ## `/feedback` & `/interactive-review-doc`
 
-two entry points, same idea. could it be a single one? probably. [`/interactive-review-doc`](https://github.com/marshallhouston/tools/tree/main/plugins/marshall-tools/skills/interactive-review-doc) came out of claude desktop, and [`/feedback`](https://github.com/marshallhouston/tools/tree/main/plugins/marshall-tools/skills/feedback) came from claude code in the terminal. take any file with sections and turn it into a three-panel HTML review page: navigation sidebar on the left, content in the center, feedback panel on the right.
+two entry points, same idea. could it be a single one? probably. [`/interactive-review-doc`](https://github.com/marshallhouston/cosmic-farmland/tree/main/plugins/cosmic-farmland/skills/interactive-review-doc) came out of claude desktop, and [`/feedback`](https://github.com/marshallhouston/cosmic-farmland/tree/main/plugins/cosmic-farmland/skills/feedback) came from claude code in the terminal. take any file with sections and turn it into a three-panel HTML review page: navigation sidebar on the left, content in the center, feedback panel on the right.
 
 `/feedback` runs a script that generates the HTML and opens it. `/interactive-review-doc` builds the same format on the fly from whatever content claude just produced. both output the same thing: a page where i can add feedback in the way i learn directly.
 
