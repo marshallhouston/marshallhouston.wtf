@@ -125,3 +125,58 @@ your first team is your peer group, not your direct reports. represent the busin
 2. **two layers** — personal/general principles first, then how they manifest in ai-augmented engineering specifically.
 3. **principles vs mindsets distinction** — principles are what you believe, mindsets are how you show up. explore that tension.
 4. **the convergence story** — teaching background + em experience + ai moment = these principles.
+
+---
+
+## fleshed out design (2026-04-20)
+
+source: slack post to lenny's newsletter. that post became the spine. this kernel finally sprouts around it.
+
+### frame
+"boosting builders, not nagging naysayers" is the organizing mantra. principles, mindsets, and patterns serve it. flat premise opener. sahaj garg shape. link out to already-shipped patterns (bff, meb) so this post stays lean/index-ish rather than repeating flesh that lives elsewhere.
+
+### register/energy
+manifesto + measured/model-building hybrid. calm authority. each line earns its place. no hedging, no preamble. mindsets section gets slightly more teeth (FITFO spelled out, cologne line intact, exponentials gesture). periods doing structural work.
+
+### audience
+broad. anyone feeling the pull from "how to use this tool" toward systems and exponentials thinking. not pm-specific, not engineer-specific.
+
+### post arc
+
+#### 1. opener (flat premise)
+shift from "here's how to use this tool" to thinking in systems and exponentials is the trend worth tracking. challenging. critical. here's the mantra, principles, mindsets, and patterns i've been leveraging.
+
+#### 2. mantra
+**boosting builders, not nagging naysayers.**
+- anyone can be a builder. all are welcome. it's a mindset.
+- builders have different styles and fluencies.
+- each builder is on a different stage of the journey.
+- builders empower, advance, and champion other builders.
+- time and energy are limited. boost builders above all else.
+
+#### 3. principles
+- **impact > busyness.** feels possible to build everything. doesn't mean we should. impact is what matters.
+- **depth > breadth.** deeply knowing one tool or workflow beats shallow awareness of many. durable learning.
+- **move up a level of abstraction.** understand what problem a tool solves, how, context around it. extract what remains as tools change. models, harnesses, agents will keep solving existing problems. focus on what's durable.
+- **asymmetric upside. plant many seeds.** don't know the shape of what's valuable in 1, 3, 6, 12 months. sow experiments. intellectual honesty to stop spending energy on seeds that don't take. quit criteria. gates. revisit shelved seeds as conditions change.
+- **no perfect prompt.** optimizing for a perfect prompt today is a waste. clear thinking and outcomes up front, then rapid-fire prompts to keep momentum.
+
+#### 4. mindsets
+- **FITFO. figure it the fuck out.** expect uncertainty. move forward anyway. willingness to update priors and start fresh.
+- **build to learn.** the build is the experiment.
+- **no vibe thinking.** no sniffing farts and calling it cologne. prove the value.
+- **think in exponentials.** go bigger. gesture widely. point at the sky.
+
+#### 5. patterns (links out, short)
+- [build, friction, fix](/build-friction-fix/). build. notice friction. fix later. cyclical. fractal.
+- [mental experimentation budgets](/mental-experimentation-budgets/). recognize capacity. increase it. reduce marginal cost. speed up recharge.
+
+no closer. end on patterns.
+
+### links to wire later
+- no-perfect-prompt draft (`_drafts/2026-04-19-no-perfect-prompt.md`) when shipped
+- ptvm when shipped (for "prove the value" under no-vibe-thinking)
+- future posts flesh individual principles/mindsets. link in as they ship.
+
+### kernels braided
+principles-and-mindsets (primary), build-boosters-not-naysayers, were-all-builders, fitfo, no-perfect-prompt, depth-over-shallowness, experimentation-budgets, vibe-thinking, bff, moonshots, ptvm.
