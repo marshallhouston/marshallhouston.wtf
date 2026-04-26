@@ -62,6 +62,8 @@ errors = []
 
 # standalone utility pages — skip theme/component checks
 standalone = ["/comparison.html", "/feedback.html", "/review.html"]
+# standalone path prefixes: skip theme/component checks for everything under
+standalone_prefixes = ["/slides/"]
 
 # collect all HTML files and their internal links
 html_files = glob.glob(os.path.join(site_dir, "**/*.html"), recursive=True)
@@ -82,7 +84,8 @@ for html_file in html_files:
         continue
 
     # structural consistency checks (themed pages only)
-    if rel_path not in standalone:
+    is_standalone = rel_path in standalone or any(rel_path.startswith(p) for p in standalone_prefixes)
+    if not is_standalone:
         if "capitalize-toggle" not in content:
             errors.append(f"  ✗ {rel_path}: missing capitalize toggle")
         if "masthead" not in content:

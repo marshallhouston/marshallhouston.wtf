@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>cambrian explosion and fractals</title>
+<style>
+  :root {
+    --bg: #0e0f12;
+    --fg: #ececec;
+    --muted: #8a8f98;
+    --accent: #f0a850;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--fg); font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  body { overflow: hidden; height: 100vh; }
+  .deck { position: relative; width: 100vw; height: 100vh; }
+  .slide {
+    position: absolute; inset: 0;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    padding: 6vh 8vw;
+    font-size: 2.4vw;
+    line-height: 1.35;
+  }
+  .slide.active { display: flex; }
+  h1 { font-size: 5.5vw; margin: 0 0 2vh 0; font-weight: 700; letter-spacing: -0.02em; }
+  h2 { font-size: 3.8vw; margin: 0 0 2vh 0; font-weight: 600; letter-spacing: -0.01em; }
+  p { margin: 0.5vh 0; }
+  ul { margin: 1vh 0; padding-left: 2vw; }
+  li { margin: 0.6vh 0; }
+  .muted { color: var(--muted); }
+  .accent { color: var(--accent); }
+  .kicker { text-transform: uppercase; letter-spacing: 0.2em; font-size: 1.1vw; color: var(--muted); margin-bottom: 2vh; }
+  .center { text-align: center; align-items: center; }
+  .big { font-size: 4vw; }
+  .nav {
+    position: fixed; bottom: 1.5vh; right: 2vw;
+    color: var(--muted); font-size: 1vw;
+    user-select: none;
+  }
+  .progress {
+    position: fixed; top: 0; left: 0; height: 3px;
+    background: var(--accent); transition: width 0.2s;
+  }
+  .three-col { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 2vw; width: 100%; }
+  .three-col > div { padding: 2vh 1vw; border-top: 2px solid var(--accent); }
+  .scale-stack { display: flex; flex-direction: column; gap: 1.5vh; }
+  .scale-stack > div { padding: 1.2vh 1.5vw; border-left: 3px solid var(--accent); }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="deck" id="deck">
+
+  <!-- 1. TITLE -->
+  <section class="slide center">
+    <div class="kicker">cosmic farmland</div>
+    <h1>cambrian explosion<br/>&amp; fractals</h1>
+    <p class="muted">two analogies for where we are</p>
+  </section>
+
+  <!-- 2. FRAME -->
+  <section class="slide">
+    <div class="kicker">beat 1 — frame</div>
+    <h2>i own my understanding by chasing analogies.</h2>
+    <ul>
+      <li>reason about them. see what fits. see where they break.</li>
+      <li>today: two lenses for our industry.</li>
+      <li>stretch? yeah. come along.</li>
+      <li class="accent">tell me i'm full of shit. then we learn together.</li>
+    </ul>
+  </section>
+
+  <!-- 3. CAMBRIAN TITLE -->
+  <section class="slide center">
+    <div class="kicker">beat 2</div>
+    <h1 class="accent">cambrian explosion</h1>
+    <p class="muted">~540M years ago. body plans explode.</p>
+  </section>
+
+  <!-- 4. CAMBRIAN WHAT -->
+  <section class="slide">
+    <h2>what happened</h2>
+    <ul>
+      <li>sudden burst. not gradual.</li>
+      <li>environment shifted. variety exploded.</li>
+      <li>most major body plans appear in a blink.</li>
+    </ul>
+  </section>
+
+  <!-- 5. CAMBRIAN 3 IDEAS -->
+  <section class="slide">
+    <h2>three ideas worth borrowing</h2>
+    <div class="three-col">
+      <div>
+        <p class="accent">unpredictable</p>
+        <p>we don't know what wins. nobody did then either.</p>
+      </div>
+      <div>
+        <p class="accent">combinations</p>
+        <p>remix &gt; invention. recombination compounds.</p>
+      </div>
+      <div>
+        <p class="accent">many bets</p>
+        <p>asymmetric upside. most die. a few define the era.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. CAMBRIAN APPLIED -->
+  <section class="slide">
+    <div class="kicker">beat 3 — applied</div>
+    <h2>what this asks of us</h2>
+    <ul>
+      <li>environment just shifted. again.</li>
+      <li>can't predict winners. stop converging early.</li>
+      <li>breadth &gt; precision. portfolio posture.</li>
+      <li>cheap bets. fast kills.</li>
+    </ul>
+    <p class="muted">metaphor bends: our bets cost attention, budget, trust. nature's are free.</p>
+  </section>
+
+  <!-- 7. FRACTALS TITLE -->
+  <section class="slide center">
+    <div class="kicker">beat 4</div>
+    <h1 class="accent">fractals</h1>
+    <p class="muted">repeating pattern at different scales.</p>
+  </section>
+
+  <!-- 8. FRACTALS WHAT -->
+  <section class="slide">
+    <h2>zoom in, zoom out. same shape.</h2>
+    <ul>
+      <li>coastlines. trees. lungs. rivers.</li>
+      <li>see the shape once → recognize it everywhere.</li>
+    </ul>
+  </section>
+
+  <!-- 9. FRACTALS THREE SCALES -->
+  <section class="slide">
+    <div class="kicker">beat 5 — three scales</div>
+    <h2>same shape, widening circles</h2>
+    <div class="scale-stack">
+      <div>
+        <p class="accent">feedback loops (tight)</p>
+        <p>repl → test → pr → release → postmortem. try · observe · adjust.</p>
+      </div>
+      <div>
+        <p class="accent">time (decades)</p>
+        <p>mainframe → pc → web → mobile → ai. booch: golden age. we've been here.</p>
+      </div>
+      <div>
+        <p class="accent">people (widening)</p>
+        <p>story · epic · feature · initiative · team · org. same dance.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. FRACTAL IMPLICATION -->
+  <section class="slide">
+    <h2>implication</h2>
+    <ul>
+      <li>practices that work at one scale likely work at others.</li>
+      <li>failures at one scale forecast failures at the others.</li>
+      <li>fix the shape. scale follows.</li>
+    </ul>
+  </section>
+
+  <!-- 11. CLOSE. LET IT BURN. -->
+  <section class="slide center">
+    <div class="kicker">beat 6. close.</div>
+    <h1 class="accent big">let it burn.</h1>
+  </section>
+
+  <!-- 11b. FIRE POLICY -->
+  <section class="slide">
+    <h2>we already made this mistake once.</h2>
+    <ul>
+      <li>us forest service, early 1900s. fight every fire.</li>
+      <li>decades of suppression. fuel stacks up.</li>
+      <li>small fires stop happening. catastrophic ones arrive.</li>
+      <li>nature was already running a process. we overrode it.</li>
+    </ul>
+  </section>
+
+  <!-- 11c. SAME IN TECH -->
+  <section class="slide">
+    <h2>same pattern in our work.</h2>
+    <ul>
+      <li>we suppress. keep projects alive past usefulness.</li>
+      <li>can't say no. can't kill. can't sunset.</li>
+      <li>fuel stacks up. cognitive load. maintenance. drag.</li>
+      <li>the catastrophic fire is the reorg, the layoff, the collapse.</li>
+    </ul>
+  </section>
+
+  <!-- 11d. THE MOVE -->
+  <section class="slide center">
+    <h2>intellectual honesty.</h2>
+    <p>look at what's there. admit what should burn. let it.</p>
+    <p class="muted">cambrian needs extinction. winners only compound if losers get out of the way.</p>
+  </section>
+
+  <!-- 11e. FRACTAL OF BURNING -->
+  <section class="slide">
+    <h2>same shape, every scale.</h2>
+    <div class="scale-stack">
+      <div><p class="accent">task.</p><p>kill the branch.</p></div>
+      <div><p class="accent">project.</p><p>sunset the service.</p></div>
+      <div><p class="accent">team.</p><p>stop staffing it.</p></div>
+      <div><p class="accent">org.</p><p>end the initiative.</p></div>
+    </div>
+  </section>
+
+  <!-- 11f. CLOSING LINE -->
+  <section class="slide center">
+    <h1 class="big accent">intellectual honesty,</h1>
+    <h1 class="big">or the fire picks for you.</h1>
+  </section>
+
+  <!-- 12. Q&A -->
+  <section class="slide center">
+    <h1>tell me where this breaks.</h1>
+    <p class="muted">q&amp;a.</p>
+  </section>
+
+</div>
+
+<div class="nav"><span id="idx">1</span> / <span id="count">0</span> · ← → or space</div>
+
+<script>
+  const slides = document.querySelectorAll('.slide');
+  const count = slides.length;
+  document.getElementById('count').textContent = count;
+  let i = 0;
+  function show(n) {
+    i = Math.max(0, Math.min(count - 1, n));
+    slides.forEach((s, k) => s.classList.toggle('active', k === i));
+    document.getElementById('idx').textContent = i + 1;
+    document.getElementById('progress').style.width = ((i + 1) / count * 100) + '%';
+    const url = new URL(location);
+    url.hash = '#' + (i + 1);
+    history.replaceState(null, '', url);
+  }
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') { show(i + 1); e.preventDefault(); }
+    else if (e.key === 'ArrowLeft' || e.key === 'PageUp') { show(i - 1); e.preventDefault(); }
+    else if (e.key === 'Home') { show(0); }
+    else if (e.key === 'End') { show(count - 1); }
+  });
+  document.addEventListener('click', (e) => {
+    if (e.clientX > window.innerWidth / 2) show(i + 1);
+    else show(i - 1);
+  });
+  const start = parseInt((location.hash || '#1').slice(1), 10);
+  show(isNaN(start) ? 0 : start - 1);
+</script>
+</body>
+</html>
