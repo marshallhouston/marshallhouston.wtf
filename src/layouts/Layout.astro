@@ -1,12 +1,26 @@
 ---
 import '../styles/global.css';
+import { mainNav } from '../data/navigation';
 
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
 }
 
-const { title = 'marshall houston', description = 'exploring creativity, ai, and how we write the future together' } = Astro.props;
+const SITE_TITLE = 'marshall houston';
+const SITE_DESC = 'exploring creativity, ai, and how we write the future together';
+const SITE_OG = '/assets/images/og-default.png';
+
+const {
+  title = SITE_TITLE,
+  description = SITE_DESC,
+  ogImage = SITE_OG,
+} = Astro.props;
+
+const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} · ${SITE_TITLE}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageUrl = new URL(ogImage, Astro.site).toString();
 ---
 
 <html lang="en">
@@ -16,19 +30,31 @@ const { title = 'marshall houston', description = 'exploring creativity, ai, and
     <meta name="generator" content={Astro.generator} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="alternate" type="application/rss+xml" title="marshall houston" href="/feed.xml" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/feed.xml" />
+    <title>{pageTitle}</title>
     <meta name="description" content={description} />
-    <title>{title}</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content={SITE_TITLE} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
   </head>
   <body>
     <header class="masthead">
       <div class="inner">
-        <a href="/" class="site-title">marshall houston</a>
+        <a href="/" class="site-title">{SITE_TITLE}</a>
         <nav>
-          <a href="/about/">about</a>
-          <a href="/kernels/">kernels</a>
-          <a href="/tags/">tags</a>
-          <a href="/feed.xml">rss</a>
+          {mainNav.map((link) => (
+            <a href={link.url}>{link.title}</a>
+          ))}
         </nav>
       </div>
     </header>
