@@ -65,7 +65,7 @@ header.masthead .site-title {
   font-weight: 700;
   color: var(--text-strong);
   font-size: 1rem;
-  text-transform: capitalize;
+  /* capitalized state controlled by body[data-caps] */
 }
 
 header.masthead nav a {
@@ -112,7 +112,7 @@ h1, h2, h3, h4 {
   font-weight: 700;
 }
 
-h1 { font-size: 1.953em; margin-top: 0; text-transform: capitalize; }
+h1 { font-size: 1.953em; margin-top: 0; /* capitalized state controlled by body[data-caps] */ }
 h2 { font-size: 1.563em; margin-top: 2rem; }
 h3 { font-size: 1.25em; margin-top: 1.5rem; }
 
@@ -143,7 +143,7 @@ hr {
   border-radius: 3px;
   font-size: 0.75em;
   color: var(--link);
-  text-transform: capitalize;
+  /* capitalized state controlled by body[data-caps] */
 }
 .tag-link:hover { color: var(--link-hover); text-decoration: none; }
 
@@ -156,7 +156,7 @@ hr {
 .entry .entry-title {
   margin: 0 0 0.25rem;
   font-size: 1.25em;
-  text-transform: capitalize;
+  /* capitalized state controlled by body[data-caps] */
 }
 .entry .entry-title a { color: var(--text-strong); }
 .entry .entry-title a:hover { color: var(--link-hover); text-decoration: none; }
@@ -181,7 +181,7 @@ hr {
 .entry .tags a { margin-right: 0.5rem; color: var(--link); text-transform: lowercase; }
 
 /* Post page */
-article.post header h1 { margin-bottom: 0.5rem; text-transform: capitalize; }
+article.post header h1 { margin-bottom: 0.5rem; /* capitalized state controlled by body[data-caps] */ }
 article.post .meta {
   color: var(--text-soft);
   font-size: 0.85rem;
@@ -209,3 +209,30 @@ pre {
 pre code { background: transparent; padding: 0; }
 
 img { max-width: 100%; height: auto; }
+
+/* Cap-toggle: default state = capitalized (Title Case).
+ * body[data-caps="on"] (default): titles in Title Case.
+ * body[data-caps="off"]: titles fall back to source casing (lowercase).
+ */
+body[data-caps="on"] header.masthead .site-title,
+body[data-caps="on"] h1,
+body[data-caps="on"] h2,
+body[data-caps="on"] h3,
+body[data-caps="on"] h4,
+body[data-caps="on"] .archive__subtitle,
+body[data-caps="on"] .entry .entry-title,
+body[data-caps="on"] .tag-link,
+body[data-caps="on"] .author-profile .name {
+  text-transform: capitalize;
+}
+
+/* LinkedIn cap-toggle override: ALL CAPS for content + title.
+ * Activated only on pages where custom_cap_toggle === 'linkedin' and
+ * user has flipped the toggle (body[data-linkedin="on"]).
+ */
+body[data-linkedin="on"] article.post,
+body[data-linkedin="on"] article.post h1,
+body[data-linkedin="on"] article.post h2,
+body[data-linkedin="on"] article.post h3 {
+  text-transform: uppercase;
+}

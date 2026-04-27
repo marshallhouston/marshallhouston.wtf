@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import { mainNav } from '../data/navigation';
 import AuthorProfile from '../components/AuthorProfile.astro';
+import CapToggle from '../components/CapToggle.astro';
 
 interface Props {
   title?: string;
@@ -56,6 +57,7 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
           {mainNav.map((link) => (
             <a href={link.url}>{link.title}</a>
           ))}
+          <CapToggle />
         </nav>
       </div>
     </header>

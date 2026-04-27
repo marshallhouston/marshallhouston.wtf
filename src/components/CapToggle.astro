@@ -1,0 +1,56 @@
+---
+// Aa toggle. Default state = capitalized (Title Case). Click → lowerchaos.
+// Persisted in sessionStorage.
+---
+
+<button class="cap-toggle" type="button" aria-label="switch to lowerchaos">Aa</button>
+
+<style>
+  .cap-toggle {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+    border-radius: 3px;
+    padding: 0.15em 0.5em;
+    font-size: 0.85em;
+    font-family: inherit;
+    cursor: pointer;
+    line-height: 1;
+  }
+  .cap-toggle:hover { color: var(--link-hover); border-color: var(--link); }
+</style>
+
+<script is:inline>
+  (function () {
+    const KEY = 'capitalize-pref';
+    const saved = sessionStorage.getItem(KEY);
+    if (saved === 'off') document.body.dataset.caps = 'off';
+    else document.body.dataset.caps = 'on';
+
+    function label(on) {
+      return on ? 'switch to lowerchaos' : 'switch to standard capitalization';
+    }
+
+    function bind(btn) {
+      const sync = () => {
+        const on = document.body.dataset.caps !== 'off';
+        btn.setAttribute('aria-label', label(on));
+        btn.setAttribute('title', label(on));
+      };
+      btn.addEventListener('click', () => {
+        const on = document.body.dataset.caps !== 'off';
+        const next = on ? 'off' : 'on';
+        document.body.dataset.caps = next;
+        if (next === 'off') sessionStorage.setItem(KEY, 'off');
+        else sessionStorage.removeItem(KEY);
+        document.querySelectorAll('.cap-toggle').forEach((b) => {
+          b.dispatchEvent(new Event('cap-sync'));
+        });
+      });
+      btn.addEventListener('cap-sync', sync);
+      sync();
+    }
+
+    document.querySelectorAll('.cap-toggle').forEach(bind);
+  })();
+</script>
