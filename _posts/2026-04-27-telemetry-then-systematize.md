@@ -1,7 +1,7 @@
 ---
 title: telemetry then systematize
 date: 2026-04-27
-updated_at: 2026-04-27 10:02 MDT
+updated_at: 2026-04-27 10:58 MDT
 tags: [workflow, experimentation, ai-augmented-engineering, claude-code, cosmic-farmland]
 ---
 
@@ -25,7 +25,7 @@ scanner finds weakness. miner finds strength. both feed [`/systematize`](https:/
 
 the friction and usage patterns get systematized.
 
-[`no-reasking`](https://github.com/marshallhouston/cosmic-farmland/blob/main/plugins/cosmic-farmland/hooks/no-reasking.py) is a Stop hook. checks the last assistant text for "want me to / should i / would you like." whitelists destructive op confirmations (delete, drop table, force push). warns to stderr and appends to `~/.claude/cc-friction-log.jsonl`. non-blocking on purpose. measure first, tighten later.
+[`no-reasking`](https://github.com/marshallhouston/cosmic-farmland/blob/main/plugins/cosmic-farmland/hooks/no-reasking.py) is a Stop hook. checks the last assistant text for "want me to / should i / would you like." allowlists destructive op confirmations (delete, drop table, force push). warns to stderr and appends to `~/.claude/cc-friction-log.jsonl`. non-blocking on purpose. measure first, tighten later.
 
 [`/wrap`](https://github.com/marshallhouston/cosmic-farmland/blob/main/plugins/cosmic-farmland/commands/wrap.md) ships the current PR then writes a handoff prompt. replaces the `/ship → /handoff` chain.
 
