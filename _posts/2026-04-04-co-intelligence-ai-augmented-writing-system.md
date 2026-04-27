@@ -1,6 +1,6 @@
 ---
 title: "co-intelligence & ai-augmented writing system"
-tags: [ai-augmented-engineering, writing, process, creative-expression, workflow]
+tags: [ai-augmented-engineering, writing, process, creative-expression, workflow, claude-code, cosmic-farmland]
 classes: wide
 updated_at: 2026-04-07 04:42 MDT
 ---

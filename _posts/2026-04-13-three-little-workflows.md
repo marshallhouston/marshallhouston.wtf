@@ -2,7 +2,7 @@
 title: three little workflows
 date: 2026-04-13
 updated_at: 2026-04-13 06:22 MDT
-tags: [workflow, experimentation, ai-augmented-engineering]
+tags: [workflow, experimentation, ai-augmented-engineering, claude-code, cosmic-farmland]
 ---
 
 a friend asked what i've been building recently, and it's mostly a collection of random things to get swings and reps and build the habit of building. an app for a friend to build community, digital reading library, digital cosmic farmland, one stop golf starting point. writing repo. little tools.

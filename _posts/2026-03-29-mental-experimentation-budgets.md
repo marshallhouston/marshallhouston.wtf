@@ -1,7 +1,7 @@
 ---
 title: "mental experimentation budgets"
 date: 2026-03-29
-tags: [sensemaking, mental-models, experimentation]
+tags: [sensemaking, mental-models, experimentation, claude-code, cosmic-farmland]
 classes: wide
 updated_at: 2026-04-04 03:19 MDT
 ---
