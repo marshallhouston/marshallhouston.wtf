@@ -1,7 +1,7 @@
 ---
-title: telemetry, then systematize
+title: telemetry then systematize
 date: 2026-04-27
-updated_at: 2026-04-27 06:25 MDT
+updated_at: 2026-04-27 10:02 MDT
 tags: [workflow, experimentation, ai-augmented-engineering, claude-code, cosmic-farmland]
 ---
 
