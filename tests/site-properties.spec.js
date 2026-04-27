@@ -7,6 +7,9 @@ const BASE = 'http://localhost:4000';
 // standalone utility pages that don't use the site theme
 const SKIP = ['/comparison.html', '/feedback.html', '/review.html'];
 
+// slides decks use a fullscreen layout without the site masthead
+const SKIP_PREFIXES = ['/slides/'];
+
 // pages with a custom cap-toggle that doesn't rewrite text content
 // (e.g. /unpromptable/ applies CSS text-transform instead)
 const SKIP_TITLE_TEXT_TEST = ['/unpromptable/'];
@@ -15,7 +18,8 @@ function getUrls() {
   const sitemap = fs.readFileSync('_site/sitemap.xml', 'utf-8');
   return [...sitemap.matchAll(/<loc>(.*?)<\/loc>/g)]
     .map(m => new URL(m[1]).pathname)
-    .filter(path => !SKIP.includes(path));
+    .filter(path => !SKIP.includes(path))
+    .filter(path => !SKIP_PREFIXES.some(p => path.startsWith(p)));
 }
 
 const urls = getUrls();

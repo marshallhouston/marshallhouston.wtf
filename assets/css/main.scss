@@ -10,6 +10,11 @@
   }
 }
 
+.archive__item-excerpt {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
 .page {
   padding-right: 0;
 }
