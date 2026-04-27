@@ -16,7 +16,7 @@ marshall's voice is a spectrum, not a template. Each post has its own register/e
 - Cross-domain references (literary, philosophical, scientific) are a feature, not a reach.
 - Don't prescribe tools to the reader.
 - Direct quotes (block quotes with attribution) preserve original capitalization. Marshall's voice is lowercase; other people's words stay as they wrote them.
-- Never use "whitelist" or "blacklist". Use "allowlist" / "blocklist". Enforced by `scripts/hooks/check-inclusive-language.sh` at pre-commit.
+- Inclusive language. See section below.
 
 ### Drafting
 - Fragments over complete sentences. Periods doing structural work.
@@ -28,6 +28,25 @@ marshall's voice is a spectrum, not a template. Each post has its own register/e
 - If it could have been written by any AI, it's wrong.
 - If it sounds like a LinkedIn post, burn it down.
 - Don't hedge on things marshall is direct about, or add false confidence to things he's exploring.
+
+### Inclusive language
+
+References: [ASWF guide](https://www.aswf.io/blog/inclusive-language/), [Google dev style](https://developers.google.com/style/inclusive-documentation).
+
+**Mechanically blocked at pre-commit** (`scripts/hooks/check-inclusive-language.sh`): whitelist, blacklist, master/slave, manpower, man-hours, mankind, middleman, cripple(s/d), dummy variable, handi-capable, STONITH. Replace with: allowlist, blocklist, primary/replica, labor/workforce, person-hours, humanity, mediator, slow down/degrade, placeholder, (omit), "fence failed nodes".
+
+**Judgment-required (use better term when context allows):**
+
+- Socially-charged: master alone (→ main, lead), native feature (→ core, built-in), culture fit (→ values fit), housekeeping (→ cleanup, maintenance), first-class citizen (→ rephrase).
+- Gendered: guys (→ folks, people), girl(s) for adult women (→ women), he/she pronouns (→ they), man/woman-as-default examples (→ diverse names).
+- Ableist: crazy, insane (→ unpredictable, unexpected, baffling), normal (→ typical), abnormal (→ atypical), sanity-check (→ final check), blind to / blind eye (→ unaware, ignored), dumb (→ silent, no-op), lame (→ uninspired).
+- Ageist: grandfather/grandfathered (→ established, carry over, exempt), legacy when used dismissively (→ established, prior, v1).
+- Violent: kill/killing (→ stop, terminate, end), hang (→ stall, freeze), crushing it / killing it (→ excelling), abort (→ cancel, stop), hit (→ reach, request).
+- Slaughter metaphors: avoid pets vs. cattle for stateful vs. stateless.
+
+When a non-inclusive term is an established API/keyword (SQL `SLAVE`, k8s field names), keep it in code font and rewrite surrounding prose to use the inclusive term. Don't invent new keywords.
+
+When in doubt, ask.
 
 ## Content Pipeline
 
