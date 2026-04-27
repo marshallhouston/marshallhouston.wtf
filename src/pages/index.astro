@@ -16,12 +16,33 @@ const topTags = [...tagCounts.entries()]
   .slice(0, 5);
 
 const slugger = new GitHubSlugger();
+
 const fmtDate = (d: Date) =>
   `${String(d.getMonth() + 1).padStart(2, '0')} ${String(d.getDate()).padStart(2, '0')} ${d.getFullYear()}`;
+
+const wordsPerMin = 200;
+function readMinutes(text: string) {
+  const words = text.trim().split(/\s+/).length;
+  return Math.max(1, Math.round(words / wordsPerMin));
+}
+
+function excerpt(body: string) {
+  const stripped = body
+    .replace(/^---[\s\S]*?---\n/, '')
+    .replace(/```[\s\S]*?```/g, '')
+    .replace(/^#+\s.*$/gm, '')
+    .replace(/!\[[^\]]*\]\([^)]+\)/g, '')
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
+    .replace(/[*_`]/g, '')
+    .trim();
+  const para = stripped.split(/\n\s*\n/).find((p) => p.trim().length > 30) ?? '';
+  const firstSentences = para.replace(/\s+/g, ' ').slice(0, 200);
+  return firstSentences.length === 200 ? `${firstSentences}...` : firstSentences;
+}
 ---
 
 <Layout>
-  <h3>recent posts</h3>
+  <h3 class="archive__subtitle">recent posts</h3>
 
   <div class="tag-cloud">
     {topTags.map(([name, n]) => {
@@ -29,14 +50,19 @@ const fmtDate = (d: Date) =>
       const slug = slugger.slug(name);
       return <a href={`/tags/#${slug}`} class="tag-link">{name} ({n})</a>;
     })}
-    <a href="/tags/">all tags &rarr;</a>
+    <a href="/tags/" class="tag-link" style="border-color:transparent;">all tags &rarr;</a>
   </div>
 
   <div class="entries-list">
     {posts.map((p) => (
       <article class="entry">
-        <h2><a href={`/${p.data.slug}/`}>{p.data.title}</a></h2>
-        <p class="meta">{fmtDate(p.data.date)}</p>
+        <h2 class="entry-title"><a href={`/${p.data.slug}/`}>{p.data.title}</a></h2>
+        <p class="meta">
+          📅 {fmtDate(p.data.date)}
+          <span class="sep">·</span>
+          ⏱ {readMinutes(p.body ?? '')} min read
+        </p>
+        <p class="excerpt">{excerpt(p.body ?? '')}</p>
         {p.data.tags.length > 0 && (
           <p class="tags">
             {p.data.tags.map((t) => {

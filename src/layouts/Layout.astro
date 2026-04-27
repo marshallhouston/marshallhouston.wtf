@@ -59,10 +59,14 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
         </nav>
       </div>
     </header>
-    <main>
-      <AuthorProfile />
-      <slot />
-    </main>
+    <div class="layout">
+      <div class="sidebar">
+        <AuthorProfile />
+      </div>
+      <main class="content">
+        <slot />
+      </main>
+    </div>
     <footer class="site-footer">
       <p>cosmic farmland · <a href="/feed.xml">rss</a></p>
     </footer>

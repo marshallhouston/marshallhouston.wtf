@@ -1,0 +1,10 @@
+import { chromium } from 'playwright';
+const browser = await chromium.launch();
+const ctx = await browser.newContext({ viewport: { width: 1280, height: 1600 }, deviceScaleFactor: 1 });
+const page = await ctx.newPage();
+await page.goto('https://marshallhouston.wtf/', { waitUntil: 'networkidle' });
+await page.screenshot({ path: '/tmp/jekyll-home-v2.png', fullPage: false });
+await page.goto('http://localhost:4321/', { waitUntil: 'networkidle' });
+await page.screenshot({ path: '/tmp/astro-home-v2.png', fullPage: false });
+await browser.close();
+console.log('done');
