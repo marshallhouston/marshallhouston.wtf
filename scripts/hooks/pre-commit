@@ -5,7 +5,10 @@ HOOKS_DIR="$(dirname "$0")"
 # 1. Check new posts for proper nouns missing from capitalize config (warn only)
 bash "$HOOKS_DIR/check-capitalize-config.sh"
 
-# 2. Build site and validate: layouts, links, theme rendering, structural consistency (blocks commit)
+# 2. Block "whitelist"/"blacklist" in staged content (blocks commit)
+bash "$HOOKS_DIR/check-inclusive-language.sh" || exit 1
+
+# 3. Build site and validate: layouts, links, theme rendering, structural consistency (blocks commit)
 bash "$HOOKS_DIR/check-site-health.sh" || exit 1
 
 # 3. Run Playwright tests when relevant files are changed
