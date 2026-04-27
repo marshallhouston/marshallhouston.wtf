@@ -35,14 +35,15 @@ References: [ASWF guide](https://www.aswf.io/blog/inclusive-language/), [Google 
 
 **Mechanically blocked at pre-commit** (`scripts/hooks/check-inclusive-language.sh`): whitelist, blacklist, master/slave, manpower, man-hours, mankind, middleman, cripple(s/d), dummy variable, handi-capable, STONITH. Replace with: allowlist, blocklist, primary/replica, labor/workforce, person-hours, humanity, mediator, slow down/degrade, placeholder, (omit), "fence failed nodes".
 
-**Judgment-required (use better term when context allows):**
+**Judgment-required.** Replace when context is technical / formal / could read as default-male or otherized. Keep when it's marshall's figurative register and replacement would flatten the voice.
 
-- Socially-charged: master alone (→ main, lead), native feature (→ core, built-in), culture fit (→ values fit), housekeeping (→ cleanup, maintenance), first-class citizen (→ rephrase).
-- Gendered: guys (→ folks, people), girl(s) for adult women (→ women), he/she pronouns (→ they), man/woman-as-default examples (→ diverse names).
-- Ableist: crazy, insane (→ unpredictable, unexpected, baffling), normal (→ typical), abnormal (→ atypical), sanity-check (→ final check), blind to / blind eye (→ unaware, ignored), dumb (→ silent, no-op), lame (→ uninspired).
-- Ageist: grandfather/grandfathered (→ established, carry over, exempt), legacy when used dismissively (→ established, prior, v1).
-- Violent: kill/killing (→ stop, terminate, end), hang (→ stall, freeze), crushing it / killing it (→ excelling), abort (→ cancel, stop), hit (→ reach, request).
-- Slaughter metaphors: avoid pets vs. cattle for stateful vs. stateless.
+- Socially-charged: master alone (use main, lead), native feature (use core, built-in), culture fit (use values fit), first-class citizen (rephrase).
+- Gendered: guys for mixed groups (use folks, people), girl(s) for adult women (use women), default he/she pronouns (use they).
+- Ableist as casual descriptors: crazy/insane describing a person or group (use unpredictable, baffling), sanity-check (use final check), blind to / blind eye (use unaware, ignored).
+- Ageist: grandfather/grandfathered as a verb (use carry over, exempt).
+- Violent in technical/formal docs: abort (use cancel, stop), hit (use reach, request).
+
+**Don't police figurative voice.** Phrases like "off normal", "kill the branch", "crushing it" (sincere or satirical), "hang out" are part of marshall's register. Leave them. The hook only blocks the unambiguous slate above.
 
 When a non-inclusive term is an established API/keyword (SQL `SLAVE`, k8s field names), keep it in code font and rewrite surrounding prose to use the inclusive term. Don't invent new keywords.
 
