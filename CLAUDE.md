@@ -3,9 +3,15 @@
 ## Build & Development
 
 ```bash
-bundle install                              # install dependencies
-bundle exec jekyll serve --livereload       # local dev server at localhost:4000
+npm install        # install dependencies
+npm run dev        # local dev server at localhost:4321
+npm run build      # static build to ./dist
+npm run preview    # serve ./dist locally
 ```
+
+Engine: Astro (migrated from Jekyll on 2026-04-27). Content collections in
+`src/content/{posts,kernels}`. Pages in `src/pages/`. Layouts in `src/layouts/`.
+Static assets in `public/`. Build output `dist/` served by Caddy in container.
 
 ## Voice & Style
 

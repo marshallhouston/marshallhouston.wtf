@@ -1,0 +1,42 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = 'marshall houston', description = 'exploring creativity, ai, and how we write the future together' } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="alternate" type="application/rss+xml" title="marshall houston" href="/feed.xml" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body>
+    <header class="masthead">
+      <div class="inner">
+        <a href="/" class="site-title">marshall houston</a>
+        <nav>
+          <a href="/about/">about</a>
+          <a href="/kernels/">kernels</a>
+          <a href="/tags/">tags</a>
+          <a href="/feed.xml">rss</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <p>cosmic farmland · <a href="/feed.xml">rss</a></p>
+    </footer>
+  </body>
+</html>

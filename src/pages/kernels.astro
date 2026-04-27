@@ -1,0 +1,41 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+const kernels = (await getCollection('kernels')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const monthLabel = (d: Date) =>
+  d.toLocaleString('en-US', { month: 'long', year: 'numeric' }).toLowerCase();
+
+// Group by month preserving order.
+const groups: { month: string; items: typeof kernels }[] = [];
+for (const k of kernels) {
+  const m = monthLabel(k.data.date);
+  const last = groups[groups.length - 1];
+  if (last && last.month === m) last.items.push(k);
+  else groups.push({ month: m, items: [k] });
+}
+---
+
+<Layout title="kernels">
+  <h1>kernels</h1>
+  <p>one-sentence ideas. seeds that might become something.</p>
+
+  {groups.map((g) => (
+    <section>
+      <h3>{g.month}</h3>
+      <ul>
+        {g.items.map((k) => (
+          <li>
+            {k.data.idea}
+            {k.data.sprouted && k.data.post_url && (
+              <> &rarr; <a href={k.data.post_url}>{k.data.post_title}</a></>
+            )}
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
+</Layout>

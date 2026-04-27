@@ -1,0 +1,148 @@
+/* Ported from minimal-mistakes dark skin. Spike-grade.
+ * Source: _site/assets/css/main.css extracted vars.
+ */
+:root {
+  --bg: #1f2330;
+  --surface: #252a34;
+  --text: #eaeaea;
+  --text-muted: #ccc;
+  --text-soft: #bdbdbd;
+  --text-strong: #f3f3f3;
+  --link: #699d9f;
+  --link-hover: #a9dcdf;
+  --link-visited: #8cd1d4;
+  --font-sans: -apple-system, BlinkMacSystemFont, "Roboto", "Segoe UI",
+               "Helvetica Neue", sans-serif;
+  --max-w: 48rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 48em) {
+  html { font-size: 18px; }
+}
+
+@media (min-width: 64em) {
+  html { font-size: 20px; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  line-height: 1.5;
+}
+
+a {
+  color: var(--link);
+  text-decoration: none;
+}
+
+a:hover { color: var(--link-hover); }
+a:visited { color: var(--link-visited); }
+
+main {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 1.5rem 1rem 4rem;
+}
+
+header.masthead {
+  background: var(--surface);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+header.masthead .inner {
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+header.masthead .site-title {
+  font-weight: 700;
+  color: var(--text-strong);
+  font-size: 1.25rem;
+}
+
+header.masthead nav a {
+  margin-left: 1rem;
+  color: var(--text-muted);
+}
+
+footer.site-footer {
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 2rem 1rem;
+  text-align: center;
+  color: var(--text-soft);
+  font-size: 0.85rem;
+}
+
+h1, h2, h3, h4 {
+  color: var(--text-strong);
+  line-height: 1.2;
+}
+
+h1 { font-size: 2rem; margin-top: 0; }
+h2 { font-size: 1.5rem; margin-top: 2rem; }
+h3 { font-size: 1.25rem; margin-top: 1.5rem; }
+
+hr {
+  border: 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+  margin: 2rem 0;
+}
+
+.tag-cloud {
+  margin-bottom: 1.5em;
+}
+
+.tag-link {
+  display: inline-block;
+  margin: 0.25em 0.5em 0.25em 0;
+  padding: 0.2em 0.6em;
+  border: 1px solid currentColor;
+  border-radius: 3px;
+  font-size: 0.85em;
+}
+
+.entries-list .entry {
+  margin: 1.5rem 0;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+.entry h2 { margin: 0 0 0.25rem; font-size: 1.5rem; }
+.entry .meta { color: var(--text-soft); font-size: 0.85rem; }
+.entry .tags { font-size: 0.85rem; color: var(--text-soft); }
+.entry .tags a { margin-right: 0.5rem; }
+
+article.post header h1 { margin-bottom: 0.5rem; }
+article.post .meta { color: var(--text-soft); font-size: 0.9rem; margin-bottom: 2rem; }
+
+code {
+  background: var(--surface);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+  font-size: 0.9em;
+}
+
+pre {
+  background: var(--surface);
+  padding: 1rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+pre code { background: transparent; padding: 0; }

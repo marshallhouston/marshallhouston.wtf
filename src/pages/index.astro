@@ -1,0 +1,51 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import GitHubSlugger from 'github-slugger';
+
+const posts = (await getCollection('posts')).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const tagCounts = new Map<string, number>();
+for (const p of posts) {
+  for (const t of p.data.tags) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+}
+const topTags = [...tagCounts.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 5);
+
+const slugger = new GitHubSlugger();
+const fmtDate = (d: Date) =>
+  `${String(d.getMonth() + 1).padStart(2, '0')} ${String(d.getDate()).padStart(2, '0')} ${d.getFullYear()}`;
+---
+
+<Layout>
+  <h3>recent posts</h3>
+
+  <div class="tag-cloud">
+    {topTags.map(([name, n]) => {
+      slugger.reset();
+      const slug = slugger.slug(name);
+      return <a href={`/tags/#${slug}`} class="tag-link">{name} ({n})</a>;
+    })}
+    <a href="/tags/">all tags &rarr;</a>
+  </div>
+
+  <div class="entries-list">
+    {posts.map((p) => (
+      <article class="entry">
+        <h2><a href={`/${p.data.slug}/`}>{p.data.title}</a></h2>
+        <p class="meta">{fmtDate(p.data.date)}</p>
+        {p.data.tags.length > 0 && (
+          <p class="tags">
+            {p.data.tags.map((t) => {
+              slugger.reset();
+              return <a href={`/tags/#${slugger.slug(t)}`}>#{t}</a>;
+            })}
+          </p>
+        )}
+      </article>
+    ))}
+  </div>
+</Layout>
