@@ -76,8 +76,46 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
 
     <script is:inline>
       (function () {
-        // Default state = lowerchaos (off). User can opt in to capitalized.
         const KEY = 'capitalize-pref';
+        const SELECTOR = [
+          'header.masthead .site-title',
+          '.archive__subtitle',
+          '.entry-title',
+          '.tag-link',
+          '.author-profile .name',
+          '.excerpt',
+          'article.post header h1',
+          'article.post h2',
+          'article.post h3',
+          'article.post h4',
+        ].join(',');
+
+        const originals = new WeakMap();
+
+        function sentenceCase(s) {
+          return s.replace(/(^|[.!?]\s+)([a-z])/g, function (_, p, c) {
+            return p + c.toUpperCase();
+          });
+        }
+
+        function eachTextNode(root, fn) {
+          const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+          let n;
+          while ((n = walker.nextNode())) {
+            if (n.nodeValue && n.nodeValue.trim()) fn(n);
+          }
+        }
+
+        function applyCaps(on) {
+          document.querySelectorAll(SELECTOR).forEach(function (el) {
+            eachTextNode(el, function (node) {
+              if (!originals.has(node)) originals.set(node, node.nodeValue);
+              const orig = originals.get(node);
+              node.nodeValue = on ? sentenceCase(orig) : orig;
+            });
+          });
+        }
+
         const saved = sessionStorage.getItem(KEY);
         document.body.dataset.caps = saved === 'on' ? 'on' : 'off';
 
@@ -88,6 +126,7 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
             b.setAttribute('aria-label', label);
             b.setAttribute('title', label);
           });
+          applyCaps(on);
         }
         syncAll();
 

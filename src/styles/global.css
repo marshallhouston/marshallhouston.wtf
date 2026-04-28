@@ -291,17 +291,7 @@ img { max-width: 100%; height: auto; }
  * body[data-caps="on"] (default): titles in Title Case.
  * body[data-caps="off"]: titles fall back to source casing (lowercase).
  */
-body[data-caps="on"] header.masthead .site-title,
-body[data-caps="on"] h1,
-body[data-caps="on"] h2,
-body[data-caps="on"] h3,
-body[data-caps="on"] h4,
-body[data-caps="on"] .archive__subtitle,
-body[data-caps="on"] .entry .entry-title,
-body[data-caps="on"] .tag-link,
-body[data-caps="on"] .author-profile .name {
-  text-transform: capitalize;
-}
+/* sentence-case applied via JS in Layout.astro */
 
 /* LinkedIn cap-toggle override: ALL CAPS for content + title.
  * Activated only on pages where custom_cap_toggle === 'linkedin' and
