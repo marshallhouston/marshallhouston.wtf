@@ -30,9 +30,34 @@ const related = all
   .slice(0, 3);
 
 const minRead = readMinutes(post.body ?? '');
+const postDesc = post.data.description ?? excerpt(post.body ?? '', 200);
+const canonicalUrl = new URL(`/${post.data.slug}/`, Astro.site).toString();
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: post.data.title,
+  description: postDesc,
+  url: canonicalUrl,
+  datePublished: post.data.date.toISOString(),
+  ...(post.data.updated_at ? { dateModified: post.data.updated_at } : {}),
+  author: { '@type': 'Person', name: 'Marshall Houston', url: 'https://marshallhouston.wtf' },
+  keywords: post.data.tags.join(', '),
+};
 ---
 
-<Layout title={post.data.title} customCapToggle={post.data.custom_cap_toggle}>
+<Layout
+  title={post.data.title}
+  description={postDesc}
+  ogImageAlt={post.data.title}
+  customCapToggle={post.data.custom_cap_toggle}
+  article={{
+    publishedTime: post.data.date,
+    modifiedTime: post.data.updated_at,
+    tags: post.data.tags,
+    jsonLd,
+  }}
+>
   <article class="post" data-pagefind-body>
     <header>
       <h1>{post.data.title}</h1>
