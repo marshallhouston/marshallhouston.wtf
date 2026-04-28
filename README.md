@@ -1,9 +1,43 @@
-# marshallhouston.wtf
+# Astro Starter Kit: Minimal
 
-personal site. writing about the cosmic farmland.
+```sh
+npm create astro@latest -- --template minimal
+```
 
-**https://marshallhouston.wtf**
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-<img width="1536" height="1024" alt="cosmic-farmland-constellation-crops" src="https://github.com/user-attachments/assets/cacef324-5de5-44c6-b333-b505417ce80e" />
-<img width="1536" height="1024" alt="cosmic-farmland-starfield-furrows" src="https://github.com/user-attachments/assets/45f8b6dd-7016-40c8-9987-f1d87ee9ccce" />
-<img width="1536" height="1024" alt="cosmic-farmland-signal-growth" src="https://github.com/user-attachments/assets/8678e68b-5f1d-4d8e-b79a-8d8e9f07b966" />
+## 🚀 Project Structure
+
+Inside of your Astro project, you'll see the following folders and files:
+
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
+
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+
+Any static assets, like images, can be placed in the `public/` directory.
+
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | Installs dependencies                            |
+| `npm run dev`             | Starts local dev server at `localhost:4321`      |
+| `npm run build`           | Build your production site to `./dist/`          |
+| `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `npm run astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

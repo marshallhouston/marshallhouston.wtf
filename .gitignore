@@ -1,9 +1,29 @@
-_site/
-.jekyll-cache/
-.DS_Store
-review.html
-feedback.html
+# build output
+dist/
+
+# generated types
+.astro/
+
+# dependencies
 node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment
+.env
+.env.production
+
+# os/editor
+.DS_Store
+.idea/
+
+# project-specific
 test-results/
 graphify-out/
 _drafts/prompts_72h.json
+review.html
+feedback.html

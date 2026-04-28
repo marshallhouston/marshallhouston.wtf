@@ -1,0 +1,57 @@
+---
+import Layout from '../layouts/Layout.astro';
+import CapToggle from '../components/CapToggle.astro';
+import Icon from '../components/Icon.astro';
+import GitHubSlugger from 'github-slugger';
+import { readMinutes, excerpt, fmtDate, getPosts } from '../lib/post-utils';
+
+const posts = (await getPosts()).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const tagCounts = new Map<string, number>();
+for (const p of posts) {
+  for (const t of p.data.tags) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
+}
+const topTags = [...tagCounts.entries()]
+  .sort((a, b) => b[1] - a[1])
+  .slice(0, 5);
+
+const slugger = new GitHubSlugger();
+---
+
+<Layout>
+  <h3 class="archive__subtitle">recent posts</h3>
+
+  <div class="tag-cloud">
+    {topTags.map(([name, n]) => {
+      slugger.reset();
+      const slug = slugger.slug(name);
+      return <a href={`/tags/#${slug}`} class="tag-link">{name} ({n})</a>;
+    })}
+    <a href="/tags/" class="tag-link" style="border-color:transparent;">all tags &rarr;</a>
+  </div>
+
+  <div class="entries-list">
+    {posts.map((p) => (
+      <article class="entry">
+        <h2 class="entry-title"><a href={`/${p.data.slug}/`}>{p.data.title}</a></h2>
+        <p class="meta">
+          <Icon name="calendar" />{fmtDate(p.data.date)}
+          <span class="sep">·</span>
+          <Icon name="clock" />{readMinutes(p.body ?? '')} min read
+          <CapToggle />
+        </p>
+        <p class="excerpt">{excerpt(p.body ?? '')}</p>
+        {p.data.tags.length > 0 && (
+          <p class="tags">
+            {p.data.tags.map((t) => {
+              slugger.reset();
+              return <a href={`/tags/#${slugger.slug(t)}`}>#{t}</a>;
+            })}
+          </p>
+        )}
+      </article>
+    ))}
+  </div>
+</Layout>

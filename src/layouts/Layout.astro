@@ -1,0 +1,159 @@
+---
+import '../styles/global.css';
+import { mainNav } from '../data/navigation';
+import AuthorProfile from '../components/AuthorProfile.astro';
+import CapToggle from '../components/CapToggle.astro';
+import Icon from '../components/Icon.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  customCapToggle?: string;
+}
+
+const SITE_TITLE = 'marshall houston';
+const SITE_DESC = 'exploring creativity, ai, and how we write the future together';
+const SITE_OG = '/assets/images/og-default.png';
+
+const {
+  title = SITE_TITLE,
+  description = SITE_DESC,
+  ogImage = SITE_OG,
+  customCapToggle = '',
+} = Astro.props;
+
+const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} · ${SITE_TITLE}`;
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+const ogImageUrl = new URL(ogImage, Astro.site).toString();
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href="/feed.xml" />
+    <title>{pageTitle}</title>
+    <meta name="description" content={description} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:site_name" content={SITE_TITLE} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+  </head>
+  <body data-cap-mode={customCapToggle}>
+    <header class="masthead">
+      <div class="inner">
+        <a href="/" class="site-title">{SITE_TITLE}</a>
+        <nav>
+          {mainNav.map((link) => (
+            <a href={link.url}>{link.title}</a>
+          ))}
+          <a class="search-toggle" href="/search/" aria-label="search" data-tooltip="search"><Icon name="search" /></a>
+          <CapToggle />
+        </nav>
+      </div>
+    </header>
+    <div class="layout">
+      <div class="sidebar">
+        <AuthorProfile />
+      </div>
+      <main class="content">
+        <slot />
+      </main>
+    </div>
+    <footer class="site-footer">
+      <p>cosmic farmland · <a href="/feed.xml">rss</a></p>
+    </footer>
+
+    <script is:inline>
+      (function () {
+        const MODE = document.body.dataset.capMode || '';
+        const LINKEDIN = MODE === 'linkedin';
+
+        const KEY = LINKEDIN ? 'linkedin-caps-pref' : 'capitalize-pref';
+        const ATTR = LINKEDIN ? 'linkedin' : 'caps';
+        const LABEL_ON = LINKEDIN ? 'lol' : 'switch to lowerchaos';
+        const LABEL_OFF = LINKEDIN ? 'lol LINKEDIN YEAH' : 'switch to standard capitalization';
+
+        const SELECTOR = [
+          'header.masthead .site-title',
+          '.author-profile .name',
+          'main.content h1',
+          'main.content h2',
+          'main.content h3',
+          'main.content h4',
+          'main.content p',
+          'main.content li',
+        ].join(',');
+        const SKIP_INSIDE = 'pre, code, blockquote, .meta, .tags';
+
+        const originals = new WeakMap();
+
+        function sentenceCase(s) {
+          return s.replace(/(^|[.!?]\s+)([a-z])/g, function (_, p, c) {
+            return p + c.toUpperCase();
+          });
+        }
+
+        function eachTextNode(root, fn) {
+          const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+          let n;
+          while ((n = walker.nextNode())) {
+            if (n.nodeValue && n.nodeValue.trim()) fn(n);
+          }
+        }
+
+        function applyCaps(on) {
+          // linkedin mode: pure CSS uppercase via body[data-linkedin="on"], skip JS rewrite.
+          if (LINKEDIN) return;
+          document.querySelectorAll(SELECTOR).forEach(function (el) {
+            if (el.closest(SKIP_INSIDE)) return;
+            eachTextNode(el, function (node) {
+              if (node.parentElement && node.parentElement.closest(SKIP_INSIDE)) return;
+              if (!originals.has(node)) originals.set(node, node.nodeValue);
+              const orig = originals.get(node);
+              node.nodeValue = on ? sentenceCase(orig) : orig;
+            });
+          });
+        }
+
+        const saved = sessionStorage.getItem(KEY);
+        document.body.dataset[ATTR] = saved === 'on' ? 'on' : 'off';
+
+        function syncAll() {
+          const on = document.body.dataset[ATTR] === 'on';
+          const label = on ? LABEL_ON : LABEL_OFF;
+          document.querySelectorAll('.cap-toggle').forEach(function (b) {
+            b.setAttribute('aria-label', label);
+            b.setAttribute('data-tooltip', label);
+          });
+          applyCaps(on);
+        }
+        syncAll();
+
+        document.addEventListener('click', function (e) {
+          const btn = e.target.closest && e.target.closest('.cap-toggle');
+          if (!btn) return;
+          const on = document.body.dataset[ATTR] === 'on';
+          const next = on ? 'off' : 'on';
+          document.body.dataset[ATTR] = next;
+          if (next === 'on') sessionStorage.setItem(KEY, 'on');
+          else sessionStorage.removeItem(KEY);
+          syncAll();
+        });
+      })();
+    </script>
+  </body>
+</html>

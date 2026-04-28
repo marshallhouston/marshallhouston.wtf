@@ -1,4 +1,0 @@
----
-permalink: /books/
-title: "books"
----

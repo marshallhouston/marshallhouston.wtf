@@ -1,0 +1,58 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GitHubSlugger from 'github-slugger';
+import Icon from '../components/Icon.astro';
+import { readMinutes, excerpt, fmtDate, getPosts } from '../lib/post-utils';
+
+const posts = (await getPosts()).sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
+
+const byTag = new Map<string, typeof posts>();
+for (const p of posts) {
+  for (const t of p.data.tags) {
+    const arr = byTag.get(t) ?? [];
+    arr.push(p);
+    byTag.set(t, arr);
+  }
+}
+
+const slugger = new GitHubSlugger();
+const tagList = [...byTag.entries()]
+  .sort((a, b) => a[0].localeCompare(b[0]))
+  .map(([name, items]) => {
+    slugger.reset();
+    return { name, slug: slugger.slug(name), items };
+  });
+---
+
+<Layout title="tags">
+  <h1>tags</h1>
+
+  <div class="tag-cloud">
+    {tagList.map((t) => (
+      <a href={`#${t.slug}`} class="tag-link">{t.name} ({t.items.length})</a>
+    ))}
+  </div>
+
+  {tagList.map((t) => (
+    <section id={t.slug} class="tag-section">
+      <h2>{t.name}</h2>
+      <div class="entries-list">
+        {t.items.map((p) => (
+          <article class="entry">
+            <h3 class="entry-title">
+              <a href={`/${p.data.slug}/`}>{p.data.title}</a>
+            </h3>
+            <p class="meta">
+              <Icon name="calendar" />{fmtDate(p.data.date)}
+              <span class="sep">·</span>
+              <Icon name="clock" />{readMinutes(p.body ?? '')} min read
+            </p>
+            <p class="excerpt">{excerpt(p.body ?? '', 160)}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  ))}
+</Layout>

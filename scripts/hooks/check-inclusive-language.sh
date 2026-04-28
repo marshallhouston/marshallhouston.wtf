@@ -6,7 +6,7 @@
 #   https://www.aswf.io/blog/inclusive-language/
 #   https://developers.google.com/style/inclusive-documentation
 
-PATHS_RE='^(_posts/|_drafts/|_includes/|_layouts/|_data/|index\.|README|.*\.md$)'
+PATHS_RE='^(src/|public/|README|BACKLOG|CLAUDE|.*\.md$|.*\.astro$)'
 STAGED=$(git diff --cached --name-only --diff-filter=ACM | grep -E "$PATHS_RE")
 
 [ -z "$STAGED" ] && exit 0

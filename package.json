@@ -1,28 +1,31 @@
 {
   "name": "marshallhouston.wtf",
+  "type": "module",
   "version": "1.0.0",
   "description": "personal site. writing about the cosmic farmland.",
-  "main": "playwright.config.js",
-  "directories": {
-    "doc": "docs",
-    "test": "tests"
+  "engines": {
+    "node": ">=22.12.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "astro dev",
+    "build": "astro build && pagefind --site dist",
+    "preview": "astro preview",
+    "astro": "astro",
+    "test": "playwright test"
+  },
+  "dependencies": {
+    "@astrojs/rss": "^4.0.18",
+    "astro": "^6.1.9",
+    "github-slugger": "^2.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.59.1",
+    "pagefind": "^1.5.2"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/marshallhouston/marshallhouston.wtf.git"
   },
-  "keywords": [],
-  "author": "",
   "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/marshallhouston/marshallhouston.wtf/issues"
-  },
-  "homepage": "https://github.com/marshallhouston/marshallhouston.wtf#readme",
-  "devDependencies": {
-    "@playwright/test": "^1.59.1"
-  }
+  "homepage": "https://github.com/marshallhouston/marshallhouston.wtf#readme"
 }

@@ -1,30 +1,20 @@
 # syntax=docker/dockerfile:1.7
 
-# ---- Build stage: compile the Jekyll site ----
-FROM ruby:3.3-slim AS build
+# ---- Build stage: compile the Astro site ----
+FROM node:22-alpine AS build
 
 WORKDIR /src
 
-# Native gems (nokogiri, ffi, sass-embedded, etc.) need a toolchain.
-# git is required by jekyll-remote-theme to fetch minimal-mistakes.
-RUN apt-get update && apt-get install -y --no-install-recommends \
-      build-essential \
-      git \
-    && rm -rf /var/lib/apt/lists/*
+COPY package.json package-lock.json ./
+RUN npm ci
 
-# Install gems first so this layer caches when only content changes.
-COPY Gemfile Gemfile.lock ./
-RUN bundle config set --local without 'development test' \
- && bundle install --jobs 4 --retry 3
-
-# Copy the rest of the source and build.
 COPY . .
-RUN bundle exec jekyll build --trace
+RUN npm run build
 
 # ---- Serve stage: tiny Caddy image serving the static output ----
 FROM caddy:2-alpine
 
-COPY --from=build /src/_site /srv
+COPY --from=build /src/dist /srv
 COPY Caddyfile /etc/caddy/Caddyfile
 
 # Railway injects $PORT; Caddyfile reads it. Default 8080 for local runs.

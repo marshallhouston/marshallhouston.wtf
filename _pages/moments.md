@@ -1,4 +1,0 @@
----
-permalink: /moments/
-title: "moments"
----

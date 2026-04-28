@@ -1,0 +1,64 @@
+---
+import Icon from './Icon.astro';
+
+type IconName = 'link' | 'github' | 'linkedin' | 'rss';
+const links: { label: string; url: string; icon: IconName }[] = [
+  { label: 'website', url: 'https://marshallhouston.wtf', icon: 'link' },
+  { label: 'github', url: 'https://github.com/marshallhouston', icon: 'github' },
+  { label: 'cosmic-farmland', url: 'https://github.com/marshallhouston/cosmic-farmland', icon: 'github' },
+  { label: 'linkedin', url: 'https://linkedin.com/in/marshallhouston', icon: 'linkedin' },
+  { label: 'rss feed', url: '/feed.xml', icon: 'rss' },
+];
+---
+
+<aside class="author-profile">
+  <img src="/assets/images/marshall.png" alt="marshall houston" class="avatar" />
+  <p class="name">marshall houston</p>
+  <p class="bio">writing about the cosmic farmland</p>
+  <ul class="links">
+    {links.map((l) => (
+      <li><a href={l.url}><Icon name={l.icon} />{l.label}</a></li>
+    ))}
+  </ul>
+</aside>
+
+<style>
+  .author-profile {
+    text-align: left;
+    font-size: 0.85rem;
+  }
+  .author-profile .avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 0.75rem;
+  }
+  .author-profile .name {
+    margin: 0 0 0.25rem;
+    font-weight: 700;
+    color: var(--text-strong);
+    font-size: 1rem;
+  }
+  .author-profile .bio {
+    margin: 0 0 1rem;
+    color: var(--text-soft);
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+  .author-profile .links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+  }
+  .author-profile .links li {
+    margin-bottom: 0.35rem;
+  }
+  .author-profile .links a {
+    color: var(--text-muted);
+  }
+  .author-profile .links a:hover {
+    color: var(--link-hover);
+  }
+</style>
