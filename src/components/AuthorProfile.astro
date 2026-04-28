@@ -1,9 +1,12 @@
 ---
-const links = [
-  { label: 'website', url: 'https://marshallhouston.wtf' },
-  { label: 'github', url: 'https://github.com/marshallhouston' },
-  { label: 'linkedin', url: 'https://linkedin.com/in/marshallhouston' },
-  { label: 'rss feed', url: '/feed.xml' },
+import Icon from './Icon.astro';
+
+type IconName = 'link' | 'github' | 'linkedin' | 'rss';
+const links: { label: string; url: string; icon: IconName }[] = [
+  { label: 'website', url: 'https://marshallhouston.wtf', icon: 'link' },
+  { label: 'github', url: 'https://github.com/marshallhouston', icon: 'github' },
+  { label: 'linkedin', url: 'https://linkedin.com/in/marshallhouston', icon: 'linkedin' },
+  { label: 'rss feed', url: '/feed.xml', icon: 'rss' },
 ];
 ---
 
@@ -13,7 +16,7 @@ const links = [
   <p class="bio">writing about the cosmic farmland</p>
   <ul class="links">
     {links.map((l) => (
-      <li><a href={l.url}>{l.label}</a></li>
+      <li><a href={l.url}><Icon name={l.icon} />{l.label}</a></li>
     ))}
   </ul>
 </aside>
@@ -35,7 +38,6 @@ const links = [
     font-weight: 700;
     color: var(--text-strong);
     font-size: 1rem;
-    text-transform: capitalize;
   }
   .author-profile .bio {
     margin: 0 0 1rem;
@@ -54,11 +56,6 @@ const links = [
   }
   .author-profile .links a {
     color: var(--text-muted);
-  }
-  .author-profile .links a::before {
-    content: "🔗 ";
-    opacity: 0.6;
-    margin-right: 0.25em;
   }
   .author-profile .links a:hover {
     color: var(--link-hover);
