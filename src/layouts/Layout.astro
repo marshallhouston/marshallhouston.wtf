@@ -76,12 +76,13 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
 
     <script is:inline>
       (function () {
+        // Default state = lowerchaos (off). User can opt in to capitalized.
         const KEY = 'capitalize-pref';
         const saved = sessionStorage.getItem(KEY);
-        document.body.dataset.caps = saved === 'off' ? 'off' : 'on';
+        document.body.dataset.caps = saved === 'on' ? 'on' : 'off';
 
         function syncAll() {
-          const on = document.body.dataset.caps !== 'off';
+          const on = document.body.dataset.caps === 'on';
           const label = on ? 'switch to lowerchaos' : 'switch to standard capitalization';
           document.querySelectorAll('.cap-toggle').forEach(function (b) {
             b.setAttribute('aria-label', label);
@@ -93,10 +94,10 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
         document.addEventListener('click', function (e) {
           const btn = e.target.closest && e.target.closest('.cap-toggle');
           if (!btn) return;
-          const on = document.body.dataset.caps !== 'off';
+          const on = document.body.dataset.caps === 'on';
           const next = on ? 'off' : 'on';
           document.body.dataset.caps = next;
-          if (next === 'off') sessionStorage.setItem(KEY, 'off');
+          if (next === 'on') sessionStorage.setItem(KEY, 'on');
           else sessionStorage.removeItem(KEY);
           syncAll();
         });
