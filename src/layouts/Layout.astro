@@ -87,24 +87,69 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
         const LABEL_ON = LINKEDIN ? 'lol' : 'switch to lowerchaos';
         const LABEL_OFF = LINKEDIN ? 'lol LINKEDIN YEAH' : 'switch to standard capitalization';
 
-        const SELECTOR = [
+        // Elements that get title case (names, headings, nav, tags).
+        const TITLE_SELECTOR = [
           'header.masthead .site-title',
+          'header.masthead nav a',
           '.author-profile .name',
+          '.author-profile .links a',
           'main.content h1',
           'main.content h2',
           'main.content h3',
           'main.content h4',
+          'main.content li > a',
+          'main.content .tag-link',
+          'main.content .post-nav a',
+          '.site-footer p',
+        ].join(',');
+
+        // Elements that get sentence case (prose, bio, excerpts).
+        const PROSE_SELECTOR = [
+          '.author-profile .bio',
           'main.content p',
           'main.content li',
         ].join(',');
+
         const SKIP_INSIDE = 'pre, code, blockquote, .meta, .tags';
 
+        // Proper nouns with non-standard capitalization that title/sentence case gets wrong.
+        const PROPER_NOUNS = [
+          ['github', 'GitHub'],
+          ['linkedin', 'LinkedIn'],
+          ['\\bai\\b', 'AI'],
+          ['\\bbff\\b', 'BFF'],
+          ['\\bfitfo\\b', 'FITFO'],
+          ['\\biphone\\b', 'iPhone'],
+          ['macos', 'macOS'],
+        ];
+
         const originals = new WeakMap();
+
+        const SMALL_WORDS = new Set([
+          'a','an','the','and','but','or','for','nor','on','at','to','by',
+          'in','of','up','as','is','it','if','vs',
+        ]);
+
+        function titleCase(s) {
+          return s.replace(/\S+/g, function (word, idx) {
+            if (idx === 0 || !SMALL_WORDS.has(word.toLowerCase())) {
+              return word.charAt(0).toUpperCase() + word.slice(1);
+            }
+            return word;
+          });
+        }
 
         function sentenceCase(s) {
           return s.replace(/(^|[.!?]\s+)([a-z])/g, function (_, p, c) {
             return p + c.toUpperCase();
           });
+        }
+
+        function applyProperNouns(s) {
+          PROPER_NOUNS.forEach(function (pair) {
+            s = s.replace(new RegExp(pair[0], 'gi'), pair[1]);
+          });
+          return s;
         }
 
         function eachTextNode(root, fn) {
@@ -115,18 +160,24 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
           }
         }
 
-        function applyCaps(on) {
-          // linkedin mode: pure CSS uppercase via body[data-linkedin="on"], skip JS rewrite.
-          if (LINKEDIN) return;
-          document.querySelectorAll(SELECTOR).forEach(function (el) {
+        function processSelector(selector, transformFn, on) {
+          document.querySelectorAll(selector).forEach(function (el) {
             if (el.closest(SKIP_INSIDE)) return;
             eachTextNode(el, function (node) {
               if (node.parentElement && node.parentElement.closest(SKIP_INSIDE)) return;
               if (!originals.has(node)) originals.set(node, node.nodeValue);
               const orig = originals.get(node);
-              node.nodeValue = on ? sentenceCase(orig) : orig;
+              node.nodeValue = on ? applyProperNouns(transformFn(orig)) : orig;
             });
           });
+        }
+
+        function applyCaps(on) {
+          // linkedin mode: pure CSS uppercase via body[data-linkedin="on"], skip JS rewrite.
+          if (LINKEDIN) return;
+          // Prose runs first, title runs second. Title wins on overlap (li > a inside li).
+          processSelector(PROSE_SELECTOR, sentenceCase, on);
+          processSelector(TITLE_SELECTOR, titleCase, on);
         }
 
         const saved = sessionStorage.getItem(KEY);
