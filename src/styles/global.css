@@ -222,15 +222,40 @@ pre code { background: transparent; padding: 0; }
 
 img { max-width: 100%; height: auto; }
 
+/* Post footer */
+.post-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+.post-footer .updated {
+  font-size: 0.85rem;
+  color: var(--text-soft);
+  margin: 0 0 0.5rem;
+}
+.post-footer .post-tags .label {
+  color: var(--text-soft);
+  margin-right: 0.5rem;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
 /* Post nav */
 .post-nav {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 1rem;
   margin: 3rem 0 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border);
   font-size: 0.9rem;
+}
+.post-nav .prev,
+.post-nav .next {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  background: var(--surface);
+  min-height: 4rem;
 }
 .post-nav .next { text-align: right; }
 .post-nav .label {

@@ -49,11 +49,17 @@ const minRead = readMinutes(post.body ?? '');
       </p>
     </header>
     <Content />
-    {post.data.tags.length > 0 && (
-      <p class="post-tags tags">
-        {post.data.tags.map((t) => <a href={`/tags/#${t}`}>#{t}</a>)}
-      </p>
-    )}
+    <footer class="post-footer">
+      {post.data.updated_at && (
+        <p class="meta updated">📅 Updated: {post.data.updated_at}</p>
+      )}
+      {post.data.tags.length > 0 && (
+        <p class="post-tags tags">
+          <span class="label">Tags:</span>
+          {post.data.tags.map((t) => <a href={`/tags/#${t}`}>#{t}</a>)}
+        </p>
+      )}
+    </footer>
   </article>
 
   {(prev || next) && (
