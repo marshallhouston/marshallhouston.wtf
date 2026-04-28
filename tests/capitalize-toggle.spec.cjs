@@ -120,6 +120,35 @@ test.describe('cap-toggle: persistence', () => {
   });
 });
 
+test.describe('cap-toggle: linkedin custom mode', () => {
+  const LINKEDIN_POST = '/unpromptable/';
+
+  test('tooltip uses linkedin labels', async ({ page }) => {
+    await page.goto(LINKEDIN_POST);
+    const btn = page.locator('header.masthead .cap-toggle');
+    await expect(btn).toHaveAttribute('title', 'lol LINKEDIN YEAH');
+    await btn.click();
+    await expect(btn).toHaveAttribute('title', 'lol');
+  });
+
+  test('toggle uppercases article body via data-linkedin', async ({ page }) => {
+    await page.goto(LINKEDIN_POST);
+    await page.locator('header.masthead .cap-toggle').click();
+    await expect(page.locator('body')).toHaveAttribute('data-linkedin', 'on');
+    const tt = await page.evaluate(
+      () => getComputedStyle(document.querySelector('article.post')).textTransform
+    );
+    expect(tt).toBe('uppercase');
+  });
+
+  test('linkedin pref does not bleed to other posts', async ({ page }) => {
+    await page.goto(LINKEDIN_POST);
+    await page.locator('header.masthead .cap-toggle').click();
+    await page.goto('/telemetry-then-systematize/');
+    expect(await page.locator('body').getAttribute('data-linkedin')).not.toBe('on');
+  });
+});
+
 test.describe('cap-toggle: tooltip label', () => {
   test('off → "switch to standard capitalization"', async ({ page }) => {
     await page.goto(HOME);

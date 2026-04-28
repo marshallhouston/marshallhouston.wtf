@@ -7,6 +7,8 @@ const SITEMAP = path.join(__dirname, '..', 'dist', 'sitemap.xml');
 
 const SKIP = ['/comparison.html', '/feedback.html', '/review.html'];
 const SKIP_PREFIXES = ['/slides/'];
+// pages with a custom cap-toggle (CSS-only transform, no textContent rewrite)
+const SKIP_TITLE_TEXT_TEST = ['/unpromptable/'];
 
 function getUrls() {
   if (!fs.existsSync(SITEMAP)) {
@@ -29,6 +31,7 @@ for (const urlPath of urls) {
     });
 
     test('cap-toggle changes site title text', async ({ page }) => {
+      test.skip(SKIP_TITLE_TEXT_TEST.includes(urlPath), 'custom cap-toggle uses CSS text-transform');
       await page.goto(urlPath);
       const btn = page.locator('header.masthead .cap-toggle');
       const titleEl = page.locator('header.masthead .site-title');

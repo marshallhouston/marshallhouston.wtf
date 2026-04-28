@@ -8,6 +8,7 @@ interface Props {
   title?: string;
   description?: string;
   ogImage?: string;
+  customCapToggle?: string;
 }
 
 const SITE_TITLE = 'marshall houston';
@@ -18,6 +19,7 @@ const {
   title = SITE_TITLE,
   description = SITE_DESC,
   ogImage = SITE_OG,
+  customCapToggle = '',
 } = Astro.props;
 
 const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} · ${SITE_TITLE}`;
@@ -49,7 +51,7 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
   </head>
-  <body>
+  <body data-cap-mode={customCapToggle}>
     <header class="masthead">
       <div class="inner">
         <a href="/" class="site-title">{SITE_TITLE}</a>
@@ -76,7 +78,14 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
 
     <script is:inline>
       (function () {
-        const KEY = 'capitalize-pref';
+        const MODE = document.body.dataset.capMode || '';
+        const LINKEDIN = MODE === 'linkedin';
+
+        const KEY = LINKEDIN ? 'linkedin-caps-pref' : 'capitalize-pref';
+        const ATTR = LINKEDIN ? 'linkedin' : 'caps';
+        const LABEL_ON = LINKEDIN ? 'lol' : 'switch to lowerchaos';
+        const LABEL_OFF = LINKEDIN ? 'lol LINKEDIN YEAH' : 'switch to standard capitalization';
+
         const SELECTOR = [
           'header.masthead .site-title',
           '.archive__subtitle',
@@ -107,6 +116,8 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
         }
 
         function applyCaps(on) {
+          // linkedin mode: pure CSS uppercase via body[data-linkedin="on"], skip JS rewrite.
+          if (LINKEDIN) return;
           document.querySelectorAll(SELECTOR).forEach(function (el) {
             eachTextNode(el, function (node) {
               if (!originals.has(node)) originals.set(node, node.nodeValue);
@@ -117,11 +128,11 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
         }
 
         const saved = sessionStorage.getItem(KEY);
-        document.body.dataset.caps = saved === 'on' ? 'on' : 'off';
+        document.body.dataset[ATTR] = saved === 'on' ? 'on' : 'off';
 
         function syncAll() {
-          const on = document.body.dataset.caps === 'on';
-          const label = on ? 'switch to lowerchaos' : 'switch to standard capitalization';
+          const on = document.body.dataset[ATTR] === 'on';
+          const label = on ? LABEL_ON : LABEL_OFF;
           document.querySelectorAll('.cap-toggle').forEach(function (b) {
             b.setAttribute('aria-label', label);
             b.setAttribute('title', label);
@@ -133,9 +144,9 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
         document.addEventListener('click', function (e) {
           const btn = e.target.closest && e.target.closest('.cap-toggle');
           if (!btn) return;
-          const on = document.body.dataset.caps === 'on';
+          const on = document.body.dataset[ATTR] === 'on';
           const next = on ? 'off' : 'on';
-          document.body.dataset.caps = next;
+          document.body.dataset[ATTR] = next;
           if (next === 'on') sessionStorage.setItem(KEY, 'on');
           else sessionStorage.removeItem(KEY);
           syncAll();

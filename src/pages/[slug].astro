@@ -32,7 +32,7 @@ const related = all
 const minRead = readMinutes(post.body ?? '');
 ---
 
-<Layout title={post.data.title}>
+<Layout title={post.data.title} customCapToggle={post.data.custom_cap_toggle}>
   <article class="post">
     <header>
       <h1>{post.data.title}</h1>
