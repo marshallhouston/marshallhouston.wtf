@@ -1,16 +1,13 @@
 #!/bin/sh
 # Pre-commit checks for the Astro site.
-#
-# 1. New/modified posts in src/content/posts/ must declare tags.
-# 2. When site code (src/, public/, astro config, tests) is staged, run the
-#    Playwright suite. The suite auto-starts `astro preview` via webServer,
-#    so no separate dev server is required.
 
 set -e
 
+HOOKS_DIR="$(dirname "$0")"
+
 STAGED=$(git diff --cached --name-only --diff-filter=ACM)
 
-# 1. Tag presence on posts
+# 1. Tag presence on published posts
 STAGED_POSTS=$(echo "$STAGED" | grep -E '^src/content/posts/.*\.md$' || true)
 if [ -n "$STAGED_POSTS" ]; then
   MISSING=""
@@ -25,6 +22,9 @@ if [ -n "$STAGED_POSTS" ]; then
     exit 1
   fi
 fi
+
+# 2. Block non-inclusive language in staged content
+bash "$HOOKS_DIR/check-inclusive-language.sh" || exit 1
 
 # 2. Playwright suite when site code changes
 RELEVANT='^(src/|public/|astro\.config\.|package(-lock)?\.json|tests/|playwright\.config\.|src/content/posts/.*\.md)'

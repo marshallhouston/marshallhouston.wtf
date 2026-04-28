@@ -22,6 +22,7 @@ marshall's voice is a spectrum, not a template. Each post has its own register/e
 - Cross-domain references (literary, philosophical, scientific) are a feature, not a reach.
 - Don't prescribe tools to the reader.
 - Direct quotes (block quotes with attribution) preserve original capitalization. Marshall's voice is lowercase; other people's words stay as they wrote them.
+- Inclusive language. See section below.
 
 ### Drafting
 - Fragments over complete sentences. Periods doing structural work.
@@ -33,6 +34,26 @@ marshall's voice is a spectrum, not a template. Each post has its own register/e
 - If it could have been written by any AI, it's wrong.
 - If it sounds like a LinkedIn post, burn it down.
 - Don't hedge on things marshall is direct about, or add false confidence to things he's exploring.
+
+### Inclusive language
+
+References: [ASWF guide](https://www.aswf.io/blog/inclusive-language/), [Google dev style](https://developers.google.com/style/inclusive-documentation).
+
+**Mechanically blocked at pre-commit** (`scripts/hooks/check-inclusive-language.sh`): whitelist, blacklist, master/slave, manpower, man-hours, mankind, middleman, cripple(s/d), dummy variable, handi-capable, STONITH. Replace with: allowlist, blocklist, primary/replica, labor/workforce, person-hours, humanity, mediator, slow down/degrade, placeholder, (omit), "fence failed nodes".
+
+**Judgment-required.** Replace when context is technical / formal / could read as default-male or otherized. Keep when it's marshall's figurative register and replacement would flatten the voice.
+
+- Socially-charged: master alone (use main, lead), native feature (use core, built-in), culture fit (use values fit), first-class citizen (rephrase).
+- Gendered: guys for mixed groups (use folks, people), girl(s) for adult women (use women), default he/she pronouns (use they).
+- Ableist as casual descriptors: crazy/insane describing a person or group (use unpredictable, baffling), sanity-check (use final check), blind to / blind eye (use unaware, ignored).
+- Ageist: grandfather/grandfathered as a verb (use carry over, exempt).
+- Violent in technical/formal docs: abort (use cancel, stop), hit (use reach, request).
+
+**Don't police figurative voice.** Phrases like "off normal", "kill the branch", "crushing it" (sincere or satirical), "hang out" are part of marshall's register. Leave them. The hook only blocks the unambiguous slate above.
+
+When a non-inclusive term is an established API/keyword (SQL `SLAVE`, k8s field names), keep it in code font and rewrite surrounding prose to use the inclusive term. Don't invent new keywords.
+
+When in doubt, ask.
 
 ## Content Pipeline
 
