@@ -60,7 +60,7 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
           {mainNav.map((link) => (
             <a href={link.url}>{link.title}</a>
           ))}
-          <button class="search-toggle" type="button" aria-label="search" title="search (coming soon)"><Icon name="search" /></button>
+          <a class="search-toggle" href="/search/" aria-label="search" data-tooltip="search"><Icon name="search" /></a>
           <CapToggle />
         </nav>
       </div>

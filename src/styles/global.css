@@ -85,11 +85,28 @@ header.masthead .search-toggle {
   line-height: 1;
   display: inline-flex;
   align-items: center;
+  position: relative;
+  text-decoration: none;
 }
 header.masthead .search-toggle .icon {
   width: 1.1em;
   height: 1.1em;
   margin: 0;
+}
+header.masthead .search-toggle[data-tooltip]:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  background: var(--bg-soft, #1a1f2e);
+  color: var(--text-strong);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.3em 0.6em;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  z-index: 100;
+  pointer-events: none;
 }
 header.masthead .search-toggle:hover { color: var(--link-hover); }
 

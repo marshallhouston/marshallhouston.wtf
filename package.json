@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build",
+    "build": "astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
     "test": "playwright test"
@@ -19,7 +19,8 @@
     "github-slugger": "^2.0.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.59.1"
+    "@playwright/test": "^1.59.1",
+    "pagefind": "^1.5.2"
   },
   "repository": {
     "type": "git",

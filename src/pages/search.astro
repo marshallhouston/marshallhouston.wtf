@@ -1,0 +1,40 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="search">
+  <h1>search</h1>
+  <div id="search"></div>
+</Layout>
+
+<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
+<script src="/pagefind/pagefind-ui.js" is:inline></script>
+<script is:inline>
+  window.addEventListener('DOMContentLoaded', () => {
+    if (typeof PagefindUI === 'undefined') {
+      document.getElementById('search').innerHTML =
+        '<p class="meta">search index not built. run <code>npm run build</code>.</p>';
+      return;
+    }
+    new PagefindUI({
+      element: '#search',
+      showSubResults: true,
+      showImages: false,
+      resetStyles: false,
+    });
+  });
+</script>
+
+<style is:global>
+  .pagefind-ui {
+    --pagefind-ui-primary: var(--link);
+    --pagefind-ui-text: var(--text);
+    --pagefind-ui-background: var(--bg);
+    --pagefind-ui-border: var(--border);
+    --pagefind-ui-tag: var(--bg-soft);
+    --pagefind-ui-border-radius: 4px;
+    --pagefind-ui-font: inherit;
+  }
+  .pagefind-ui__search-input { background: transparent; color: var(--text); }
+  .pagefind-ui__result-link { color: var(--link); }
+</style>
