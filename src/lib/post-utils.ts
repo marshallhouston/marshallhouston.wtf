@@ -26,8 +26,15 @@ export function fmtDate(d: Date): string {
 
 import { getCollection } from 'astro:content';
 
-// Drafts visible in dev (`npm run dev`), hidden in prod builds.
+// Listings: drafts hidden everywhere (home, tags, feed, sitemap).
 export async function getPosts() {
+  const all = await getCollection('posts');
+  return all.filter((p) => !p.data.draft);
+}
+
+// Routing: drafts are addressable at /<slug>/ in dev only, so the [slug]
+// page can preview them. Prod build excludes them entirely.
+export async function getRoutablePosts() {
   const all = await getCollection('posts');
   return import.meta.env.PROD ? all.filter((p) => !p.data.draft) : all;
 }
