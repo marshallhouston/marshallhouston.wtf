@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CapToggle from '../components/CapToggle.astro';
+import Icon from '../components/Icon.astro';
 import { getCollection } from 'astro:content';
 import GitHubSlugger from 'github-slugger';
 import { readMinutes, excerpt, fmtDate } from '../lib/post-utils';
@@ -37,9 +38,9 @@ const slugger = new GitHubSlugger();
       <article class="entry">
         <h2 class="entry-title"><a href={`/${p.data.slug}/`}>{p.data.title}</a></h2>
         <p class="meta">
-          📅 {fmtDate(p.data.date)}
+          <Icon name="calendar" />{fmtDate(p.data.date)}
           <span class="sep">·</span>
-          ⏱ {readMinutes(p.body ?? '')} min read
+          <Icon name="clock" />{readMinutes(p.body ?? '')} min read
           <CapToggle />
         </p>
         <p class="excerpt">{excerpt(p.body ?? '')}</p>

@@ -1,6 +1,7 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import CapToggle from '../components/CapToggle.astro';
+import Icon from '../components/Icon.astro';
 import { getCollection, render } from 'astro:content';
 import { readMinutes, excerpt, fmtDate } from '../lib/post-utils';
 
@@ -36,22 +37,16 @@ const minRead = readMinutes(post.body ?? '');
     <header>
       <h1>{post.data.title}</h1>
       <p class="meta">
-        📅 {fmtDate(post.data.date)}
+        <Icon name="calendar" />{fmtDate(post.data.date)}
         <span class="sep">·</span>
-        ⏱ {minRead} min read
-        {post.data.updated_at && (
-          <>
-            <span class="sep">·</span>
-            updated {post.data.updated_at}
-          </>
-        )}
+        <Icon name="clock" />{minRead} min read
         <CapToggle />
       </p>
     </header>
     <Content />
     <footer class="post-footer">
       {post.data.updated_at && (
-        <p class="meta updated">📅 Updated: {post.data.updated_at}</p>
+        <p class="meta updated"><Icon name="calendar" />Updated: {post.data.updated_at}</p>
       )}
       {post.data.tags.length > 0 && (
         <p class="post-tags tags">
@@ -92,7 +87,7 @@ const minRead = readMinutes(post.body ?? '');
             <h4 class="related-title">
               <a href={`/${r.data.slug}/`}>{r.data.title}</a>
             </h4>
-            <p class="meta">📅 {fmtDate(r.data.date)} · ⏱ {readMinutes(r.body ?? '')} min</p>
+            <p class="meta"><Icon name="calendar" />{fmtDate(r.data.date)} · <Icon name="clock" />{readMinutes(r.body ?? '')} min</p>
             <p class="excerpt">{excerpt(r.body ?? '', 120)}</p>
           </article>
         ))}

@@ -1,0 +1,42 @@
+---
+// Inline SVG icons. Paths from FontAwesome Free Solid v6.
+// Licensed under CC BY 4.0 — https://fontawesome.com/license/free
+interface Props {
+  name: 'calendar' | 'clock';
+  size?: number;
+  class?: string;
+}
+
+const { name, size = 14, class: className = '' } = Astro.props;
+
+const ICONS = {
+  calendar: {
+    viewBox: '0 0 448 512',
+    d: 'M152 24c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L64 64C28.7 64 0 92.7 0 128l0 16 0 48L0 448c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-256 0-48 0-16c0-35.3-28.7-64-64-64l-40 0 0-40c0-13.3-10.7-24-24-24s-24 10.7-24 24l0 40L152 64l0-40zM48 192l352 0 0 256c0 8.8-7.2 16-16 16L64 464c-8.8 0-16-7.2-16-16l0-256z',
+  },
+  clock: {
+    viewBox: '0 0 512 512',
+    d: 'M256 0a256 256 0 1 1 0 512A256 256 0 1 1 256 0zM232 120l0 136c0 8 4 15.5 10.7 20l96 64c11 7.4 25.9 4.4 33.3-6.7s4.4-25.9-6.7-33.3L280 243.2 280 120c0-13.3-10.7-24-24-24s-24 10.7-24 24z',
+  },
+};
+
+const icon = ICONS[name];
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox={icon.viewBox}
+  width={size}
+  height={size}
+  fill="currentColor"
+  aria-hidden="true"
+  class={`icon ${className}`}
+><path d={icon.d} /></svg>
+
+<style>
+  .icon {
+    display: inline-block;
+    vertical-align: -0.15em;
+    margin-right: 0.25em;
+  }
+</style>

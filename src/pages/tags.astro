@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import GitHubSlugger from 'github-slugger';
+import Icon from '../components/Icon.astro';
 import { readMinutes, excerpt, fmtDate } from '../lib/post-utils';
 
 const posts = (await getCollection('posts')).sort(
@@ -45,9 +46,9 @@ const tagList = [...byTag.entries()]
               <a href={`/${p.data.slug}/`}>{p.data.title}</a>
             </h3>
             <p class="meta">
-              📅 {fmtDate(p.data.date)}
+              <Icon name="calendar" />{fmtDate(p.data.date)}
               <span class="sep">·</span>
-              ⏱ {readMinutes(p.body ?? '')} min read
+              <Icon name="clock" />{readMinutes(p.body ?? '')} min read
             </p>
             <p class="excerpt">{excerpt(p.body ?? '', 160)}</p>
           </article>
