@@ -6,7 +6,7 @@ tool_matcher: Edit|Write|MultiEdit
 conditions:
   - field: file_path
     operator: regex_match
-    pattern: _posts/.*\.md$|_drafts/.*\.md$|_pages/.*\.md$|_includes/.*\.html$
+    pattern: src/content/posts/.*\.md$|src/content/kernels/.*\.md$
   - field: file_path
     operator: not_contains
     pattern: unpromptable-linkedin-flip

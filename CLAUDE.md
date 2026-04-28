@@ -3,10 +3,10 @@
 ## Build & Development
 
 ```bash
-npm install        # install dependencies
-npm run dev        # local dev server at localhost:4321
-npm run build      # static build to ./dist
-npm run preview    # serve ./dist locally
+bun install        # install dependencies
+bun run dev        # local dev server at localhost:4321
+bun run build      # static build to ./dist
+bun run preview    # serve ./dist locally
 ```
 
 Engine: Astro (migrated from Jekyll on 2026-04-27). Content collections in
@@ -60,7 +60,7 @@ When in doubt, ask.
 Ideas move through three stages. Never skip ahead.
 
 1. **`_ideas/writing/`** - kernels and brainstorming. Filesystem only, not rendered.
-2. **`src/content/posts/*.md` with `draft: true`** - working drafts. Visible in `npm run dev`, excluded from `npm run build`.
+2. **`src/content/posts/*.md` with `draft: true`** - working drafts. Visible in `bun run dev`, excluded from `bun run build`.
 3. **`src/content/posts/*.md` (no `draft:` flag, or `draft: false`)** - published. Flip the flag when marshall says it's ready.
 
 Other idea buckets (separate from writing pipeline, filesystem only):

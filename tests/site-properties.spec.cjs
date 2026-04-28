@@ -11,7 +11,7 @@ const SKIP_TITLE_TEXT_TEST = ['/unpromptable/'];
 
 function getUrls() {
   if (!fs.existsSync(SITEMAP)) {
-    throw new Error(`sitemap not found at ${SITEMAP} — run \`npm run build\` first`);
+    throw new Error(`sitemap not found at ${SITEMAP}. run \`bun run build\` first`);
   }
   const xml = fs.readFileSync(SITEMAP, 'utf-8');
   return [...xml.matchAll(/<loc>(.*?)<\/loc>/g)]
