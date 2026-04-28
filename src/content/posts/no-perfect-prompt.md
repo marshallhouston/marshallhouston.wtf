@@ -118,8 +118,6 @@ bimodal. micro-decisions on one end, paste-dumps on the other. nothing in the mi
 
 no perfect prompt. just a lot of imperfect ones, one after the other, fast.
 
-raw data (scrubbed): [/data/prompts_72h.jsonl](/data/prompts_72h.jsonl)
-
 ***
 
 *part 3 of 3.*

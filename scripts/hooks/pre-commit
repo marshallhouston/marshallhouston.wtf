@@ -15,6 +15,7 @@ STAGED_POSTS=$(echo "$STAGED" | grep -E '^src/content/posts/.*\.md$' || true)
 if [ -n "$STAGED_POSTS" ]; then
   MISSING=""
   for post in $STAGED_POSTS; do
+    if grep -q '^draft: true' "$post" 2>/dev/null; then continue; fi
     if ! grep -q '^tags:' "$post" 2>/dev/null; then
       MISSING="$MISSING\n  ✗ $post"
     fi

@@ -5,7 +5,6 @@ const path = require('path');
 
 const SITEMAP = path.join(__dirname, '..', 'dist', 'sitemap.xml');
 
-const SKIP = ['/comparison.html', '/feedback.html', '/review.html'];
 const SKIP_PREFIXES = ['/slides/'];
 // pages with a custom cap-toggle (CSS-only transform, no textContent rewrite)
 const SKIP_TITLE_TEXT_TEST = ['/unpromptable/'];
@@ -17,7 +16,6 @@ function getUrls() {
   const xml = fs.readFileSync(SITEMAP, 'utf-8');
   return [...xml.matchAll(/<loc>(.*?)<\/loc>/g)]
     .map((m) => new URL(m[1]).pathname)
-    .filter((p) => !SKIP.includes(p))
     .filter((p) => !SKIP_PREFIXES.some((pre) => p.startsWith(pre)));
 }
 
