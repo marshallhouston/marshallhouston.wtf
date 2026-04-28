@@ -1,7 +1,9 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CapToggle from '../components/CapToggle.astro';
 import { getCollection } from 'astro:content';
 import GitHubSlugger from 'github-slugger';
+import { readMinutes, excerpt, fmtDate } from '../lib/post-utils';
 
 const posts = (await getCollection('posts')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -16,29 +18,6 @@ const topTags = [...tagCounts.entries()]
   .slice(0, 5);
 
 const slugger = new GitHubSlugger();
-
-const fmtDate = (d: Date) =>
-  `${String(d.getMonth() + 1).padStart(2, '0')} ${String(d.getDate()).padStart(2, '0')} ${d.getFullYear()}`;
-
-const wordsPerMin = 200;
-function readMinutes(text: string) {
-  const words = text.trim().split(/\s+/).length;
-  return Math.max(1, Math.round(words / wordsPerMin));
-}
-
-function excerpt(body: string) {
-  const stripped = body
-    .replace(/^---[\s\S]*?---\n/, '')
-    .replace(/```[\s\S]*?```/g, '')
-    .replace(/^#+\s.*$/gm, '')
-    .replace(/!\[[^\]]*\]\([^)]+\)/g, '')
-    .replace(/\[([^\]]+)\]\([^)]+\)/g, '$1')
-    .replace(/[*_`]/g, '')
-    .trim();
-  const para = stripped.split(/\n\s*\n/).find((p) => p.trim().length > 30) ?? '';
-  const firstSentences = para.replace(/\s+/g, ' ').slice(0, 200);
-  return firstSentences.length === 200 ? `${firstSentences}...` : firstSentences;
-}
 ---
 
 <Layout>
@@ -61,6 +40,7 @@ function excerpt(body: string) {
           📅 {fmtDate(p.data.date)}
           <span class="sep">·</span>
           ⏱ {readMinutes(p.body ?? '')} min read
+          <CapToggle />
         </p>
         <p class="excerpt">{excerpt(p.body ?? '')}</p>
         {p.data.tags.length > 0 && (

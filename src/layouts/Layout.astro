@@ -57,6 +57,7 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
           {mainNav.map((link) => (
             <a href={link.url}>{link.title}</a>
           ))}
+          <button class="search-toggle" type="button" aria-label="search" title="search (coming soon)">🔍</button>
           <CapToggle />
         </nav>
       </div>
@@ -72,5 +73,34 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
     <footer class="site-footer">
       <p>cosmic farmland · <a href="/feed.xml">rss</a></p>
     </footer>
+
+    <script is:inline>
+      (function () {
+        const KEY = 'capitalize-pref';
+        const saved = sessionStorage.getItem(KEY);
+        document.body.dataset.caps = saved === 'off' ? 'off' : 'on';
+
+        function syncAll() {
+          const on = document.body.dataset.caps !== 'off';
+          const label = on ? 'switch to lowerchaos' : 'switch to standard capitalization';
+          document.querySelectorAll('.cap-toggle').forEach(function (b) {
+            b.setAttribute('aria-label', label);
+            b.setAttribute('title', label);
+          });
+        }
+        syncAll();
+
+        document.addEventListener('click', function (e) {
+          const btn = e.target.closest && e.target.closest('.cap-toggle');
+          if (!btn) return;
+          const on = document.body.dataset.caps !== 'off';
+          const next = on ? 'off' : 'on';
+          document.body.dataset.caps = next;
+          if (next === 'off') sessionStorage.setItem(KEY, 'off');
+          else sessionStorage.removeItem(KEY);
+          syncAll();
+        });
+      })();
+    </script>
   </body>
 </html>

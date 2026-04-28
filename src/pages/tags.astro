@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 import GitHubSlugger from 'github-slugger';
+import { readMinutes, excerpt, fmtDate } from '../lib/post-utils';
 
 const posts = (await getCollection('posts')).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
@@ -23,9 +24,6 @@ const tagList = [...byTag.entries()]
     slugger.reset();
     return { name, slug: slugger.slug(name), items };
   });
-
-const fmtDate = (d: Date) =>
-  `${String(d.getMonth() + 1).padStart(2, '0')} ${String(d.getDate()).padStart(2, '0')} ${d.getFullYear()}`;
 ---
 
 <Layout title="tags">
@@ -38,16 +36,23 @@ const fmtDate = (d: Date) =>
   </div>
 
   {tagList.map((t) => (
-    <section id={t.slug}>
+    <section id={t.slug} class="tag-section">
       <h2>{t.name}</h2>
-      <ul>
+      <div class="entries-list">
         {t.items.map((p) => (
-          <li>
-            <a href={`/${p.data.slug}/`}>{p.data.title}</a>
-            <span class="meta"> — {fmtDate(p.data.date)}</span>
-          </li>
+          <article class="entry">
+            <h3 class="entry-title">
+              <a href={`/${p.data.slug}/`}>{p.data.title}</a>
+            </h3>
+            <p class="meta">
+              📅 {fmtDate(p.data.date)}
+              <span class="sep">·</span>
+              ⏱ {readMinutes(p.body ?? '')} min read
+            </p>
+            <p class="excerpt">{excerpt(p.body ?? '', 160)}</p>
+          </article>
         ))}
-      </ul>
+      </div>
     </section>
   ))}
 </Layout>

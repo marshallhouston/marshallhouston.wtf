@@ -75,6 +75,18 @@ header.masthead nav a {
 }
 header.masthead nav a:hover { color: var(--link-hover); text-decoration: none; }
 
+header.masthead .search-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 1rem;
+  cursor: pointer;
+  margin-left: 1rem;
+  padding: 0;
+  line-height: 1;
+}
+header.masthead .search-toggle:hover { color: var(--link-hover); }
+
 .layout {
   max-width: var(--max-w);
   margin: 0 auto;
@@ -209,6 +221,46 @@ pre {
 pre code { background: transparent; padding: 0; }
 
 img { max-width: 100%; height: auto; }
+
+/* Post nav */
+.post-nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin: 3rem 0 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+.post-nav .next { text-align: right; }
+.post-nav .label {
+  display: block;
+  color: var(--text-soft);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+/* Related posts */
+.related { margin-top: 3rem; }
+.related-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+@media (min-width: 48em) {
+  .related-grid { grid-template-columns: repeat(3, 1fr); }
+}
+.related-entry { font-size: 0.85rem; }
+.related-title { margin: 0 0 0.25rem; font-size: 1rem; }
+.related-title a { color: var(--text-strong); }
+.related-entry .meta { font-size: 0.75rem; margin: 0 0 0.5rem; }
+.related-entry .excerpt { color: var(--text-muted); font-size: 0.85rem; margin: 0; }
+
+/* Tag section */
+.tag-section { margin-bottom: 3rem; }
+.tag-section h2 { color: var(--text-strong); }
 
 /* Cap-toggle: default state = capitalized (Title Case).
  * body[data-caps="on"] (default): titles in Title Case.

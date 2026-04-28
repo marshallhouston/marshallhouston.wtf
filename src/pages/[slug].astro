@@ -1,20 +1,34 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import CapToggle from '../components/CapToggle.astro';
 import { getCollection, render } from 'astro:content';
+import { readMinutes, excerpt, fmtDate } from '../lib/post-utils';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
-  return posts.map((post) => ({
+  const posts = (await getCollection('posts')).sort(
+    (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
+  );
+  return posts.map((post, i) => ({
     params: { slug: post.data.slug },
-    props: { post },
+    props: {
+      post,
+      prev: posts[i - 1] ?? null,
+      next: posts[i + 1] ?? null,
+      all: posts,
+    },
   }));
 }
 
-const { post } = Astro.props;
+const { post, prev, next, all } = Astro.props;
 const { Content } = await render(post);
 
-const fmtDate = (d: Date) =>
-  `${String(d.getMonth() + 1).padStart(2, '0')} ${String(d.getDate()).padStart(2, '0')} ${d.getFullYear()}`;
+const tagSet = new Set(post.data.tags);
+const related = all
+  .filter((p) => p.data.slug !== post.data.slug && p.data.tags.some((t) => tagSet.has(t)))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+
+const minRead = readMinutes(post.body ?? '');
 ---
 
 <Layout title={post.data.title}>
@@ -22,15 +36,61 @@ const fmtDate = (d: Date) =>
     <header>
       <h1>{post.data.title}</h1>
       <p class="meta">
-        {fmtDate(post.data.date)}
-        {post.data.updated_at && ` · updated ${post.data.updated_at}`}
+        📅 {fmtDate(post.data.date)}
+        <span class="sep">·</span>
+        ⏱ {minRead} min read
+        {post.data.updated_at && (
+          <>
+            <span class="sep">·</span>
+            updated {post.data.updated_at}
+          </>
+        )}
+        <CapToggle />
       </p>
     </header>
     <Content />
     {post.data.tags.length > 0 && (
-      <p class="tags">
+      <p class="post-tags tags">
         {post.data.tags.map((t) => <a href={`/tags/#${t}`}>#{t}</a>)}
       </p>
     )}
   </article>
+
+  {(prev || next) && (
+    <nav class="post-nav">
+      <div class="prev">
+        {prev && (
+          <>
+            <span class="label">previous:</span>
+            <a href={`/${prev.data.slug}/`}>{prev.data.title}</a>
+          </>
+        )}
+      </div>
+      <div class="next">
+        {next && (
+          <>
+            <span class="label">next:</span>
+            <a href={`/${next.data.slug}/`}>{next.data.title}</a>
+          </>
+        )}
+      </div>
+    </nav>
+  )}
+
+  {related.length > 0 && (
+    <section class="related">
+      <h3 class="archive__subtitle">you may also enjoy</h3>
+      <div class="related-grid">
+        {related.map((r) => (
+          <article class="related-entry">
+            <h4 class="related-title">
+              <a href={`/${r.data.slug}/`}>{r.data.title}</a>
+            </h4>
+            <p class="meta">📅 {fmtDate(r.data.date)} · ⏱ {readMinutes(r.body ?? '')} min</p>
+            <p class="excerpt">{excerpt(r.body ?? '', 120)}</p>
+          </article>
+        ))}
+      </div>
+    </section>
+  )}
 </Layout>
