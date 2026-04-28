@@ -126,9 +126,9 @@ test.describe('cap-toggle: linkedin custom mode', () => {
   test('tooltip uses linkedin labels', async ({ page }) => {
     await page.goto(LINKEDIN_POST);
     const btn = page.locator('header.masthead .cap-toggle');
-    await expect(btn).toHaveAttribute('title', 'lol LINKEDIN YEAH');
+    await expect(btn).toHaveAttribute('data-tooltip', 'lol LINKEDIN YEAH');
     await btn.click();
-    await expect(btn).toHaveAttribute('title', 'lol');
+    await expect(btn).toHaveAttribute('data-tooltip', 'lol');
   });
 
   test('toggle uppercases article body via data-linkedin', async ({ page }) => {
@@ -153,13 +153,13 @@ test.describe('cap-toggle: tooltip label', () => {
   test('off → "switch to standard capitalization"', async ({ page }) => {
     await page.goto(HOME);
     const btn = page.locator('header.masthead .cap-toggle');
-    await expect(btn).toHaveAttribute('title', 'switch to standard capitalization');
+    await expect(btn).toHaveAttribute('data-tooltip', 'switch to standard capitalization');
   });
 
   test('on → "switch to lowerchaos"', async ({ page }) => {
     await page.goto(HOME);
     const btn = page.locator('header.masthead .cap-toggle');
     await btn.click();
-    await expect(btn).toHaveAttribute('title', 'switch to lowerchaos');
+    await expect(btn).toHaveAttribute('data-tooltip', 'switch to lowerchaos');
   });
 });

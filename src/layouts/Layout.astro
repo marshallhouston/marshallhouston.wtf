@@ -89,16 +89,15 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
 
         const SELECTOR = [
           'header.masthead .site-title',
-          '.archive__subtitle',
-          '.entry-title',
-          '.tag-link',
           '.author-profile .name',
-          '.excerpt',
-          'article.post header h1',
-          'article.post h2',
-          'article.post h3',
-          'article.post h4',
+          'main.content h1',
+          'main.content h2',
+          'main.content h3',
+          'main.content h4',
+          'main.content p',
+          'main.content li',
         ].join(',');
+        const SKIP_INSIDE = 'pre, code, blockquote, .meta, .tags';
 
         const originals = new WeakMap();
 
@@ -120,7 +119,9 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
           // linkedin mode: pure CSS uppercase via body[data-linkedin="on"], skip JS rewrite.
           if (LINKEDIN) return;
           document.querySelectorAll(SELECTOR).forEach(function (el) {
+            if (el.closest(SKIP_INSIDE)) return;
             eachTextNode(el, function (node) {
+              if (node.parentElement && node.parentElement.closest(SKIP_INSIDE)) return;
               if (!originals.has(node)) originals.set(node, node.nodeValue);
               const orig = originals.get(node);
               node.nodeValue = on ? sentenceCase(orig) : orig;
@@ -136,7 +137,7 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
           const label = on ? LABEL_ON : LABEL_OFF;
           document.querySelectorAll('.cap-toggle').forEach(function (b) {
             b.setAttribute('aria-label', label);
-            b.setAttribute('title', label);
+            b.setAttribute('data-tooltip', label);
           });
           applyCaps(on);
         }
