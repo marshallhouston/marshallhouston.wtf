@@ -1,6 +1,8 @@
 ---
 title: first time registering a domain
 date: 2026-04-12
+slug: first-domain-registration
+draft: true
 updated_at: 2026-04-12 04:36 MDT
 ---
 

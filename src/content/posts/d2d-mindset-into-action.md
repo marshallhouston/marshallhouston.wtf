@@ -1,8 +1,10 @@
 ---
 title: d2d. mindset into action. flow. creativity.
 date: 2026-04-22
-tags: [reflection, teaching, bff]
+slug: d2d-mindset-into-action
+draft: true
 updated_at: 2026-04-22 08:55 MDT
+tags: [reflection, teaching, bff]
 ---
 
 > Seamless transition from INM to Guided Reading…. the transition point should be marked by the increase in depth of CFUs.

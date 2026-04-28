@@ -1,8 +1,9 @@
 ---
 title: "your experimentation budget"
-date: 2026-03-25 06:00:00 -0600
+date: 2026-03-25
+slug: your-experimentation-budget-v0
+draft: true
 tags: [ai-augmented-engineering, mental-models, experimentation]
-classes: wide
 ---
 
 are you kidding me?

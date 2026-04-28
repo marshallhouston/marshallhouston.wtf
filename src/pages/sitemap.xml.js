@@ -1,7 +1,7 @@
-import { getCollection } from 'astro:content';
+import { getPosts } from '../lib/post-utils';
 
 export async function GET(context) {
-  const posts = await getCollection('posts');
+  const posts = await getPosts();
   const staticPages = ['', 'about/', 'books/', 'influences/', 'moments/', 'kernels/', 'tags/'];
   const postUrls = posts.map((p) => `${p.data.slug}/`);
 

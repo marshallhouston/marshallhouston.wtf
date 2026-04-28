@@ -1,9 +1,9 @@
 ---
 title: "no perfect prompt (3/3)"
 date: 2026-04-19
+slug: no-perfect-prompt
+draft: true
 updated_at: 2026-04-19 06:15 MDT
-permalink: /no-perfect-prompt/
-series: preach-hub-learnings
 ---
 
 pulled every prompt i sent claude code while building preach-hub over the last 72 hours. 377 of them. 54 sessions.

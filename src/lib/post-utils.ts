@@ -23,3 +23,11 @@ export function excerpt(body: string, max = 200): string {
 export function fmtDate(d: Date): string {
   return `${String(d.getMonth() + 1).padStart(2, '0')} ${String(d.getDate()).padStart(2, '0')} ${d.getFullYear()}`;
 }
+
+import { getCollection } from 'astro:content';
+
+// Drafts visible in dev (`npm run dev`), hidden in prod builds.
+export async function getPosts() {
+  const all = await getCollection('posts');
+  return import.meta.env.PROD ? all.filter((p) => !p.data.draft) : all;
+}

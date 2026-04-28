@@ -2,11 +2,11 @@
 import Layout from '../layouts/Layout.astro';
 import CapToggle from '../components/CapToggle.astro';
 import Icon from '../components/Icon.astro';
-import { getCollection, render } from 'astro:content';
-import { readMinutes, excerpt, fmtDate } from '../lib/post-utils';
+import { render } from 'astro:content';
+import { readMinutes, excerpt, fmtDate, getPosts } from '../lib/post-utils';
 
 export async function getStaticPaths() {
-  const posts = (await getCollection('posts')).sort(
+  const posts = (await getPosts()).sort(
     (a, b) => a.data.date.valueOf() - b.data.date.valueOf()
   );
   return posts.map((post, i) => ({

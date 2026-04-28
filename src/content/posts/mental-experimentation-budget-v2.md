@@ -1,8 +1,9 @@
 ---
 title: "mental experimentation budget"
-date: 2026-03-27 06:00:00 -0600
+date: 2026-03-27
+slug: mental-experimentation-budget-v2
+draft: true
 tags: [ai-augmented-engineering, mental-models, experimentation]
-classes: wide
 ---
 
 debugging hooked me.

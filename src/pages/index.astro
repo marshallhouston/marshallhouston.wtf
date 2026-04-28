@@ -2,11 +2,10 @@
 import Layout from '../layouts/Layout.astro';
 import CapToggle from '../components/CapToggle.astro';
 import Icon from '../components/Icon.astro';
-import { getCollection } from 'astro:content';
 import GitHubSlugger from 'github-slugger';
-import { readMinutes, excerpt, fmtDate } from '../lib/post-utils';
+import { readMinutes, excerpt, fmtDate, getPosts } from '../lib/post-utils';
 
-const posts = (await getCollection('posts')).sort(
+const posts = (await getPosts()).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 

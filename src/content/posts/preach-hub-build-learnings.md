@@ -1,9 +1,9 @@
 ---
 title: "proving grounds (1/3)"
 date: 2026-04-19
+slug: proving-grounds
+draft: true
 updated_at: 2026-04-19 15:18 MDT
-permalink: /proving-grounds/
-series: preach-hub-learnings
 ---
 
 i've never been someone who builds outside day-to-day work. over the last three weeks, that's changed, and it's been incredibly fun to have a personal proving ground for what agentic engineering actually looks like.

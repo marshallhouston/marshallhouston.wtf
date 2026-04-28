@@ -38,19 +38,19 @@ marshall's voice is a spectrum, not a template. Each post has its own register/e
 
 Ideas move through three stages. Never skip ahead.
 
-1. **`_ideas/writing/`** - kernels and brainstorming.
-2. **`_drafts/`** - working drafts. Not published. Preview with `--drafts` flag.
-3. **`_posts/`** - published. Only move here when marshall says it's ready.
+1. **`_ideas/writing/`** - kernels and brainstorming. Filesystem only, not rendered.
+2. **`src/content/posts/*.md` with `draft: true`** - working drafts. Visible in `npm run dev`, excluded from `npm run build`.
+3. **`src/content/posts/*.md` (no `draft:` flag, or `draft: false`)** - published. Flip the flag when marshall says it's ready.
 
-Other idea buckets (separate from writing pipeline):
+Other idea buckets (separate from writing pipeline, filesystem only):
 - **`_ideas/tools/`** - apps and tools to build.
 - **`_ideas/site/`** - improvements to the site itself.
 
 ### Drafting gate
 
-Writing to `_drafts/` is gated on two preconditions:
+Writing a new post (file with `draft: true`) is gated on two preconditions:
 
-1. A kernel exists in `_ideas/writing/` (or `_kernels/`) for this post.
+1. A kernel exists in `_ideas/writing/` (or `src/content/kernels/`) for this post.
 2. The `brainstorm-post` skill has been invoked this session, starting with the register/energy question.
 
 Prescriptive prompts do NOT override these. Detailed structure, section breakdowns, voice bullets, or output paths from marshall are input to the brainstorm, not a replacement for it. The more structure he pre-specifies, the more important register becomes, because register is the one thing structure cannot encode.

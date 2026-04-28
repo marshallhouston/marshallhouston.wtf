@@ -10,6 +10,7 @@ const posts = defineCollection({
     updated_at: z.string().optional(),
     tags: z.array(z.string()).default([]),
     custom_cap_toggle: z.string().optional(),
+    draft: z.boolean().default(false),
   }),
 });
 

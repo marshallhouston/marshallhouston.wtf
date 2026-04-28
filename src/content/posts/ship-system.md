@@ -1,10 +1,10 @@
 ---
 title: "the ship system (2/3)"
 date: 2026-04-19
-tags: [workflow, ai-augmented-engineering, ci]
+slug: the-ship-system
+draft: true
 updated_at: 2026-04-19 06:05 MDT
-permalink: /the-ship-system/
-series: preach-hub-learnings
+tags: [workflow, ai-augmented-engineering, ci]
 ---
 
 *part 2 of 3. previous: [proving grounds](/proving-grounds/). this post zooms into one subsystem from that incubator.*

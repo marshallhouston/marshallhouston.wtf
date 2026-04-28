@@ -1,7 +1,8 @@
 ---
-layout: post
 title: "authenticity vs. convergence to bland, boring, sterile omg wtf"
 date: 2026-04-01
+slug: authenticity-vs-convergence-to-bland-boring-sterile-omg-wtf
+draft: true
 updated_at: 2026-04-02 02:28 MDT
 ---
 

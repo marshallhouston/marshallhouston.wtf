@@ -1,11 +1,8 @@
 ---
 title: cambrian explosion and fractals (talk)
-kernel: cambrian-explosion
-captured: 2026-04-23
-status: drafting
-venue: work tech org conference
-length: 30min
-format: light slides + talk
+date: 2026-04-27
+slug: cambrian-fractals-talk
+draft: true
 updated_at: 2026-04-24 00:07 MDT
 ---
 
