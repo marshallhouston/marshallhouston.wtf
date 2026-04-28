@@ -27,7 +27,7 @@ fi
 bash "$HOOKS_DIR/check-inclusive-language.sh" || exit 1
 
 # 2. Playwright suite when site code changes
-RELEVANT='^(src/|public/|astro\.config\.|package(-lock)?\.json|tests/|playwright\.config\.|src/content/posts/.*\.md)'
+RELEVANT='^(src/|public/|astro\.config\.|package\.json|bun\.lock|tests/|playwright\.config\.|src/content/posts/.*\.md)'
 CHANGED=$(echo "$STAGED" | grep -E "$RELEVANT" || true)
 
 if [ -z "$CHANGED" ]; then
@@ -37,5 +37,5 @@ fi
 echo "site code changed — running Playwright suite (auto-starts preview)..."
 
 # Build first so site-properties.spec can read dist/sitemap.xml
-npm run build >/dev/null
-npx playwright test
+bun run build >/dev/null
+bunx playwright test

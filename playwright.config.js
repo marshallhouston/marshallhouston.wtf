@@ -14,7 +14,7 @@ export default defineConfig({
   },
   reporter: 'list',
   webServer: {
-    command: `npm run preview -- --port ${PORT} --host 127.0.0.1`,
+    command: `bun run preview -- --port ${PORT} --host 127.0.0.1`,
     url: BASE,
     reuseExistingServer: true,
     timeout: 60_000,
