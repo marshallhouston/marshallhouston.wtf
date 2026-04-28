@@ -3,6 +3,7 @@ import '../styles/global.css';
 import { mainNav } from '../data/navigation';
 import AuthorProfile from '../components/AuthorProfile.astro';
 import CapToggle from '../components/CapToggle.astro';
+import Icon from '../components/Icon.astro';
 
 interface Props {
   title?: string;
@@ -59,7 +60,7 @@ const ogImageUrl = new URL(ogImage, Astro.site).toString();
           {mainNav.map((link) => (
             <a href={link.url}>{link.title}</a>
           ))}
-          <button class="search-toggle" type="button" aria-label="search" title="search (coming soon)">🔍</button>
+          <button class="search-toggle" type="button" aria-label="search" title="search (coming soon)"><Icon name="search" /></button>
           <CapToggle />
         </nav>
       </div>

@@ -78,12 +78,18 @@ header.masthead nav a:hover { color: var(--link-hover); text-decoration: none; }
 header.masthead .search-toggle {
   background: transparent;
   border: none;
-  color: var(--text-muted);
-  font-size: 1rem;
+  color: var(--link);
   cursor: pointer;
   margin-left: 1rem;
   padding: 0;
   line-height: 1;
+  display: inline-flex;
+  align-items: center;
+}
+header.masthead .search-toggle .icon {
+  width: 1.1em;
+  height: 1.1em;
+  margin: 0;
 }
 header.masthead .search-toggle:hover { color: var(--link-hover); }
 
