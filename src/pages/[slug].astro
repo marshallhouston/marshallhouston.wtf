@@ -33,7 +33,7 @@ const minRead = readMinutes(post.body ?? '');
 ---
 
 <Layout title={post.data.title} customCapToggle={post.data.custom_cap_toggle}>
-  <article class="post">
+  <article class="post" data-pagefind-body>
     <header>
       <h1>{post.data.title}</h1>
       <p class="meta">
@@ -44,7 +44,7 @@ const minRead = readMinutes(post.body ?? '');
       </p>
     </header>
     <Content />
-    <footer class="post-footer">
+    <footer class="post-footer" data-pagefind-ignore>
       {post.data.updated_at && (
         <p class="meta updated"><Icon name="calendar" />Updated: {post.data.updated_at}</p>
       )}
@@ -58,7 +58,7 @@ const minRead = readMinutes(post.body ?? '');
   </article>
 
   {(prev || next) && (
-    <nav class="post-nav">
+    <nav class="post-nav" data-pagefind-ignore>
       <div class="prev">
         {prev && (
           <>
@@ -79,7 +79,7 @@ const minRead = readMinutes(post.body ?? '');
   )}
 
   {related.length > 0 && (
-    <section class="related">
+    <section class="related" data-pagefind-ignore>
       <h3 class="archive__subtitle">you may also enjoy</h3>
       <div class="related-grid">
         {related.map((r) => (

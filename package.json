@@ -19,6 +19,7 @@
     "github-slugger": "^2.0.0"
   },
   "devDependencies": {
+    "@pagefind/default-ui": "^1.5.2",
     "@playwright/test": "^1.59.1",
     "pagefind": "^1.5.2"
   },

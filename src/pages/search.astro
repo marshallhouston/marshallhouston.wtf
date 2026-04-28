@@ -1,5 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import '@pagefind/default-ui/css/ui.css';
 ---
 
 <Layout title="search">
@@ -7,15 +8,10 @@ import Layout from '../layouts/Layout.astro';
   <div id="search"></div>
 </Layout>
 
-<link rel="stylesheet" href="/pagefind/pagefind-ui.css" />
-<script src="/pagefind/pagefind-ui.js" is:inline></script>
-<script is:inline>
+<script>
+  import { PagefindUI } from '@pagefind/default-ui';
+
   window.addEventListener('DOMContentLoaded', () => {
-    if (typeof PagefindUI === 'undefined') {
-      document.getElementById('search').innerHTML =
-        '<p class="meta">search index not built. run <code>npm run build</code>.</p>';
-      return;
-    }
     new PagefindUI({
       element: '#search',
       showSubResults: true,
