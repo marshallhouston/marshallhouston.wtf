@@ -11,7 +11,7 @@ import '@pagefind/default-ui/css/ui.css';
 <script>
   import { PagefindUI } from '@pagefind/default-ui';
 
-  window.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('astro:page-load', () => {
     if (import.meta.env.DEV) {
       document.getElementById('search')!.innerHTML =
         '<p class="meta">search index not built. run <code>bun run build</code> first.</p>';

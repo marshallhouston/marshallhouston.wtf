@@ -1,5 +1,6 @@
 ---
 import '../styles/global.css';
+import { ClientRouter } from 'astro:transitions';
 import { mainNav } from '../data/navigation';
 import AuthorProfile from '../components/AuthorProfile.astro';
 import CapToggle from '../components/CapToggle.astro';
@@ -81,6 +82,7 @@ const ogType = article ? 'article' : 'website';
     {article?.jsonLd && (
       <script type="application/ld+json" set:html={JSON.stringify(article.jsonLd)} />
     )}
+    <ClientRouter />
   </head>
   <body data-cap-mode={customCapToggle}>
     <header class="masthead">
@@ -214,9 +216,6 @@ const ogType = article ? 'article' : 'website';
           processSelector(TITLE_SELECTOR, titleCase, on);
         }
 
-        const saved = sessionStorage.getItem(KEY);
-        document.body.dataset[ATTR] = saved === 'on' ? 'on' : 'off';
-
         function syncAll() {
           const on = document.body.dataset[ATTR] === 'on';
           const label = on ? LABEL_ON : LABEL_OFF;
@@ -226,8 +225,16 @@ const ogType = article ? 'article' : 'website';
           });
           applyCaps(on);
         }
-        syncAll();
 
+        // Re-runs on every page (initial load + view transition navigation).
+        // Reads sessionStorage so cap preference survives body swap.
+        function init() {
+          var saved = sessionStorage.getItem(KEY);
+          document.body.dataset[ATTR] = saved === 'on' ? 'on' : 'off';
+          syncAll();
+        }
+
+        // Click handler registered once; document persists across navigations.
         document.addEventListener('click', function (e) {
           const btn = e.target.closest && e.target.closest('.cap-toggle');
           if (!btn) return;
@@ -238,6 +245,9 @@ const ogType = article ? 'article' : 'website';
           else sessionStorage.removeItem(KEY);
           syncAll();
         });
+
+        init();
+        document.addEventListener('astro:page-load', init);
       })();
     </script>
   </body>
