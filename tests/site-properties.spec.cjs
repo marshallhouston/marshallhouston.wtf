@@ -3,7 +3,7 @@ const { test, expect } = require('@playwright/test');
 const fs = require('fs');
 const path = require('path');
 
-const SITEMAP = path.join(__dirname, '..', 'dist', 'sitemap.xml');
+const SITEMAP = path.join(__dirname, '..', 'dist', 'sitemap-0.xml');
 
 const SKIP_PREFIXES = ['/slides/'];
 // pages with a custom cap-toggle (CSS-only transform, no textContent rewrite)
