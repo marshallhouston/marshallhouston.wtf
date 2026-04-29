@@ -2,6 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 import CapToggle from '../components/CapToggle.astro';
 import Icon from '../components/Icon.astro';
+import Giscus from '../components/Giscus.astro';
 import { render } from 'astro:content';
 import { readMinutes, excerpt, fmtDate, getRoutablePosts } from '../lib/post-utils';
 
@@ -119,4 +120,6 @@ const jsonLd = {
       </div>
     </section>
   )}
+
+  <Giscus />
 </Layout>
