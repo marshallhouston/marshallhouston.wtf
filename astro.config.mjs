@@ -4,9 +4,9 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://marshallhouston.wtf',
-  trailingSlash: 'ignore',
+  trailingSlash: 'never',
   build: {
-    format: 'directory',
+    format: 'file',
   },
   prefetch: {
     prefetchAll: true,

@@ -2,8 +2,8 @@
 const { test, expect } = require('@playwright/test');
 
 const HOME = '/';
-const POST = '/telemetry-then-systematize/';
-const OTHER_POST = '/lowerchaos/';
+const POST = '/telemetry-then-systematize';
+const OTHER_POST = '/lowerchaos';
 
 test.describe('cap-toggle: basics', () => {
   test('Aa button visible in masthead', async ({ page }) => {
@@ -121,7 +121,7 @@ test.describe('cap-toggle: persistence', () => {
 });
 
 test.describe('cap-toggle: linkedin custom mode', () => {
-  const LINKEDIN_POST = '/unpromptable/';
+  const LINKEDIN_POST = '/unpromptable';
 
   test('tooltip uses linkedin labels', async ({ page }) => {
     await page.goto(LINKEDIN_POST);
@@ -144,7 +144,7 @@ test.describe('cap-toggle: linkedin custom mode', () => {
   test('linkedin pref does not bleed to other posts', async ({ page }) => {
     await page.goto(LINKEDIN_POST);
     await page.locator('header.masthead .cap-toggle').click();
-    await page.goto('/telemetry-then-systematize/');
+    await page.goto('/telemetry-then-systematize');
     expect(await page.locator('body').getAttribute('data-linkedin')).not.toBe('on');
   });
 });

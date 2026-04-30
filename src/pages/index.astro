@@ -27,9 +27,9 @@ const slugger = new GitHubSlugger();
     {topTags.map(([name, n]) => {
       slugger.reset();
       const slug = slugger.slug(name);
-      return <a href={`/tags/#${slug}`} class="tag-link">{name} ({n})</a>;
+      return <a href={`/tags#${slug}`} class="tag-link">{name} ({n})</a>;
     })}
-    <a href="/tags/" class="tag-link" style="border-color:transparent;">all tags &rarr;</a>
+    <a href="/tags" class="tag-link" style="border-color:transparent;">all tags &rarr;</a>
   </div>
 
   <div class="entries-list">

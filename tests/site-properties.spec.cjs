@@ -5,9 +5,9 @@ const path = require('path');
 
 const SITEMAP = path.join(__dirname, '..', 'dist', 'sitemap-0.xml');
 
-const SKIP_PREFIXES = ['/slides/'];
+const SKIP_PREFIXES = ['/slides'];
 // pages with a custom cap-toggle (CSS-only transform, no textContent rewrite)
-const SKIP_TITLE_TEXT_TEST = ['/unpromptable/'];
+const SKIP_TITLE_TEXT_TEST = ['/unpromptable'];
 
 function getUrls() {
   if (!fs.existsSync(SITEMAP)) {

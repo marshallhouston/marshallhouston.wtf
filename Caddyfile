@@ -8,8 +8,14 @@
 	root * /srv
 	encode zstd gzip
 
-	# Jekyll emits pretty URLs as /path/index.html — let Caddy find them.
-	try_files {path} {path}/ {path}.html =404
+	# Strip trailing slash on non-root paths (canonical = no slash).
+	@trailingSlash {
+		path_regexp slash ^(.+)/$
+	}
+	redir @trailingSlash {re.slash.1} 308
+
+	# Astro emits pretty URLs as /path.html — let Caddy find them.
+	try_files {path} {path}.html {path}/index.html =404
 
 	file_server
 
