@@ -4,7 +4,7 @@ date: 2026-04-17
 slug: ptvm
 draft: true
 updated_at: 2026-04-17 04:43 MDT
-tags: [pushback, ai-culture]
+tags: [ai-culture, critique]
 ---
 
 ptvm. prove the value motherfucker.

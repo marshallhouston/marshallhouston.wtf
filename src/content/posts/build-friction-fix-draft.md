@@ -3,7 +3,7 @@ title: "build friction fix"
 date: 2026-04-28
 slug: build-friction-fix-draft
 draft: true
-tags: [ai-augmented-engineering, workflow, getting-started]
+tags: [workflow]
 ---
 
 just start.

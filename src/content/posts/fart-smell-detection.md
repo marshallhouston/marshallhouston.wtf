@@ -2,7 +2,7 @@
 title: new skill to snuff out fluff and focus on what matters
 date: 2026-04-17
 updated_at: 2026-04-20 15:46 MDT
-tags: [workflow, ai-augmented-engineering, ptvm, claude-code, cosmic-farmland]
+tags: [claude-code, workflow]
 slug: fart-smell-detection
 ---
 

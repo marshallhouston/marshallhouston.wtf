@@ -2,7 +2,7 @@
 title: three little workflows
 date: 2026-04-13
 updated_at: 2026-04-13 06:22 MDT
-tags: [workflow, experimentation, ai-augmented-engineering, claude-code, cosmic-farmland]
+tags: [claude-code, workflow]
 slug: three-little-workflows
 ---
 

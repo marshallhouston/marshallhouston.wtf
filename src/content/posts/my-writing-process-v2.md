@@ -4,7 +4,7 @@ date: 2026-04-27
 slug: my-writing-process-v2
 draft: true
 updated_at: 2026-04-03 03:10 MDT
-tags: [ai-augmented-engineering, writing, process, creative-expression]
+tags: [writing, creative-expression, workflow]
 ---
 
 i read ethan mollick's [co-intelligence](https://www.goodreads.com/book/show/198678162-co-intelligence) twice in 2025 and led a small bookclub on it.

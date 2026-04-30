@@ -3,7 +3,7 @@ title: "mental experimentation budget"
 date: 2026-03-29
 slug: mental-experimentation-budget-v4
 draft: true
-tags: [ai-augmented-engineering, mental-models, experimentation]
+tags: [debugging, mental-models]
 ---
 
 i love debugging. it's a sense-making puzzle.

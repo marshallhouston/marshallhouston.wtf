@@ -2,7 +2,7 @@
 title: "boosting builders: current philosophy"
 date: 2026-04-20
 updated_at: 2026-04-20 17:03 MDT
-tags: [ai-augmented-engineering, mental-models, ai-culture, experimentation]
+tags: [mental-models, ai-culture, workflow]
 slug: boosting-builders
 ---
 

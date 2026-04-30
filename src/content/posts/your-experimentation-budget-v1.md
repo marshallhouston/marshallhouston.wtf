@@ -3,7 +3,7 @@ title: "your experimentation budget"
 date: 2026-03-25
 slug: your-experimentation-budget-v1
 draft: true
-tags: [ai-augmented-engineering, mental-models, experimentation]
+tags: [debugging, mental-models]
 ---
 
 you get into agentic workflows on a friday. you try some stuff. it's working, it's fast, you're building things you couldn't build last week. oh yeah, this is amazing.
