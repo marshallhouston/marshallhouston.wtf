@@ -1,5 +1,5 @@
 ---
-title: cambrian explosion & fractals
+title: "talk: cambrian explosion & fractals"
 date: 2026-04-30
 slug: cambrian-fractals
 tags: [talks, mental-models]
