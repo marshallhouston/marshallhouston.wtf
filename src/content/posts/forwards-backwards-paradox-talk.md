@@ -17,6 +17,6 @@ once i'm in it (if i'm fortunate enough to recognize it in the moment), it's tim
 
 it may end at any moment. it will end. enjoy the journey.
 
-<iframe id="talk-frame" src="/talks/forwards-backwards-paradox/index.html" width="100%" height="600" style="border: 1px solid #333; border-radius: 8px;" onmouseenter="this.contentWindow.focus()" onmouseleave="this.blur()"></iframe>
+<iframe id="talk-frame" src="/talks/forwards-backwards-paradox/index.html" style="border: 1px solid #333; border-radius: 8px; width: 100%; aspect-ratio: 16/9; display: block;" onmouseenter="this.contentWindow.focus()" onmouseleave="this.blur()"></iframe>
 
 <a href="/talks/forwards-backwards-paradox/index.html" target="_blank">open the talk full screen ↗</a>
