@@ -4,7 +4,7 @@ date: 2026-04-22
 slug: d2d-mindset-into-action
 draft: true
 updated_at: 2026-04-22 08:55 MDT
-tags: [reflection, teaching, bff]
+tags: [ruminating]
 ---
 
 > Seamless transition from INM to Guided Reading…. the transition point should be marked by the increase in depth of CFUs.

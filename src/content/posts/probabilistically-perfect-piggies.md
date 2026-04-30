@@ -2,7 +2,7 @@
 title: "probabilistically perfect piggies"
 date: 2026-04-03
 updated_at: 2026-04-04 03:20 MDT
-tags: [pushback, ai-culture]
+tags: [ai-culture, critique]
 slug: probabilistically-perfect-piggies
 ---
 

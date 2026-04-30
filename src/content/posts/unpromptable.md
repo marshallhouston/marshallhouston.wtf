@@ -3,7 +3,7 @@ title: "3 Songs, 1 Uncomfortable Truth: The Case for âœ¨Unpromptable Humannessâœ
 date: 2026-04-22
 updated_at: 2026-04-22 06:07 MDT
 custom_cap_toggle: linkedin
-tags: [unhinged, creative-expression, ai-culture, pushback, satire]
+tags: [unhinged, ai-culture, critique, creative-expression]
 slug: unpromptable
 ---
 

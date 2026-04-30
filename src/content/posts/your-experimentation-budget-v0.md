@@ -3,7 +3,7 @@ title: "your experimentation budget"
 date: 2026-03-25
 slug: your-experimentation-budget-v0
 draft: true
-tags: [ai-augmented-engineering, mental-models, experimentation]
+tags: [debugging, mental-models]
 ---
 
 are you kidding me?

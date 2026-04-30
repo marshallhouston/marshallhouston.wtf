@@ -4,7 +4,7 @@ date: 2026-04-19
 slug: the-ship-system
 draft: true
 updated_at: 2026-04-19 06:05 MDT
-tags: [workflow, ai-augmented-engineering, ci]
+tags: [workflow, claude-code]
 ---
 
 *part 2 of 3. previous: [proving grounds](/proving-grounds/). this post zooms into one subsystem from that incubator.*

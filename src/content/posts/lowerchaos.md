@@ -2,7 +2,7 @@
 title: lowerchaos
 date: 2026-04-05
 updated_at: 2026-04-13 06:14 MDT
-tags: [creative-expression, ruminating, claude-code, cosmic-farmland]
+tags: [creative-expression, ruminating, claude-code]
 slug: lowerchaos
 ---
 

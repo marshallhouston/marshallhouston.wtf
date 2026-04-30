@@ -1,7 +1,7 @@
 ---
 title: "bff: build friction fix"
 date: 2026-03-22
-tags: [unhinged, workflow, experimentation]
+tags: [unhinged, workflow]
 classes: wide
 updated_at: 2026-04-04 03:19 MDT
 slug: build-friction-fix
