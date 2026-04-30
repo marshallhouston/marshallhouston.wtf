@@ -1,0 +1,23 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const talks = [
+  {
+    title: 'cambrian explosion & fractals',
+    venue: "ibotta's 2026 culturecon",
+    date: '2026-04-30',
+    url: '/talks/cambrian-fractals/index.html',
+  },
+];
+---
+
+<Layout title="talks">
+  <h1>talks</h1>
+  <ul>
+    {talks.map((t) => (
+      <li>
+        <a href={t.url}>{t.title}</a> - {t.venue} ({t.date})
+      </li>
+    ))}
+  </ul>
+</Layout>
