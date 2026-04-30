@@ -88,6 +88,7 @@ const ogType = article ? 'article' : 'website';
     <header class="masthead">
       <div class="inner">
         <a href="/" class="site-title">{SITE_TITLE}</a>
+        <button class="nav-toggle" type="button" aria-label="toggle menu" aria-expanded="false">☰</button>
         <nav>
           {mainNav.map((link) => (
             <a href={link.url}>{link.title}</a>
@@ -252,6 +253,15 @@ const ogType = article ? 'article' : 'website';
 
         init();
         document.addEventListener('astro:page-load', init);
+
+        document.addEventListener('click', function (e) {
+          const btn = e.target.closest && e.target.closest('.nav-toggle');
+          if (!btn) return;
+          const nav = btn.parentElement.querySelector('nav');
+          if (!nav) return;
+          const open = nav.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
       })();
     </script>
   </body>

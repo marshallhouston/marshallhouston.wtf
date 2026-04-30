@@ -110,6 +110,27 @@ header.masthead .search-toggle[data-tooltip]:hover::after {
 }
 header.masthead .search-toggle:hover { color: var(--link-hover); }
 
+.nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  border-radius: 3px;
+  padding: 0.25em 0.6em;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  line-height: 1;
+}
+
+@media (max-width: 48em) {
+  .nav-toggle { display: inline-flex; }
+  header.masthead nav { display: none; flex-basis: 100%; }
+  header.masthead nav.open { display: flex; flex-direction: column; align-items: flex-start; gap: 0.5rem; padding-top: 0.5rem; }
+  header.masthead nav a { margin-left: 0; }
+  .sidebar { display: none; }
+}
+
 .layout {
   max-width: var(--max-w);
   margin: 0 auto;
