@@ -22,6 +22,7 @@ marshall's voice is a spectrum, not a template. Each post has its own register/e
 - Cross-domain references (literary, philosophical, scientific) are a feature, not a reach.
 - Don't prescribe tools to the reader.
 - Direct quotes (block quotes with attribution) preserve original capitalization. Marshall's voice is lowercase; other people's words stay as they wrote them.
+- Proper nouns keep canonical casing even in lowercase prose: **Ibotta**, **CultureCon**, **Turing School of Software & Design**.
 - Inclusive language. See section below.
 
 ### Drafting

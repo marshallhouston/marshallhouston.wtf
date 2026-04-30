@@ -5,7 +5,7 @@ slug: cambrian-fractals
 tags: [talks, mental-models]
 ---
 
-gave this talk at Ibotta's 2026 culturecon.
+gave this talk at Ibotta's 2026 CultureCon.
 
 in 2018, i helped organize Ibotta's first CultureCon. eight years (!!!) later, i'm back at it.
 
