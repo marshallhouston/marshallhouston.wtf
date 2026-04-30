@@ -13,6 +13,6 @@ spring 2018, i gave a lightning talk on fractals at Turing School of Software & 
 
 coming back to this idea now and extending it feels a bit fractal-y.
 
-<iframe id="talk-frame" src="/talks/cambrian-fractals/index.html" width="100%" height="600" style="border: 1px solid #333; border-radius: 8px;" onmouseenter="this.contentWindow.focus()" onmouseleave="this.blur()"></iframe>
+<iframe id="talk-frame" src="/talks/cambrian-fractals/index.html" style="border: 1px solid #333; border-radius: 8px; width: 100%; aspect-ratio: 16/9; display: block;" onmouseenter="this.contentWindow.focus()" onmouseleave="this.blur()"></iframe>
 
 <a href="/talks/cambrian-fractals/index.html" target="_blank">open the talk full screen ↗</a>
