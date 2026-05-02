@@ -4,7 +4,7 @@ import { join } from "node:path";
 
 const TALKS_DIR = "public/talks";
 const REQUIRED = [
-  '<link rel="icon" type="image/svg+xml" href="/favicon.svg"',
+  '<link rel="icon" type="image/svg+xml"',
   '<link rel="apple-touch-icon" href="/apple-touch-icon.png"',
 ];
 
@@ -24,8 +24,7 @@ if (missing.length) {
   console.error("talk favicon check failed:");
   for (const m of missing) console.error("  " + m);
   console.error("\nadd to <head>:");
-  console.error('  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />');
-  console.error('  <link rel="icon" type="image/x-icon" href="/favicon.ico" />');
+  console.error('  <link rel="icon" type="image/svg+xml" href="..." />');
   console.error('  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />');
   process.exit(1);
 }
