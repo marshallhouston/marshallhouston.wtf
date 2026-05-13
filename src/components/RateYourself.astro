@@ -1,0 +1,628 @@
+---
+// Self-rating tool: builder vs naysayer across 10 dimensions.
+// Renders inline in MDX posts. Uses scoped styles + an inline module script.
+---
+
+<div class="rate-yourself" data-rate-yourself>
+  <div class="progress" data-progress></div>
+  <div class="slide-wrap" data-slide></div>
+  <div data-hint></div>
+</div>
+
+<style is:global>
+  .rate-yourself {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto 1rem;
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+  .rate-yourself * { box-sizing: border-box; }
+  .rate-yourself button { font-family: inherit; }
+
+  .rate-yourself .progress {
+    display: flex;
+    gap: 4px;
+    margin: 0 16px 16px;
+  }
+  .rate-yourself .progress-dot {
+    flex: 1;
+    height: 6px;
+    background: var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    transition: all 120ms;
+    border: none;
+    padding: 0;
+    position: relative;
+  }
+  .rate-yourself .progress-dot::before {
+    content: "";
+    position: absolute;
+    inset: -10px 0;
+  }
+  .rate-yourself .progress-dot:hover { opacity: 0.7; }
+  .rate-yourself .progress-dot.rated { background: var(--text-soft); }
+  .rate-yourself .progress-dot.current { background: var(--link); }
+
+  .rate-yourself .slide-wrap {
+    padding: 8px 16px 16px;
+    min-height: 540px;
+  }
+
+  .rate-yourself .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 24px 20px;
+    max-width: 460px;
+    margin: 0 auto;
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+  }
+  .rate-yourself .card.intro,
+  .rate-yourself .card.summary { min-height: 0; }
+  .rate-yourself .card .nav { margin-top: auto; padding-top: 12px; }
+
+  .rate-yourself .card-meta {
+    color: var(--text-soft);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 8px;
+  }
+  .rate-yourself .name-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  .rate-yourself .card-name {
+    color: var(--text-strong);
+    font-size: 1.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+    flex: 1;
+  }
+  .rate-yourself .info-btn {
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-soft);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 120ms;
+    flex-shrink: 0;
+    line-height: 1;
+  }
+  .rate-yourself .info-btn:hover,
+  .rate-yourself .info-btn.open {
+    border-color: var(--link);
+    color: var(--link);
+  }
+  .rate-yourself .card-frame {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    margin-bottom: 20px;
+    line-height: 1.55;
+  }
+  .rate-yourself .rating-area {
+    min-height: 260px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+  .rate-yourself .info-popover {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+    padding: 14px 36px 14px 16px;
+    font-size: 0.85rem;
+    line-height: 1.55;
+    color: var(--text-muted);
+    position: relative;
+    flex: 1;
+    overflow-y: auto;
+    animation: ry-slideIn 160ms ease-out;
+  }
+  @keyframes ry-slideIn {
+    from { opacity: 0; transform: translateY(-4px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .rate-yourself .info-popover .close {
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    background: none;
+    border: none;
+    color: var(--text-soft);
+    cursor: pointer;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 4px;
+  }
+  .rate-yourself .info-popover .close:hover { color: var(--link); }
+  .rate-yourself .info-popover-label {
+    display: block;
+    color: var(--text-soft);
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  .rate-yourself .info-popover p + .info-popover-label { margin-top: 10px; }
+
+  .rate-yourself .anchors {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75rem;
+    margin-bottom: 8px;
+    padding: 0 4px;
+  }
+  .rate-yourself .anchors .nay { color: #e0917b; }
+  .rate-yourself .anchors .bui { color: var(--link); }
+
+  .rate-yourself .scale {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .rate-yourself .dot {
+    flex: 1;
+    aspect-ratio: 1;
+    border: 1.5px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    background: transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-muted);
+    transition: all 120ms;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+  }
+  .rate-yourself .dot:hover { border-color: var(--link); color: var(--link); }
+  .rate-yourself .dot.selected {
+    background: var(--link);
+    border-color: var(--link);
+    color: var(--bg);
+    font-weight: 700;
+  }
+
+  .rate-yourself .nav {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+  }
+  .rate-yourself .nav button {
+    background: none;
+    border: none;
+    color: var(--text-soft);
+    cursor: pointer;
+    font-size: 0.85rem;
+    padding: 8px 4px;
+  }
+  .rate-yourself .nav button:hover:not(:disabled) { color: var(--link); }
+  .rate-yourself .nav button:disabled { opacity: 0.3; cursor: default; }
+
+  .rate-yourself .card.intro h3 {
+    color: var(--text-strong);
+    font-size: 1.6rem;
+    line-height: 1.2;
+    margin: 0 0 12px;
+    font-weight: 700;
+  }
+  .rate-yourself .card.intro p {
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    font-size: 0.9rem;
+    line-height: 1.55;
+  }
+  .rate-yourself .scale-key {
+    margin: 16px 0 18px;
+    padding: 14px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border-radius: 4px;
+    border: 1px solid var(--border);
+  }
+  .rate-yourself .scale-key .key-row {
+    font-size: 0.85rem;
+    padding: 3px 0;
+    color: var(--text-muted);
+    display: flex;
+    gap: 10px;
+    align-items: baseline;
+  }
+  .rate-yourself .scale-key .key-num {
+    color: var(--link);
+    font-weight: 700;
+    min-width: 14px;
+    text-align: right;
+  }
+  .rate-yourself .start-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--link);
+    color: var(--bg);
+    border: none;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 6px;
+  }
+  .rate-yourself .start-btn:hover { background: var(--link-hover); }
+
+  .rate-yourself .card.summary h3 {
+    color: var(--text-strong);
+    font-size: 1.3rem;
+    margin: 0 0 10px;
+  }
+  .rate-yourself .card.summary p {
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    font-size: 0.9rem;
+  }
+  .rate-yourself .chart-wrap { margin: 8px 0 18px; padding: 8px 0; }
+  .rate-yourself .export-btns { display: flex; gap: 8px; }
+  .rate-yourself .export-btns button {
+    flex: 1;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--link);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
+  .rate-yourself .export-btns button:hover { color: var(--link-hover); border-color: rgba(255, 255, 255, 0.2); }
+  .rate-yourself .export-help {
+    margin-top: 12px;
+    color: var(--text-soft);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+  .rate-yourself .export-help strong { color: var(--text-muted); font-weight: 600; }
+  .rate-yourself .ry-toast {
+    text-align: center;
+    color: var(--link);
+    font-size: 0.8rem;
+    margin-top: 10px;
+    opacity: 0;
+    transition: opacity 180ms;
+  }
+  .rate-yourself .ry-toast.show { opacity: 1; }
+
+  .rate-yourself .unrated-hint {
+    text-align: center;
+    font-size: 0.78rem;
+    color: var(--text-soft);
+    margin: 10px 16px 16px;
+  }
+  .rate-yourself .unrated-hint a {
+    color: var(--link);
+    cursor: pointer;
+    text-decoration: underline;
+  }
+</style>
+
+<script>
+const DIMS = [
+  { name: "updating priors", short: "priors", tagline: 'continuous improvement. "this no longer serves me, i\'ll update going forward."', naysayer: 'can\'t update priors. uses past as proof, not data. weaponizes hindsight ("i told you so"). defends status quo by treating the system\'s past prior as proof against the present ("we tried that in 2022").', builder: "updates without ceremony. treats own past positions as drafts. hindsight is data for next time. status quo is a hypothesis like any other, open to revision when conditions change.", shift: 'ego separation from position. "who was right" becomes "what changes now." the past you doesn\'t owe loyalty to current you.' },
+  { name: "quitting", short: "quitting", tagline: "ability to kill or quit a project when it no longer makes sense.", naysayer: "type one refuses to quit anything. sunk cost runs the show. type two quits the people while defending the dead thesis. looks like decisiveness, is actually thesis-loyalty in disguise.", builder: "quits early when signal is clear. stopping is clarity, not betrayal. identity is not the project.", shift: 'separate identity from project. replace "am i a quitter" with "what does the next dollar of my attention deserve." build quit conditions before you\'re emotionally invested.' },
+  { name: "impact vs busyness", short: "impact", tagline: "deep understanding of the why and what matters to stakeholders. not enamored with busy work just for sake of working busily.", naysayer: "optimizes for being seen working. ships features for features sake, no connection to thesis on why this is worth doing. uses activity in promotion rationale, doesn't follow with what it unlocked.", builder: "optimizes for what changed for someone. will sit still when sitting still is right. when asked to do busy-for-busy-sake work, doesn't move forward and explicitly names it. has framework for what would make it impactful, and offers the path, not just the no.", shift: '"i was busy" becomes "what changed because of me." the builder is the person who refuses with the better question already drafted.' },
+  { name: "feedback + candor", short: "feedback", tagline: "how you treat critical information flowing in both directions. initiating hard conversations. engaging with difference.", naysayer: "withhold: sees the issue, says nothing, vents in DMs after. criticize for sake: sees criticism as the end goal, not as a path forward. receives as attack: any feedback collapses into ego defense.", builder: "gives critical feedback because they care. receives feedback as data. initiates hard conversations. extracts signal from poorly-delivered feedback. engages with perspectives unlike their own as input, not threat.", shift: '"i don\'t want to make it weird" becomes "the weirdness now is cheaper than the rot later." on receiving: "why are they coming at me" becomes "what\'s the data here, separate from how it was delivered."' },
+  { name: "ownership of learning + responsibility", short: "ownership", tagline: "owns the gap between where you are and where you need to be. owns the not-knowing. owns outcomes.", naysayer: 'outsources learning. "nobody trained me. there\'s no documentation." hides not-knowing. bluffs in meetings, spends more energy concealing the gap than closing it. abdicates outcomes.', builder: "doesn't wait to be taught. owns their own learning. fitfo. owns the not-knowing explicitly. owns outcomes including the parts that weren't their decision.", shift: '"why didn\'t anyone tell me" becomes "what\'s my path to knowing this by [date]." and "that wasn\'t my decision" becomes "i had a chance to flag it and i didn\'t, here\'s what i\'d do next time."' },
+  { name: "operating frame", short: "frame", tagline: "operates from a framework that's yours. use process when it helps. route around it when it doesn't.", naysayer: "latches onto capital-P Process. follows the checklist blindly. vibe thinking. substitutes the artifact for the outcome. demands the map. won't move until ambiguity is removed by someone above them.", builder: "can articulate why this thing matters, why this approach, why now. uses process when it serves the why. routes around it when it doesn't. drives toward clarity instead of demanding the map first.", shift: '"that\'s not how we do it" becomes "why do we do it that way, and does the why still hold here?" and "i need more clarity" becomes "here\'s what i can start on now, here\'s what i\'ll come back with by when."' },
+  { name: "engaging with new", short: "new", tagline: "what you do when something unfamiliar shows up. lean in or lean back.", naysayer: "defends the status quo reflexively. dismisses the new by pattern-matching it to something old. bias to objection, analysis as deflection. or generates 14 reasons it won't work, no path forward, no suggested experiment.", builder: "challenges status quo including their own. bias to trying. runs the small experiment. spots failure modes paired with a path forward to build to learn.", shift: '"this won\'t work because [X]" becomes "this might work if we solved [X]. smallest version we can try this week?" failure-spotting reframed as a gift to the design, not an end in itself.' },
+  { name: "reasoning", short: "reasoning", tagline: "make your thinking visible. externalize the logic so it can be examined at the thinking layer, not the person layer.", naysayer: 'positions arrive without legible steps. "trust me." / "i just have a bad feeling about this." nothing to audit later. past decisions become folklore. when challenged, treats it as personal attack. the logic and the person are fused.', builder: "writes it down. says it out loud. distinguishes what i observed from what i inferred from what i'm recommending. each layer separable. welcomes pushback because the layers are visible. past reasoning becomes the audit trail.", shift: '"i think X" becomes "here\'s what i\'m seeing, here\'s how i\'m reading it, here\'s what i\'d do, where am i wrong."' },
+  { name: "self-awareness + reflection", short: "self-aware", tagline: "notice your own patterns. behavior happens by you, not to you.", naysayer: 'pattern-blind to self. "i just react that way." / "that\'s just how i am." same shape recurs across years and they don\'t see it. defends the pattern as personality rather than examining it.', builder: 'notices their own recurring shapes. treats own behavior as observable data, same as anyone else\'s. asks the second question: "why did that land like that for me. what\'s actually going on."', shift: '"i\'m just being honest / that\'s just how i am" becomes "i notice i do this. what\'s the pattern? where does it come from? what does it cost me? what would i want to do differently?"' },
+  { name: "pain", short: "pain", tagline: "can you name what hurt you, why it's still active, and what to do with it. address it or consciously park it. not let fester.", naysayer: 'can\'t name it. the pain is the lens. every new initiative refracts through the unprocessed event. they don\'t know that\'s what\'s happening, which is why "just be more open" doesn\'t work.', builder: '"i got burned on the X project. the specific thing was [Y]. it made me wary of [Z pattern]." pain becomes information about what they\'re protecting. decides what to do with it: address or consciously park.', shift: "three sub-moves. notice: the reaction is disproportionate to the trigger. name: what's the underlying event, what was the actual harm. decide: address or consciously park. not let fester." },
+];
+
+const ANCHORS = {
+  1: "strongly naysayer-shaped",
+  2: "mostly naysayer-shaped",
+  3: "mixed, depends on context",
+  4: "mostly builder-shaped",
+  5: "strongly builder-shaped",
+};
+
+const INTRO_IDX = 0;
+const SUMMARY_IDX = DIMS.length + 1;
+
+const root = document.querySelector('[data-rate-yourself]');
+if (!root) throw new Error('rate-yourself root not found');
+const slideWrap = root.querySelector('[data-slide]');
+const progress = root.querySelector('[data-progress]');
+const hintEl = root.querySelector('[data-hint]');
+
+const state = {
+  index: 0,
+  ratings: Array(DIMS.length).fill(null),
+  infoOpen: Array(DIMS.length).fill(false),
+};
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+}
+
+function renderIntro() {
+  return `
+    <div class="card intro">
+      <h3>rate yourself</h3>
+      <p>ten dimensions. one card per dimension. rate yourself 1 to 5 based on where you actually operate, not where you wish you operated.</p>
+      <div class="scale-key">
+        <div class="key-row"><span class="key-num">1</span><span>strongly naysayer-shaped</span></div>
+        <div class="key-row"><span class="key-num">2</span><span>mostly naysayer-shaped</span></div>
+        <div class="key-row"><span class="key-num">3</span><span>mixed, depends on context</span></div>
+        <div class="key-row"><span class="key-num">4</span><span>mostly builder-shaped</span></div>
+        <div class="key-row"><span class="key-num">5</span><span>strongly builder-shaped</span></div>
+      </div>
+      <p>fully local. nothing stored. export your shape at the end.</p>
+      <button class="start-btn" data-action="start">start</button>
+    </div>
+  `;
+}
+
+function renderDimension(dimIdx) {
+  const dim = DIMS[dimIdx];
+  const slideIdx = dimIdx + 1;
+  const current = state.ratings[dimIdx];
+  const infoOpen = state.infoOpen[dimIdx];
+  const isLast = dimIdx === DIMS.length - 1;
+  const allRated = state.ratings.every(r => r !== null);
+  const unratedCount = state.ratings.filter(r => r === null).length;
+
+  const finishLabel = allRated
+    ? 'finish →'
+    : `rate ${unratedCount} more to finish`;
+  const trailingBtn = isLast
+    ? `<button data-action="finish" ${allRated ? '' : 'disabled'} title="${allRated ? 'see your shape' : 'rate every dimension first'}">${finishLabel}</button>`
+    : `<button data-action="goto" data-idx="${slideIdx + 1}">next →</button>`;
+
+  const ratingArea = infoOpen ? `
+    <div class="info-popover">
+      <button class="close" data-action="toggle-info" data-idx="${dimIdx}" aria-label="close">×</button>
+      <span class="info-popover-label">naysayer pattern</span>
+      <p>${escapeHtml(dim.naysayer)}</p>
+      <span class="info-popover-label">builder pattern</span>
+      <p>${escapeHtml(dim.builder)}</p>
+      <span class="info-popover-label">the shift</span>
+      <p>${escapeHtml(dim.shift)}</p>
+    </div>
+  ` : `
+    <div class="anchors">
+      <span class="nay">naysayer-shaped</span>
+      <span class="bui">builder-shaped</span>
+    </div>
+    <div class="scale">
+      ${[1,2,3,4,5].map(n => `
+        <button class="dot ${current === n ? 'selected' : ''}" data-action="rate" data-idx="${dimIdx}" data-value="${n}" title="${current === n ? 'click to deselect' : 'rate ' + n}">${n}</button>
+      `).join('')}
+    </div>
+  `;
+
+  return `
+    <div class="card">
+      <div class="card-meta">${dimIdx + 1} of ${DIMS.length}</div>
+      <div class="name-row">
+        <div class="card-name">${escapeHtml(dim.name)}</div>
+        <button class="info-btn ${infoOpen ? 'open' : ''}" data-action="toggle-info" data-idx="${dimIdx}" title="learn more about this dimension">i</button>
+      </div>
+      <div class="card-frame">${escapeHtml(dim.tagline)}</div>
+      <div class="rating-area">${ratingArea}</div>
+      <div class="nav">
+        <button data-action="goto" data-idx="${slideIdx - 1}">← back</button>
+        ${trailingBtn}
+      </div>
+    </div>
+  `;
+}
+
+function renderRadarChart(ratings, size = 400) {
+  const cx = size / 2, cy = size / 2;
+  const maxR = size * 0.32;
+  const N = DIMS.length;
+
+  let grids = '';
+  for (let r = 1; r <= 5; r++) {
+    const points = [];
+    for (let i = 0; i < N; i++) {
+      const angle = (i / N) * Math.PI * 2 - Math.PI / 2;
+      points.push(`${(cx + (r/5)*maxR*Math.cos(angle)).toFixed(1)},${(cy + (r/5)*maxR*Math.sin(angle)).toFixed(1)}`);
+    }
+    grids += `<polygon points="${points.join(' ')}" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>`;
+  }
+  let axes = '';
+  for (let i = 0; i < N; i++) {
+    const angle = (i / N) * Math.PI * 2 - Math.PI / 2;
+    axes += `<line x1="${cx}" y1="${cy}" x2="${(cx + maxR*Math.cos(angle)).toFixed(1)}" y2="${(cy + maxR*Math.sin(angle)).toFixed(1)}" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>`;
+  }
+  const userPts = [];
+  for (let i = 0; i < N; i++) {
+    const angle = (i / N) * Math.PI * 2 - Math.PI / 2;
+    const r = ratings[i] || 0;
+    userPts.push({ x: cx + (r/5)*maxR*Math.cos(angle), y: cy + (r/5)*maxR*Math.sin(angle) });
+  }
+  const poly = `<polygon points="${userPts.map(p => `${p.x.toFixed(1)},${p.y.toFixed(1)}`).join(' ')}" fill="rgba(140,209,212,0.22)" stroke="#8cd1d4" stroke-width="2" stroke-linejoin="round"/>`;
+  let dots = '';
+  for (const p of userPts) dots += `<circle cx="${p.x.toFixed(1)}" cy="${p.y.toFixed(1)}" r="3.5" fill="#8cd1d4"/>`;
+  let labels = '';
+  for (let i = 0; i < N; i++) {
+    const angle = (i / N) * Math.PI * 2 - Math.PI / 2;
+    const lr = maxR + 22;
+    const x = cx + lr * Math.cos(angle), y = cy + lr * Math.sin(angle);
+    const c = Math.cos(angle);
+    const anchor = Math.abs(c) > 0.25 ? (c > 0 ? 'start' : 'end') : 'middle';
+    labels += `<text x="${x.toFixed(1)}" y="${y.toFixed(1)}" text-anchor="${anchor}" dominant-baseline="middle" fill="#bdbdbd" font-size="11" font-family="-apple-system, system-ui, sans-serif">${escapeHtml(DIMS[i].short)}</text>`;
+  }
+  return `<svg viewBox="0 0 ${size} ${size}" width="100%" style="max-width: 360px; display: block; margin: 0 auto;" xmlns="http://www.w3.org/2000/svg">${grids}${axes}${poly}${dots}${labels}</svg>`;
+}
+
+function renderSummary() {
+  return `
+    <div class="card summary">
+      <h3>your shape</h3>
+      <p>here's how you rated yourself across the ten dimensions.</p>
+      <div class="chart-wrap">${renderRadarChart(state.ratings)}</div>
+      <div class="export-btns">
+        <button data-action="copy-md" title="copies your ratings + a reflection prompt to your clipboard. paste into your notes, claude, chatgpt, journal, etc.">copy as text</button>
+        <button data-action="download-png" title="saves your shape as a PNG image to your device">save image</button>
+      </div>
+      <p class="export-help">
+        <strong>copy as text:</strong> ratings table + a coaching prompt for AI / journal.<br>
+        <strong>save image:</strong> downloads the radar chart above as a PNG.
+      </p>
+      <div class="ry-toast" data-toast></div>
+    </div>
+  `;
+}
+
+function renderSlide() {
+  if (state.index === INTRO_IDX) slideWrap.innerHTML = renderIntro();
+  else if (state.index === SUMMARY_IDX) slideWrap.innerHTML = renderSummary();
+  else slideWrap.innerHTML = renderDimension(state.index - 1);
+}
+
+function renderProgress() {
+  progress.innerHTML = '';
+  for (let i = 0; i < DIMS.length; i++) {
+    const btn = document.createElement('button');
+    btn.className = 'progress-dot';
+    if (state.ratings[i] !== null) btn.classList.add('rated');
+    if (state.index === i + 1) btn.classList.add('current');
+    btn.setAttribute('data-action', 'goto');
+    btn.setAttribute('data-idx', String(i + 1));
+    progress.appendChild(btn);
+  }
+  progress.style.visibility = (state.index === INTRO_IDX || state.index === SUMMARY_IDX) ? 'hidden' : 'visible';
+}
+
+function renderHint() {
+  hintEl.innerHTML = '';
+}
+
+function renderAll() {
+  renderSlide();
+  renderProgress();
+  renderHint();
+}
+
+function goTo(idx) {
+  if (idx < 0 || idx > SUMMARY_IDX) return;
+  state.index = idx;
+  renderAll();
+}
+
+function rate(dimIdx, n) {
+  const wasSame = state.ratings[dimIdx] === n;
+  state.ratings[dimIdx] = wasSame ? null : n;
+  state.infoOpen[dimIdx] = false;
+  renderAll();
+  if (!wasSame) {
+    setTimeout(() => {
+      if (dimIdx < DIMS.length - 1) goTo(dimIdx + 2);
+    }, 200);
+  }
+}
+
+function toggleInfo(dimIdx) {
+  state.infoOpen[dimIdx] = !state.infoOpen[dimIdx];
+  renderAll();
+}
+
+function buildMarkdown() {
+  const date = new Date().toISOString().split('T')[0];
+  let md = `## my builder vs naysayer ratings (${date})\n\n`;
+  md += `| dimension | rating | label |\n|---|---|---|\n`;
+  DIMS.forEach((dim, i) => {
+    const r = state.ratings[i];
+    md += `| ${dim.name} | ${r}/5 | ${ANCHORS[r].toLowerCase()} |\n`;
+  });
+  const ranked = state.ratings.map((r, i) => ({ r, i })).sort((a, b) => a.r - b.r);
+  const lowest = ranked.slice(0, 2);
+  md += `\n## reflection prompt\n\n`;
+  md += `i rated myself on ten dimensions of builder vs naysayer behavior. my lowest scores were on **${DIMS[lowest[0].i].name}** (${lowest[0].r}/5) and **${DIMS[lowest[1].i].name}** (${lowest[1].r}/5).\n\n`;
+  for (const { i } of lowest) {
+    md += `### ${DIMS[i].name}\n\n`;
+    md += `- **naysayer pattern:** ${DIMS[i].naysayer}\n`;
+    md += `- **builder pattern:** ${DIMS[i].builder}\n`;
+    md += `- **the shift:** ${DIMS[i].shift}\n\n`;
+  }
+  md += `help me think through one concrete shift i could practice this week to move from naysayer-shaped toward builder-shaped on these dimensions, in the context of my actual work. ask me clarifying questions before suggesting.\n`;
+  return md;
+}
+
+function showToast(msg) {
+  const t = root.querySelector('[data-toast]');
+  if (!t) return;
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+function copyMarkdown() {
+  navigator.clipboard.writeText(buildMarkdown())
+    .then(() => showToast('copied to clipboard'))
+    .catch(() => showToast('copy failed'));
+}
+
+function downloadPng() {
+  const svg = root.querySelector('.summary svg');
+  if (!svg) return;
+  const cloned = svg.cloneNode(true);
+  cloned.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+  cloned.setAttribute('width', '800');
+  cloned.setAttribute('height', '800');
+  const data = new XMLSerializer().serializeToString(cloned);
+  const blob = new Blob([data], { type: 'image/svg+xml;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const img = new Image();
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    canvas.width = 800; canvas.height = 800;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = '#1f2330';
+    ctx.fillRect(0, 0, 800, 800);
+    ctx.drawImage(img, 0, 0, 800, 800);
+    canvas.toBlob(b => {
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(b);
+      a.download = `builder-vs-naysayer-shape-${new Date().toISOString().split('T')[0]}.png`;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(a.href); URL.revokeObjectURL(url);
+      showToast('png downloaded');
+    }, 'image/png');
+  };
+  img.onerror = () => { showToast('png export failed'); URL.revokeObjectURL(url); };
+  img.src = url;
+}
+
+root.addEventListener('click', e => {
+  const t = e.target.closest('[data-action]');
+  if (!t) return;
+  const a = t.getAttribute('data-action');
+  const idx = t.getAttribute('data-idx');
+  const val = t.getAttribute('data-value');
+  if (a === 'start') goTo(1);
+  else if (a === 'goto') goTo(Number(idx));
+  else if (a === 'rate') rate(Number(idx), Number(val));
+  else if (a === 'toggle-info') toggleInfo(Number(idx));
+  else if (a === 'finish') { if (state.ratings.every(r => r !== null)) goTo(SUMMARY_IDX); }
+  else if (a === 'copy-md') copyMarkdown();
+  else if (a === 'download-png') downloadPng();
+});
+
+renderAll();
+</script>

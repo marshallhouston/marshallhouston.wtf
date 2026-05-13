@@ -8,6 +8,8 @@ export function readMinutes(text: string): number {
 export function excerpt(body: string, max = 200): string {
   const stripped = body
     .replace(/^---[\s\S]*?---\n/, '')
+    .replace(/^import\s.+?from\s+['"][^'"]+['"];?\s*$/gm, '')
+    .replace(/^export\s.+$/gm, '')
     .replace(/```[\s\S]*?```/g, '')
     .replace(/^#+\s.*$/gm, '')
     .replace(/!\[[^\]]*\]\([^)]+\)/g, '')

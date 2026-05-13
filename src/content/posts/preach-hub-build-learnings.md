@@ -50,6 +50,6 @@ the app isn't the point. the way of working is. once you've watched friction dro
 
 *part 1 of 3.*
 
-*next: [the ship system](/the-ship-system/). one subsystem from above, deep-dive.*
+*next: [the ship system](/the-ship-system). one subsystem from above, deep-dive.*
 
-*then: [no perfect prompt](/no-perfect-prompt/). raw inputs from the same 72 hours.*
+*then: [no perfect prompt](/no-perfect-prompt). raw inputs from the same 72 hours.*

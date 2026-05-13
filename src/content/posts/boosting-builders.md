@@ -50,6 +50,6 @@ overly-optimizing for today's perfect prompt is a waste of time. clear thinking 
 
 ## patterns
 
-[build, friction, fix](/build-friction-fix/). build. notice friction while building. fix the system later. cyclical. fractal.
+[build, friction, fix](/build-friction-fix). build. notice friction while building. fix the system later. cyclical. fractal.
 
-[mental experimentation budgets](/mental-experimentation-budgets/). recognize current capacity. increase it. reduce marginal cost. speed up recharge.
+[mental experimentation budgets](/mental-experimentation-budgets). recognize current capacity. increase it. reduce marginal cost. speed up recharge.

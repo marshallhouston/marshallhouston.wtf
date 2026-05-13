@@ -26,6 +26,9 @@ fi
 # 2. Block non-inclusive language in staged content
 bash "$HOOKS_DIR/check-inclusive-language.sh" || exit 1
 
+# 3. Block internal links with trailing slashes (site is trailingSlash: 'never')
+sh "$HOOKS_DIR/check-trailing-slash-links.sh" || exit 1
+
 # 2. Playwright suite when site code changes
 RELEVANT='^(src/|public/|astro\.config\.|package\.json|bun\.lock|tests/|playwright\.config\.|src/content/posts/.*\.md)'
 CHANGED=$(echo "$STAGED" | grep -E "$RELEVANT" || true)

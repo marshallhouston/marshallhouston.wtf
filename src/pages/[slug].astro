@@ -77,7 +77,7 @@ const jsonLd = {
       {post.data.tags.length > 0 && (
         <p class="post-tags tags">
           <span class="label">Tags:</span>
-          {post.data.tags.map((t) => <a href={`/tags/#${t}`}>#{t}</a>)}
+          {post.data.tags.map((t) => <a href={`/tags#${t}`}>#{t}</a>)}
         </p>
       )}
     </footer>

@@ -7,7 +7,7 @@ updated_at: 2026-04-19 06:05 MDT
 tags: [workflow, claude-code]
 ---
 
-*part 2 of 3. previous: [proving grounds](/proving-grounds/). this post zooms into one subsystem from that incubator.*
+*part 2 of 3. previous: [proving grounds](/proving-grounds). this post zooms into one subsystem from that incubator.*
 
 
 ## the question
@@ -111,6 +111,6 @@ this isn't the answer. it's where i am.
 
 *part 2 of 3.*
 
-*previous: [proving grounds](/proving-grounds/). the frame this subsystem lives in.*
+*previous: [proving grounds](/proving-grounds). the frame this subsystem lives in.*
 
-*next: [no perfect prompt](/no-perfect-prompt/). what actually feeds commands like /ship.*
+*next: [no perfect prompt](/no-perfect-prompt). what actually feeds commands like /ship.*

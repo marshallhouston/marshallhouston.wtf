@@ -8,7 +8,7 @@ updated_at: 2026-04-19 06:15 MDT
 
 pulled every prompt i sent claude code while building preach-hub over the last 72 hours. 377 of them. 54 sessions.
 
-the [proving ground](/proving-grounds/) and the [ship system](/the-ship-system/) were the output. these are the inputs.
+the [proving ground](/proving-grounds) and the [ship system](/the-ship-system) were the output. these are the inputs.
 
 in those 72 hours: 38 PRs merged. sermon catalog (37 sermons, 22 reading plan passages), invite email flow, feedback from three testers triaged and shipped, soft-launch infra for friday's friends-and-family.
 
@@ -100,7 +100,7 @@ two patterns inside the mix:
 
 the breakdown:
 
-- 11 dev-loop tooling: CI speedup, the [ship system](/the-ship-system/) (classifier + /ship + audit), test value gate, classifier migrated to claude code action.
+- 11 dev-loop tooling: CI speedup, the [ship system](/the-ship-system) (classifier + /ship + audit), test value gate, classifier migrated to claude code action.
 - 10 feedback acted on: bug passes, kelsey tier 0/1/2, tyler+leah nav/scroll/search.
 - 8 product features: home page real signals, invite email flow, sermon catalog (schema + 37 seeded), bookmark notes.
 - 6 product observability: posthog event splits, session replay with PII masking, feature flag infra, cohort tagging for soft launch.
@@ -122,6 +122,6 @@ no perfect prompt. just a lot of imperfect ones, one after the other, fast.
 
 *part 3 of 3.*
 
-*back to [proving grounds](/proving-grounds/). the frame.*
+*back to [proving grounds](/proving-grounds). the frame.*
 
-*or [the ship system](/the-ship-system/). one subsystem these prompts were building.*
+*or [the ship system](/the-ship-system). one subsystem these prompts were building.*

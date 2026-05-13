@@ -26,6 +26,11 @@ if raw.start_with?('---')
   end
 end
 
+# Strip MDX import/export statements (top-level only)
+body = body.gsub(/^import\s.+?from\s+['"][^'"]+['"];?\s*$/m, '')
+           .gsub(/^export\s.+$/m, '')
+           .strip
+
 # Split on H2s — first chunk is intro content (may be empty)
 chunks    = body.split(/^## /)
 intro_md  = chunks.shift.strip

@@ -47,7 +47,7 @@ const slugger = new GitHubSlugger();
           <p class="tags">
             {p.data.tags.map((t) => {
               slugger.reset();
-              return <a href={`/tags/#${slugger.slug(t)}`}>#{t}</a>;
+              return <a href={`/tags#${slugger.slug(t)}`}>#{t}</a>;
             })}
           </p>
         )}
