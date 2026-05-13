@@ -63,7 +63,6 @@
     display: flex;
     flex-direction: column;
   }
-  .rate-yourself .card.intro,
   .rate-yourself .card.summary { min-height: 0; }
   .rate-yourself .card .nav { margin-top: auto; padding-top: 12px; }
 
@@ -86,6 +85,9 @@
     font-weight: 700;
     line-height: 1.2;
     flex: 1;
+    min-height: 2.4em;
+    display: flex;
+    align-items: center;
   }
   .rate-yourself .info-btn {
     background: transparent;
@@ -114,6 +116,7 @@
     font-size: 0.92rem;
     margin-bottom: 20px;
     line-height: 1.55;
+    min-height: 4.65em;
   }
   .rate-yourself .rating-area {
     min-height: 260px;
@@ -172,12 +175,27 @@
   .rate-yourself .anchors .bui { color: var(--link); }
 
   .rate-yourself .scale {
-    display: flex;
-    justify-content: space-between;
-    gap: 8px;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 6px 8px;
+    align-items: start;
+  }
+  .rate-yourself .dot-label {
+    text-align: center;
+    font-size: 0.68rem;
+    line-height: 1.2;
+    color: var(--text-soft);
+    padding: 0 2px;
+    word-break: normal;
+    overflow-wrap: break-word;
+  }
+  .rate-yourself .dot-label.selected {
+    color: var(--link);
   }
   .rate-yourself .dot {
-    flex: 1;
+    width: 100%;
+    max-width: 52px;
+    justify-self: center;
     aspect-ratio: 1;
     border: 1.5px solid rgba(255, 255, 255, 0.2);
     border-radius: 50%;
@@ -398,7 +416,7 @@ const DIMS = [
   { name: "quitting", short: "quitting", tagline: "ability to kill or quit a project when it no longer makes sense.", naysayer: "type one refuses to quit anything. sunk cost runs the show. type two quits the people while defending the dead thesis. looks like decisiveness, is actually thesis-loyalty in disguise.", builder: "quits early when signal is clear. stopping is clarity, not betrayal. identity is not the project.", shift: 'separate identity from project. replace "am i a quitter" with "what does the next dollar of my attention deserve." build quit conditions before you\'re emotionally invested.' },
   { name: "impact vs busyness", short: "impact", tagline: "deep understanding of the why and what matters to stakeholders. not enamored with busy work just for sake of working busily.", naysayer: "optimizes for being seen working. ships features for features sake, no connection to thesis on why this is worth doing. uses activity in promotion rationale, doesn't follow with what it unlocked.", builder: "optimizes for what changed for someone. will sit still when sitting still is right. when asked to do busy-for-busy-sake work, doesn't move forward and explicitly names it. has framework for what would make it impactful, and offers the path, not just the no.", shift: '"i was busy" becomes "what changed because of me." the builder is the person who refuses with the better question already drafted.' },
   { name: "feedback + candor", short: "feedback", tagline: "how you treat critical information flowing in both directions. initiating hard conversations. engaging with difference.", naysayer: "withhold: sees the issue, says nothing, vents in DMs after. criticize for sake: sees criticism as the end goal, not as a path forward. receives as attack: any feedback collapses into ego defense.", builder: "gives critical feedback because they care. receives feedback as data. initiates hard conversations. extracts signal from poorly-delivered feedback. engages with perspectives unlike their own as input, not threat.", shift: '"i don\'t want to make it weird" becomes "the weirdness now is cheaper than the rot later." on receiving: "why are they coming at me" becomes "what\'s the data here, separate from how it was delivered."' },
-  { name: "ownership of learning + responsibility", short: "ownership", tagline: "owns the gap between where you are and where you need to be. owns the not-knowing. owns outcomes.", naysayer: 'outsources learning. "nobody trained me. there\'s no documentation." hides not-knowing. bluffs in meetings, spends more energy concealing the gap than closing it. abdicates outcomes.', builder: "doesn't wait to be taught. owns their own learning. fitfo. owns the not-knowing explicitly. owns outcomes including the parts that weren't their decision.", shift: '"why didn\'t anyone tell me" becomes "what\'s my path to knowing this by [date]." and "that wasn\'t my decision" becomes "i had a chance to flag it and i didn\'t, here\'s what i\'d do next time."' },
+  { name: "own your own learning", short: "ownership", tagline: "owns the gap between where you are and where you need to be. owns the not-knowing. owns outcomes.", naysayer: 'outsources learning. "nobody trained me. there\'s no documentation." hides not-knowing. bluffs in meetings, spends more energy concealing the gap than closing it. abdicates outcomes.', builder: "doesn't wait to be taught. owns their own learning. fitfo. owns the not-knowing explicitly. owns outcomes including the parts that weren't their decision.", shift: '"why didn\'t anyone tell me" becomes "what\'s my path to knowing this by [date]." and "that wasn\'t my decision" becomes "i had a chance to flag it and i didn\'t, here\'s what i\'d do next time."' },
   { name: "operating frame", short: "frame", tagline: "operates from a framework that's yours. use process when it helps. route around it when it doesn't.", naysayer: "latches onto capital-P Process. follows the checklist blindly. vibe thinking. substitutes the artifact for the outcome. demands the map. won't move until ambiguity is removed by someone above them.", builder: "can articulate why this thing matters, why this approach, why now. uses process when it serves the why. routes around it when it doesn't. drives toward clarity instead of demanding the map first.", shift: '"that\'s not how we do it" becomes "why do we do it that way, and does the why still hold here?" and "i need more clarity" becomes "here\'s what i can start on now, here\'s what i\'ll come back with by when."' },
   { name: "engaging with new", short: "new", tagline: "what you do when something unfamiliar shows up. lean in or lean back.", naysayer: "defends the status quo reflexively. dismisses the new by pattern-matching it to something old. bias to objection, analysis as deflection. or generates 14 reasons it won't work, no path forward, no suggested experiment.", builder: "challenges status quo including their own. bias to trying. runs the small experiment. spots failure modes paired with a path forward to build to learn.", shift: '"this won\'t work because [X]" becomes "this might work if we solved [X]. smallest version we can try this week?" failure-spotting reframed as a gift to the design, not an end in itself.' },
   { name: "reasoning", short: "reasoning", tagline: "make your thinking visible. externalize the logic so it can be examined at the thinking layer, not the person layer.", naysayer: 'positions arrive without legible steps. "trust me." / "i just have a bad feeling about this." nothing to audit later. past decisions become folklore. when challenged, treats it as personal attack. the logic and the person are fused.', builder: "writes it down. says it out loud. distinguishes what i observed from what i inferred from what i'm recommending. each layer separable. welcomes pushback because the layers are visible. past reasoning becomes the audit trail.", shift: '"i think X" becomes "here\'s what i\'m seeing, here\'s how i\'m reading it, here\'s what i\'d do, where am i wrong."' },
@@ -528,13 +546,12 @@ function renderDimension(dimIdx) {
       <p>${escapeHtml(dim.shift)}</p>
     </div>
   ` : `
-    <div class="anchors">
-      <span class="nay">${escapeHtml(anchorsFor()[1])}</span>
-      <span class="bui">${escapeHtml(anchorsFor()[5])}</span>
-    </div>
     <div class="scale">
       ${[1,2,3,4,5].map(n => `
-        <button class="dot ${current === n ? 'selected' : ''}" data-action="rate" data-idx="${dimIdx}" data-value="${n}" title="${current === n ? 'click to deselect' : 'rate ' + n}">${n}</button>
+        <button class="dot ${current === n ? 'selected' : ''}" data-action="rate" data-idx="${dimIdx}" data-value="${n}" data-anchor="${escapeHtml(anchorsFor()[n])}" title="${escapeHtml(anchorsFor()[n])}${current === n ? ' (click to deselect)' : ''}">${n}</button>
+      `).join('')}
+      ${[1,2,3,4,5].map(n => `
+        <span class="dot-label ${current === n ? 'selected' : ''}">${escapeHtml(anchorsFor()[n])}</span>
       `).join('')}
     </div>
   `;
