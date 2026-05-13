@@ -149,6 +149,7 @@ const ogType = article ? 'article' : 'website';
 
         // Proper nouns with non-standard capitalization that title/sentence case gets wrong.
         const PROPER_NOUNS = [
+          ['\\bi\\b', 'I'],
           ['github', 'GitHub'],
           ['linkedin', 'LinkedIn'],
           ['\\bai\\b', 'AI'],

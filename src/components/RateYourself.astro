@@ -302,6 +302,82 @@
     transition: opacity 180ms;
   }
   .rate-yourself .ry-toast.show { opacity: 1; }
+  .rate-yourself .md-preview {
+    margin-top: 14px;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+  }
+  .rate-yourself .md-preview[hidden] { display: none; }
+  .rate-yourself .md-preview-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border-bottom: 1px solid var(--border);
+    font-size: 0.75rem;
+  }
+  .rate-yourself .md-preview-title { color: var(--text-muted); }
+  .rate-yourself .md-preview-actions { display: flex; gap: 6px; flex-wrap: wrap; }
+  .rate-yourself .md-preview-actions button {
+    padding: 4px 8px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--link);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.72rem;
+  }
+  .rate-yourself .md-preview-actions button:hover {
+    color: var(--link-hover);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .rate-yourself .md-preview-text {
+    width: 100%;
+    min-height: 220px;
+    max-height: 360px;
+    padding: 10px;
+    background: transparent;
+    color: var(--text);
+    border: 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 0.78rem;
+    line-height: 1.5;
+    resize: vertical;
+    box-sizing: border-box;
+  }
+  .rate-yourself .md-preview-text:focus { outline: none; }
+  .rate-yourself .lens-toggle {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 10px 0 14px;
+    font-size: 0.75rem;
+    color: var(--text-soft);
+    flex-wrap: wrap;
+  }
+  .rate-yourself .lens-toggle-label { color: var(--text-muted); }
+  .rate-yourself .lens-btn {
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-soft);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 0.72rem;
+  }
+  .rate-yourself .lens-btn:hover {
+    color: var(--link-hover);
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  .rate-yourself .lens-btn.active {
+    background: var(--link);
+    color: #1f2330;
+    border-color: var(--link);
+  }
 
   .rate-yourself .unrated-hint {
     text-align: center;
@@ -330,13 +406,38 @@ const DIMS = [
   { name: "pain", short: "pain", tagline: "can you name what hurt you, why it's still active, and what to do with it. address it or consciously park it. not let fester.", naysayer: 'can\'t name it. the pain is the lens. every new initiative refracts through the unprocessed event. they don\'t know that\'s what\'s happening, which is why "just be more open" doesn\'t work.', builder: '"i got burned on the X project. the specific thing was [Y]. it made me wary of [Z pattern]." pain becomes information about what they\'re protecting. decides what to do with it: address or consciously park.', shift: "three sub-moves. notice: the reaction is disproportionate to the trigger. name: what's the underlying event, what was the actual harm. decide: address or consciously park. not let fester." },
 ];
 
-const ANCHORS = {
-  1: "strongly naysayer-shaped",
-  2: "mostly naysayer-shaped",
-  3: "mixed, depends on context",
-  4: "mostly builder-shaped",
-  5: "strongly builder-shaped",
+const LENSES = {
+  capacity: {
+    label: "capacity",
+    anchors: {
+      1: "not yet",
+      2: "takes effort",
+      3: "depends on day",
+      4: "mostly there",
+      5: "second nature",
+    },
+  },
+  bff: {
+    label: "bff",
+    anchors: {
+      1: "not started",
+      2: "noticing",
+      3: "fixing",
+      4: "bffing sometimes",
+      5: "bffing always",
+    },
+  },
 };
+
+const LENS_KEY = "ry-lens";
+
+function getLens() {
+  return LENSES[state.lens] || LENSES.capacity;
+}
+
+function anchorsFor() {
+  return getLens().anchors;
+}
 
 const INTRO_IDX = 0;
 const SUMMARY_IDX = DIMS.length + 1;
@@ -351,23 +452,48 @@ const state = {
   index: 0,
   ratings: Array(DIMS.length).fill(null),
   infoOpen: Array(DIMS.length).fill(false),
+  lens: (function () {
+    try {
+      var saved = sessionStorage.getItem(LENS_KEY);
+      return saved && LENSES[saved] ? saved : 'capacity';
+    } catch (e) { return 'capacity'; }
+  })(),
 };
+
+function setLens(name) {
+  if (!LENSES[name]) return;
+  state.lens = name;
+  try { sessionStorage.setItem(LENS_KEY, name); } catch (e) {}
+  renderAll();
+}
 
 function escapeHtml(s) {
   return String(s).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
 }
 
+function renderLensToggle() {
+  return `
+    <div class="lens-toggle" role="group" aria-label="scale lens">
+      <span class="lens-toggle-label">scale:</span>
+      ${Object.keys(LENSES).map(function (k) {
+        var active = state.lens === k;
+        return `<button type="button" class="lens-btn ${active ? 'active' : ''}" data-action="set-lens" data-lens="${k}" aria-pressed="${active}">${LENSES[k].label}</button>`;
+      }).join('')}
+    </div>
+  `;
+}
+
 function renderIntro() {
+  var anchors = anchorsFor();
   return `
     <div class="card intro">
       <h3>rate yourself</h3>
       <p>ten dimensions. one card per dimension. rate yourself 1 to 5 based on where you actually operate, not where you wish you operated.</p>
+      ${renderLensToggle()}
       <div class="scale-key">
-        <div class="key-row"><span class="key-num">1</span><span>strongly naysayer-shaped</span></div>
-        <div class="key-row"><span class="key-num">2</span><span>mostly naysayer-shaped</span></div>
-        <div class="key-row"><span class="key-num">3</span><span>mixed, depends on context</span></div>
-        <div class="key-row"><span class="key-num">4</span><span>mostly builder-shaped</span></div>
-        <div class="key-row"><span class="key-num">5</span><span>strongly builder-shaped</span></div>
+        ${[1,2,3,4,5].map(function (n) {
+          return `<div class="key-row"><span class="key-num">${n}</span><span>${escapeHtml(anchors[n])}</span></div>`;
+        }).join('')}
       </div>
       <p>fully local. nothing stored. export your shape at the end.</p>
       <button class="start-btn" data-action="start">start</button>
@@ -403,8 +529,8 @@ function renderDimension(dimIdx) {
     </div>
   ` : `
     <div class="anchors">
-      <span class="nay">naysayer-shaped</span>
-      <span class="bui">builder-shaped</span>
+      <span class="nay">${escapeHtml(anchorsFor()[1])}</span>
+      <span class="bui">${escapeHtml(anchorsFor()[5])}</span>
     </div>
     <div class="scale">
       ${[1,2,3,4,5].map(n => `
@@ -476,14 +602,26 @@ function renderSummary() {
       <h3>your shape</h3>
       <p>here's how you rated yourself across the ten dimensions.</p>
       <div class="chart-wrap">${renderRadarChart(state.ratings)}</div>
+      ${renderLensToggle()}
       <div class="export-btns">
-        <button data-action="copy-md" title="copies your ratings + a reflection prompt to your clipboard. paste into your notes, claude, chatgpt, journal, etc.">copy as text</button>
+        <button data-action="preview-md" title="see the markdown that will be copied. ratings table + a coaching prompt for AI / journal.">preview text</button>
         <button data-action="download-png" title="saves your shape as a PNG image to your device">save image</button>
       </div>
       <p class="export-help">
-        <strong>copy as text:</strong> ratings table + a coaching prompt for AI / journal.<br>
+        <strong>preview text:</strong> see the ratings + coaching prompt, then copy or open in a new tab.<br>
         <strong>save image:</strong> downloads the radar chart above as a PNG.
       </p>
+      <div class="md-preview" data-md-preview hidden>
+        <div class="md-preview-head">
+          <span class="md-preview-title">markdown preview</span>
+          <div class="md-preview-actions">
+            <button data-action="copy-md-from-preview" type="button">copy</button>
+            <button data-action="open-md-tab" type="button">open in new tab</button>
+            <button data-action="close-preview" type="button" aria-label="close">close</button>
+          </div>
+        </div>
+        <textarea class="md-preview-text" data-md-text readonly></textarea>
+      </div>
       <div class="ry-toast" data-toast></div>
     </div>
   `;
@@ -548,7 +686,7 @@ function buildMarkdown() {
   md += `| dimension | rating | label |\n|---|---|---|\n`;
   DIMS.forEach((dim, i) => {
     const r = state.ratings[i];
-    md += `| ${dim.name} | ${r}/5 | ${ANCHORS[r].toLowerCase()} |\n`;
+    md += `| ${dim.name} | ${r}/5 | ${anchorsFor()[r].toLowerCase()} |\n`;
   });
   const ranked = state.ratings.map((r, i) => ({ r, i })).sort((a, b) => a.r - b.r);
   const lowest = ranked.slice(0, 2);
@@ -576,6 +714,36 @@ function copyMarkdown() {
   navigator.clipboard.writeText(buildMarkdown())
     .then(() => showToast('copied to clipboard'))
     .catch(() => showToast('copy failed'));
+}
+
+function previewMarkdown() {
+  const panel = root.querySelector('[data-md-preview]');
+  const ta = root.querySelector('[data-md-text]');
+  if (!panel || !ta) return;
+  ta.value = buildMarkdown();
+  panel.hidden = false;
+  ta.focus();
+}
+
+function closePreview() {
+  const panel = root.querySelector('[data-md-preview]');
+  if (panel) panel.hidden = true;
+}
+
+function copyFromPreview() {
+  const ta = root.querySelector('[data-md-text]');
+  if (!ta) return;
+  navigator.clipboard.writeText(ta.value)
+    .then(() => showToast('copied to clipboard'))
+    .catch(() => showToast('copy failed'));
+}
+
+function openMdTab() {
+  const md = buildMarkdown();
+  const blob = new Blob([md], { type: 'text/markdown;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  window.open(url, '_blank', 'noopener');
+  setTimeout(() => URL.revokeObjectURL(url), 60000);
 }
 
 function downloadPng() {
@@ -621,6 +789,11 @@ root.addEventListener('click', e => {
   else if (a === 'toggle-info') toggleInfo(Number(idx));
   else if (a === 'finish') { if (state.ratings.every(r => r !== null)) goTo(SUMMARY_IDX); }
   else if (a === 'copy-md') copyMarkdown();
+  else if (a === 'preview-md') previewMarkdown();
+  else if (a === 'copy-md-from-preview') copyFromPreview();
+  else if (a === 'open-md-tab') openMdTab();
+  else if (a === 'close-preview') closePreview();
+  else if (a === 'set-lens') setLens(t.getAttribute('data-lens'));
   else if (a === 'download-png') downloadPng();
 });
 

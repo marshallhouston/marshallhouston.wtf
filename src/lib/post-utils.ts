@@ -1,4 +1,4 @@
-const WORDS_PER_MIN = 200;
+const WORDS_PER_MIN = 265;
 
 export function readMinutes(text: string): number {
   const words = text.trim().split(/\s+/).filter(Boolean).length;
