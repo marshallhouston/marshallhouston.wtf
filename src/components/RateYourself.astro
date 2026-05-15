@@ -402,6 +402,12 @@
     color: #1f2330;
     border-color: var(--link);
   }
+  .rate-yourself .lens-link {
+    color: var(--link);
+    font-size: 0.72rem;
+    text-decoration: underline;
+  }
+  .rate-yourself .lens-link:hover { color: var(--link-hover); }
 
   .rate-yourself .unrated-hint {
     text-align: center;
@@ -503,6 +509,7 @@ function renderLensToggle() {
         var active = state.lens === k;
         return `<button type="button" class="lens-btn ${active ? 'active' : ''}" data-action="set-lens" data-lens="${k}" aria-pressed="${active}">${LENSES[k].label}</button>`;
       }).join('')}
+      <a href="/build-friction-fix" class="lens-link">what's bff?</a>
     </div>
   `;
 }
@@ -519,7 +526,7 @@ function renderIntro() {
           return `<div class="key-row"><span class="key-num">${n}</span><span>${escapeHtml(anchors[n])}</span></div>`;
         }).join('')}
       </div>
-      <p>fully local. nothing stored. export your shape at the end.</p>
+      <p>fully local. nothing stored. see shape at end, copy your data, and keep self-reflection going.</p>
       <button class="start-btn" data-action="start">start</button>
     </div>
   `;
