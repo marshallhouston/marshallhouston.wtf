@@ -626,7 +626,7 @@ function renderSummary() {
       <p>here's how you rated yourself across the ten dimensions.</p>
       <div class="chart-wrap">${renderRadarChart(state.ratings)}</div>
       ${renderLensToggle()}
-      <p class="export-intent">copy your ten-dimension data with a prompt to continue reflection & growth.</p>
+      <p class="export-intent">copy your ten-dimension data alongside a writing prompt to continue reflection.</p>
       <div class="export-btns">
         <button data-action="preview-md" title="your ratings + a self-reflection prompt. paste into a notebook, an AI chat, wherever.">self-reflection prompt</button>
         <button data-action="download-png" title="saves your shape as a PNG image to your device">save image</button>
@@ -722,7 +722,7 @@ function buildMarkdown() {
     md += `- **builder pattern:** ${DIMS[i].builder}\n`;
     md += `- **the shift:** ${DIMS[i].shift}\n\n`;
   }
-  md += `what's one direct action to put into practice this week on _one_ dimension? bff it (build -> friction -> fix)… just start ;)\n`;
+  md += `what's a direct action in one (and only one) _dimension_ you'll take this week? constraints, start narrow. bff it (build -> friction -> fix)… just start ;)\n`;
   return md;
 }
 
