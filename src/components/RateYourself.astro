@@ -509,7 +509,7 @@ function renderLensToggle() {
         var active = state.lens === k;
         return `<button type="button" class="lens-btn ${active ? 'active' : ''}" data-action="set-lens" data-lens="${k}" aria-pressed="${active}">${LENSES[k].label}</button>`;
       }).join('')}
-      <a href="/build-friction-fix" class="lens-link">what's bff?</a>
+      <a href="/build-friction-fix" class="lens-link" target="_blank" rel="noopener noreferrer">what's bff?</a>
     </div>
   `;
 }
