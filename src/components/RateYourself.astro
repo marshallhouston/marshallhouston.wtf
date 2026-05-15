@@ -292,6 +292,12 @@
     font-size: 0.9rem;
   }
   .rate-yourself .chart-wrap { margin: 8px 0 18px; padding: 8px 0; }
+  .rate-yourself .export-intent {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    margin: 0 0 12px;
+  }
   .rate-yourself .export-btns { display: flex; gap: 8px; }
   .rate-yourself .export-btns button {
     flex: 1;
@@ -620,17 +626,18 @@ function renderSummary() {
       <p>here's how you rated yourself across the ten dimensions.</p>
       <div class="chart-wrap">${renderRadarChart(state.ratings)}</div>
       ${renderLensToggle()}
+      <p class="export-intent">your shape is data. copy it with a prompt to keep reflecting on — notebook, chat, voice memo, wherever you think.</p>
       <div class="export-btns">
-        <button data-action="preview-md" title="see the markdown that will be copied. ratings table + a coaching prompt for AI / journal.">preview text</button>
+        <button data-action="preview-md" title="your ratings + a self-reflection prompt. paste into a notebook, an AI chat, wherever.">self-reflection prompt</button>
         <button data-action="download-png" title="saves your shape as a PNG image to your device">save image</button>
       </div>
       <p class="export-help">
-        <strong>preview text:</strong> see the ratings + coaching prompt, then copy or open in a new tab.<br>
+        <strong>self-reflection prompt:</strong> see your ratings + a prompt, then copy or open in a new tab.<br>
         <strong>save image:</strong> downloads the radar chart above as a PNG.
       </p>
       <div class="md-preview" data-md-preview hidden>
         <div class="md-preview-head">
-          <span class="md-preview-title">markdown preview</span>
+          <span class="md-preview-title">your ratings + prompt</span>
           <div class="md-preview-actions">
             <button data-action="copy-md-from-preview" type="button">copy</button>
             <button data-action="open-md-tab" type="button">open in new tab</button>
