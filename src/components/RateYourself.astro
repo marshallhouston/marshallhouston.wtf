@@ -626,7 +626,7 @@ function renderSummary() {
       <p>here's how you rated yourself across the ten dimensions.</p>
       <div class="chart-wrap">${renderRadarChart(state.ratings)}</div>
       ${renderLensToggle()}
-      <p class="export-intent">your shape is data. copy it with a prompt to keep reflecting on — notebook, chat, voice memo, wherever you think.</p>
+      <p class="export-intent">copy your ten-dimension data with a prompt to continue reflection & growth.</p>
       <div class="export-btns">
         <button data-action="preview-md" title="your ratings + a self-reflection prompt. paste into a notebook, an AI chat, wherever.">self-reflection prompt</button>
         <button data-action="download-png" title="saves your shape as a PNG image to your device">save image</button>
@@ -722,7 +722,7 @@ function buildMarkdown() {
     md += `- **builder pattern:** ${DIMS[i].builder}\n`;
     md += `- **the shift:** ${DIMS[i].shift}\n\n`;
   }
-  md += `help me think through one concrete shift i could practice this week to move from naysayer-shaped toward builder-shaped on these dimensions, in the context of my actual work. ask me clarifying questions before suggesting.\n`;
+  md += `what's one direct action to put into practice this week on _one_ dimension? bff it (build -> friction -> fix)… just start ;)\n`;
   return md;
 }
 
