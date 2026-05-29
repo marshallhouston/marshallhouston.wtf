@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>marshall // a mirror</title>
+<style>
+  :root{
+    --bg:#0e0d10; --bg2:#16141a; --card:#1b1820; --line:#2c2832;
+    --ink:#ece8f0; --mut:#9a93a8; --dim:#6c6478;
+    --acc:#ff7a59;   /* ember */
+    --acc2:#6ee7b7;  /* mint */
+    --acc3:#a78bfa;  /* violet */
+    --acc4:#fcd34d;  /* gold */
+    --mono:"SFMono-Regular",ui-monospace,"JetBrains Mono",Menlo,Consolas,monospace;
+    --serif:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:
+      radial-gradient(1200px 600px at 80% -10%,rgba(167,139,250,.10),transparent 60%),
+      radial-gradient(900px 500px at -10% 20%,rgba(255,122,89,.08),transparent 55%),
+      var(--bg);
+    color:var(--ink);font-family:var(--mono);line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:72px 26px 120px}
+  ::selection{background:var(--acc);color:#1a1014}
+
+  /* header */
+  header{margin-bottom:64px}
+  .kicker{font-size:11px;letter-spacing:.32em;text-transform:uppercase;color:var(--dim)}
+  h1{font-family:var(--serif);font-weight:600;font-size:clamp(42px,8vw,84px);line-height:.95;
+     margin:.18em 0 .1em;letter-spacing:-.01em}
+  h1 em{font-style:italic;color:var(--acc)}
+  .sub{color:var(--mut);max-width:62ch;font-size:15px}
+  .sub b{color:var(--ink);font-weight:400}
+
+  /* stat strip */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1px;
+    background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:44px 0}
+  .stat{background:var(--bg2);padding:20px 18px}
+  .stat .n{font-family:var(--serif);font-size:34px;line-height:1;color:var(--acc2)}
+  .stat .n.b{color:var(--acc)} .stat .n.c{color:var(--acc3)} .stat .n.d{color:var(--acc4)}
+  .stat .l{font-size:11px;color:var(--dim);text-transform:uppercase;letter-spacing:.12em;margin-top:8px}
+
+  section{margin:78px 0;scroll-margin-top:30px}
+  .eyebrow{font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--acc);margin-bottom:6px}
+  h2{font-family:var(--serif);font-weight:600;font-size:clamp(28px,4.5vw,42px);margin:.1em 0 .5em;letter-spacing:-.01em}
+  h2 .hash{color:var(--dim);font-family:var(--mono);font-size:.5em;vertical-align:middle;margin-right:.4em}
+  p{color:var(--mut)} p b{color:var(--ink);font-weight:400}
+
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  @media(max-width:760px){.grid2{grid-template-columns:1fr}}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px 22px 18px;position:relative}
+  .card h3{margin:0 0 4px;font-size:15px;letter-spacing:.02em}
+  .card.s{border-left:3px solid var(--acc2)}
+  .card.g{border-left:3px solid var(--acc)}
+  .card .tag{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+  .card p{margin:.5em 0 0;font-size:13.5px;color:var(--mut)}
+  .card .ev{margin-top:12px;font-size:11.5px;color:var(--dim);border-top:1px dashed var(--line);padding-top:9px}
+  .card .ev b{color:var(--acc4);font-weight:400}
+
+  ul.clean{list-style:none;padding:0;margin:0}
+  ul.clean li{padding:10px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--mut);display:flex;gap:12px}
+  ul.clean li:last-child{border:0}
+  ul.clean li b{color:var(--ink);font-weight:400}
+  .mk{color:var(--acc);flex:0 0 auto}
+
+  /* voice chips */
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0}
+  .chip{font-size:12px;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg2);color:var(--mut)}
+  .chip b{color:var(--acc2);font-weight:400}
+
+  blockquote{margin:18px 0;padding:14px 20px;border-left:3px solid var(--acc3);background:var(--bg2);
+    border-radius:0 10px 10px 0;font-family:var(--serif);font-size:18px;color:var(--ink);font-style:italic}
+  blockquote span{display:block;font-family:var(--mono);font-style:normal;font-size:11px;color:var(--dim);margin-top:8px;letter-spacing:.1em}
+
+  /* bars */
+  .bar{display:grid;grid-template-columns:130px 1fr 60px;align-items:center;gap:12px;margin:9px 0;font-size:12px}
+  .bar .lab{color:var(--mut);text-align:right;white-space:nowrap}
+  .bar .track{background:var(--bg2);border-radius:6px;height:14px;overflow:hidden;border:1px solid var(--line)}
+  .bar .fill{height:100%;border-radius:6px;background:linear-gradient(90deg,var(--acc),var(--acc4))}
+  .bar .v{color:var(--dim);font-size:11px}
+
+  .lede{font-family:var(--serif);font-size:21px;line-height:1.5;color:var(--ink);max-width:64ch;font-style:italic}
+
+  .profile{background:linear-gradient(180deg,rgba(167,139,250,.06),transparent);border:1px solid var(--line);
+    border-radius:16px;padding:30px 28px}
+  .trait{display:grid;grid-template-columns:160px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--line)}
+  .trait:last-child{border:0}
+  .trait .k{color:var(--acc3);font-size:13px;letter-spacing:.03em}
+  .trait .v{color:var(--mut);font-size:14px}
+  @media(max-width:640px){.trait{grid-template-columns:1fr;gap:4px}}
+
+  .verdict{border:1px solid var(--acc);border-radius:16px;padding:28px;background:rgba(255,122,89,.05)}
+  .verdict h2{color:var(--acc)}
+
+  hr.fade{border:0;height:1px;background:linear-gradient(90deg,transparent,var(--line),transparent);margin:60px 0}
+  footer{color:var(--dim);font-size:12px;text-align:center;margin-top:80px}
+  .nb{font-size:12px;color:var(--dim);font-style:italic;font-family:var(--serif)}
+  a{color:var(--acc2);text-decoration:none;border-bottom:1px dotted var(--line)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="kicker">a read on the operator · 2026-05-29</div>
+  <h1>marshall,<br><em>a mirror.</em></h1>
+  <p class="sub">two corpora, one person. <b>28 published posts + ~80 kernels + ~65 idea docs</b> in the writing pipeline, and <b>273 claude code sessions</b> across six repos. what the patterns say about how you write, how you build, and who's holding the pen.</p>
+</header>
+
+<div class="stats">
+  <div class="stat"><div class="n">273</div><div class="l">cc sessions analyzed</div></div>
+  <div class="stat"><div class="n b">6,798</div><div class="l">prompts you typed</div></div>
+  <div class="stat"><div class="n c">60%</div><div class="l">prompts ≤15 words</div></div>
+  <div class="stat"><div class="n d">28</div><div class="l">posts shipped</div></div>
+  <div class="stat"><div class="n">~145</div><div class="l">kernels + ideas waiting</div></div>
+  <div class="stat"><div class="n c">8+</div><div class="l">words you coined</div></div>
+</div>
+
+<p class="lede">the throughline across both: you build the system that builds the thing. bff isn't a post you wrote. it's the shape of everything you do. that's your superpower and the exact place you leak.</p>
+
+<hr class="fade"/>
+
+<!-- ============ WRITING ============ -->
+<section id="voice">
+  <div class="eyebrow">part one · the writing</div>
+  <h2><span class="hash">01</span>your voice fingerprint</h2>
+  <p>read enough of it blind and you'd ID it in two lines. the markers are mechanical and consistent:</p>
+  <div class="chips">
+    <span class="chip"><b>lowercase</b> always (proper nouns excepted)</span>
+    <span class="chip"><b>fragments.</b> periods doing structural work.</span>
+    <span class="chip">first person <b>"i"</b>, never "you" for your own life</span>
+    <span class="chip">profanity as <b>punctuation</b> — "oink oink motherfuckers"</span>
+    <span class="chip"><b>food + BBQ</b> sensory metaphor ("blue smoke's rolling")</span>
+    <span class="chip">cross-domain pulls: <b>yeats, mollick, sturgill, enneagram</b></span>
+    <span class="chip">endings that open, not close: <b>"let's chat :)"</b></span>
+    <span class="chip"><b>coined vocab</b> as load-bearing nouns</span>
+  </div>
+  <p>you run at least <b>three distinct registers</b> and you switch on purpose: the <b>systems-reflective</b> (bff, the writing-process posts), the <b>unhinged manifesto</b> (piggies, ptvm — profane, incantatory, em-dash-free on purpose), and <b>weaponized satire</b> (the unpromptable LinkedIn parody, sparkle-emoji and all). most people have one voice. you have a spectrum and you know where the dial is.</p>
+  <blockquote>oink, oink piggies. let's get weird.<span>probabilistically perfect piggies — manifesto register</span></blockquote>
+  <blockquote>yeats wrote about the widening gyre as dark, destructive, things falling apart. the system you built no longer fits? that's not failure, that's growth.<span>build friction fix — systems-reflective register</span></blockquote>
+</section>
+
+<section id="w-strength">
+  <h2><span class="hash">02</span>writing — what's working</h2>
+  <div class="grid2">
+    <div class="card s"><span class="tag">strength</span><h3>emotional honesty without performance</h3>
+      <p>"i will hate this first draft. terrible. good." you name the actual reaction, not a polished one. the adhd-diagnosis relief, the therapy kernel, "partner says it looks serial-killerish" — you let the real thing on the page. that's the un-fakeable edge you keep writing about, demonstrated instead of claimed.</p>
+      <div class="ev"><b>evidence:</b> co-intelligence post, adhd / therapy kernels</div></div>
+    <div class="card s"><span class="tag">strength</span><h3>show-don't-tell discipline</h3>
+      <p>directory trees, actual prompts, the <code>instead:/do:</code> block, real friction lists pasted raw. you trust the artifact over the description. rare and good.</p>
+      <div class="ev"><b>evidence:</b> writing-process posts, bff friction quotes</div></div>
+    <div class="card s"><span class="tag">strength</span><h3>concept coinage that sticks</h3>
+      <p>bff, ptvm, lowerchaos, spurtability, tokenmaxxing, vibe-thinking, fart-sniffing-detection, cosmic farmland. you mint vocabulary, then live inside it. memorable, ownable, repeatable — this is how thinkers get cited.</p>
+      <div class="ev"><b>evidence:</b> 8+ coined terms now load-bearing across posts AND tooling</div></div>
+    <div class="card s"><span class="tag">strength</span><h3>exploratory, never conclusive</h3>
+      <p>"this will look different in a month." you ship the thinking mid-motion instead of waiting for a thesis. the posts feel alive because they're not pretending to be finished. that's a deliberate stance and it reads as honesty.</p>
+      <div class="ev"><b>evidence:</b> every post ends open; meb shipped as v0→v4 in public</div></div>
+  </div>
+</section>
+
+<section id="w-gaps">
+  <h2><span class="hash">03</span>writing — where you leak</h2>
+  <div class="grid2">
+    <div class="card g"><span class="tag">gap · the big one</span><h3>the funnel doesn't drain</h3>
+      <p>~80 kernels + ~65 idea docs → <b>28 posts</b>. fermentation is your method, but a lot of it is just sitting. "let it ferment" can be a polite word for "didn't ship." you wrote a whole post about ship-it-earlier-than-you-want and the backlog says you don't always take your own medicine.</p>
+      <div class="ev"><b>fix:</b> a quit-condition on ideas. if a kernel hasn't sprouted in N revisits, kill it or ship it ugly. you literally have a "quit-conditions" kernel — sprout it.</div></div>
+    <div class="card g"><span class="tag">gap</span><h3>versionitis</h3>
+      <p>meb v0, v1, v2, v3, v4. writing-process v2. multiple live drafts of the same post sitting side by side. the parallel-everything instinct (same one driving 157 preach-hub worktrees) means revisions branch instead of converge. iteration without a merge step.</p>
+      <div class="ev"><b>fix:</b> name a canonical, delete the rest. one source of truth per post.</div></div>
+    <div class="card g"><span class="tag">gap</span><h3>scaffolding left standing</h3>
+      <p>posts are full of <code>&lt;!-- TODO: photo of notebook --&gt;</code>, "screenshots here", "screen recording of…". the structural intent is there; the assets never land. the published artifact carries the ghost of unfinished.</p>
+      <div class="ev"><b>fix:</b> a pre-publish hook that greps for TODO/screenshot in posts without draft:true and blocks the flip.</div></div>
+    <div class="card g"><span class="tag">gap</span><h3>jargon density vs. the new reader</h3>
+      <p>your coined words are a strength <i>until</i> a post assumes four of them at once. bff-fractal-ptvm-lowerchaos with no on-ramp reads as in-group code to someone arriving cold. the satire risk too: "unpromptable" is parody, but stripped of context it can read as the LinkedIn slop it's mocking.</p>
+      <div class="ev"><b>fix:</b> one plain-language anchor sentence per coined term, first use. let the weird earn its place.</div></div>
+  </div>
+</section>
+
+<hr class="fade"/>
+
+<!-- ============ CLAUDE CODE ============ -->
+<section id="cc">
+  <div class="eyebrow">part two · claude code</div>
+  <h2><span class="hash">04</span>how you actually drive</h2>
+  <p>6,798 typed prompts. the length distribution is the tell — you're a <b>terse, high-trust, fast-iteration</b> operator. you don't write essays at the model; you nudge and look.</p>
+  <div style="margin:24px 0">
+    <div class="bar"><div class="lab">1–3 words</div><div class="track"><div class="fill" style="width:55%"></div></div><div class="v">1,646</div></div>
+    <div class="bar"><div class="lab">4–15 words</div><div class="track"><div class="fill" style="width:81%"></div></div><div class="v">2,432</div></div>
+    <div class="bar"><div class="lab">16–50 words</div><div class="track"><div class="fill" style="width:52%"></div></div><div class="v">1,576</div></div>
+    <div class="bar"><div class="lab">51–150 words</div><div class="track"><div class="fill" style="width:16%"></div></div><div class="v">474</div></div>
+    <div class="bar"><div class="lab">150+ words</div><div class="track"><div class="fill" style="width:22%"></div></div><div class="v">670</div></div>
+  </div>
+  <p class="nb">the 150+ bucket is mostly pasted context (logs, feedback dumps, specs), not you writing prose. your native mode is the short steer. that's bff at the keystroke level — build, look, friction, fix.</p>
+
+  <h3 style="font-family:var(--serif);font-size:20px;color:var(--ink);margin-top:34px">tool diet</h3>
+  <div style="margin:18px 0">
+    <div class="bar"><div class="lab">Bash</div><div class="track"><div class="fill" style="width:100%"></div></div><div class="v">20,628</div></div>
+    <div class="bar"><div class="lab">Read</div><div class="track"><div class="fill" style="width:61%"></div></div><div class="v">12,629</div></div>
+    <div class="bar"><div class="lab">Edit</div><div class="track"><div class="fill" style="width:23%"></div></div><div class="v">4,804</div></div>
+    <div class="bar"><div class="lab">Write</div><div class="track"><div class="fill" style="width:10%"></div></div><div class="v">1,985</div></div>
+    <div class="bar"><div class="lab">Agent (parallel)</div><div class="track"><div class="fill" style="width:8%"></div></div><div class="v">1,586</div></div>
+    <div class="bar"><div class="lab">Skill</div><div class="track"><div class="fill" style="width:3%"></div></div><div class="v">619</div></div>
+    <div class="bar"><div class="lab">EnterWorktree</div><div class="track"><div class="fill" style="width:2%"></div></div><div class="v">416</div></div>
+    <div class="bar"><div class="lab">tokensave (graph)</div><div class="track"><div class="fill" style="width:.5%;background:var(--acc)"></div></div><div class="v">88</div></div>
+  </div>
+</section>
+
+<section id="cc-strength">
+  <h2><span class="hash">05</span>claude code — what's working</h2>
+  <div class="grid2">
+    <div class="card s"><span class="tag">strength</span><h3>you build the meta-tools</h3>
+      <p>cosmic-farmland: 11 sessions building skills, hooks, and commands that run across every other project. ptvm, fart-sniffing-detection, /ship, /next, systematize — you don't just use the tool, you forge tooling and then dogfood it. the writing system and the dev system are the same fractal.</p>
+      <div class="ev"><b>evidence:</b> 619 Skill calls, custom plugin installed globally</div></div>
+    <div class="card s"><span class="tag">strength</span><h3>parallelism at scale</h3>
+      <p>1,586 Agent spawns, 416 worktree entries. you fan work out and run isolated branches concurrently. 157 preach-hub sessions is a serious, sustained build — not dabbling.</p>
+      <div class="ev"><b>evidence:</b> preach-hub 157 · steve-config 39 · lenny 19</div></div>
+    <div class="card s"><span class="tag">strength</span><h3>telemetry before systematize</h3>
+      <p>honeycomb + posthog queries woven through sessions. you measure production behavior, then encode the lesson into a hook. "telemetry then systematize" is a post AND your actual loop. observability-driven, not vibes-driven.</p>
+      <div class="ev"><b>evidence:</b> 210+ honeycomb/posthog calls; matching post + skill</div></div>
+    <div class="card s"><span class="tag">strength</span><h3>terse trust</h3>
+      <p>60% of prompts ≤15 words. you've internalized "the system &gt; the prompt." you don't over-specify; you let it run, react to the diff, correct. that's a mature operator who's offloaded ceremony to the harness.</p>
+      <div class="ev"><b>evidence:</b> length distribution, hook-enforced workflow</div></div>
+  </div>
+</section>
+
+<section id="cc-gaps">
+  <h2><span class="hash">06</span>claude code — where you leak</h2>
+  <div class="grid2">
+    <div class="card g"><span class="tag">gap · loudest signal</span><h3>you don't use the graph you built</h3>
+      <p>Bash <b>20,628</b> and Read <b>12,629</b> against tokensave <b>88</b>. you have a global CLAUDE.md rule that <i>mandates</i> tokensave over Explore agents and raw greps for code research — and the numbers say it's barely touched. you built the better tool and kept reaching for grep. classic friction-named-but-not-fixed.</p>
+      <div class="ev"><b>fix:</b> a PreToolUse hook that intercepts grep/find-on-code and suggests tokensave. make the rule mechanical, not aspirational.</div></div>
+    <div class="card g"><span class="tag">gap</span><h3>worktree sprawl = context fragmentation</h3>
+      <p>157 preach-hub sessions across dozens of worktrees (auth-verify-ttl, go-deeper-drain, og-image-version, parables…). same versionitis as the writing: many parallel half-states, unclear which merged. branches are cheap to open, expensive to leave open.</p>
+      <div class="ev"><b>fix:</b> a stale-worktree GC in /next — list branches with no commit in N sessions, offer kill/ship.</div></div>
+    <div class="card g"><span class="tag">gap</span><h3>Read-heavy re-orientation</h3>
+      <p>12.6k Reads vs 4.8k Edits — a ~2.6:1 look-to-change ratio. some is healthy caution; a lot is re-reading the same files across fragmented sessions because context got dropped. the burst-work pattern means you re-pay the orientation cost every spurt.</p>
+      <div class="ev"><b>fix:</b> lean on /handoff + tokensave session-recall at spurt boundaries so the next burst starts warm.</div></div>
+    <div class="card g"><span class="tag">gap</span><h3>discipline outsourced to hooks (fragile)</h3>
+      <p>no-time-estimates, no-em-dash, memory-block, inclusive-language — all enforced by hooks. powerful, but it means the behaviors aren't internalized; they live in one repo's config. on a fresh machine or a non-hooked context, the guardrails vanish. you've engineered around the habit instead of building it.</p>
+      <div class="ev"><b>fix:</b> fine for now — but know the hooks ARE the discipline. keep them in version control and treat their loss as a real risk.</div></div>
+  </div>
+</section>
+
+<hr class="fade"/>
+
+<!-- ============ PROFILE ============ -->
+<section id="profile">
+  <div class="eyebrow">part three · the person behind both corpora</div>
+  <h2><span class="hash">07</span>who's holding the pen</h2>
+  <p>inferred only from what you wrote and how you work — not from anything you told me directly. high confidence where both corpora agree.</p>
+
+  <div class="profile" style="margin-top:24px">
+    <div class="trait"><div class="k">core engine</div><div class="v">action precedes clarity. you think <i>by</i> building, not before it. "let emergent patterns emerge." analysis-paralysis is the enemy you've named most often, which means it's the one you fear most in yourself.</div></div>
+    <div class="trait"><div class="k">self-knowledge</div><div class="v">unusually high and recently won. adult ADHD diagnosis ("relief of finally having a name"), enneagram 7w8 ("we're letting it rip"), therapy, "spurtability" — you've done the work of naming your own operating system. the writing pipeline and the worktree sprawl are both <i>accommodations</i> built around a brain that runs hot, parallel, and in bursts.</div></div>
+    <div class="trait"><div class="k">central value</div><div class="v">authenticity as resistance. the piggies, the unpromptable parody, "if a model could have made it, a model probably already did." your whole project is a stand against convergence-to-bland in an AI age. it's not aesthetic preference — it reads as a moral position.</div></div>
+    <div class="trait"><div class="k">identity arc</div><div class="v">a creative who lost the thread and is reclaiming it. documentary film, photography, a blog 15 years ago, english major — then "everything else" for 15 years. the site is explicitly a return. there's grief in the corpus (ai-engineering-grief kernel) and defiant joy in equal measure.</div></div>
+    <div class="trait"><div class="k">how you relate</div><div class="v">a connector and a coach. "let's chat :)" is the real close, not a sign-off. coaching middle school, "build boosters not naysayers," human-connection-as-energy, crediting Tyler, h/t-ing sources. you write <i>toward</i> people. the work is a conversation you want to be in, not a monument.</div></div>
+    <div class="trait"><div class="k">shadow</div><div class="v">the 7w8 cost: starting is effortless, finishing is the tax. ~145 unsprouted ideas, v0→v4 sprawl, worktree graveyards, scaffolding left standing. you build systems to <i>force</i> the finish (ship-it hooks, quit-conditions, ptvm) because left alone you'd rather start the next thing. the systems are a love letter to your own follow-through problem.</div></div>
+    <div class="trait"><div class="k">intellectual style</div><div class="v">synthesist, not specialist. you pull yeats next to sturgill next to kent beck next to BBQ. cross-domain reference isn't decoration — it's how you actually cognize. depth-over-shallowness, "own your understanding," durable-learning. you want to <i>get</i> things, not just use them.</div></div>
+    <div class="trait"><div class="k">relationship to AI</div><div class="v">co-intelligence, hard line against vibe-thinking. AI as collaborator and coach, never as the-thing-that-does-it-for-you. "own your learning. own it!" you're optimistic about the tool and allergic to the laziness it enables. that tension is your richest material.</div></div>
+  </div>
+</section>
+
+<section id="verdict">
+  <div class="verdict">
+    <div class="eyebrow">the one-paragraph read</div>
+    <h2>the tell</h2>
+    <p style="font-size:16px;color:var(--ink)">you are a <b>builder of systems for a mind that resists systems</b> — a high-energy, divergent, deeply self-aware 7w8 who has turned his own follow-through problem into a methodology (bff) and a body of work. your gift is starting, synthesizing, and naming things so well they become reusable vocabulary. your tax is convergence: ideas that don't sprout, drafts that don't merge, branches that don't close, a graph tool you built and don't use. <b>every gap in both corpora is the same gap</b> — the start is free, the finish costs, and you'd rather start. the fix isn't more discipline. it's more <i>quit-conditions</i>: mechanical, hook-enforced moments that force a thing to either ship or die. you already know this. you wrote the kernel. sprout it.</p>
+  </div>
+</section>
+
+<section id="moves">
+  <h2><span class="hash">08</span>five moves, if you want them</h2>
+  <ul class="clean">
+    <li><span class="mk">→</span><span><b>sprout "quit-conditions."</b> the highest-leverage post you haven't written, and the rule you most need. it fixes the writing funnel AND the worktree sprawl in one frame.</span></li>
+    <li><span class="mk">→</span><span><b>make the tokensave rule mechanical.</b> a hook that nudges grep→graph. you proved aspiration alone (88 calls) doesn't move you. systematize it.</span></li>
+    <li><span class="mk">→</span><span><b>pre-publish TODO gate.</b> block flipping draft:false while <code>&lt;!-- TODO --&gt;</code> or "screenshot here" survives. stop shipping the scaffolding.</span></li>
+    <li><span class="mk">→</span><span><b>canonical-or-kill on versions.</b> meb v0–v4, writing-process v2: pick one, delete the rest. one source of truth, in writing and in worktrees.</span></li>
+    <li><span class="mk">→</span><span><b>warm-start your bursts.</b> /handoff + session-recall at spurt boundaries. you re-pay orientation every burst; cut that and the spurts compound instead of restart.</span></li>
+  </ul>
+</section>
+
+<footer>
+  built from 273 sessions, 6,798 prompts, 28 posts, ~145 kernels/ideas · a mirror, not a verdict · you can always change it later
+</footer>
+
+</div>
+</body>
+</html>
