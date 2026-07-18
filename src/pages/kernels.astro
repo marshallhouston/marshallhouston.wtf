@@ -25,7 +25,7 @@ for (const k of kernels) {
 
   {groups.map((g) => (
     <section data-pagefind-body>
-      <h3>{g.month}</h3>
+      <h2 class="month">{g.month}</h2>
       <ul>
         {g.items.map((k) => (
           <li>
@@ -39,3 +39,9 @@ for (const k of kernels) {
     </section>
   ))}
 </Layout>
+
+<style>
+  h2.month {
+    font-size: 1.25em;
+  }
+</style>
