@@ -13,6 +13,8 @@
   --link-hover: #a9dcdf;
   --link-visited: #8cd1d4;
   --border: rgba(255, 255, 255, 0.08);
+  --bg-soft: #1a1f2e;
+  --accent: var(--link);
   --font-sans: -apple-system, "system-ui", Roboto, "Segoe UI",
                "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
   --max-w: 80rem;
@@ -43,6 +45,22 @@ a {
 }
 a:hover { color: var(--link-hover); text-decoration: underline; }
 a:visited { color: var(--link-visited); }
+
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -3rem;
+  z-index: 100;
+  background: var(--bg-soft);
+  color: var(--link);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  padding: 0.4em 0.8em;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0.5rem;
+}
 
 header.masthead {
   background: var(--surface);
@@ -166,6 +184,7 @@ h1, h2, h3, h4 {
   color: var(--text-strong);
   line-height: 1.2;
   font-weight: 700;
+  text-wrap: balance;
 }
 
 h1 { font-size: 1.953em; margin-top: 0; /* capitalized state controlled by body[data-caps] */ }
@@ -237,6 +256,13 @@ hr {
 .entry .tags a { margin-right: 0.5rem; color: var(--link); text-transform: lowercase; }
 
 /* Post page */
+article.post {
+  max-width: 72ch;
+}
+article.post p,
+article.post li {
+  text-wrap: pretty;
+}
 article.post header h1 { margin-bottom: 0.5rem; /* capitalized state controlled by body[data-caps] */ }
 article.post .meta {
   color: var(--text-soft);
@@ -304,6 +330,10 @@ img { max-width: 100%; height: auto; }
   min-height: 4rem;
 }
 .post-nav .next { text-align: right; }
+@media (max-width: 30em) {
+  .post-nav { grid-template-columns: 1fr; }
+  .post-nav .next { text-align: left; }
+}
 .post-nav .label {
   display: block;
   color: var(--text-soft);
