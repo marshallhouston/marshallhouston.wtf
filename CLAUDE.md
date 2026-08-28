@@ -139,3 +139,13 @@ Rules:
 - Before answering architecture or codebase questions, read graphify-out/GRAPH_REPORT.md for god nodes and community structure
 - If graphify-out/wiki/index.md exists, navigate it instead of reading raw files
 - After modifying code files in this session, run `graphify update .` to keep the graph current (AST-only, no API cost)
+
+## Deps sweep
+
+Workflow lives in the cosmic-farmland plugin (`/deps-sweep`). Repo-specific inputs:
+
+- **Verify:** `bunx astro check` (informational only, see below), `bun run build`, `bun run test`.
+- **Prod check:** `curl -s -o /dev/null -w "%{http_code}\n" https://marshallhouston.wtf` expects 200, plus spot-check a post page renders.
+- **`astro check` has ~42 pre-existing ts errors** in inline component scripts (mostly `RateYourself.astro`: unguarded `ctx`, `e.target`, `querySelector` nulls). Not a bump regression. Build is the real gate.
+- **Astro is the whole dependency tree.** `@astrojs/mdx`, `rss`, `sitemap`, `check` are peers of `astro`. Bump `astro` first, then the integrations, or peer resolution fights you. Nearly every `bun audit` advisory here is transitive under astro (vite, sharp, svgo, yaml, esbuild) and clears on an astro bump.
+- **Playwright bumps need `bunx playwright install`** after the version change, or tests fail on a missing browser.
