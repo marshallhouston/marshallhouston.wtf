@@ -11,13 +11,13 @@
     "build": "node scripts/check-talk-favicons.mjs && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "playwright test"
+    "test": "astro preview stop >/dev/null 2>&1; astro preview --port 4321 --host 127.0.0.1 && playwright test; e=$?; astro preview stop >/dev/null 2>&1; exit $e"
   },
   "dependencies": {
-    "@astrojs/mdx": "^5.0.4",
+    "@astrojs/mdx": "^7.0.8",
     "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^6.4.8",
+    "astro": "^7.2.9",
     "github-slugger": "^2.0.0"
   },
   "devDependencies": {
