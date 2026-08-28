@@ -12,4 +12,6 @@ test('urls in kernel ideas render as links, not raw text', async ({ page }) => {
     'href',
     'https://gruhn.me/blog/2026-08-03/'
   );
+  await expect(link).toHaveAttribute('target', '_blank');
+  await expect(link).toHaveAttribute('rel', /noopener/);
 });
