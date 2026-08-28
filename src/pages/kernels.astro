@@ -9,6 +9,16 @@ const kernels = (await getCollection('kernels')).sort(
 const monthLabel = (d: Date) =>
   d.toLocaleString('en-US', { month: 'long', year: 'numeric' }).toLowerCase();
 
+// Ideas may carry links: `[words](url)` links those words, a bare url links its host.
+const parts = (text: string) =>
+  text.split(/(\[[^\]]+\]\(https?:\/\/[^\s)]+\)|https?:\/\/[^\s]+)/g).map((p) => {
+    const md = p.match(/^\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)$/);
+    if (md) return { href: md[2], label: md[1], inline: true };
+    if (!/^https?:\/\//.test(p)) return { text: p };
+    const href = p.replace(/[.,;:!?)\]]+$/, '');
+    return { href, label: new URL(href).hostname.replace(/^www\./, '') };
+  });
+
 // Group by month preserving order.
 const groups: { month: string; items: typeof kernels }[] = [];
 for (const k of kernels) {
@@ -29,7 +39,9 @@ for (const k of kernels) {
       <ul>
         {g.items.map((k) => (
           <li>
-            {k.data.idea}
+            {parts(k.data.idea).map((p) =>
+              p.href ? <a href={p.href} class={p.inline ? '' : 'src'}>{p.label}</a> : p.text
+            )}
             {k.data.sprouted && k.data.post_url && (
               <> &rarr; <a href={k.data.post_url}>{k.data.post_title}</a></>
             )}
@@ -43,5 +55,14 @@ for (const k of kernels) {
 <style>
   h2.month {
     font-size: 1.25em;
+  }
+
+  a.src {
+    font-size: 0.85em;
+    white-space: nowrap;
+  }
+  a.src::before {
+    content: '\2197\00a0';
+    opacity: 0.6;
   }
 </style>
