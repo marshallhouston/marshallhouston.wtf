@@ -1,0 +1,6 @@
+# Deps parked by a decision, not by semver. The deps-sweep audit reads this and
+# keeps these out of SAFE BATCH, the one bucket that says "bump without thinking".
+#   <dep> | <why it is parked, and what unparks it> | <optional probe, silent until the gate opens>
+# Remove the row when the block clears.
+
+typescript | TS 7's native Go compiler does not ship the programmatic API `astro check` needs, so astro check refuses to run on it. Blocked on TypeScript itself, not on astro. Tracked at withastro/roadmap discussion 1321 and withastro/astro issue 17268. astro check is the only consumer of typescript here, so TS 7 buys nothing until that lands. | npm info @astrojs/check peerDependencies.typescript 2>/dev/null | grep -q '7' && echo "@astrojs/check peer now admits TS 7 -- re-probe: install TS 7, run bunx astro check"
