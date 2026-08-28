@@ -40,7 +40,11 @@ for (const k of kernels) {
         {g.items.map((k) => (
           <li>
             {parts(k.data.idea).map((p) =>
-              p.href ? <a href={p.href} class={p.inline ? '' : 'src'}>{p.label}</a> : p.text
+              p.href ? (
+                <a href={p.href} class={p.inline ? '' : 'src'} target="_blank" rel="noopener">
+                  {p.label}
+                </a>
+              ) : p.text
             )}
             {k.data.sprouted && k.data.post_url && (
               <> &rarr; <a href={k.data.post_url}>{k.data.post_title}</a></>
