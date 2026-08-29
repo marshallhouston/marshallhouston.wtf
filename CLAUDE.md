@@ -145,7 +145,11 @@ Rules:
 Workflow lives in the cosmic-farmland plugin (`/deps-sweep`). Repo-specific inputs:
 
 - **Verify:** `bunx astro check` (informational only, see below), `bun run build`, `bun run test`.
-- **Prod check:** `curl -s -o /dev/null -w "%{http_code}\n" https://marshallhouston.wtf` expects 200, plus spot-check a post page renders.
+- **Prod check:** a 200 only proves *something* is up, not that your build shipped. Astro stamps its version into the HTML, so check that instead:
+  ```
+  curl -s https://marshallhouston.wtf | grep -o '<meta name="generator"[^>]*>'
+  ```
+  Then confirm the live commit. Deploys are **Railway**, not GitHub Actions: the `marshallhouston.wtf` service in the `marshallhouston.wtf site` project auto-deploys every push to `main`. `gh run list` shows only stale GitHub Pages runs from April 2026 and will make a healthy deploy look invisible. Check the Railway dashboard, or list deployments and match the top `SUCCESS` row's `commitHash` against `git rev-parse origin/main`.
 - **Keep `@astrojs/language-server` current** even though nothing depends on it directly. It is a transitive dep of `@astrojs/check` under `^2.16.7`, and the lockfile will happily sit on an old one. 2.16.15 replaced a bare `Cannot read properties of undefined (reading 'fileExists')` crash on TS 7 with a sentence explaining the actual cause.
 - **`astro check` has ~42 pre-existing ts errors** in inline component scripts (mostly `RateYourself.astro`: unguarded `ctx`, `e.target`, `querySelector` nulls). Not a bump regression. Build is the real gate.
 - **Astro is the whole dependency tree.** `@astrojs/mdx`, `rss`, `sitemap`, `check` are peers of `astro`. Bump `astro` first, then the integrations, or peer resolution fights you. Nearly every `bun audit` advisory here is transitive under astro (vite, sharp, svgo, yaml, esbuild) and clears on an astro bump.
