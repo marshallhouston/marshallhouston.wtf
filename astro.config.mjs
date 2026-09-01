@@ -9,10 +9,6 @@ export default defineConfig({
   build: {
     format: 'file',
   },
-  redirects: {
-    '/builder-vs-naysayers-ten-dimensions': '/builders-vs-naysayers-ten-dimensions',
-    '/tools/builder-vs-naysayers': '/tools/builders-vs-naysayers',
-  },
   prefetch: {
     prefetchAll: true,
     defaultStrategy: 'hover',
