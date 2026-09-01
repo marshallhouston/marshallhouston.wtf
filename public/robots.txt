@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://marshallhouston.wtf/sitemap.xml
+Sitemap: https://marshallhouston.wtf/sitemap-index.xml
