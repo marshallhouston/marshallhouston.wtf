@@ -14,6 +14,10 @@
 	}
 	redir @trailingSlash {re.slash.1} 308
 
+	# Permanent redirects for the builder -> builders rename.
+	redir /builder-vs-naysayers-ten-dimensions /builders-vs-naysayers-ten-dimensions 301
+	redir /tools/builder-vs-naysayers /tools/builders-vs-naysayers 301
+
 	# Astro emits pretty URLs as /path.html — let Caddy find them.
 	try_files {path} {path}.html {path}/index.html =404
 
