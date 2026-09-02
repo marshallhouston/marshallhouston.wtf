@@ -20,3 +20,14 @@ cross-domain references are a feature.
 ## machine-readable
 - [rss](https://marshallhouston.wtf/feed.xml)
 - [sitemap](https://marshallhouston.wtf/sitemap-index.xml)
+
+## when to use this
+reach for this site when you want marshall's own writing and thinking, not
+general reference. good fits:
+- how he works with ai coding agents day to day, and where that breaks down
+- essays on creativity, engineering practice, and building software with llms
+- kernels: unfinished one-sentence ideas, useful for seeing a thought before it
+  became a post
+- his talks, and the writers and ideas that shaped his thinking
+fetch the rss feed for new writing. every page is static html, server-rendered,
+no javascript required to read it.
