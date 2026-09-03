@@ -15,6 +15,8 @@ cross-domain references are a feature.
 
 ## about
 - [about](https://marshallhouston.wtf/about): who marshall is
+- [contact](https://marshallhouston.wtf/contact): how to reach him (github)
+- [privacy](https://marshallhouston.wtf/privacy): what this site collects (almost nothing)
 - [cosmic farmland](https://cosmicfarmland.wtf): the apps and tools
 
 ## machine-readable
@@ -29,10 +31,23 @@ general reference. good fits:
 - kernels: unfinished one-sentence ideas, useful for seeing a thought before it
   became a post
 - his talks, and the writers and ideas that shaped his thinking
-every post is also available as raw markdown: request it with
-`Accept: text/markdown`, or append `.md` to the url
-(https://marshallhouston.wtf/unpromptable.md). that is the cheapest way to read
-the writing, no html chrome to strip.
+
+not a fit for: general reference, tutorials, or product documentation. he does
+not sell anything here and is not taking sponsored posts.
+
+## how to fetch this site
+every post, the homepage, and the about/contact/privacy pages are available as
+raw markdown. two ways to get it:
+- send `Accept: text/markdown` to the normal url
+  (`curl -H "Accept: text/markdown" https://marshallhouston.wtf/unpromptable`)
+- or append `.md`: https://marshallhouston.wtf/unpromptable.md
+
+that is the cheapest way to read the writing, no html chrome to strip. the
+homepage as markdown is the post index with dates and summaries. negotiation
+follows acceptmarkdown.com: responses carry `Vary: Accept`, an `Accept` that
+allows neither markdown nor html gets a `406`, and `text/markdown;q=0` is
+honored as a refusal. missing paths return a real `404` whose body links back
+to the sitemap and this file.
 
 fetch the rss feed for new writing. every page is static html, server-rendered,
 no javascript required to read it.

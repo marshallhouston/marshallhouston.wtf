@@ -145,6 +145,10 @@ Rules:
 Workflow lives in the cosmic-farmland plugin (`/deps-sweep`). Repo-specific inputs:
 
 - **Verify:** `bunx astro check` (informational only, see below), `bun run build`, `bun run test`.
+  `bun run test` is playwright against `astro preview` **plus** `scripts/check-negotiation.sh`,
+  which boots the real Caddyfile over `dist/` and asserts the Accept negotiation
+  (markdown, `Vary: Accept`, `406`, `q=0`) and the 404. Preview knows nothing about
+  Accept headers, so the Caddyfile can only regress there. Needs `caddy` on PATH.
 - **Prod check:** a 200 only proves *something* is up, not that your build shipped. Astro stamps its version into the HTML, so check that instead:
   ```
   curl -s https://marshallhouston.wtf | grep -o '<meta name="generator"[^>]*>'

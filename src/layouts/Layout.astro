@@ -54,6 +54,13 @@ const personJsonLd = {
     'https://github.com/marshallhouston',
     'https://linkedin.com/in/marshallhouston',
   ],
+  // No email published by choice; github is the one channel marshall reads.
+  contactPoint: {
+    '@type': 'ContactPoint',
+    contactType: 'general enquiries',
+    url: `${SITE_URL}/contact`,
+    availableLanguage: 'English',
+  },
 };
 ---
 
@@ -124,7 +131,7 @@ const personJsonLd = {
       </main>
     </div>
     <footer class="site-footer">
-      <p>cosmic farmland · <a href="/feed.xml">rss</a></p>
+      <p>cosmic farmland · <a href="/about">about</a> · <a href="/contact">contact</a> · <a href="/privacy">privacy</a> · <a href="/feed.xml">rss</a></p>
     </footer>
 
     <script is:inline>

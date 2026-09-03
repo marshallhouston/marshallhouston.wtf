@@ -11,7 +11,8 @@
     "build": "node scripts/check-talk-favicons.mjs && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "scripts/preview-test.sh"
+    "test": "scripts/preview-test.sh && scripts/check-negotiation.sh",
+    "test:negotiation": "scripts/check-negotiation.sh"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.8",
