@@ -18,14 +18,45 @@
 	redir /builder-vs-naysayers-ten-dimensions /builders-vs-naysayers-ten-dimensions 301
 	redir /tools/builder-vs-naysayers /tools/builders-vs-naysayers 301
 
-	# Content negotiation: agents asking for markdown get the post source.
-	# Only rewrites when a sibling .md was actually built (posts), so every
-	# other path falls through to the HTML below.
+	# acceptmarkdown.com: reject a request that accepts neither markdown nor
+	# html (nor a wildcard) with 406 instead of silently handing it html.
+	# Scoped to the pages that actually negotiate, so an asset or feed fetch
+	# with a narrow Accept is left alone. `respond` is ordered AFTER `rewrite`,
+	# so these match on the original request path, not the rewritten one.
+	@unacceptable {
+		header Accept *
+		not header_regexp Accept (?i)(text/html|text/markdown|text/plain|text/\*|\*/\*)
+		file {http.request.orig_uri.path}.md
+	}
+	respond @unacceptable 406
+	@unacceptableRoot {
+		expression {http.request.orig_uri.path} == "/"
+		header Accept *
+		not header_regexp Accept (?i)(text/html|text/markdown|text/plain|text/\*|\*/\*)
+	}
+	respond @unacceptableRoot 406
+
+	# Content negotiation: agents asking for markdown get the page source.
+	# Only rewrites when a sibling .md was actually built (posts and the
+	# prose pages), so every other path falls through to the HTML below.
+	# `text/markdown;q=0` is an explicit refusal and does not count as asking.
+	# ponytail: substring match, not a full q-value ranking. An Accept that
+	# ranks html above markdown with fractional q values still gets markdown;
+	# real ranking needs a negotiating handler, not a Caddyfile matcher.
 	@wantsMarkdown {
 		header Accept *text/markdown*
+		not header_regexp Accept text/markdown\s*;\s*q=0(\.0*)?(\s*[,;]|\s*$)
 		file {path}.md
 	}
 	rewrite @wantsMarkdown {path}.md
+
+	# Same negotiation for the homepage, whose markdown lives at /index.md.
+	@wantsMarkdownRoot {
+		path /
+		header Accept *text/markdown*
+		not header_regexp Accept text/markdown\s*;\s*q=0(\.0*)?(\s*[,;]|\s*$)
+	}
+	rewrite @wantsMarkdownRoot /index.md
 
 	# Astro emits pretty URLs as /path.html — let Caddy find them.
 	try_files {path} {path}.html {path}/index.html =404
@@ -58,9 +89,13 @@
 		Vary "Accept, Accept-Encoding"
 	}
 	header @wantsMarkdown Content-Type "text/markdown; charset=utf-8"
+	header @wantsMarkdownRoot Content-Type "text/markdown; charset=utf-8"
 
-	@postHtml file {path}.md
-	header @postHtml Vary "Accept, Accept-Encoding"
+	@negotiableHtml file {path}.md
+	header @negotiableHtml Vary "Accept, Accept-Encoding"
+
+	@rootHtml path /
+	header @rootHtml Vary "Accept, Accept-Encoding"
 
 	log {
 		output stdout
