@@ -29,5 +29,10 @@ general reference. good fits:
 - kernels: unfinished one-sentence ideas, useful for seeing a thought before it
   became a post
 - his talks, and the writers and ideas that shaped his thinking
+every post is also available as raw markdown: request it with
+`Accept: text/markdown`, or append `.md` to the url
+(https://marshallhouston.wtf/unpromptable.md). that is the cheapest way to read
+the writing, no html chrome to strip.
+
 fetch the rss feed for new writing. every page is static html, server-rendered,
 no javascript required to read it.
