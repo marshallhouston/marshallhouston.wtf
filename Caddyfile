@@ -18,10 +18,26 @@
 	redir /builder-vs-naysayers-ten-dimensions /builders-vs-naysayers-ten-dimensions 301
 	redir /tools/builder-vs-naysayers /tools/builders-vs-naysayers 301
 
+	# Content negotiation: agents asking for markdown get the post source.
+	# Only rewrites when a sibling .md was actually built (posts), so every
+	# other path falls through to the HTML below.
+	@wantsMarkdown {
+		header Accept *text/markdown*
+		file {path}.md
+	}
+	rewrite @wantsMarkdown {path}.md
+
 	# Astro emits pretty URLs as /path.html — let Caddy find them.
 	try_files {path} {path}.html {path}/index.html =404
 
 	file_server
+
+	# Serve the built 404 page, preserving the 404 status code.
+	handle_errors {
+		@notFound expression {err.status_code} == 404
+		rewrite @notFound /404.html
+		file_server
+	}
 
 	header {
 		# Conservative defaults; tighten later if we care.
@@ -29,6 +45,22 @@
 		Referrer-Policy "strict-origin-when-cross-origin"
 		-Server
 	}
+
+	# Post URLs serve HTML or markdown depending on Accept, so caches must
+	# key on it. Without this a CDN serves whichever variant it cached first.
+	# .md also needs an explicit type: file_server has no mapping for it and
+	# would send the source with no Content-Type at all. Note `header` is
+	# ordered BEFORE `rewrite`, so its matchers see the pre-rewrite path;
+	# the negotiated case has to match the request, not the .md path.
+	@markdown path *.md
+	header @markdown {
+		Content-Type "text/markdown; charset=utf-8"
+		Vary "Accept, Accept-Encoding"
+	}
+	header @wantsMarkdown Content-Type "text/markdown; charset=utf-8"
+
+	@postHtml file {path}.md
+	header @postHtml Vary "Accept, Accept-Encoding"
 
 	log {
 		output stdout

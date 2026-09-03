@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { mainNav } from '../data/navigation';
+---
+
+<Layout title="not found" description="that page doesn't exist.">
+  <h1>not found</h1>
+  <p>that page doesn't exist. nothing here was ever here.</p>
+
+  <h2>where to look next</h2>
+  <ul>
+    {mainNav.map((link) => (
+      <li><a href={link.url}>{link.title}</a></li>
+    ))}
+    <li><a href="/tags">tags</a></li>
+    <li><a href="/search">search</a></li>
+  </ul>
+
+  <h2>machine-readable</h2>
+  <ul>
+    <li><a href="/llms.txt">/llms.txt</a> - what this site is, and when to use it</li>
+    <li><a href="/sitemap-index.xml">/sitemap-index.xml</a> - every page</li>
+    <li><a href="/feed.xml">/feed.xml</a> - rss</li>
+  </ul>
+</Layout>

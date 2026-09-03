@@ -40,6 +40,21 @@ const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} · ${SITE_TITLE}
 const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImageUrl = new URL(ogImage, Astro.site).toString();
 const ogType = article ? 'article' : 'website';
+
+// Identity schema for pages that aren't articles (home, about, kernels, ...).
+// Articles carry their own Article JSON-LD via `article.jsonLd`.
+const personJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE_TITLE,
+  description: SITE_DESC,
+  url: SITE_URL,
+  image: new URL('/assets/images/marshall.png', SITE_URL).toString(),
+  sameAs: [
+    'https://github.com/marshallhouston',
+    'https://linkedin.com/in/marshallhouston',
+  ],
+};
 ---
 
 <html lang="en">
@@ -79,9 +94,10 @@ const ogType = article ? 'article' : 'website';
     <meta name="twitter:image" content={ogImageUrl} />
     <meta name="twitter:image:alt" content={ogImageAlt} />
 
-    {article?.jsonLd && (
-      <script type="application/ld+json" set:html={JSON.stringify(article.jsonLd)} />
-    )}
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(article?.jsonLd ?? personJsonLd)}
+    />
     <ClientRouter />
   </head>
   <body data-cap-mode={customCapToggle}>

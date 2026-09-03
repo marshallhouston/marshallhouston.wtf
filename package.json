@@ -11,7 +11,7 @@
     "build": "node scripts/check-talk-favicons.mjs && astro build && pagefind --site dist",
     "preview": "astro preview",
     "astro": "astro",
-    "test": "astro preview stop >/dev/null 2>&1; astro preview --port 4321 --host 127.0.0.1 && playwright test; e=$?; astro preview stop >/dev/null 2>&1; exit $e"
+    "test": "scripts/preview-test.sh"
   },
   "dependencies": {
     "@astrojs/mdx": "^7.0.8",
