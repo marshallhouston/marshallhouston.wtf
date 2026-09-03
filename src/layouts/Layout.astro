@@ -41,26 +41,51 @@ const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
 const ogImageUrl = new URL(ogImage, Astro.site).toString();
 const ogType = article ? 'article' : 'website';
 
-// Identity schema for pages that aren't articles (home, about, kernels, ...).
-// Articles carry their own Article JSON-LD via `article.jsonLd`.
-const personJsonLd = {
-  '@context': 'https://schema.org',
-  '@type': 'Person',
-  name: SITE_TITLE,
-  description: SITE_DESC,
-  url: SITE_URL,
-  image: new URL('/assets/images/marshall.png', SITE_URL).toString(),
-  sameAs: [
-    'https://github.com/marshallhouston',
-    'https://linkedin.com/in/marshallhouston',
-  ],
-  // No email published by choice; github is the one channel marshall reads.
-  contactPoint: {
-    '@type': 'ContactPoint',
-    contactType: 'general enquiries',
-    url: `${SITE_URL}/contact`,
-    availableLanguage: 'English',
+// Identity schema, on every page.
+//
+// Two nodes, not one: the Person is who wrote this, the WebSite is the thing
+// at this domain. Naming both, and linking them, is what lets a machine
+// answer "what is marshallhouston.wtf" and "where does marshall houston
+// write" with the same fact.
+const identityNodes = [
+  {
+    '@type': 'Person',
+    '@id': `${SITE_URL}/#person`,
+    name: SITE_TITLE,
+    description: SITE_DESC,
+    url: SITE_URL,
+    image: new URL('/assets/images/marshall.png', SITE_URL).toString(),
+    sameAs: [
+      'https://github.com/marshallhouston',
+      'https://linkedin.com/in/marshallhouston',
+    ],
+    // No email published by choice; github is the one channel marshall reads.
+    contactPoint: {
+      '@type': 'ContactPoint',
+      contactType: 'general enquiries',
+      url: `${SITE_URL}/contact`,
+      availableLanguage: 'English',
+    },
   },
+  {
+    '@type': 'WebSite',
+    '@id': `${SITE_URL}/#website`,
+    url: SITE_URL,
+    name: SITE_TITLE,
+    alternateName: 'cosmic farmland',
+    description: SITE_DESC,
+    inLanguage: 'en',
+    publisher: { '@id': `${SITE_URL}/#person` },
+    author: { '@id': `${SITE_URL}/#person` },
+  },
+];
+
+// Every page ships the identity nodes. An article adds its own node to the
+// same graph and points at them by @id, so an agent landing on any single
+// page learns who wrote it and where it lives.
+const jsonLdGraph = {
+  '@context': 'https://schema.org',
+  '@graph': article?.jsonLd ? [...identityNodes, article.jsonLd] : identityNodes,
 };
 ---
 
@@ -103,7 +128,7 @@ const personJsonLd = {
 
     <script
       type="application/ld+json"
-      set:html={JSON.stringify(article?.jsonLd ?? personJsonLd)}
+      set:html={JSON.stringify(jsonLdGraph)}
     />
     <ClientRouter />
   </head>

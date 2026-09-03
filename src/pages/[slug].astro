@@ -4,7 +4,7 @@ import CapToggle from '../components/CapToggle.astro';
 import Icon from '../components/Icon.astro';
 import Giscus from '../components/Giscus.astro';
 import { render } from 'astro:content';
-import { readMinutes, excerpt, fmtDate, getRoutablePosts } from '../lib/post-utils';
+import { readMinutes, excerpt, fmtDate, getRoutablePosts, updatedIso } from '../lib/post-utils';
 
 export async function getStaticPaths() {
   const posts = (await getRoutablePosts()).sort(
@@ -32,17 +32,26 @@ const related = all
 
 const minRead = readMinutes(post.body ?? '');
 const postDesc = post.data.description ?? excerpt(post.body ?? '', 200);
-const canonicalUrl = new URL(`/${post.data.slug}/`, Astro.site).toString();
+// Slashless, matching <link rel="canonical"> and the 308 Caddy sends for a
+// trailing slash. Two different urls for one page is a fact an agent has to
+// reconcile, so don't hand it two.
+const canonicalUrl = new URL(`/${post.data.slug}`, Astro.site).toString();
+const modifiedIso = updatedIso(post.data.updated_at);
 
+// The Layout folds this into its @graph with the Person and WebSite nodes, so
+// author/publisher are references rather than a second copy of the identity.
 const jsonLd = {
-  '@context': 'https://schema.org',
   '@type': 'BlogPosting',
+  '@id': `${canonicalUrl}#post`,
   headline: post.data.title,
   description: postDesc,
   url: canonicalUrl,
+  mainEntityOfPage: canonicalUrl,
   datePublished: post.data.date.toISOString(),
-  ...(post.data.updated_at ? { dateModified: post.data.updated_at } : {}),
-  author: { '@type': 'Person', name: 'Marshall Houston', url: 'https://marshallhouston.wtf' },
+  ...(modifiedIso ? { dateModified: modifiedIso } : {}),
+  author: { '@id': `${Astro.site}#person` },
+  publisher: { '@id': `${Astro.site}#person` },
+  isPartOf: { '@id': `${Astro.site}#website` },
   keywords: post.data.tags.join(', '),
 };
 ---
@@ -54,7 +63,7 @@ const jsonLd = {
   customCapToggle={post.data.custom_cap_toggle}
   article={{
     publishedTime: post.data.date,
-    modifiedTime: post.data.updated_at,
+    modifiedTime: modifiedIso,
     tags: post.data.tags,
     jsonLd,
   }}

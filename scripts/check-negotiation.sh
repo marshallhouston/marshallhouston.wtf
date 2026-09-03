@@ -92,6 +92,18 @@ check "markdown q=0 gets html (root)" "text/html; charset=utf-8" \
 check "markdown q=0.8 still served" "text/markdown; charset=utf-8" \
   "$(ctype -H 'Accept: text/markdown;q=0.8' "$BASE/unpromptable")"
 
+# An unqualified type is q=1, so html outranks a fractional markdown.
+check "html unqualified outranks markdown q=0.9" "text/html; charset=utf-8" \
+  "$(ctype -H 'Accept: text/html, text/markdown;q=0.9' "$BASE/unpromptable")"
+check "html unqualified outranks markdown q=0.9 (root)" "text/html; charset=utf-8" \
+  "$(ctype -H 'Accept: text/html, text/markdown;q=0.9' "$BASE/")"
+check "html q=1 outranks markdown q=0.9" "text/html; charset=utf-8" \
+  "$(ctype -H 'Accept: text/markdown;q=0.9, text/html;q=1' "$BASE/unpromptable")"
+check "markdown unqualified outranks html q=0.9" "text/markdown; charset=utf-8" \
+  "$(ctype -H 'Accept: text/markdown, text/html;q=0.9' "$BASE/unpromptable")"
+check "markdown q=0.9 beats html q=0.5" "text/markdown; charset=utf-8" \
+  "$(ctype -H 'Accept: text/markdown;q=0.9, text/html;q=0.5' "$BASE/unpromptable")"
+
 # 5. nonexistent paths are a real 404 with the recovery page body
 check "missing path is 404" "404" "$(status "$BASE/definitely-not-a-page")"
 curl -s "$BASE/definitely-not-a-page" | grep -q '/llms.txt' \

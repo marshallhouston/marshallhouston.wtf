@@ -39,13 +39,24 @@
 	# Content negotiation: agents asking for markdown get the page source.
 	# Only rewrites when a sibling .md was actually built (posts and the
 	# prose pages), so every other path falls through to the HTML below.
-	# `text/markdown;q=0` is an explicit refusal and does not count as asking.
-	# ponytail: substring match, not a full q-value ranking. An Accept that
-	# ranks html above markdown with fractional q values still gets markdown;
-	# real ranking needs a negotiating handler, not a Caddyfile matcher.
+	#
+	# q-values, without arithmetic. Caddy matchers cannot compare two numbers,
+	# so the two conditions markdown has to clear are expressed as regexes:
+	#   1. markdown is not refused outright (`text/markdown;q=0`), and
+	#   2. markdown does not carry a q below 1 while html carries none (an
+	#      unqualified type is q=1, so `text/html, text/markdown;q=0.9` means
+	#      the client prefers html and gets it).
+	# ponytail: that leaves one hole, an Accept that gives BOTH types explicit
+	# fractional q values and ranks html higher (`text/markdown;q=0.5,
+	# text/html;q=0.9`) still gets markdown. Closing it needs a handler that
+	# parses the header; no known client sends that.
 	@wantsMarkdown {
 		header Accept *text/markdown*
-		not header_regexp Accept text/markdown\s*;\s*q=0(\.0*)?(\s*[,;]|\s*$)
+		not expression `
+			{http.request.header.Accept}.matches("text/markdown\\s*;\\s*q=0(\\.0*)?(\\s*[,;]|\\s*$)")
+			|| ({http.request.header.Accept}.matches("text/markdown\\s*;\\s*q=0\\.\\d+")
+			    && {http.request.header.Accept}.matches("text/html\\s*(,|;\\s*q=1(\\.0*)?|$)"))
+		`
 		file {path}.md
 	}
 	rewrite @wantsMarkdown {path}.md
@@ -54,7 +65,11 @@
 	@wantsMarkdownRoot {
 		path /
 		header Accept *text/markdown*
-		not header_regexp Accept text/markdown\s*;\s*q=0(\.0*)?(\s*[,;]|\s*$)
+		not expression `
+			{http.request.header.Accept}.matches("text/markdown\\s*;\\s*q=0(\\.0*)?(\\s*[,;]|\\s*$)")
+			|| ({http.request.header.Accept}.matches("text/markdown\\s*;\\s*q=0\\.\\d+")
+			    && {http.request.header.Accept}.matches("text/html\\s*(,|;\\s*q=1(\\.0*)?|$)"))
+		`
 	}
 	rewrite @wantsMarkdownRoot /index.md
 
