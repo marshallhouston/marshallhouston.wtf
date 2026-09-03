@@ -1,4 +1,33 @@
+# Mirrors Cloudflare's managed robots.txt (search=yes, ai-train=no, use=reference)
+# served on the cosmicfarmland.wtf zone. Declared at the origin because CF's
+# managed injection does not apply to this host. Keep the crawler list in sync
+# with Cloudflare's managed content if it changes.
 User-agent: *
+Content-Signal: search=yes, ai-train=no, use=reference
 Allow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
 
 Sitemap: https://marshallhouston.wtf/sitemap-index.xml
