@@ -37,7 +37,11 @@ const {
 } = Astro.props;
 
 const pageTitle = title === SITE_TITLE ? SITE_TITLE : `${title} · ${SITE_TITLE}`;
-const canonicalUrl = new URL(Astro.url.pathname, Astro.site).toString();
+// `build.format: 'file'` makes Astro.url.pathname `/about.html` at build time, so a
+// naive canonical declares the .html twin and every extensionless sitemap URL becomes
+// an "alternate page". Canonical shape is extensionless, no trailing slash.
+const canonicalPath = Astro.url.pathname.replace(/(?:\/index)?\.html$/, '') || '/';
+const canonicalUrl = new URL(canonicalPath, Astro.site).toString();
 const ogImageUrl = new URL(ogImage, Astro.site).toString();
 const ogType = article ? 'article' : 'website';
 

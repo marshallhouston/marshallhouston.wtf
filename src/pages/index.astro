@@ -35,7 +35,7 @@ const slugger = new GitHubSlugger();
   <div class="entries-list">
     {posts.map((p) => (
       <article class="entry">
-        <h2 class="entry-title"><a href={`/${p.data.slug}/`}>{p.data.title}</a></h2>
+        <h2 class="entry-title"><a href={`/${p.data.slug}`}>{p.data.title}</a></h2>
         <p class="meta">
           <Icon name="calendar" />{fmtDate(p.data.date)}
           <span class="sep">·</span>

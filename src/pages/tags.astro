@@ -42,7 +42,7 @@ const tagList = [...byTag.entries()]
         {t.items.map((p) => (
           <article class="entry">
             <h3 class="entry-title">
-              <a href={`/${p.data.slug}/`}>{p.data.title}</a>
+              <a href={`/${p.data.slug}`}>{p.data.title}</a>
             </h3>
             <p class="meta">
               <Icon name="calendar" />{fmtDate(p.data.date)}

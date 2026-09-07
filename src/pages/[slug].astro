@@ -32,7 +32,7 @@ const related = all
 
 const minRead = readMinutes(post.body ?? '');
 const postDesc = post.data.description ?? excerpt(post.body ?? '', 200);
-const canonicalUrl = new URL(`/${post.data.slug}/`, Astro.site).toString();
+const canonicalUrl = new URL(`/${post.data.slug}`, Astro.site).toString();
 
 const jsonLd = {
   '@context': 'https://schema.org',
@@ -89,7 +89,7 @@ const jsonLd = {
         {prev && (
           <>
             <span class="label">previous:</span>
-            <a href={`/${prev.data.slug}/`}>{prev.data.title}</a>
+            <a href={`/${prev.data.slug}`}>{prev.data.title}</a>
           </>
         )}
       </div>
@@ -97,7 +97,7 @@ const jsonLd = {
         {next && (
           <>
             <span class="label">next:</span>
-            <a href={`/${next.data.slug}/`}>{next.data.title}</a>
+            <a href={`/${next.data.slug}`}>{next.data.title}</a>
           </>
         )}
       </div>
@@ -111,7 +111,7 @@ const jsonLd = {
         {related.map((r) => (
           <article class="related-entry">
             <h4 class="related-title">
-              <a href={`/${r.data.slug}/`}>{r.data.title}</a>
+              <a href={`/${r.data.slug}`}>{r.data.title}</a>
             </h4>
             <p class="meta"><Icon name="calendar" />{fmtDate(r.data.date)} · <Icon name="clock" />{readMinutes(r.body ?? '')} min</p>
             <p class="excerpt">{excerpt(r.body ?? '', 120)}</p>
