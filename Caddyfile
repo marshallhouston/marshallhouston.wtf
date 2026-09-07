@@ -14,9 +14,27 @@
 	}
 	redir @trailingSlash {re.slash.1} 308
 
+	# Astro's `format: 'file'` writes /about.html, and Caddy's try_files below also
+	# serves it at /about. Two 200 URLs for one page. Collapse the .html twin onto
+	# the canonical shape so search engines see a single URL.
+	@indexHtml path /index.html
+	redir @indexHtml / 301
+
+	@nestedIndexHtml path_regexp nidx ^(.+)/index\.html$
+	redir @nestedIndexHtml {re.nidx.1} 301
+
+	@htmlSuffix path_regexp html ^(.+)\.html$
+	redir @htmlSuffix {re.html.1} 301
+
 	# Permanent redirects for the builder -> builders rename.
 	redir /builder-vs-naysayers-ten-dimensions /builders-vs-naysayers-ten-dimensions 301
 	redir /tools/builder-vs-naysayers /tools/builders-vs-naysayers 301
+
+	# The built 404 page is a real file, so try_files would serve it at /404 with a
+	# 200 and Google would index it as a soft 404. Force the status; handle_errors
+	# below renders the same page with the right code.
+	@builtin404 path /404 /404.html
+	error @builtin404 404
 
 	# Content negotiation: agents asking for markdown get the post source.
 	# Only rewrites when a sibling .md was actually built (posts), so every

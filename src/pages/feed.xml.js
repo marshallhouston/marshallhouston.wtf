@@ -10,10 +10,12 @@ export async function GET(context) {
     title: 'marshall houston',
     description: 'exploring creativity, ai, and how we write the future together',
     site: context.site,
+    // @astrojs/rss defaults to appending a slash; the site is `trailingSlash: 'never'`.
+    trailingSlash: false,
     items: posts.map((p) => ({
       title: p.data.title,
       pubDate: p.data.date,
-      link: `/${p.data.slug}/`,
+      link: `/${p.data.slug}`,
       categories: p.data.tags,
     })),
     customData: `<language>en-us</language>`,

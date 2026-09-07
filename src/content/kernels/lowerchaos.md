@@ -3,5 +3,5 @@ idea: "lowercase isn't ai slop, it's MY slop. and yet shifts focus so provide op
 date: 2026-04-05
 sprouted: true
 post_title: "lowerchaos"
-post_url: /lowerchaos/
+post_url: /lowerchaos
 ---

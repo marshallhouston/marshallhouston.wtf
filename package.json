@@ -8,7 +8,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "node scripts/check-talk-favicons.mjs && astro build && pagefind --site dist",
+    "build": "node scripts/check-talk-favicons.mjs && astro build && pagefind --site dist && node scripts/check-sitemap.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "test": "scripts/preview-test.sh"
