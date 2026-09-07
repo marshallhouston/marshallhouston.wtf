@@ -51,6 +51,39 @@ for (const urlPath of urls) {
       expect(title.trim().length).toBeGreaterThan(0);
     });
 
+    // Agents read the identity schema before anything else on the page. Every
+    // page carries the Person and WebSite nodes, so landing on any one of them
+    // answers "who wrote this" and "what site is this".
+    test('has json-ld identifying the author and the site', async ({ page }) => {
+      await page.goto(urlPath);
+      const raw = await page.locator('script[type="application/ld+json"]').first().textContent();
+      expect(raw).toBeTruthy();
+      const nodes = JSON.parse(raw)['@graph'];
+      expect(Array.isArray(nodes)).toBe(true);
+      const types = nodes.map((n) => n['@type']);
+      expect(types).toContain('Person');
+      expect(types).toContain('WebSite');
+    });
+
+    // A post's own node points back at those by @id, and its dates have to be
+    // machine-readable: `updated_at` is authored as "2026-04-20 17:03 MDT".
+    test('post json-ld links the author and uses iso dates', async ({ page }) => {
+      await page.goto(urlPath);
+      const raw = await page.locator('script[type="application/ld+json"]').first().textContent();
+      const nodes = JSON.parse(raw)['@graph'];
+      const post = nodes.find((n) => String(n['@type']).endsWith('Posting'));
+      test.skip(!post, 'not a post page');
+
+      expect(post.author['@id']).toBe('https://marshallhouston.wtf/#person');
+      expect(post.isPartOf['@id']).toBe('https://marshallhouston.wtf/#website');
+      // canonical url, no trailing slash, matching <link rel="canonical">
+      expect(post.url).toBe(`https://marshallhouston.wtf${urlPath}`);
+      expect(new Date(post.datePublished).toISOString()).toBe(post.datePublished);
+      if (post.dateModified) {
+        expect(new Date(post.dateModified).toISOString()).toBe(post.dateModified);
+      }
+    });
+
     test('no horizontal overflow', async ({ page }) => {
       await page.goto(urlPath);
       const overflow = await page.evaluate(
