@@ -1,6 +1,6 @@
 ---
 name: add-kernels
-description: Use when marshall wants to add kernel ideas, plant new seeds, capture one-liner ideas for the site, or says things like "I have some kernel ideas", "let's add kernels", "new seeds", "plant some ideas". Triggers on any mention of adding/capturing/planting kernels or seed ideas.
+description: Use when marshall wants to add kernel ideas, plant new seeds, capture one-liner ideas for the site, or says things like "I have some kernel ideas", "let's add kernels", "new seeds", "plant some ideas". Also triggers on inline `kernel: "..."`, "plant this", "seed this". Triggers on any mention of adding/capturing/planting kernels or seed ideas.
 ---
 
 # Add Kernels
