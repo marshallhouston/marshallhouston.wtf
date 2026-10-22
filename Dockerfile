@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1.7
 
 # ---- Build stage: compile the Astro site ----
-FROM oven/bun:1.3.13-alpine AS build
+FROM oven/bun:1.4.4-alpine AS build
 
 WORKDIR /src
 
